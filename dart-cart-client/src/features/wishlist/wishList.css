@@ -34,7 +34,7 @@
     font-size: 22px;
 }
 
-.btn {
+/* .btn {
     background-color: #999;
     margin-left: 40px;
     margin-top: 15px;
@@ -46,7 +46,7 @@
 
 .btn:hover {
     text-decoration: underline;
-}
+} */
 
 .viewProductBtn:hover {
     background-color: rgb(20, 161, 255);

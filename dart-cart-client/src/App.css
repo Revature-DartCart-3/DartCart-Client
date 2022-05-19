@@ -2,11 +2,11 @@
     text-align: center;
     color: var(--text-primary);
     background-color: var(--background);
-     font-size: large;
-    font-weight: bold;
+     /* font-size: large;
+    font-weight: bold; */
     padding: 20px;
-    
     transition: all .5s;
+    min-height: 100vh;
 }
 
 
@@ -15,13 +15,7 @@
     pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
+/* .App-header {
     background-color: #282c34;
     min-height: 100vh;
     display: flex;
@@ -30,7 +24,7 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-}
+} */
 
 .App-link {
     color: #61dafb;
@@ -46,14 +40,14 @@
 }
 
 .cardImg {
-    width: 50%;
-    height: 50%;
+    width: 100%;
 }
+/* footer icons */
 .fa {
     color: rgb(25, 135, 84);
 }
 
-
+/* color theme toggle */
 input[type="checkbox"]{
     position: relative;
     width: 120px;
@@ -102,6 +96,8 @@ input[type="checkbox"]{
     left: 105px;
     box-shadow: 0 0 5px #13b3ff, 0 0 15px #13b3ff;
   }
+
+  /* cards -- sets card background to match color theme */
 .card {
     color: var(--text-primary);
     background-color: var(--background);
