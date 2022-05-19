@@ -1,0 +1,117 @@
+
+/* -------------------------------------------------------------------------
+        Form Styling
+---------------------------------------------------------------------------*/
+
+/* Outer form structure */
+form, .shop-form {
+    width: 60%;
+    min-width: 300px;
+    max-width: 1000px;
+    margin: 20px auto;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    padding:0;
+}
+.shop-form form{
+    width:100%;
+    border:none;
+}
+
+/* Heading */
+.shop-form-heading{
+    background-color: var(--orange);
+    color:white;
+    font-size: x-large;
+    padding:10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Form body */
+.form-group{
+    width:95%;
+    margin:auto;
+}
+
+.form-control {
+    color: var(--text-secondary);
+    background-color: var(--background);
+    border: 2px solid var(--secondary);
+    height: 60px;
+    padding-left: 20px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.form-control:focus {
+    color: var(--text-primary);
+    background-color: var(--background);
+    border: 2px solid var(--orange);
+    box-shadow: none
+}
+
+input[type=file]::file-selector-button{
+    padding: 5px 10px;
+    color: var(--orange);
+    background-color: var(--background);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    margin:4px;
+}
+
+input[type=file]{
+    color:var(--text-primary);
+}
+
+#file-upload-container{
+    width:100%;
+    padding:0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-evenly;
+    vertical-align: middle;
+}
+
+.form-select{
+    background-color: var(--background);
+    color: var(--text-secondary);
+    border-color: var(--secondary);
+    text-align: center;
+}
+
+.form-select:focus {
+    background-color: var(--background);
+    border: 2px solid var(--orange);
+    box-shadow: none
+}
+
+/* Form Buttons */
+.submit-button {
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.submit-button:hover {
+    background-color: var(--yellow);
+    color: white;
+}
+
+.upload-button {
+    padding: 5px 10px;
+    color: var(--orange);
+    background-color: var(--background);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.upload-button:hover {
+    background-color: lightgray;
+}

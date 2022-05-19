@@ -29,7 +29,7 @@ import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
 
 import WishList from "./features/wishlist/WishList";
-
+import AdminPage from "./features/admin/AdminPage";
 
 function App() {
 
@@ -76,6 +76,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/display" element={<Display />}></Route>
             <Route path="/userprofile" element={<UserP />}></Route>
+            <Route path="/admin" element={<AdminPage />} />
             <Route
               path="/shop-product/:shop_product_id"
               element={<ShopProductDisplay />}

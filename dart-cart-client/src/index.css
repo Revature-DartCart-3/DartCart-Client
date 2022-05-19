@@ -14,21 +14,33 @@ code {
 
 :root {
     --background: white;
+    --secondary:rgb(221, 221, 221);
     --text-primary: black;
-    --text-secondary: royalblue;
-    --accent: purple;
+    --text-secondary: ;
+    --accent: #72A4C2;
     --bs-black: black;
     --bs-white: white !important;
     --bs-body-bg: white !important;
+    --orange: #F26925;
+    --darkgrey: #474C55;
+    --blue: #72A4C2;
+    --yellow: #FCB414;
+    --lightgrey: #B9B9BA;
   }
   [data-theme='dark'] {
-    --background: black;
+    --background: #2b2e34;
+    --secondary: #474C55 ;
     --text-primary: white;
-    --text-secondary: grey;
-    --accent: darkred;
+    --text-secondary: #B9B9BA;
+    --accent: #72A4C2;
     --bs-black: white;
-    --bs-white: black !important;
-    --bs-body-bg: black !important;
+    --bs-white: #2b2e34 !important;
+    --bs-body-bg: #2b2e34 !important;
+    --orange: #F26925;
+    --darkgrey: #474C55;
+    --blue: #72A4C2;
+    --yellow: #FCB414;
+    --lightgrey: #B9B9BA;
   }
 
 .error_rp_email {
