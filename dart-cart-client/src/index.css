@@ -20,6 +20,7 @@ code {
     --bs-black: black;
     --bs-white: white !important;
     --bs-body-bg: white !important;
+    --orange: #F26925;
   }
   [data-theme='dark'] {
     --background: black;
@@ -29,6 +30,7 @@ code {
     --bs-black: white;
     --bs-white: black !important;
     --bs-body-bg: black !important;
+    --orange: #F26925;
   }
 
 .error_rp_email {
