@@ -80,12 +80,18 @@ export function SellerRegister() {
         setError("");
     }
 
+    //redirects to product registration form
     const handleClose = async () => {
         setShowModal(false);
         await dispatch(fetchSeller(currentUser.id));
         dispatch(shopRedirect(null));
         nav("/product-register");
     };
+
+    //closes modal but allows user to create another shop
+    function handleAddAnother(){
+        setShowModal(false);
+    }
 
     return (
         <>
@@ -183,7 +189,10 @@ export function SellerRegister() {
         </Form>
 
         {/* Success Modal */}
-        <Modal show={showModal}>
+        <Modal 
+            show={showModal}
+            onHide={handleClose}
+        >
             <Modal.Header closeButton>
                 <Modal.Title>Seller Registration</Modal.Title>
             </Modal.Header>
@@ -193,7 +202,8 @@ export function SellerRegister() {
                 You can now sell on DartCart.
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={handleClose}>Close</Button>
+                <button className="modal-button" onClick={handleAddAnother}>Create Another</button>
+                <button className="modal-button" onClick={handleClose}>Add Product</button>
             </Modal.Footer>
         </Modal>
         </>
