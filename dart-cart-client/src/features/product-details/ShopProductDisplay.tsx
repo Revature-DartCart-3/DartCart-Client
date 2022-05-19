@@ -22,7 +22,7 @@ const ShopProductDisplay = () => {
 
   useEffect((): void => {
     dispatch(fetchProductReviews(""));
-  }, [ReduxProductReviews]);
+  }, []);
 
   const updateProductReviews = () => {
     dispatch(fetchProductReviews(""));
