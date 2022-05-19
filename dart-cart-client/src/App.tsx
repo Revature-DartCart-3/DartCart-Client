@@ -63,8 +63,11 @@ function App() {
             <Route
               path="/sellers/:seller_homepage"
               element={<SellerHomepage />}
-            ></Route>
-            <Route path="/techchat" element={<TechChat/>}/>
+            >
+
+            </Route>
+            <Route path="/techchat" element={<TechChat />} />
+
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
