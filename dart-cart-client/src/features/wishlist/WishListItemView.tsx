@@ -18,7 +18,7 @@ const WishListItemView = ({ wishListId }: WishListItem) => {
     return (
         <>
             <div className="productContainer">
-                <img className="productImg" src={ item?.product.imageURL }/>
+                <img className="productImg" alt='' src={ item?.product.imageURL }/>
                 <section className="wishListBody">
                     <h5 className="productName">{item?.product.name}</h5>
                     <hr></hr>
