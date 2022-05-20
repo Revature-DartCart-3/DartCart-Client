@@ -1,0 +1,90 @@
+
+:root{
+  --primary-orange: #f26925;
+  --primary-white: #ffff;
+  --primary-darkgrey: #474c55;
+  --secondary-blue: #72a4c2;
+  --secondary-yellow: #fcb414;
+  --secondary-lightgrey: #b9b9ba;
+}
+
+.gallery{
+    margin:auto 5%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+.productContainer {
+    display: flex;
+    flex-flow: row;
+    margin: 25px;
+    /* border: 1.5px solid ; */
+    padding: 10px;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--background) !important;
+    justify-content: center;
+}
+.productCard{
+    min-width: 300px;
+    margin: 20px;
+    height: fit-content;
+    text-align: center;
+}
+.wishListBody {
+    flex-flow: column;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.productImg {
+    max-width: 150px;
+    max-height: 150px;
+    width: 100%;
+    margin: auto;
+}
+.wishListHeader {
+    padding-top: 35px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 34px;
+    color: var(--primary-orange);
+}
+.productName {
+    font-weight: bold;
+    font-size: 22px;
+}
+.removeWishBtn {
+    background-color: transparent;
+    margin-top: 15px;
+    text-align: center;
+    justify-content: center;
+    color: var(--primary-darkgrey);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.viewProductBtn{
+    /* background-color: var(--secondary-lightgrey); */
+    margin-top: 15px;
+    text-align: center;
+    justify-content: space-evenly;
+    color: var(--primary-darkgrey);
+    padding: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 40%;
+    text-decoration: none;
+}
+
+.viewProductBtn:hover {
+    color: var(--secondary-blue);
+}
+
+.removeWishBtn:hover {
+    background-color: rgb(247, 39, 39);
+    color: var(--primary-white);
+}
