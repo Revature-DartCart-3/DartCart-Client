@@ -7,9 +7,6 @@ import './cart.css';
 
 const CartItemView = ({ id }) => {
 
-    const [addQuantity, setAddQuantity] = useState("1")
-    const [subtractQuantity, setSubtractQuantity] = useState("1")
-
     const dispatch = useDispatch()
 
     const item = useSelector((state)=> selectCartItemById(state, id))
@@ -68,12 +65,8 @@ const CartItemView = ({ id }) => {
         if(item) dispatch(updateCart(item))
     }
 
-
-    useEffect(() => {
-        
-    }, [])
-    
     return  (
+        <>
         <div className="card">
             <div className="row no-gutters">
                 <div className="col-3">
@@ -93,6 +86,8 @@ const CartItemView = ({ id }) => {
                 </div>
             </div>
         </div>
+
+        </>
     )
 }
 

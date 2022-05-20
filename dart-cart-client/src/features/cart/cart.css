@@ -13,3 +13,14 @@
     margin: 5px;
     padding: 5px;
 }
+
+.cart-padding {
+    padding-top: 20px;
+}
+
+.payment-plan {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
