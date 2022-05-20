@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./shopProduct.css";
 import { useSelector } from "react-redux";
-import { fetchShopProducts, selectShopProductById } from "../../common/slices/shopProductSlice";
+import { selectShopProductById } from "../../common/slices/shopProductSlice";
 import { selectProductReviews, fetchProductReviews } from "../../common/slices/productReviewSlice";
 import { CompetingSellers } from "../competing-sellers/CompetingSellers";
 import { ProductReview } from "../../common/types";
@@ -17,15 +17,16 @@ const ShopProductDisplay = () => {
 
   const ReduxShopProducts = useSelector((state) => selectShopProductById(state, id));
   const ReduxProductReviews: ProductReview[] = useSelector(selectProductReviews);
+
   const dispatch = useAppDispatch();
 
   useEffect((): void => {
     dispatch(fetchProductReviews(""));
-    dispatch(fetchShopProducts(""));
   }, []);
 
   const updateProductReviews = () => {
     dispatch(fetchProductReviews(""));
+    console.log('callback');
   }
 
   return (
@@ -46,19 +47,15 @@ const ShopProductDisplay = () => {
         <ProductReviewDetail product_id={shop_product_id} callback={updateProductReviews} />
       </div>
       <table className="table">
-        {ReduxProductReviews.map((ProductReview) => { 
-          if (ProductReview.product.id==shop_product_id){
-            return (
-            <ProductReviewCard
-              key={ProductReview.id}
-              profilePic = {ProductReview.user.imageURL}
-              title = {ProductReview.title}
-              fullName = {ProductReview.user.username}
-              comment = {ProductReview.comment}
-              rating = {ProductReview.rating}
-            />)
-          }
-        })}
+        {ReduxProductReviews.map((ProductReview) => { if (ProductReview.product.id==shop_product_id)
+                          return <ProductReviewCard 
+                          profilePic = {ProductReview.user.imageURL}
+                          title = {ProductReview.title}
+                          fullName = {ProductReview.user.lastName}
+                          comment = {ProductReview.comment}
+                          rating = {ProductReview.rating}
+                            />
+                        })}
       </table>
     </>
   );
