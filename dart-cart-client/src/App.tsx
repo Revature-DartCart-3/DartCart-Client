@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Login } from "./features/authentication/Login";
 import { ResetPassword } from "./features/authentication/ResetPassword";
-import Home from "./features/Home";
 import UserRegister from "./features/user-register/UserRegister";
 import ProductRegister from "./features/product-register/ProductRegister";
 import AddInventory from "./features/shop-product-add/AddInventory";
@@ -41,16 +39,10 @@ function App() {
     setTheme(newTheme);
   }
 
-  useEffect(() => {
-    document.title = "DartCart";
-
-    //
-  });
-
   return (
-    <div className="App" data-theme={theme}>
-      <BrowserRouter>
-        <Provider store={store}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <div className="App" data-theme={theme}>
           <Header />
           <Routes>
             <Route path="/" element={<Display />}></Route>
@@ -88,14 +80,14 @@ function App() {
             <Route path="/*" element={<Error404Page />}></Route>
           </Routes>
           <Footer />
-        </Provider>
-      </BrowserRouter>
-              {theme === 'dark' ?
-                (<input onClick={switchTheme} type="checkbox" name="" checked />)
-                :
-                (<input onClick={switchTheme} type="checkbox" name="" />)
-              }
-    </div>
+          {theme === 'dark' ?
+            (<input onClick={switchTheme} type="checkbox" name="" checked />)
+            :
+            (<input onClick={switchTheme} type="checkbox" name="" />)
+          }
+        </div>
+      </Provider>
+    </BrowserRouter>   
   );
 }
 

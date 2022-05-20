@@ -4,7 +4,7 @@
     background-color: var(--background);
      /* font-size: large;
     font-weight: bold; */
-    padding: 20px;
+    /* padding: 20px; */
     transition: all .5s;
     min-height: 100vh;
 }
@@ -129,9 +129,9 @@ input:checked[type="checkbox"]:after {
 }
 
 .footer-info {
-    color: var(--text-primary);
-    background-color: var(--background);
+    color: var(--orange);
 }
+
 .testIMG{
     object-fit: contain;
     max-height: 10rem;
