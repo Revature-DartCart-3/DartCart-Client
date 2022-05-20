@@ -24,18 +24,17 @@ const WishListItemView = ({ wishListId }: WishListItem) => {
         <div className="productContainer">
           <img alt='' className="productImg" src={item?.product.imageURL} />
           <section className="wishListBody">
-            <h5 className="productName">{item?.product.name} </h5>
+            <h5 className="productName">{item?.product.name} <TrashFill className="removeWishBtn" size={40} onClick={() => sendDelete(item?.product.id)} /></h5>
             <hr></hr>
             <Link
               to={`/shop-product/${item?.product.id}`}
               className="viewProductBtn"
             >
-              View Product...
+              View Product
             </Link>
             <hr></hr>
-            <div>
-              <TrashFill className="removeWishBtn" size={45} onClick={() => sendDelete(item?.product.id)} />
-              <BagPlusFill className='addCartBtn' size={45} />
+            <div >
+              <p>Add to Cart<BagPlusFill className='addCartBtn' size={45} /></p>
             </div>
           </section>
         </div>

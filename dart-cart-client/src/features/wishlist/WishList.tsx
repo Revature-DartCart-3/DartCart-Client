@@ -20,7 +20,7 @@ const WishList = () => {
 
   return (
     <>
-      <h2 className="wishListHeader">Your Wish List</h2>
+      <h2 className="wishListHeader">Your Wish List:</h2>
       <hr></hr>
       <div >
           {
