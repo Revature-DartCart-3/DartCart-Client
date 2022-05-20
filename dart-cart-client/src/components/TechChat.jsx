@@ -6,6 +6,14 @@ import {over} from 'stompjs';
 import SockJS from 'sockjs-client';
 
 var stompClient =null;
+
+/* 
+The messages are saved in the messages state.
+
+*/
+
+
+
 function TechChat (props) {
     const username = "jimmy";//Replace with code to retrieve user Id
     const [messages, setMessages] = useState([]);
