@@ -17,6 +17,8 @@ The messages are saved in the messages state.
 function TechChat (props) {
     const username = "jimmy";//Replace with code to retrieve user Id
     const [messages, setMessages] = useState([]);
+    const [userId, setUserId] = useState(1);
+    const [message, setMessage] = useState("My products aren't displaying properly");
 
 
     const onError = (error) => {
@@ -30,20 +32,29 @@ function TechChat (props) {
         //console.log("**Stomp client assigned" + stompClient.stringify);
         stompClient.connect({}, onConnected, onError);
         
-        //Subscribe to endpoint  {destination, callback function}
-        //stompClient.subscribe('/chatroom/public', onPrivateMessage);
+
+        
         
     }
 
     //Runs after client connects to socket, and subscribes to the dedicated chat for the user
     const onConnected = () =>{
         console.log('Connected to Socket');
-        stompClient.subscribe('/user/'+1+'/private', onPrivateMessage);
+
+        //Listen to users private message socket
+        //Subscribe to endpoint  {destination, callback function}
+        stompClient.subscribe('/user/' + userId + '/private', onPrivateMessage);
+        
+
+        //stompClient.subscribe('/chatroom/techies', onPrivateMessage); //Used for admins to retrieve list of awaiting clients
+
+        //Send request for help to techies
+        stompClient.send("/app/help-request", {}, JSON.stringify({senderId: userId}));
     }
 
     //Handle the recieving of a private message
     const onPrivateMessage = (payload) => {
-        //console.log("Recieved private Message:" + payload);
+        console.log("Recieved private Message:" + payload);
         let message = JSON.parse(payload.body);
         //Add message to messages
         setMessages((messages) => messages.concat(message));
@@ -52,11 +63,10 @@ function TechChat (props) {
 
     //Send message to other user
     const sendMessage=()=>{
-        let message = "Hello";
         //Generate message
         if (stompClient) {
           var chatMessage = {
-            senderId: 1,
+            senderId: userId,
             recipientId: 1,
             senderName: "jimmy",
             recipientName: "admin",
