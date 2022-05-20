@@ -6,6 +6,7 @@ import { ResetPassword } from "./features/authentication/ResetPassword";
 import Home from "./features/Home";
 import UserRegister from "./features/user-register/UserRegister";
 import ProductRegister from "./features/product-register/ProductRegister";
+import AdminPage from "./features/admin-page/AdminPage";
 import AddInventory from "./features/shop-product-add/AddInventory";
 import Display from "./features/display/Display";
 import PreviousOrders from "./features/previous-orders/previous-orders";
@@ -73,6 +74,7 @@ function App() {
             <Route path="/shop-product-add" element={<AddInventory />}></Route>
             <Route path="/signup" element={<SellerRegister />}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/adminpage" element={<AdminPage/>}></Route>
             <Route path="/ResetPassword" element={<ResetPassword />}></Route>
             <Route path="/orders" element={<PreviousOrders />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
