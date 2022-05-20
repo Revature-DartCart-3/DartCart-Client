@@ -30,6 +30,7 @@ import useLocalStorage from "use-local-storage";
 
 import WishList from "./features/wishlist/WishList";
 import TechChat from "./components/TechChat";
+import ChatRoom from "./components/ChatRoom";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
               path="/sellers/:seller_homepage"
               element={<SellerHomepage />}
             ></Route>
+            <Route path="/chatroom" element={<ChatRoom />} />
             <Route path="/techchat" element={<TechChat />} />
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
