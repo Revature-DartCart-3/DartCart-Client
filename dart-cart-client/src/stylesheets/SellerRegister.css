@@ -25,6 +25,9 @@ form, .shop-form {
     width:100%;
     border:none;
 }
+#review-modal-form{
+    width:95%;
+}
 
 /* Heading */
 .shop-form-heading{
