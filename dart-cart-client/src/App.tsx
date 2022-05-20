@@ -49,11 +49,6 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
-      {theme === 'dark' ?
-        (<input onClick={switchTheme} type="checkbox" name="" checked />)
-        :
-        (<input onClick={switchTheme} type="checkbox" name="" />)
-      }
       <BrowserRouter>
         <Provider store={store}>
           <Header />
@@ -62,7 +57,7 @@ function App() {
             <Route
               path="/sellers/:seller_homepage"
               element={<SellerHomepage />}
-            ></Route>
+              ></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -80,21 +75,26 @@ function App() {
             <Route
               path="/shop-product/:shop_product_id"
               element={<ShopProductDisplay />}
-            ></Route>
+              ></Route>
             <Route path="/wishlist" element={<WishList/>}></Route>
             <Route
               path="/FeatureProduct/:product_id"
               element={<Product />}
-            ></Route>
+              ></Route>
             <Route
               path="/product-review/:product_id"
               element={<ProductReviewLayout />}
-            ></Route>
+              ></Route>
             <Route path="/*" element={<Error404Page />}></Route>
           </Routes>
           <Footer />
         </Provider>
       </BrowserRouter>
+              {theme === 'dark' ?
+                (<input onClick={switchTheme} type="checkbox" name="" checked />)
+                :
+                (<input onClick={switchTheme} type="checkbox" name="" />)
+              }
     </div>
   );
 }
