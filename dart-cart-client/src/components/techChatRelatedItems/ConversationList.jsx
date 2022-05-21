@@ -4,7 +4,7 @@ import{AiOutlineEnter} from 'react-icons/ai';
 import {FaUserFriends} from "react-icons/fa";
 import {RiAdminFill} from "react-icons/ri";
 import {GrStatusDisabled} from "react-icons/gr";
-import
+import './AdminTechStyling.css';
 
 
 const ConversationList = () => {
@@ -17,9 +17,9 @@ const ConversationList = () => {
 
                     <tr>
                         <th><p className="conversationListTD">Enter</p></th>
+                        <th className="admin-icon-flex-container"><RiAdminFill/></th>
                         <th><p className="conversationListTD">Session ID</p></th>
-                        <th><FaUserFriends/></th>
-                        <th><RiAdminFill/></th>
+                        <th className="admin-icon-flex-container"><FaUserFriends/></th>
                         <th><p className="conversationListTD">Pending Status </p></th>
                         <th><p className="conversationListTD">End</p></th>
                     </tr>
@@ -27,19 +27,17 @@ const ConversationList = () => {
                 <tbody>
                     <tr>
                         <td className="admin-icon-flex-container">
-                            {/*<div className="admin-icon-flex-container">*/}
                                 <button
                                     type="submit"
                                     className="admin-button-table">
                                     <AiOutlineEnter/>
                                 </button>
-                            {/*</div>*/}
                             </td>
                         <td><p className="conversationListTD">#</p></td>
                         <td><p className="conversationListTD">#</p></td>
                         <td><p className="conversationListTD">#</p></td>
                         <td><p className="conversationListTD">#</p></td>
-                        <td>
+                        <td className="admin-icon-flex-container">
                             <button
                                 type="submit"
                                 className="admin-button-table">
