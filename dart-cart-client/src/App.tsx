@@ -6,6 +6,7 @@ import { ResetPassword } from "./features/authentication/ResetPassword";
 import Home from "./features/Home";
 import UserRegister from "./features/user-register/UserRegister";
 import ProductRegister from "./features/product-register/ProductRegister";
+import AdminPage from "./features/admin-page/AdminPage";
 import AddInventory from "./features/shop-product-add/AddInventory";
 import Display from "./features/display/Display";
 import PreviousOrders from "./features/previous-orders/previous-orders";
@@ -24,12 +25,11 @@ import ListItem from "./features/list-item/ListItem";
 import ShopPage from "./features/shop-page/ShopPage";
 import SellerHomepage from "./features/seller-homepage/SellerHomepage";
 import Product from "./Models/Product";
-
 import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
-
 import WishList from "./features/wishlist/WishList";
-import AdminPage from "./features/admin/AdminPage";
+import TechChat from "./components/TechChat";
+
 
 function App() {
 
@@ -62,7 +62,11 @@ function App() {
             <Route
               path="/sellers/:seller_homepage"
               element={<SellerHomepage />}
-            ></Route>
+            >
+
+            </Route>
+            <Route path="/techchat" element={<TechChat />} />
+
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -71,6 +75,7 @@ function App() {
             <Route path="/shop-product-add" element={<AddInventory />}></Route>
             <Route path="/signup" element={<SellerRegister />}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/adminpage" element={<AdminPage/>}></Route>
             <Route path="/ResetPassword" element={<ResetPassword />}></Route>
             <Route path="/orders" element={<PreviousOrders />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
