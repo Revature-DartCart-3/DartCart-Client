@@ -5,24 +5,24 @@ import { ShopProduct } from '../../common/models';
 import TechChat from "../../components/TechChat";
 import AdminTechChat from "../../components/techChatRelatedItems/AdminTechChat";
 
-function AdminPage(){
+function AdminTechPage(){
 
-    const BACKEND = process.env.REACT_APP_API_URL;
+    // const BACKEND = process.env.REACT_APP_API_URL;
 
     const [products, setProducts] = useState([]);
 
-    //retrieve all products from backend
-    useEffect(()=>{
-        axios.get(`${BACKEND}shop_products`)
-        .then((res)=>{
-            setProducts(res.data);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    },[]);
+    // //retrieve all products from backend
+    // useEffect(()=>{
+    //     axios.get(`${BACKEND}shop_products`)
+    //     .then((res)=>{
+    //         setProducts(res.data);
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err);
+    //     })
+    // },[]);
 
-    //update best seller status when clicked
+    // update best seller status when clicked
     function makeBestSeller(shop_product_id:number){
         console.log('BEST SELLER: item ' + shop_product_id);
     }
@@ -52,7 +52,7 @@ function AdminPage(){
                             <td>{item.price}</td>
                             <td>{item.shop.seller.name}</td>
                             <td>
-                                <button 
+                                <button
                                     className="btn btn-light"
                                     onClick={()=>makeBestSeller(item.shop_product_id)}>
                                         Best Seller
@@ -64,13 +64,13 @@ function AdminPage(){
         </Table>
 
 
-        <section>
-            <AdminTechChat/>
-        </section>
+        {/*<section>*/}
+        {/*    <AdminTechChat/>*/}
+        {/*</section>*/}
 
 
         </>
     );
 }
 
-export default AdminPage;
+export default AdminTechPage;

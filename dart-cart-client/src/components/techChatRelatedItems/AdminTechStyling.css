@@ -5,5 +5,45 @@
     text-align: center;
 }
 
+.admin-button-table {
+    background-color: lightgreen;
+    border-radius: 180%;
+
+    /*transition: 1s ease-in-out;*/
+    /*animation: moveUp .2s ease-in-out;*/
+
+    /*transition: all .2s ease-in-out;*/
+}
+
+.admin-button-table:hover {
+    animation: moveUp 1s ease-in;
+    /*transition: all .2s ease-in-out;*/
+
+}
+
+@keyframes moveUp {
+    From {
+        transform: scale(1);
+    }
+    To {
+        transform: scale(1.2);
+
+    }
+    /*0% {*/
+    /*  transform: scale(1);*/
+
+    /*}*/
+    /*50%{*/
+    /*    transform:  scale(1.2);*/
+
+    /*}*/
+    /*100 {*/
+    /*    transform:  scale(1);*/
+    /*}*/
+}
+
+
+
+
 
 

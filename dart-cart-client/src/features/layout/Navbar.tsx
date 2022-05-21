@@ -108,7 +108,7 @@ const Nav = (props) => {
               </Link>
             </li>
             <li className="nav-item-mb-3 nav-item">
-              <Link to="/AdminPage" className="text-reset nav-link">
+              <Link to="/AdminTechChat" className="text-reset nav-link">
                 Admin
               </Link>
             </li>

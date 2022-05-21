@@ -2,6 +2,7 @@ import React from 'react';
 import TechChat from "../TechChat";
 import {Container} from "react-bootstrap";
 import ConversationList from "./ConversationList";
+import AdminTechPage from "../../features/admin/AdminTechPage";
 
 const AdminTechChat = () => {
     return (
@@ -10,10 +11,11 @@ const AdminTechChat = () => {
                 <Container>
 
                     <h2>Tech Support</h2>
+
+                        <AdminTechPage/>
+
                     <TechChat/>
-                    {/*NOT WORKING INSIDE TECHCHAT???*/}
-                    {/*IT WORKS HERE THOUGH*/}
-                    {/*TEMP HERE FOR NOW*/}
+
                     <ConversationList/>
 
                 </Container>
