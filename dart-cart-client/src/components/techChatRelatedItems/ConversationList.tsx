@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Table} from "react-bootstrap";
+import {Container, Row, Table} from "react-bootstrap";
 
 
 const ConversationList = () => {
@@ -7,23 +7,27 @@ const ConversationList = () => {
         <>
 
             <Container>
-            <Table responsive>
+            <Table striped bordered hover responsive>
                 <thead>
-                    <td><p className="conversationListTD">Enter</p></td>
-                    <td><p className="conversationListTD">Session ID</p></td>
-                    <td><p className="conversationListTD">Client ID</p></td>
-                    <td><p className="conversationListTD">Techie ID</p></td>
-                    <td><p className="conversationListTD">Pending Status </p></td>
-                    <td><p className="conversationListTD">End</p></td>
+                    <tr>
 
+                        <th><p className="conversationListTD">Enter</p></th>
+                        <th><p className="conversationListTD">Session ID</p></th>
+                        <th><p className="conversationListTD">Client ID</p></th>
+                        <th><p className="conversationListTD">Techie ID</p></th>
+                        <th><p className="conversationListTD">Pending Status </p></th>
+                        <th><p className="conversationListTD">End</p></th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <td><p className="conversationListTD">Enter</p></td>
-                    <td><p className="conversationListTD">#</p></td>
-                    <td><p className="conversationListTD">#</p></td>
-                    <td><p className="conversationListTD">#</p></td>
-                    <td><p className="conversationListTD">#</p></td>
-                    <td><p className="conversationListTD">End</p></td>
+                    <tr>
+                        <td><p className="conversationListTD">Enter</p></td>
+                        <td><p className="conversationListTD">#</p></td>
+                        <td><p className="conversationListTD">#</p></td>
+                        <td><p className="conversationListTD">#</p></td>
+                        <td><p className="conversationListTD">#</p></td>
+                        <td><p className="conversationListTD">End</p></td>
+                    </tr>
                 </tbody>
             </Table>
             </Container>
