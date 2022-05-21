@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Table} from 'react-bootstrap';
 import { ShopProduct } from '../../common/models';
+import TechChat from "../../components/TechChat";
 
 function AdminPage(){
 
@@ -60,6 +61,16 @@ function AdminPage(){
                 })}
             </tbody>
         </Table>
+
+
+        <section>
+            <h2>Tech Support</h2>
+            <TechChat/>
+
+
+        </section>
+
+
         </>
     );
 }

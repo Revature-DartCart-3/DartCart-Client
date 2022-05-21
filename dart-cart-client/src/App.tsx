@@ -6,7 +6,7 @@ import { ResetPassword } from "./features/authentication/ResetPassword";
 import Home from "./features/Home";
 import UserRegister from "./features/user-register/UserRegister";
 import ProductRegister from "./features/product-register/ProductRegister";
-import AdminPage from "./features/admin-page/AdminPage";
+// import AdminPage from "./features/admin-page/AdminPage";
 import AddInventory from "./features/shop-product-add/AddInventory";
 import Display from "./features/display/Display";
 import PreviousOrders from "./features/previous-orders/previous-orders";
