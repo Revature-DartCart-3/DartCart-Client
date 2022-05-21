@@ -66,8 +66,6 @@ function AdminPage(){
 
         <section>
             <AdminTechChat/>
-
-
         </section>
 
 
