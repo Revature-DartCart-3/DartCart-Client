@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Table} from 'react-bootstrap';
 import { ShopProduct } from '../../common/models';
 import TechChat from "../../components/TechChat";
+import AdminTechChat from "../../components/techChatRelatedItems/AdminTechChat";
 
 function AdminPage(){
 
@@ -64,8 +65,7 @@ function AdminPage(){
 
 
         <section>
-            <h2>Tech Support</h2>
-            <TechChat/>
+            <AdminTechChat/>
 
 
         </section>
