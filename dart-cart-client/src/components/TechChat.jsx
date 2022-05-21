@@ -35,9 +35,6 @@ function TechChat (props) {
     }
 
 
-    
-
-
 /*     //const port = process.env.TECHCHAT_PORT;
     const port = 9005;
     const [isConnected, setIsConnected] = useState(false);
@@ -57,8 +54,8 @@ function TechChat (props) {
     
     return(
         <>
-        <button onClick={connect}>Connect</button>
-        <p>Message:</p>
+            <button onClick={connect}>Connect</button>
+            <p>Message:</p>
         </>
     )
 }
