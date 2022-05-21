@@ -1,10 +1,13 @@
 import { hasExpectedRequestMetadata } from "@reduxjs/toolkit/dist/matchers"
+
+
 import { render } from "@testing-library/react";
 import React, {useEffect, useState} from  'react';
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import SockJS from 'sockjs-client';
 import { over } from 'stompjs';
 import ConversationList from "./techChatRelatedItems/ConversationList";
+import {Table} from "react-bootstrap";
 
 function TechChat (props) {
     const userId = 1;
@@ -57,11 +60,7 @@ function TechChat (props) {
         <>
             <button onClick={connect}>Connect</button>
             <p>Message:</p>
-
             <ConversationList/>
-
-
-
         </>
     )
 }
