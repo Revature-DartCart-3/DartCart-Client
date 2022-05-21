@@ -1,41 +1,42 @@
-name: Linux_Container_Workflow
+# name: Linux_Container_Workflow
 
-on:
-    push:
-        branches:
-        - main
+# on:
+#     push:
+#         branches:
+#         - main
 
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        steps:
-        # checkout the repo
-        - name: 'Checkout GitHub Action'
-          uses: actions/checkout@main
+# jobs:
+#     build-and-deploy:
+#         runs-on: ubuntu-latest
+#         steps:
+#         # checkout the repo
+#         - name: 'Checkout GitHub Action'
+#           uses: actions/checkout@main
           
-        - name: 'Login via Azure CLI'
-          uses: azure/login@v1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+#         - name: 'Login via Azure CLI'
+#           uses: azure/login@v1
+#           with:
+#             creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-        - name: 'Build and push image'
-          uses: azure/docker-login@v1
-          with:
-            login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-            username: ${{ secrets.REGISTRY_USERNAME }}
-            password: ${{ secrets.REGISTRY_PASSWORD }}
-        - run: |
-            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/dart-cart-p3:latest
-            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/dart-cart-p3:latest
+#         - name: 'Build and push image'
+#           uses: azure/docker-login@v1
+#           with:
+#             login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+#             username: ${{ secrets.REGISTRY_USERNAME }}
+#             password: ${{ secrets.REGISTRY_PASSWORD }}
+#         - run: |
+#             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/dart-cart-p3:latest
+#             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/dart-cart-p3:latest
  
-        - name: 'Deploy to Azure Container Instances'
-          uses: 'azure/aci-deploy@v1'
-          with:
-            resource-group: ${{ secrets.RESOURCE_GROUP }}
-            dns-name-label: dart-cart-p3
-            image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/dart-cart-p3:latest
-            registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-            registry-username: ${{ secrets.REGISTRY_USERNAME }}
-            registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: dart-cart-p3
-            location: 'east us'
+#         - name: 'Deploy to Azure Container Instances'
+#           uses: 'azure/aci-deploy@v1'
+#           with:
+#             resource-group: ${{ secrets.RESOURCE_GROUP }}
+#             dns-name-label: dart-cart-p3
+#             image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/dart-cart-p3:latest
+#             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+#             registry-username: ${{ secrets.REGISTRY_USERNAME }}
+#             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+#             name: dart-cart-p3
+#             location: 'east us'
+

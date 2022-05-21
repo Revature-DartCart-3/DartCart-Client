@@ -128,9 +128,7 @@ function TechChat (props) {
           stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
         }
     }
-
-
-    
+   
     return(
         <>
         {isConnected ? <button value={"Hello"} onClick={leave}>disconnect</button> : <button onClick={connect}>Connect</button>}
@@ -141,7 +139,6 @@ function TechChat (props) {
         {messages.map((message) => (
             <li>{message.senderName}: {message.content}</li>
         ))}
-
         </>
     )
 }
