@@ -5,13 +5,14 @@ import "./CheckoutDisplay.css"
 import { CheckoutButton } from "./CheckoutButton";
 import { useDispatch } from "react-redux";
 import { addShipping } from "../../common/slices/shippingSlice";
-import { IShipping } from "../../common/types"
+
+import PayInstallments from "./PayInstallments";
 
 function Checkout() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const shippingObject: IShipping = {   
+        const shippingObject= {   
             id: 1,
             streetAddress: "",
             city: "",
@@ -30,8 +31,12 @@ function Checkout() {
                         <Shipping></Shipping>
                         <Billing></Billing>
                     </div>
+                    <div className="col-sm">
+                    <PayInstallments/>
+                    </div>
                     <div className="col align-self-end">
                         {/* <DisplayInvoice></DisplayInvoice> */}
+                        
                         <CheckoutButton></CheckoutButton>
                     </div>
                 </div>
