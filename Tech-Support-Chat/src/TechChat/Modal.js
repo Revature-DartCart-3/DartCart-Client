@@ -30,9 +30,9 @@ const Modal = ({ show, close, title, children }) => {
              Close
          
             </button>
-            <h2 className="modal_header-title">{title}</h2>
+            <h2 className="modal_header-title ">{title}</h2>
             <button className="close" onClick={() => close()}>
-           
+            Close
             </button>
           </header>
           <main className="modal_content">{children}</main>

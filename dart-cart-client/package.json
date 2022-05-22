@@ -24,6 +24,7 @@
     "firebase": "^9.6.9",
     "mdb-react-ui-kit": "^2.3.0",
     "msw": "^0.38.1",
+    "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.0",
     "react-bootstrap-typeahead": "^6.0.0-alpha.9",

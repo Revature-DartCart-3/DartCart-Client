@@ -112,6 +112,11 @@ const Nav = (props) => {
                 Admin
               </Link>
             </li>
+            <li className="nav-item-mb-3 nav-item">
+              <Link to="/TechChatModal" className="text-reset nav-link">
+                Support
+              </Link>
+            </li>
           </>
         )}
       </ul>
