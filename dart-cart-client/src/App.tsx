@@ -80,11 +80,7 @@ function App() {
             <Route path="/*" element={<Error404Page />}></Route>
           </Routes>
           <Footer />
-          {theme === 'dark' ?
-            (<input onClick={switchTheme} type="checkbox" name="" checked />)
-            :
-            (<input onClick={switchTheme} type="checkbox" name="" />)
-          }
+          <input onChange={switchTheme} type="checkbox" name="theme" checked={theme === 'dark'} />
         </div>
       </Provider>
     </BrowserRouter>   

@@ -23,7 +23,9 @@ export function CompetingSellers({ Seller }: SellerProduct) {
   );
 
   useEffect(() => {
-    dispatch(fetchCompetitorProducts(Seller)); // places return value into REDUX global state
+    if(Seller){
+      dispatch(fetchCompetitorProducts(Seller)); // places return value into REDUX global state
+    }
   }, [Seller]);
 
   function handleAddtoCart(e) {

@@ -25,7 +25,7 @@ const ShopProductDisplay = () => {
 
   useEffect((): void => {
     dispatch(fetchProductReviews(""));
-    dispatch(fetchShopProducts(""))
+    dispatch(fetchShopProducts(""));
   }, [id]);
 
   const updateProductReviews = () => {
@@ -61,14 +61,14 @@ const ShopProductDisplay = () => {
             <p>{ReduxShopProducts?.description}</p>
             <p><b>Average Rating: </b>
               {/* Star rating */}
-              {avgReview > 1 && 
+              {avgReview >= 1 && 
               Array.from(Array(Math.floor(avgReview)).keys()).map(c => {
                 return (
-                  <AiFillStar key={c} style={{ color: 'orange' }} />
+                  <AiFillStar key={`avg${c}`} style={{ color: 'orange' }} />
                 )
               })} 
               {reviewCount > 0?
-              <><b>{avgReview.toFixed(1)}</b> ({reviewCount} {reviewCount === 1 ? " review": "reviews"})style={{ color: 'orange' }} </>
+              <><b>{avgReview.toFixed(1)}</b> ({reviewCount} {reviewCount === 1 ? " review": "reviews"}) </>
               : "No reviews" }
             </p>
           </div>
@@ -91,6 +91,7 @@ const ShopProductDisplay = () => {
         {ReduxProductReviews.map((ProductReview) => { 
           if (ProductReview.product.id==shop_product_id){
             return <ProductReviewCard 
+              key={ProductReview.id}
               profilePic = {ProductReview.user.imageURL}
               title = {ProductReview.title}
               fullName = {ProductReview.user.username}
