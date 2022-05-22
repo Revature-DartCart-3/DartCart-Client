@@ -23,6 +23,8 @@ export function UserP() {
   const [initialUser, setInitialUser] = useState({});
   const [imageURL, setImageURL] = useState("");
   const [aboutMe, setAboutMe] = useState("");
+  // const [accountType, setAccounType] = useState("");
+
   //     const API_URL = "http://localhost:9005/";
   const API_URL = process.env.REACT_APP_API_URL;
 
@@ -40,6 +42,8 @@ export function UserP() {
     setLocation(fetchedUser.location);
     setImageURL(fetchedUser.imageURL);
     setAboutMe(fetchedUser.aboutMe);
+    // setAccounType(fetchedUser.accountType);
+
   }
 
   useEffect(() => {
@@ -102,6 +106,7 @@ export function UserP() {
     registrationDate: 0,
     aboutMe: "",
     imageURL: "",
+    // accountType : ""
   };
 
   // BASIC input validation: no empty fields, passwords must match, formatting requirements
@@ -137,6 +142,8 @@ export function UserP() {
     user.location = location;
     user.email = email;
     user.phone = phone;
+
+
 
     if (!validateInput()) {
       return;

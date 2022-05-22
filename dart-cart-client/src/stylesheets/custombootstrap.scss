@@ -1,0 +1,135 @@
+
+//MORE COLORS
+$red: #ea1407;
+$darkred: #ba181b;
+$burgandy: #9B2226;
+$burgandy2: #660708;
+$hotpink:#e91e63;
+$pink: #da627d;
+$bs-danger: #e56b6f;
+$rose: #F55767;
+$blush: #f3a4b5;
+$medpink: #c1666b;
+$peach: #dd9787;
+$contrast: #EC8876;
+$orange: #f85e00;
+$burntorange: #bc3908;
+$copper: #BC6C25;
+$palecopper: #c1894f;
+$yellow2: #e59500;
+$gold: #cf9b00;
+$neonyellow: #FDC800;
+$paleyellow: #f5cb5c;
+$yellow: #e5ab2e;
+$swamp: #b18e00;
+$cream: #eae0d5;
+$beige: #ab9c92;
+$dawn: #f2ece4;
+$wafer: #e1d7d2;
+$brown: #5e503f;
+$greenbeige: #76735d;
+$mint: #d8e2dc;
+$lightolive: #b5b496;
+$spring: #a7c957;
+$palegreen: #adc178;
+$neongreen: #a5be00;
+$deadgrass: #60580d;
+$grass: #6a994e;
+$darkgrass: #386641;
+$olive: #606C38;
+$darkgreen: #283618;
+$darkteal: #335c67;
+$darkteal2: #284b63;
+$blue: #299EF3;
+$blue2: #3EB8F4;
+$primary-light: #95CFC4;
+$patina: #669999;
+$seafoam: #88b1a8;
+$nebula: #d2e1dd;
+$turquoise:#00bcd4;
+$paleblue: #669bbc;
+$babyblue: #98c1d9;
+$darkblue: #1F3A63;
+$darkblue2: #172b4d;
+$midnight: #003366;
+$navy: #3d5a80;
+$cornblue: #a1b5d8;
+$bluegrey: #738290;
+$steel: #59717f;
+$brightblue: #5e72e4;
+$greylilac: #8d99ae;
+$indigo: #4a4e69;
+$indigo2: #3d405b;
+$darkindigo: #2b2d42;
+$fuschia: #5f0f40;
+$hopbush: #c69;
+$bouquet: #b37399;
+$venus: #998099;
+$barney: #44224B;
+$purple: #6a4c93;
+$brightpurple: #8965e0;
+$purple2: #6d597a;
+$prune: #6d6875;
+$grey2: #B0A7B2;
+$grey3: #8898aa;
+$palegrey: #C3BCC4;
+$grey: #737373;
+$lightgrey: #d9d9d9;
+$light: #F9FAFD;
+$light2: #ced4da;
+$lighter: #e9ecef;
+$iron: #dadbdf;
+$regent: #808c99;
+$palesky: #6b717f;
+$charcoal: #322e2a;
+$dark: #1e2d2f;
+$dark2: #26272b;
+$dark3: #212529;
+$primary-orange: #f26925;
+$primary-white: #ffff;
+$primary-darkgrey: #474c55;
+$secondary-blue: #72a4c2;
+$secondary-yellow: #fcb414;
+$secondary-lightgrey: #b9b9ba;
+
+
+$COLORS: (
+  "red": $red,
+  "burgandy": $burgandy,
+  "hotpink": $hotpink,
+  "pink": $bs-danger,
+  "hopbush": $hopbush,
+  "blush": $blush,
+  "medpink": $medpink,
+  "peach": $peach,
+  "contrast": $contrast,
+  "primary-white": $primary-white,
+  "primary-darkgrey": $primary-darkgrey,
+  "secondary-blue": $secondary-blue,
+  "secondary-yellow": $secondary-yellow,
+  "secondary-lightgrey": $secondary-lightgrey,
+) !default;
+
+//THEME DEFAULT COLOR OVERRIDE
+$theme-colors: (
+  "primary": #f26925,
+  "secondary": #72a4c2,
+  "success": #a5be00,
+  "info": #669bbc,
+  "warning": #FDC800,
+  "danger": #ba181b,
+  "light": #b9b9ba,
+  "dark": #474c55,
+) !default;
+
+//BUTTON VARIANTS
+
+
+
+
+/* -------------------------------------------------------------------------- */
+
+
+
+@import '//node_modules/bootstrap/scss/bootstrap';
+@import 'bootstrap/dist/css/bootstrap.min.css';

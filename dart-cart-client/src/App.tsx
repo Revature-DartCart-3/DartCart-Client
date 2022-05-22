@@ -25,12 +25,15 @@ import ListItem from "./features/list-item/ListItem";
 import ShopPage from "./features/shop-page/ShopPage";
 import SellerHomepage from "./features/seller-homepage/SellerHomepage";
 import Product from "./Models/Product";
-
 import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
-
 import WishList from "./features/wishlist/WishList";
-import TechChat from "./components/TechChat";
+// import TechChat from "./components/TechChat";
+import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
+import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
+import AdminComments from "./features/TechChatModal/AdminComments";
+import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
+import FinalTechChat from "./components/FinalTechChat";
 
 
 function App() {
@@ -67,8 +70,12 @@ function App() {
             >
 
             </Route>
-            <Route path="/techchat" element={<TechChat />} />
-
+            {/*THIS THE DEV TEST SECTION FOR CHAT FEATURES*/}
+            <Route path="/techchat" element={<FinalTechChat />} />
+            {/*OFFICAL CLIENT INTERFCEE FOR THE CLIENT*/}
+            <Route path="/techchatmodal" element={<FinalTechChat />} />
+            {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
+            <Route path="/adminpage" element={<FinalAdmin/>}></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -77,12 +84,12 @@ function App() {
             <Route path="/shop-product-add" element={<AddInventory />}></Route>
             <Route path="/signup" element={<SellerRegister />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/adminpage" element={<AdminPage/>}></Route>
             <Route path="/ResetPassword" element={<ResetPassword />}></Route>
             <Route path="/orders" element={<PreviousOrders />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/display" element={<Display />}></Route>
             <Route path="/userprofile" element={<UserP />}></Route>
+            <Route path="/stuff" element={<AdminComments />} />
             <Route
               path="/shop-product/:shop_product_id"
               element={<ShopProductDisplay />}

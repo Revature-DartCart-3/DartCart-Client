@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import About from "./About";
 import SocialMedia from "./SocialMedia";
 import UsefulLinks from "./UsefulLinks";
-import TechChat from "../../components/TechChat";
 
 export default function Footer() {
   // divs dealing with managing columns were not abstracted away so this area can focus on applying styles correctly

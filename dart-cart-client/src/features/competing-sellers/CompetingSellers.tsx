@@ -16,18 +16,18 @@ interface SellerProduct {
 
 export function CompetingSellers({ Seller }: SellerProduct) {
   const dispatch = useDispatch();
-
+  
   const ReduxCompetitorProducts: ShopProduct[] = useSelector(
     selectCompetitorProducts
-  );
-
-  useEffect(() => {
-    dispatch(fetchCompetitorProducts(Seller)); // places return value into REDUX global state
-  }, []);
-
-  function handleAddtoCart(e) {
-    dispatch(addToCart(e.target.value));
-  }
+    );
+    
+    useEffect(() => {
+      dispatch(fetchCompetitorProducts(Seller)); // places return value into REDUX global state
+    }, []);
+    
+    function handleAddtoCart(e) {
+      dispatch(addToCart(e.target.value));
+    }
 
   return (
     <>
@@ -40,11 +40,12 @@ export function CompetingSellers({ Seller }: SellerProduct) {
                   (<span>Seller: {competitors.shop.seller.name} - <s>${competitors.price}</s>  ${(competitors.price) - (competitors.discount)} <br />Discount: {Math.floor((competitors.discount)/(competitors.price)*100)}%</span>): 
                   (<span>Seller: {competitors.shop.seller.name} - ${competitors.price}</span>)}
                 </div>
-                <div className="shopLocation">
-                  <span>Seller Location: {competitors.location}</span>
-                </div>
+                {/* <div className="shopLocation">
+                  <span>Seller Location: {competitors.shop.seller.location}</span>
+                </div> */}
                 <div className="shopQuant">
-                  <span>Quantity In Stock: {competitors.quantity}</span>
+                  {competitors.quantity < 10 ?
+                  (<span>Limited Stock: Only {competitors.quantity} Available</span>) : (<span>In Stock</span>)}
                 </div>
               <button
                 className="btn btn-primary addToCart"
