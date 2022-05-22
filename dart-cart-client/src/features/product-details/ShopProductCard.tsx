@@ -19,9 +19,12 @@ function addToWishList(productId){
       { headers: authHeader() }
     ).then(response => {
         return "Item added to wishlist!"
-      }).catch((error)=>{
+    }).catch((error)=>{
+      if(error.response!.status === 409){
         return "Item already exists in wishlist!"
-      })
+      }
+      return "Cannot add to wishlist";
+    })
   }
   
 async function addToWL(productId){

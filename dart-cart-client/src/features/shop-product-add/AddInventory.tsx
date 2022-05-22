@@ -18,7 +18,6 @@ export function AddInventory() {
   const [showModal, setShowModal] = useState(false);
   const ReduxShopProducts: Product[] = useSelector(selectShopProducts);
   const ReduxMyShops: Shop[] = useSelector(selectShops);
-  const status = useSelector(getStatus);
 
   const dispatch = useAppDispatch();
   const nav = useNavigate();
@@ -69,7 +68,7 @@ export function AddInventory() {
     await dispatch(addInventory(inventoryProduct))
       .unwrap()
       .then((originalPromiseResult) => {
-        setShowModal(true); //need to make sure this says product created, not user registered
+        setShowModal(true);
         clearInputs();
       })
       .catch((rejectedValueOrSerializedError) => {
@@ -86,7 +85,12 @@ export function AddInventory() {
     setPrice(0);
   }
 
-  // Redirect upon modal close
+  // closes modal but allows user to add more inventory
+  function handleAddMore() {
+    setShowModal(false);
+  }
+
+  // Redirects to home upon modal close
   function handleClose() {
     setShowModal(false);
     nav('/');
@@ -201,15 +205,19 @@ export function AddInventory() {
       </Form>
 
       {/* Success Modal */}
-      <Modal show={showModal}>
+      <Modal 
+        show={showModal}
+        onHide={handleClose}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Inventory</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Inventory created. Congratulations!
+          Inventory successfully added. Congratulations!
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleClose}>Close</Button>
+          <button className="modal-button" onClick={handleAddMore}>Add More</button>
+          <button className="modal-button" onClick={handleClose}>Back to Home</button>
         </Modal.Footer>
       </Modal>
     </>
