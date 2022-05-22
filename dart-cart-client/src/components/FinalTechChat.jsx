@@ -7,7 +7,7 @@ import SockJS from 'sockjs-client';
 import { withStyles } from "@mui/material";
 import axios from "axios";
 import {Form, Modal} from "react-bootstrap";
-import ExpaAdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/ExpaAdminTechPanel";
+import FinalAdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/FinalAdminTechPanel";
 
 var stompClient =null;
 
@@ -154,8 +154,6 @@ function FinalTechChat (props) {
    
     return(
         <>
-
-            <ExpaAdminTechPanel sessionList={session}/>
 
 
 

@@ -3,7 +3,7 @@ import {Container} from "react-bootstrap";
 import {Table} from "react-bootstrap";
 import axios from "axios";
 
-const ExpaAdminTechPanel = ({sessionList, setSessionList}) => {
+const FinalAdminTechPanel = () => {
 
     const [sessionList, setSessionList] = useState([]);
     const [enterChat, setEnterChat] = useState([]);
@@ -21,13 +21,6 @@ const ExpaAdminTechPanel = ({sessionList, setSessionList}) => {
             .then( response => {
                 setSessionList(response.data);
             });
-
-        //for the second part I will need to call the websocket function get all chats
-
-        //setSession(), session()
-
-
-
     }
 
 
@@ -78,4 +71,4 @@ const ExpaAdminTechPanel = ({sessionList, setSessionList}) => {
     );
 };
 
-export default ExpaAdminTechPanel;
+export default FinalAdminTechPanel;
