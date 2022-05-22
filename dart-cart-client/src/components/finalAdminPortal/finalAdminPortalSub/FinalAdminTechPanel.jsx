@@ -28,6 +28,17 @@ const FinalAdminTechPanel = () => {
 
     async function assignTechToChat() {
         await axios.put("http://localhost:9005/assign-tech")
+            .then((response) => {
+                setEnterChat(response.data);
+            })
+            alert("A tech representative has been assigned.");
+    }
+
+    async function disconnectConversation(sessionId){
+        await axios.delete("http://localhost:9005/disconnect")
+            .then((response) => {
+                setDeleteChat(response.data);
+            })
     }
 
     return (
@@ -52,12 +63,11 @@ const FinalAdminTechPanel = () => {
                         {sessionList &&
                             sessionList.map((list, index) => {
                                 return (
-
                                     <tr key={list.sessionId}>
                                         {/*<-------- enter button response*/}
                                         <td classname="admin-tech-panel-button">
                                             <button
-                                                onClick=""
+                                                onClick={assignTechToChat(list.sessionId)}
                                                 type="submit"
                                             >
                                                 <AiOutlineEnter/>
@@ -68,7 +78,7 @@ const FinalAdminTechPanel = () => {
                                         <td>{list.client.username}</td>
                                         <td className="admin-tech-panel-button">
                                             <button
-                                                onClick=""
+                                                onClick={disconnectConversation(list.sessionId)}
                                                 type="submit"
                                             >
                                                 <BsAlignEnd/>
