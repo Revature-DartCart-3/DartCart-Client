@@ -3,7 +3,7 @@ import { RootState } from "../../common/types"
 import { WishListItem } from "../../common/types";
 import { selectWishListItemById, fetchWishList, deleteFromWishList } from "../../common/slices/wishlistSlice";
 import { Link } from "react-router-dom";
-import { TrashFill} from "react-bootstrap-icons";
+import { TrashFill, BagPlusFill} from "react-bootstrap-icons";
 
 const WishListItemView = ({ wishListId }: WishListItem) => {
 
