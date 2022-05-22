@@ -10,7 +10,7 @@ const FinalAdminTechPanel = () => {
     const [enterChat, setEnterChat] = useState([]);
     const [deleteChat, setDeleteChat] = useState([]);
 
-    useEffect(({sessionList, setSessionList}) => {
+    useEffect(() => {
 
         getAllAvailableChats();
 
@@ -23,7 +23,6 @@ const FinalAdminTechPanel = () => {
                 setSessionList(response.data);
             });
     }
-
 
     return (
         <>
