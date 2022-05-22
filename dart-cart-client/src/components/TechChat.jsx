@@ -92,7 +92,7 @@ function TechChat (props) {
         if(message.senderId == 0) {
             setSessionId(message.sessionId);
             console.log("Automated system sent message. " + message.sessionId);
-            switch (message.content) {
+            switch (message.type) {
                 case "Disconnected":
                     disconnect();
                     message.content = "Tech has left the Chat";
