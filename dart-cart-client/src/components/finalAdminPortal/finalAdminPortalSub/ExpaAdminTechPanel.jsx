@@ -3,13 +3,13 @@ import {Container} from "react-bootstrap";
 import {Table} from "react-bootstrap";
 import axios from "axios";
 
-const ExpaAdminTechPanel = () => {
+const ExpaAdminTechPanel = ({sessionList, setSessionList}) => {
 
-    const [available, setAvailable] = useState([]);
+    const [sessionList, setSessionList] = useState([]);
     const [enterChat, setEnterChat] = useState([]);
     const [deleteChat, setDeleteChat] = useState([]);
 
-    useEffect(() => {
+    useEffect(({sessionList, setSessionList}) => {
 
         getAllAvailableChats();
 
@@ -19,13 +19,22 @@ const ExpaAdminTechPanel = () => {
     async function getAllAvailableChats() {
         await axios.get("/help-request-list")
             .then( response => {
-                setAvailable(response);
+                setSessionList(response.data);
             });
+
+        //for the second part I will need to call the websocket function get all chats
+
+        //setSession(), session()
+
+
+
     }
 
 
     return (
         <>
+            <SessionListManager sessionList={sessionList} callback={setSessionList} />
+
             <h1>Chat Queue</h1>
 
             <section>
@@ -40,14 +49,23 @@ const ExpaAdminTechPanel = () => {
                             <th>Delete</th>
                         </tr>
                        </thead>
-
-                        {/**/}
                         <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
+                        {sessionList &&
+                            sessionList.map((list, index) => {
+                                return (
 
+                                    <tr key={list.sessionId}>
+                                        {/*<-------- enter button response*/}
+                                        <td>Enter</td>
+                                        <td>{list.sessionId}</td>
+                                        <td>{list.client.id}</td>
+                                        <td>{list.client.username}</td>
+                                    </tr>
+                                )
+                            })
+                        }
+
+                        </tbody>
                     </Table>
 
 

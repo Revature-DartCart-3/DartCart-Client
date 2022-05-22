@@ -7,6 +7,7 @@ import SockJS from 'sockjs-client';
 import { withStyles } from "@mui/material";
 import axios from "axios";
 import {Form, Modal} from "react-bootstrap";
+import ExpaAdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/ExpaAdminTechPanel";
 
 var stompClient =null;
 
@@ -69,6 +70,8 @@ function FinalTechChat (props) {
     const onError = (error) => {                                        //      For Stefan
         //console.log('Error connecting to socket:' + error);
     }
+
+
 
     //Connect to a web Socket
     const connect =()=>{                                                //      Container For Stefan
@@ -151,6 +154,12 @@ function FinalTechChat (props) {
    
     return(
         <>
+
+            <ExpaAdminTechPanel sessionList={session}/>
+
+
+
+
         {isConnected ? <button value={"Hello"} onClick={leave}>disconnect</button> : <button onClick={connect}>Connect</button>}
         <button value={"Hello"} onClick={sendMessage}>Send Message</button>
 
