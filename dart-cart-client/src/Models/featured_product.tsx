@@ -20,11 +20,11 @@ function addToWishList(productId){
    
  async function addToWL(productId){
    const y = await addToWishList(productId);
-   return React.createElement("span", {class : "wishListNotice  youCanSeeMe"}, y);
+   return React.createElement("span", {className : "wishListNotice  youCanSeeMe"}, y);
  }
 
 export default function FeaturedProduct(props: any) {
-    const [notice, setNotice] = useState(React.createElement("span", {class : "wishListNotice"}, "hey"))
+    const [notice, setNotice] = useState(React.createElement("span", {className : "wishListNotice"}, "hey"))
     return (<div style={{ height: "30rem" }}>
         <Link to={`/shop-product/${props?.id}` || ""} style={{ textDecoration: 'none' }}>
             <div className=" card bg-black text-warning" style={{ height: "26rem", width: "18rem" }}>
@@ -47,7 +47,7 @@ export default function FeaturedProduct(props: any) {
           
           <button id="addToWishList" className="btn stretched-link  addToWishList" onClick={async () => {
             setNotice(await addToWL(props?.id));
-            setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
+            setTimeout(() =>{setNotice(React.createElement("span", {className : "wishListNotice"}, "hey"))}, 5000);
           }
           }>Add To Wishlist
           <div>{notice}</div>
