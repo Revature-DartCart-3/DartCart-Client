@@ -1,11 +1,17 @@
 import ReactDom from "react-dom";
-import "./modal.scss";
+import "./finalModal.scss";
 import Axios from 'axios';
 import { useState } from 'react';
 
-const Modal = ({ show, close, title, children }) => {
+const TechModal = ({ show, close, title, children }) => {
   const [alias, setAlias] = useState('');
   const [comment, setComment] = useState('');
+
+
+
+
+
+
 
   const addComment = (event) => {
     event.preventDefault();
@@ -17,7 +23,7 @@ const Modal = ({ show, close, title, children }) => {
       setComment('');
     });
   };
-  
+
   return ReactDom.createPortal(
     <>
       <div
@@ -57,4 +63,4 @@ const Modal = ({ show, close, title, children }) => {
   );
 };
 
-export default Modal;
+export default TechModal;

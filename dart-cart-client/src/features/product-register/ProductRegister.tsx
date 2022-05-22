@@ -191,7 +191,7 @@ export function ProductRegister() {
         </button>
       </Container>
 
-      {/* Success Modal */}
+      {/* Success TechModal */}
       <Modal show={showModal}>
         <Modal.Header closeButton>
           <Modal.Title>Product Registration</Modal.Title>

@@ -200,7 +200,7 @@ export function AddInventory() {
         </button>
       </Form>
 
-      {/* Success Modal */}
+      {/* Success TechModal */}
       <Modal show={showModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add Inventory</Modal.Title>

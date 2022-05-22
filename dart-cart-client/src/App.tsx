@@ -29,7 +29,10 @@ import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
 import WishList from "./features/wishlist/WishList";
 import TechChat from "./components/TechChat";
-import TechChatModal from "./features/TechChatModal/TechChatModal";
+import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
+import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
+import AdminComments from "./features/TechChatModal/AdminComments";
+import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
 
 
 function App() {
@@ -67,7 +70,7 @@ function App() {
 
             </Route>
             <Route path="/techchat" element={<TechChat />} />
-            <Route path="/techchatmodal" element={<TechChatModal />} />
+            <Route path="/techchatmodal" element={<FinalTechChatModalGroup />} />
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -76,13 +79,13 @@ function App() {
             <Route path="/shop-product-add" element={<AddInventory />}></Route>
             <Route path="/signup" element={<SellerRegister />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/adminpage" element={<AdminPage/>}></Route>
+            <Route path="/adminpage" element={<FinalAdmin/>}></Route>
             <Route path="/ResetPassword" element={<ResetPassword />}></Route>
             <Route path="/orders" element={<PreviousOrders />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/display" element={<Display />}></Route>
             <Route path="/userprofile" element={<UserP />}></Route>
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/stuff" element={<AdminComments />} />
             <Route
               path="/shop-product/:shop_product_id"
               element={<ShopProductDisplay />}

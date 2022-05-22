@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import './comment.css';
+// import './comment.css';
 import { useState, useEffect } from 'react';
 
 const AdminComments = () => {

@@ -18,6 +18,7 @@ export interface ProductReview {
 }
 
 export interface User {
+    // accountType: string;
     id: number;
     username: string;
     password: string;

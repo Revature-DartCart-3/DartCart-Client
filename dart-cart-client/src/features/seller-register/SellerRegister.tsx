@@ -182,7 +182,7 @@ export function SellerRegister() {
             </Container>
         </Form>
 
-        {/* Success Modal */}
+        {/* Success TechModal */}
         <Modal show={showModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Seller Registration</Modal.Title>
