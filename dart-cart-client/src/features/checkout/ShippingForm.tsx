@@ -1,41 +1,41 @@
-import React, { useRef } from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import { useState } from "react";
+import { Form, Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { updateShipping } from "../../common/slices/shippingSlice";
+
 export function Shipping() {
-    const dispatch = useDispatch()
+
+    const dispatch = useDispatch();
+
+    const [street, setStreet] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [zip, setZip] = useState("");
 
     const handleStreet = (street: string) => {
-        dispatch(updateShipping({
-            id: 1,
-            changes: {
-                streetAddress: street
-            }
-        }))
+        setStreet(street);
     }
 
     const handleCity = (city: string) => {
-        dispatch(updateShipping({
-            id: 1,
-            changes: {
-                city: city
-            }
-        }))
+        setCity(city);
     }
 
     const handleState = (state: string) => {
-        dispatch(updateShipping({
-            id: 1,
-            changes: {
-                state: state
-            }
-        }))
+        setState(state);
     }
 
     const handleZip = (zip: string) => {
+        setZip(zip);
+    }
+
+    function handleSubmit(e){
+        e.preventDefault();
         dispatch(updateShipping({
-            id: 1,
-            changes: {
+            id:1,
+            changes:{
+                streetAddress: street,
+                city: city,
+                state: state,
                 zip: zip
             }
         }))
@@ -44,7 +44,7 @@ export function Shipping() {
         <>
             <Card style={{ width: '18rem' }}>
                 <h3>Shipping Information</h3>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="shippingStreet">
                         <Form.Control type="text" placeholder="Street Address" onChange={e => handleStreet(e.target.value)}/>
                         <Form.Text className="text-muted"></Form.Text>
