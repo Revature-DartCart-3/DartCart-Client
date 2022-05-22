@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Container} from "react-bootstrap";
 import {Table} from "react-bootstrap";
 import axios from "axios";
+import SessionListManager from "../../SessionListManager";
 
 const FinalAdminTechPanel = () => {
 

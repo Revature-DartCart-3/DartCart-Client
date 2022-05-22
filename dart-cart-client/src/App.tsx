@@ -28,7 +28,7 @@ import Product from "./Models/Product";
 import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
 import WishList from "./features/wishlist/WishList";
-import TechChat from "./components/TechChat";
+// import TechChat from "./components/TechChat";
 import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
 import AdminComments from "./features/TechChatModal/AdminComments";
