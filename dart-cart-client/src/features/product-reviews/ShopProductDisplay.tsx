@@ -22,9 +22,9 @@ const ShopProductDisplay = () => {
 
   const id: number = parseInt(shop_product_id!);
 
-    const ReduxShopProducts = useSelector((state) =>
-      selectShopProductById(state, id)
-    );
+  const ReduxShopProducts = useSelector((state) =>
+    selectShopProductById(state, id)
+  );
 
   const pics = ['cellphone', 'shirt', 'shoes', 'drone', 'scooter', 'pants', 'travel', 'calm', 'javascript']
 
