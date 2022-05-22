@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./mainstyle.css";
 import "./index.css";
 import App from "./App";
 import store from "./common/store";

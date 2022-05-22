@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Product, ShopProduct, Shop, Seller} from "../../common/models";
+import {ShopProduct} from "../../common/models";
 import { addToCart } from "../../common/slices/cartSlice";
 import {
   fetchCompetitorProducts,
-  selectCompetitorProductById,
   selectCompetitorProducts,
 } from "../../common/slices/competitorsSlice";
-import Logo from "../layout/Logo";
 import "./competingSellers.css";
+import WishlistButton from "../wishlist/WishlistButton";
+import authHeader from "../authentication/AuthHeader";
+import { MdAddShoppingCart} from 'react-icons/md';
 
 interface SellerProduct {
   Seller: number;
@@ -19,45 +20,57 @@ export function CompetingSellers({ Seller }: SellerProduct) {
   
   const ReduxCompetitorProducts: ShopProduct[] = useSelector(
     selectCompetitorProducts
-    );
-    
-    useEffect(() => {
+  );
+
+  useEffect(() => {
+    if(Seller){
       dispatch(fetchCompetitorProducts(Seller)); // places return value into REDUX global state
-    }, []);
-    
-    function handleAddtoCart(e) {
-      dispatch(addToCart(e.target.value));
     }
+  }, [Seller]);
+
+  function handleAddtoCart(e) {
+    dispatch(addToCart(e.target.value));
+  }
 
   return (
     <>
       {(ReduxCompetitorProducts &&
         ReduxCompetitorProducts.map((competitors) => {
           return (
-            <div className="sellerInfo">
-                <div className="shopNameAndPrice">
-                  {competitors.discount > 0 ? 
-                  (<span>Seller: {competitors.shop.seller.name} - <s>${competitors.price}</s>  ${(competitors.price) - (competitors.discount)} <br />Discount: {Math.floor((competitors.discount)/(competitors.price)*100)}%</span>): 
-                  (<span>Seller: {competitors.shop.seller.name} - ${competitors.price}</span>)}
-                </div>
-                {/* <div className="shopLocation">
-                  <span>Seller Location: {competitors.shop.seller.location}</span>
-                </div> */}
-                <div className="shopQuant">
-                  {competitors.quantity < 10 ?
-                  (<span>Limited Stock: Only {competitors.quantity} Available</span>) : (<span>In Stock</span>)}
-                </div>
-              <button
-                className="btn btn-primary addToCart"
-                value={competitors.shop_product_id}
-                onClick={(e) => handleAddtoCart(e)}
-              >
-                Add to cart
-              </button>
+            <div key={`${competitors.shop_product_id}`} className="sellerInfo">
+
+              {/* Seller Info */}
+              <div>
+                <h6><b>Sold by:</b></h6>
+                <p>{competitors.shop.seller.name}<br/>
+                {competitors.location}</p>
+              </div>
+              <div>
+                <h4 className="center">
+                {competitors.discount > 0 ? 
+                (<>
+                  <s>${competitors.price}</s>  ${(competitors.price) - (competitors.discount)} 
+                  <small> ({Math.floor((competitors.discount) / (competitors.price) * 100)}% off)</small>
+                </>)
+                : <>${competitors.price}</>}
+                </h4>
+                <br/><span>Quantity In Stock: {competitors.quantity}</span>
+              </div>
+              <div className="center-align">
+                <button
+                  className="button orange-button stacked"
+                  value={competitors.shop_product_id}
+                  onClick={(e) => handleAddtoCart(e)}
+                >
+                  <MdAddShoppingCart/> Add to Cart
+                </button>
+                {JSON.stringify(authHeader()).length > 100 && (
+                  <WishlistButton product={competitors.product} />
+                )}
+              </div>
             </div>
           );
-        })) ||
-        ""}
+        }))}
     </>
   );
 }

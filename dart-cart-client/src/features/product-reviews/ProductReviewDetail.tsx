@@ -1,46 +1,31 @@
 import { useState } from "react";
-import { Alert, Modal, Button, Form } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 import axios from 'axios'
 import authHeader from "../authentication/AuthHeader";
-import '../../stylesheets/SellerRegister.css'
-function ProductReviewDetail(props) {
-    const [showModal, setShowModal] = useState(false);
+
+function ProductReviewDetail({product_id, callback, showModal, setShowModal}) {
     const [submitData, setSubmitData] = useState({rating: 0, title:""})
     const API_URL = process.env.REACT_APP_API_URL;
-
-    const handleClose = () => {
-        setShowModal(false);
-    };
-    const handleOpen = () => {
-        setShowModal(true);
-    };
 
     const handleChange = (e) => {
         setSubmitData({...submitData, [e.target.name]: e.target.value})
     }
 
     const submitForm = () => {
-        console.log('submitForm: ', `${API_URL}create-product-review/product/${props.product_id}`, submitData)
-        axios.post(`${API_URL}create-product-review/product/${props.product_id}`, submitData, {
+        console.log('submitForm: ', `${API_URL}create-product-review/product/${product_id}`, submitData)
+        axios.post(`${API_URL}create-product-review/product/${product_id}`, submitData, {
             headers: authHeader()
         })
             .then(res => {
-                console.log('axios: ', res.data);
-                props.callback();
+                callback();
             })
-            .catch((e) => {
-                console.log(e);
-                // <Alert variant="danger" dismissible>
-                //     Unable to submit review. Please try again later.
-                // </Alert>
-                alert("Unable to submit review.Please try again later.");
+            .catch(e => {
+                alert("Cannot submit duplicate review")
             })
     }
 
     return (
         <div>
-            {/* <Button onClick={handleOpen}>Leave a Product Review</Button> */}
-            <Button variant="link" onClick={handleOpen}>Leave a Product Review</Button>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Leave a Product Review</Modal.Title>
@@ -48,44 +33,39 @@ function ProductReviewDetail(props) {
                 <Modal.Body>
                     Please tell us how you feel about this product.
                     <br />
-                    <Form id="review-modal-form">
-                        <Form.Group className="mb-3 form-group">
+                    <Form className="modal-form">
+                        <Form.Group className="mb-3" >
                             <Form.Label>Title</Form.Label>
-                            <Form.Control 
-                                type="text" 
-                                name="title" 
-                                onChange={handleChange} 
-                                placeholder="Enter Title" 
-                            />
+                            <Form.Control type="text" name="title" onChange={handleChange} placeholder="Enter Title" />
                         </Form.Group>
-                        <Form.Group className="mb-3 form-group">
+                        <Form.Group className="mb-3" >
                             <Form.Label>Comment Here</Form.Label>
                             <Form.Control 
                                 as="textarea" 
                                 maxLength={500} 
                                 name="comment" 
-                                onChange={handleChange} 
+                                onChange={handleChange}  
                                 rows={11} 
                                 style={{ height: '200px' }} />
                         </Form.Group>
-                        <Form.Group className="mb-3 form-group">
+                        <Form.Group className="mb-3" >
                             <Form.Label>Rating</Form.Label>
-                            <Form.Control 
-                                type="text" 
+                            <Form.Control type="number" 
                                 name="rating" 
+                                min="0"
+                                max="5"
                                 onChange={handleChange} 
-                                placeholder="Enter Number 1-5" 
                             />
+                            <Form.Text>Enter a number 1-5</Form.Text>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => {
+                    <button className="submit-button" onClick={() => {
                         submitForm(); 
-                        handleClose()}}>Submit</Button>
+                        setShowModal(false)}}>Submit</button>
                 </Modal.Footer>
             </Modal>
-
         </div>
     )
 }

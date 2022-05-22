@@ -1,3 +1,4 @@
+import React from 'react'
 import { AiFillStar } from 'react-icons/ai';
 function ProductReviewCard({ 
     profilePic = "/man.jpg",
@@ -9,24 +10,21 @@ function ProductReviewCard({
         <div style={{ textAlign: 'left' }}>
             <span >
                 <img className="profile" src={
-                   ( (profilePic!='') ? profilePic : "/man.jpg")
-                } />
+                   ( (profilePic!=='') ? profilePic : "/man.jpg")
+                } alt="user avatar"/>
             </span>
             <span style={{ display: 'inline-flex', verticalAlign: 'middle' }}>
                 <h5>{fullName}</h5>
-
-
             </span>
-            <br />
-
+            <br/>
             {Array.from(Array(rating).keys()).map(c => {
                 return (
                     <AiFillStar key={c} style={{ color: 'orange' }} />
                 )
             })}
-            <br />
+            <br /><br/>
             <h5><strong>{title}</strong></h5>
-            <p>{comment}</p>
+            <p> {comment} </p>
         </div>
     )
 }

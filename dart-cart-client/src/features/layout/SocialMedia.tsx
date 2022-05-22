@@ -1,5 +1,6 @@
 import React from "react";
-import { Facebook, Twitter, Discord, Pinterest, Github } from "react-bootstrap-icons";
+import { Facebook, Twitter, Linkedin, Pinterest, Github } from "react-bootstrap-icons";
+import "./footer.css";
 
 const SocialMedia = () => {
   return (
@@ -10,22 +11,22 @@ const SocialMedia = () => {
       <div className="footer-icons">
         <ul className="social-icons">
           <li>
-            <a className="facebook" href="/" >
+            <a className="facebook" href="https://www.facebook.com/" >
               <Facebook size={30} color="#fff" />
             </a>
           </li>
           <li>
-            <a className="twitter" href="/" >
+            <a className="twitter" href="https://www.twitter.com/" >
               <Twitter size={30} color="#fff" />
             </a>
           </li>
           <li>
-            <a className="discord" href="/" >
-              <Discord size={30} color="#fff" />
+            <a className="linkedin" href="https://www.linkedin.com/" >
+              <Linkedin size={30} color="#fff" />
             </a>
           </li>
           <li>
-            <a className="pinterest" href="/" >
+            <a className="pinterest" href="https://www.pinterest.com/" >
               <Pinterest size={30} color="#fff" />
             </a>
           </li>

@@ -56,3 +56,11 @@ code {
 .error_rp_email_reset {
     margin: 100px 0px;
 }
+
+a.text-reset{
+    text-decoration: none;
+}
+
+.center{
+    text-align: center;
+}
