@@ -1,19 +1,20 @@
 import Axios from 'axios';
 // import './comment.css';
 import { useState, useEffect } from 'react';
+import axios from "axios";
 
 const AdminComments = () => {
   const [comments, setNewComments] = useState([]);
   const [newAdminReply, setNewAdminReply] = useState('');
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/commentssection').then((response) => {
+    axios.get('http://localhost:3001/commentssection').then((response) => {
       setNewComments(response.data);
     });
   });
 
   const updateComments = (id) => {
-    Axios.put(`http://localhost:3001/commentssection/${id}`, {
+      axios.put(`http://localhost:3001/commentssection/${id}`, {
       id: id,
       adminreply: newAdminReply,
       admin: 'Admin-Bot',
@@ -39,7 +40,7 @@ const AdminComments = () => {
   };
 
   const deleteComments = (id) => {
-    Axios.delete(`http://localhost:3001/commentssection/${id}`).then(
+      axios.delete(`http://localhost:3001/commentssection/${id}`).then(
       (_response) => {
         setNewComments(
           comments.filter((val) => {

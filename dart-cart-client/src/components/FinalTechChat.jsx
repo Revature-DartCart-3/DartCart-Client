@@ -27,6 +27,7 @@ function FinalTechChat (props) {
     //MODAL STATES
     const [modal, setModal] = useState(false);
     const [alias, setAlias] = useState('');
+    //ADD THE FORM HANDLERS / STATE INFORMATION / ECT...
     const [comment, setComment] = useState('');
     const [showModal, setShowModal] = useState(false);
 
@@ -75,6 +76,7 @@ function FinalTechChat (props) {
         stompClient = over(Sock);                                       //      For Stefan
         //console.log("**Stomp client assigned" + stompClient.stringify);
         stompClient.connect({}, onConnected, onError);                  //      For Stefan
+        alert("You have been put in a queue. A representative will speak to you soon. Please hold");
     }
 
     const leave = () => {
@@ -186,7 +188,9 @@ function FinalTechChat (props) {
                     {/*<div className="modal_content">*/}
                     {/*    {children}*/}
                     {/*</div>*/}
-
+                    <Form.Label>
+                        Briefly describe your problems:
+                    </Form.Label>
                     <Form.Control
                         className=""
                         type="text"
@@ -198,10 +202,8 @@ function FinalTechChat (props) {
                             setComment(event.target.value);
                         }}
                     />
-
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className="modal_footer">
                         <button
                             className="submit"
                             type="submit"
@@ -209,8 +211,6 @@ function FinalTechChat (props) {
                         >
                             Submit
                         </button>
-                    </div>
-
                 </Modal.Footer>
             </Modal>
 

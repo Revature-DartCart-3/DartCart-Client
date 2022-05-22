@@ -70,8 +70,12 @@ function App() {
             >
 
             </Route>
+            {/*THIS THE DEV TEST SECTION FOR CHAT FEATURES*/}
             <Route path="/techchat" element={<FinalTechChat />} />
-            <Route path="/techchatmodal" element={<FinalTechChatModalGroup />} />
+            {/*OFFICAL CLIENT INTERFCEE FOR THE CLIENT*/}
+            <Route path="/techchatmodal" element={<FinalTechChat />} />
+            {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
+            <Route path="/adminpage" element={<FinalAdmin/>}></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -80,7 +84,6 @@ function App() {
             <Route path="/shop-product-add" element={<AddInventory />}></Route>
             <Route path="/signup" element={<SellerRegister />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/adminpage" element={<FinalAdmin/>}></Route>
             <Route path="/ResetPassword" element={<ResetPassword />}></Route>
             <Route path="/orders" element={<PreviousOrders />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
