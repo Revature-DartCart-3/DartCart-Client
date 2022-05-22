@@ -51,7 +51,7 @@ const ShopProductDisplay = () => {
           {/* Product image */}
           <div className="col productIMGcontainer">
             <img className="productImage" src={ReduxShopProducts?.imageURL} alt={`${ReduxShopProducts?.name}`}></img>
-            <button className="review-link" onClick={()=>setShowModal(true)}>Leave a Product Review</button>
+            <button className="review-link stacked" onClick={()=>setShowModal(true)}>Leave a Product Review</button>
           </div> 
 
           {/* Product Info */}
