@@ -33,6 +33,7 @@ import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
 import AdminComments from "./features/TechChatModal/AdminComments";
 import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
+import FinalTechChat from "./components/FinalTechChat";
 
 
 function App() {
@@ -69,7 +70,7 @@ function App() {
             >
 
             </Route>
-            <Route path="/techchat" element={<TechChat />} />
+            <Route path="/techchat" element={<FinalTechChat />} />
             <Route path="/techchatmodal" element={<FinalTechChatModalGroup />} />
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
