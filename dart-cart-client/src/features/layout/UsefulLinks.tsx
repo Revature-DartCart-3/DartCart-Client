@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const UsefulLinks = () => {
   const links = {
-    "Sell on Dart Cart": "#",
+    "Sell on Dart Cart": "/signup",
     "Register Product": "/product-register",
     "Add Inventory": "/shop-product-add",
     Orders: "/orders",
-    Help: "#",
+    // Help: "#",
   };
 
   const navLinks = Object.keys(links).map((link) => {

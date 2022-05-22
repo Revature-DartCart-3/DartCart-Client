@@ -1,6 +1,5 @@
 import { Alert, Modal, Button, Form, Row, Col, Container } from "react-bootstrap";
 import { saveProduct } from "../../common/slices/productRegisterSlice";
-import { Product } from "../../common/types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../common/hooks";
@@ -13,7 +12,6 @@ export function ProductRegister() {
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState("");
-  // const [imageFile, setImageFile] = useState("");
   const [progress, setProgress] = useState(0);
 
   const dispatch = useAppDispatch();
@@ -21,11 +19,11 @@ export function ProductRegister() {
 
   const handleFireBaseUpload = (e) => {
     e.preventDefault();
-    //const image = e.target.value;
-    const image = e.target[0].files[0];
-    console.log(image);
-    uploadImage(image);
-    updatePfp();
+    if(e.target[0].files.length > 0){
+      const image = e.target[0].files[0];
+      uploadImage(image);
+      updatePfp();
+    }
   };
 
   const uploadImage = (image) => {
@@ -60,16 +58,14 @@ export function ProductRegister() {
     product.imageURL = imageURL;
   };
 
-  const product: Product = {
+  const product = {
     id: 0,
     name: "",
     description: "",
     imageURL: ""
   };
 
-  // BASIC input validation: no empty fields, passwords must match, formatting requirements
-  // Possible TODO: Password complexity requirements
-  // Possible TODO: Enforcing username requirements, address formatting
+  // BASIC input validation: no empty fields
   const validateInput = () => {
     if (name === "") {
       setError("Please enter a name.");
@@ -105,9 +101,15 @@ export function ProductRegister() {
     setName("");
     setDescription("");
     setImageURL("");
+    document.querySelector("form")?.reset();
   }
 
-  // Redirect upon modal close
+  // closes modal but allows user to register another product
+  function handleAddAnother() {
+    setShowModal(false);
+  }
+
+  // Redirects to inventory form
   function handleClose() {
     setShowModal(false);
     nav('/shop-product-add');
@@ -124,13 +126,13 @@ export function ProductRegister() {
 
         {/* Image upload */}
         {imageURL && <img src={imageURL} height={150} alt="Product" />}
-        <Form onSubmit={handleFireBaseUpload}>
+        <Form id="imageform" onSubmit={handleFireBaseUpload}>
           <Form.Group className="mb-3 form-group">
             <Form.Label as="h4">
               Choose an image
             </Form.Label>
             <Row id="file-upload-container">
-              <Col sm="10">
+              <Col sm="8">
                 <Form.Control 
                   type="file"
                 />
@@ -192,7 +194,10 @@ export function ProductRegister() {
       </Container>
 
       {/* Success Modal */}
-      <Modal show={showModal}>
+      <Modal 
+        show={showModal}
+        onHide={handleClose}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Product Registration</Modal.Title>
         </Modal.Header>
@@ -200,7 +205,8 @@ export function ProductRegister() {
           Congratulations! Your product was successfully created!
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleClose}>Close</Button>
+          <button className="modal-button" onClick={handleAddAnother}>Add Another</button>
+          <button className="modal-button" onClick={handleClose}>Add Inventory</button>
         </Modal.Footer>
       </Modal>
 
