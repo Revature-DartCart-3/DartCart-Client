@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
 
 body {
     margin: 0;
@@ -16,7 +16,7 @@ code {
 
 :root {
     --background: white;
-    --secondary: rgb(221, 221, 221);
+    --secondary:rgb(221, 221, 221);
     --text-primary: black;
     --text-secondary: #474C55;
     --accent: #72A4C2;
@@ -29,12 +29,10 @@ code {
     --yellow: #FCB414;
     --lightgrey: #B9B9BA;
     --socialicon-bg: #b9b9ba;
-    --dancingScriptFont: 'Dancing Script', cursive;
-}
-
-[data-theme='dark'] {
+  }
+  [data-theme='dark'] {
     --background: #2b2e34;
-    --secondary: #474C55;
+    --secondary: #474C55 ;
     --text-primary: white;
     --text-secondary: #B9B9BA;
     --accent: #72A4C2;
@@ -47,12 +45,11 @@ code {
     --yellow: #FCB414;
     --lightgrey: #B9B9BA;
     --socialicon-bg: #33353d;
-}
+  }
 
 .error_rp_email {
-    color: red;
+    color:red;
 }
-
 .error_rp_email_reset {
     margin: 100px 0px;
 }

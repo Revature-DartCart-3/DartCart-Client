@@ -18,6 +18,7 @@ import store from "./common/store";
 import Header from "./features/layout/Header";
 import Footer from "./features/layout/Footer";
 import Cart from "./features/cart/Cart";
+import "./mainstyle.css";
 import "./App.css";
 import Checkout from "./features/checkout/CheckoutDisplay";
 import ListItem from "./features/list-item/ListItem";

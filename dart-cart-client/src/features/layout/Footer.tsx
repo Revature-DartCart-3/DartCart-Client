@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
       </section>
 
-      <div className="text-center p-4">
+      <div className="copyright-text text-muted text-center p-4">
         © 2022 Dart Cart
       </div>
     </footer>

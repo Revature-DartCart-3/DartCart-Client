@@ -1,76 +1,113 @@
 .navbar-custom {
-    background-color: #a6a6a6;
-    color: black;
+  background-color: #a6a6a6;
+  color: black;
 }
 
+/**//* LAYOUT STYLINGS *//**/
+/* FOOTER */
 .footer-info {
-    padding: 1em;
-    color: #198754;
+  padding: 1em;
+  color: var(--text-secondary);
 }
-
+.footer-brandname{
+  letter-spacing: 2px;
+  font-family: var(--dancingScriptFont);
+  font-size: larger;
+}
+.copyright-text {
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--text-primary);
+}
+.footer-icons .social-icons{
+  text-align: left;
+}
+.footer-icons .social-icons a{
+  width: 40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color: var(--socialicon-bg);
+  list-style: none;
+}
+.social-icons{
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.social-icons li{
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.social-icons a{
+  background-color: var(--socialicon-bg);
+  color:var(--secondary);
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a.facebook:hover {
+  background-color: #3B5998;
+}
+.social-icons a.discord:hover{
+  background-color: #738adb;
+}
+.social-icons a.pinterest:hover{
+  background-color: #f0002a;
+}
+.social-icons a.twitter:hover {
+  background-color: #55acee;
+}
+.social-icons a.github:hover {
+  background-color: #ffcc00;
+}
+/* Fa-opencart icon in footer */
 .fa {
-   padding: 20px;
-    font-size: 30px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-  }
-  
-  .fa:hover {
-      opacity: 0.7;
-  }
-  
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  }
-  
-  .fa-twitter {
-    background: #55ACEE;
-    color: white;
-  }
-
-  .fa-instagram {
-    background: #125688;
-    color: white;
-  }
-
-  .fa-pinterest {
-    background: #cb2027;
-    color: white;
-  }
-  
-  .fa-snapchat-ghost {
-    background: #fffc00;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  }
-
-  .fa-linkedin {
-    background: #007bb5;
-    color: white;
-  }
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  color: var(--orange);
+}
+.fa:hover {
+  opacity: 0.5;
+}
+/**//**/
+.locationIcon {
+  color: var(--text-primary);
+}
+/* END LAYOUT STYLINGS */
+/**/
 
 .navbar-custom .navbar-text {
-    color: black;
+  color: black;
 }
-
-.image-container{
+.image-container {
   text-align: left;
   margin: none;
 }
-
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-    color: black;
+  color: black;
 }
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-    color: black;
+  color: black;
 }
-
 .textarea {
-  height:200px;
+  height: 200px;
 }

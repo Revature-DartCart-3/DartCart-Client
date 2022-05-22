@@ -1,6 +1,6 @@
 
 //MORE COLORS
-$red: #ea1407;
+$red: #ba181b;
 $darkred: #ba181b;
 $burgandy: #9B2226;
 $burgandy2: #660708;
@@ -91,6 +91,7 @@ $primary-darkgrey: #474c55;
 $secondary-blue: #72a4c2;
 $secondary-yellow: #fcb414;
 $secondary-lightgrey: #b9b9ba;
+$bs-body-bg: #2b2e34;
 
 
 $COLORS: (
@@ -108,18 +109,19 @@ $COLORS: (
   "secondary-blue": $secondary-blue,
   "secondary-yellow": $secondary-yellow,
   "secondary-lightgrey": $secondary-lightgrey,
+  "bs-body-bg": $bs-body-bg,
 ) !default;
 
 //THEME DEFAULT COLOR OVERRIDE
 $theme-colors: (
-  "primary": #f26925,
-  "secondary": #72a4c2,
-  "success": #a5be00,
-  "info": #669bbc,
-  "warning": #FDC800,
-  "danger": #ba181b,
-  "light": #b9b9ba,
-  "dark": #474c55,
+  "primary": $primary-orange,
+  "secondary": $secondary-blue,
+  "success": $neongreen,
+  "info": $secondary-blue,
+  "warning": $secondary-yellow,
+  "danger": $red,
+  "light": $primary-white,
+  "dark": $primary-darkgrey,
 ) !default;
 
 //BUTTON VARIANTS
