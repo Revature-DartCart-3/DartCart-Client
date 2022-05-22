@@ -1,22 +1,27 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Container} from "react-bootstrap";
 import {Table} from "react-bootstrap";
+import axios from "axios";
 
 const ExpaAdminTechPanel = () => {
 
-    const [enterChat, setEnterChat] = useState('');
-    const [deleteChat, setDeleteChat] = useState('');
+    const [available, setAvailable] = useState([]);
+    const [enterChat, setEnterChat] = useState([]);
+    const [deleteChat, setDeleteChat] = useState([]);
 
     useEffect(() => {
+
+        getAllAvailableChats();
 
     }, [])
 
 
-
-
-
-
-
+    async function getAllAvailableChats() {
+        await axios.get("/help-request-list")
+            .then( response => {
+                setAvailable(response);
+            });
+    }
 
 
     return (
