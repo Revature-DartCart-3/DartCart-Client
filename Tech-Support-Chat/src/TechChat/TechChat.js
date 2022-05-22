@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./App.scss";
-import Modal from "./Components/Modal";
+import "./modal.scss";
+import Modal from "./Modal";
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -26,7 +26,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="">
       <button className="clickMe bubbly-button" onClick={() => Toggle()}>
         Tech Support
       </button>

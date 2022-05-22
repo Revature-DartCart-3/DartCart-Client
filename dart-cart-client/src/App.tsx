@@ -29,6 +29,7 @@ import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
 import WishList from "./features/wishlist/WishList";
 import TechChat from "./components/TechChat";
+import TechChatModal from "./features/TechChatModal/TechChatModal";
 
 
 function App() {
@@ -66,7 +67,7 @@ function App() {
 
             </Route>
             <Route path="/techchat" element={<TechChat />} />
-
+            <Route path="/techchatmodal" element={<TechChatModal />} />
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>

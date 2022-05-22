@@ -1,3 +1,144 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba($color: #000000, $alpha: 0.35);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+
+  .modal {
+    background-color: rgba(255, 255, 255, 0.35);
+    width: calc(15rem + 15vw);
+    height: auto;
+    
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.4);
+
+    transform: translateY(-600px);
+    transition: all 0.4s ease;
+
+    &_header {
+    
+      background-color: #181717;
+      height: 10vh;
+      min-height: 50px;
+      color: white;
+     
+      width: 100%;
+      max-width: 728px;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 99;
+      padding: 15px;
+      box-sizing: border-box;
+
+      &-title {
+        text-align: center;
+      }
+
+      .close {
+        position: absolute;
+        top: -1;
+        left: -1;
+        background-color: #ff0081;
+        
+        &:hover {
+            background-color: rgba(148, 18, 146, 0.8);
+        }
+      }
+    }
+
+    &_content {
+     
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 60vh;
+      color: black;
+      background-color: transparent;
+
+    }
+
+    &_footer {
+      padding: 4rem 1rem;
+      background-color: rgb(58, 58, 58);
+     
+
+      
+      button {
+        float: right;
+        margin-bottom: 15px;
+        margin-right: 10px;
+        
+      }
+
+      .submit {
+      
+          background-color: #ff0081; /* Green */
+          border: none;
+          color: white;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          cursor: pointer;
+          font-size: 1.25rem;
+        
+
+        &:hover {
+          background-color: rgba(148, 18, 146, 0.8);
+        }
+      }
+
+      .modal-close {
+         background-color: #364348;
+        font-weight: 600;
+        &:hover {
+          color: rgba(54, 67, 72, 0.8);
+        }
+      }
+    }
+  }
+}
+
+.modalContainer.show {
+  visibility: visible;
+  opacity: 1;
+
+  .modal {
+    transform: translateY(0);
+    font-size: 1.5rem;
+    align-content: center;
+    
+  }
+}
+.message {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1.5rem;
+  background: rgb(58, 58, 58);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
 $fuschia: #ff0081;
 $button-bg: $fuschia;
 $button-text-color: #fff;
@@ -16,24 +157,22 @@ overflow: hidden;
 }
 
 
-body {
-  font-family: "Poppins", sans-serif;
-  background-image: url(./purple.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 button {
   border: none;
   width: auto;
   height: auto;
   outline: none;
   cursor: pointer;
+  border-radius: 8px;
+  background-color: #ff0081; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
 }
 
 
 
-.App {
+.AppM {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -46,9 +185,10 @@ button {
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 700;
+  
 }
 
-/* .bubbly-button{
+.bubbly-button{
   font-family: 'Helvetica', 'Arial', sans-serif;
   display: inline-block;
   font-size: 1em;
@@ -155,4 +295,4 @@ button {
     background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
   background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
   }
-} */
+}
