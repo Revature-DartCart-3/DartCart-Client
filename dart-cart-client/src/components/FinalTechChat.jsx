@@ -205,7 +205,7 @@ function FinalTechChat (props) {
                         <button
                             className="submit"
                             type="submit"
-                            onClick=""
+                            onClick={connect}
                         >
                             Submit
                         </button>
