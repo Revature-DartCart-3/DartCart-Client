@@ -58,7 +58,8 @@
   align-content: center;
   padding: 20px;
   color: var(--text-primary);
-  border: 1px solid var(--secondary);
+  border-top: 1px solid var(--secondary);
+  border-bottom: 1px solid var(--secondary);
 }
 .sellerInfo > div{
   padding: 0 10px;

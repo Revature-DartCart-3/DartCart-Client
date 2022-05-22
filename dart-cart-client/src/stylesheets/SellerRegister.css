@@ -25,6 +25,10 @@ form, .shop-form {
     width:100%;
     border:none;
 }
+.modal-form{
+    width:100%;
+    padding:10px;
+}
 
 /* Heading */
 .shop-form-heading{

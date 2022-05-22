@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const UsefulLinks = () => {
   const links = {
-    "Sell on Dart Cart": "/shops/:shop_id",
+    "Sell on Dart Cart": "/signup",
     "Register Product": "/product-register",
     "Add Inventory": "/shop-product-add",
     Orders: "/orders",

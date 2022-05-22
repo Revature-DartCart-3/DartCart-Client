@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Table} from 'react-bootstrap';
-import { Product, ShopProduct, Shop, Seller} from "../../common/models";
+import {ShopProduct} from "../../common/models";
 import { addToCart } from "../../common/slices/cartSlice";
 import {
   fetchCompetitorProducts,
-  selectCompetitorProductById,
   selectCompetitorProducts,
 } from "../../common/slices/competitorsSlice";
 import "./competingSellers.css";
+import WishlistButton from "../wishlist/WishlistButton";
+import authHeader from "../authentication/AuthHeader";
+import { MdAddShoppingCart} from 'react-icons/md';
 
 interface SellerProduct {
   Seller: number;
@@ -34,7 +35,7 @@ export function CompetingSellers({ Seller }: SellerProduct) {
       {(ReduxCompetitorProducts &&
         ReduxCompetitorProducts.map((competitors) => {
           return (
-            <div className="sellerInfo">
+            <div key={`${competitors.shop_product_id}`} className="sellerInfo">
 
               {/* Seller Info */}
               <div>
@@ -43,23 +44,27 @@ export function CompetingSellers({ Seller }: SellerProduct) {
                 {competitors.location}</p>
               </div>
               <div>
-                <p>
+                <h4 className="center">
                 {competitors.discount > 0 ? 
                 (<>
                   <s>${competitors.price}</s>  ${(competitors.price) - (competitors.discount)} 
                   <small> ({Math.floor((competitors.discount) / (competitors.price) * 100)}% off)</small>
                 </>)
                 : <>${competitors.price}</>}
-                <br/><span>Quantity In Stock: {competitors.quantity}</span> </p>
+                </h4>
+                <br/><span>Quantity In Stock: {competitors.quantity}</span>
               </div>
-              <div>
+              <div className="center-align">
                 <button
-                  className="btn btn-primary addToCart"
+                  className="button orange-button stacked"
                   value={competitors.shop_product_id}
                   onClick={(e) => handleAddtoCart(e)}
                 >
-                  Add to cart
+                  <MdAddShoppingCart/> Add to Cart
                 </button>
+                {JSON.stringify(authHeader()).length > 100 && (
+                  <WishlistButton product={competitors.product} />
+                )}
               </div>
             </div>
           );
