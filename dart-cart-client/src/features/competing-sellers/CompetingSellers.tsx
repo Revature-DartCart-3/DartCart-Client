@@ -28,7 +28,7 @@ export function CompetingSellers({ Seller }: SellerProduct) {
   function handleAddtoCart(e) {
     dispatch(addToCart(e.target.value));
   }
-
+  
   return (
     <>
       {(ReduxCompetitorProducts &&

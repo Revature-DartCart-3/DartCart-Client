@@ -11,23 +11,67 @@ import ProductReviewDetail from "../product-reviews/ProductReviewDetail";
 import ProductReviewCard from "../product-reviews/product-review-card/ProductReviewCard";
 
 const ShopProductDisplay = () => {
+
+  const [averageRating, setAverageRating] = useState("");
+
   const { shop_product_id } = useParams();
 
-  const id: number = parseInt(shop_product_id!);
+  const id = parseInt(shop_product_id);
 
   const ReduxShopProducts = useSelector((state) => selectShopProductById(state, id));
-  const ReduxProductReviews: ProductReview[] = useSelector(selectProductReviews);
+  const ReduxProductReviews = useSelector(selectProductReviews);
 
   const dispatch = useAppDispatch();
 
-  useEffect((): void => {
+
+  useEffect(() => {
     dispatch(fetchProductReviews(""));
-  }, [ReduxProductReviews]);
+  }, []);
+
 
   const updateProductReviews = () => {
     dispatch(fetchProductReviews(""));
     console.log('callback');
   }
+
+  console.log(ReduxProductReviews);
+
+
+  useEffect(() => {
+      let ratingsArray = [];
+
+      for (let i = 0; i < ReduxProductReviews.length; i++) {
+        if (id == ReduxProductReviews[i].product.id) {
+          ratingsArray.push(ReduxProductReviews[i].rating)
+        }
+      }
+
+      console.log(ratingsArray)
+
+      let reviewTotal = [];
+
+      if (ratingsArray.length == 0){
+
+      } 
+      else {
+        reviewTotal = ratingsArray.reduce((acc, curr) => parseInt(curr) + parseInt(acc));
+      }
+
+      console.log(reviewTotal);
+
+      let averageRatingVar;
+      
+      averageRatingVar = (reviewTotal/ratingsArray.length).toFixed(2);
+
+      setAverageRating(averageRatingVar)
+
+  }, []);
+
+  const noProductReviews = (
+    <div className="average-rating">
+    Average Item Rating: No Ratings for This Product
+    </div>
+  );
 
   return (
     <>
@@ -40,12 +84,15 @@ const ShopProductDisplay = () => {
       </div>
       <div className="sellersContainer">
         <div className="sellerColumn">
-          <CompetingSellers Seller={ReduxShopProducts?.id!}></CompetingSellers>
+          <CompetingSellers Seller={ReduxShopProducts?.id}></CompetingSellers>
         </div>
       </div>
       <div>
         <ProductReviewDetail product_id={shop_product_id} callback={updateProductReviews} />
       </div>
+      {ReduxProductReviews.length > 0 ?
+      <div className="average-rating">Average Item Rating: {averageRating} Stars</div>
+      : noProductReviews}
       <table className="table">
         {ReduxProductReviews.map((ProductReview) => { if (ProductReview.product.id==shop_product_id)
                           return <ProductReviewCard 
