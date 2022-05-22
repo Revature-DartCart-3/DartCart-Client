@@ -17,7 +17,7 @@ interface SellerProduct {
 
 export function CompetingSellers({ Seller }: SellerProduct) {
   const dispatch = useDispatch();
-
+  
   const ReduxCompetitorProducts: ShopProduct[] = useSelector(
     selectCompetitorProducts
   );
@@ -54,7 +54,8 @@ export function CompetingSellers({ Seller }: SellerProduct) {
                 </>)
                 : <>${competitors.price}</>}
                 </h4>
-                <br/><span>Quantity In Stock: {competitors.quantity}</span>
+                <br/>{competitors.quantity < 10 ?
+                  (<span>Limited Stock: Only {competitors.quantity} Available</span>) : (<span>In Stock</span>)}
               </div>
               <div className="center-align">
                 <button
