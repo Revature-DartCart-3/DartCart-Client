@@ -26,8 +26,8 @@ function FinalTechChat (props) {
     const [message, setMessage] = useState("My products aren't displaying properly");
     const callback = props.callbackFunction;
     const userInfo = props.userInfo;
-    const [chatInput, setChatInput] = useState(
-        responseMessage : "")
+    const [chatInput, setChatInput] = useState({
+        responseMessage : ""})
 
     //WEBSOCKET FUNCTIONS
     var chatMessage = {

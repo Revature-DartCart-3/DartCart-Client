@@ -7,26 +7,27 @@ import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 
 
-const TempTwoModel = (chatInput, setChatInput) => {
+const TempTwoModel = () => {
 
     const [modal, setModal] = useState(false);
     const [messageList, setMessageList] = useState([{}]);
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
+    const [chatInput, setChatInput] = useState([]);
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
 
 
-    // const dispatch = useDispatch();
-    // const [chatname, setChatname] = useState("");
-    // const user = useSelector((state: RootState) => state.authentication.user) || "";
-    //
-    // useEffect(() => {
-    //     if(user) {
-    //         const u = JSON.parse(user);
-    //         setChatname(u.username);
-    //     }
-    // }, [])
+    const dispatch = useDispatch();
+    const [chatname, setChatname] = useState("");
+    const user = useSelector(chatname.authentication.user) || "";
+
+    useEffect(() => {
+        if(user) {
+            const u = JSON.parse(user);
+            setChatname(u.username);
+        }
+    }, [])
 
     const showModal = () => {
             setModal(true);
@@ -47,17 +48,9 @@ const TempTwoModel = (chatInput, setChatInput) => {
     }
 
     const chatInputHandler = (e) => {
-        setChatInput(chatInput, e.target.value);
+        setChatInput(e.target.value);
     }
 
-
-    // const RenderMessages = () => {
-    //     return(
-    //     messages.map((message) => {
-    //         <p>{message}</p>
-    //     })
-    //     )
-    // };
 
     return (
         <>
@@ -84,14 +77,14 @@ const TempTwoModel = (chatInput, setChatInput) => {
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
 
-                                <h2 className="modal_header-title ">User : name | Techie : name  </h2>
+                            <h2 className="modal_header-title ">User : {userInfo.username} | Techie : name  </h2>
                                 <button
                                     className="admin-techchat-close-button"
                                     onClick={closeModal}
                                 >
                                     x
                                 </button>
-                                <h2 className="modal_header-title ">User : {userInfo.username} | Techie : name  </h2>
+                                
 
                             </Modal.Header>
                             <Modal.Body className="modal_content">
