@@ -60,6 +60,7 @@ function FinalTechChat (props) {
     //WEBSOCKET FUNCTIONS
     var chatMessage = {
         sessionId: sessionId,
+        type: "Message",
         senderId: userId,
         recipientId: 1,
         senderName: "jimmy",
@@ -67,18 +68,18 @@ function FinalTechChat (props) {
         content: message
       };
 
-    const onError = (error) => {                                        //      For Stefan
+    const onError = (error) => {
         //console.log('Error connecting to socket:' + error);
     }
 
 
 
     //Connect to a web Socket
-    const connect =()=>{                                                //      Container For Stefan
+    const connect =()=>{
         let Sock = new SockJS('http://localhost:9005/ws');
-        stompClient = over(Sock);                                       //      For Stefan
+        stompClient = over(Sock);
         //console.log("**Stomp client assigned" + stompClient.stringify);
-        stompClient.connect({}, onConnected, onError);                  //      For Stefan
+        stompClient.connect({}, onConnected, onError);
         alert("You have been put in a queue. A representative will speak to you soon. Please hold");
     }
 
@@ -88,20 +89,21 @@ function FinalTechChat (props) {
     }
 
     const disconnect = () =>{
+        console.log("*****Leaving Chat*****"+ chatMessage);
         stompClient.send("/app/disconnect", {}, JSON.stringify(chatMessage));
         stompClient.unsubscribe("privateMessaging");
         setIsConnected(false);
     }
 
     //Runs after client connects to socket, and subscribes to the dedicated chat for the user
-    const onConnected = () =>{//Container for Stefan
+    const onConnected = () =>{
         console.log('Connected to Socket');
 
         //Listen to users private message socket and store the subscription
         //Subscribe to endpoint  {destination, callback function, id}
         stompClient.subscribe('/user/' + userId + '/private', onPrivateMessage ,{ id: "privateMessaging"});
         //subscription();
-        //stompClient.subscribe('/chatroom/techies', onPrivateMessage); //Used for admins to retrieve list of awaiting clients      For Stefan
+        //stompClient.subscribe('/chatroom/techies', onPrivateMessage); //Used for admins to retrieve list of awaiting clients
         //Send request for help to techies
         console.log(chatMessage);
         stompClient.send("/app/help-request", {}, JSON.stringify(chatMessage));
@@ -116,14 +118,17 @@ function FinalTechChat (props) {
         //Check if message is from automated system
         if(message.senderId == 0) {
             setSessionId(message.sessionId);
-            console.log("Automated system sent message. " + message.sessionId);
-            switch (message.content) {
+            console.log("Automated system sent message. " + message.type);
+            switch (message.type) {
                 case "Disconnected":
                     disconnect();
                     message.content = "Tech has left the Chat";
                     setMessages((messages) => messages.concat(message));
                     return;
-            
+                case "Created":
+                    console.log("****Room created with sessionId:" + message.sessionId + "****");
+                    chatMessage.sessionId = message.sessionId;
+                    break;
                 default:
                     break;
             }
@@ -137,20 +142,20 @@ function FinalTechChat (props) {
     const sendMessage=()=>{
         //Generate message
         if (stompClient) {
-/*           var chatMessage = {
-            senderId: userId,
-            recipientId: 1,
-            senderName: "jimmy",
-            recipientName: "admin",
-            content: message
 
-          }; */
           //Add message to messages
           setMessages((messages) => messages.concat(chatMessage));
           //Send message via socket
           stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
         }
     }
+
+
+    //hanldle unmounting
+    useEffect(() => () =>  {
+        console.log("**Unmount**");
+        disconnect();
+    }, [])
    
     return(
         <>
