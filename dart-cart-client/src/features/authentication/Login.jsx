@@ -113,6 +113,8 @@ export const Login = () => {
         await dispatch(loginUser({ username, password }));
         setError("");
         setShowModal(true);
+        console.log(username);
+        console.log(password);
     };
 
     const handleLogout = () => {
