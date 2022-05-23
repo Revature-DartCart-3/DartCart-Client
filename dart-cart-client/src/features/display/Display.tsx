@@ -49,8 +49,10 @@ useEffect(fetchData, []);
       <div className="ProductCardContainer" >
       
       {anyThing.map(elem => {
-            return <div><FeaturedProduct
-                key={elem.id} price={elem.price} discount={elem.discount}
+
+        return <div key={elem.id}><FeaturedProduct
+                price={elem.price} discount={elem.discount}
+
                 productName={elem.product.name} id={elem.product.id} discprice={elem.price}
                 imageUrl={elem.product.imageURL} /></div>
                
@@ -61,7 +63,7 @@ useEffect(fetchData, []);
         {status === "success" ? (
           (ReduxShopProducts.length &&
             ReduxShopProducts.map((Product, i) => {
-                return <div><ShopProductCard Product={Product}></ShopProductCard></div>;
+                return <div key={`sp${Product.id}`}><ShopProductCard Product={Product}></ShopProductCard></div>;
             })) || (
             <>
               <h1 style={{ color: "white" }}>No Items Found</h1>

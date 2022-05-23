@@ -8,12 +8,10 @@ function PayInstallments() {
     const [instalPrice, setInstalPrice] =useState(3000);
     const handleChange = (event) => {
         setValue(event.target.value);
-        console.log(event.target.value)
-        
       };
+      
     useEffect(() =>{
-        console.log(totalPrice)
-     setInstalPrice(totalPrice/value);
+     setInstalPrice((totalPrice/value).toFixed(2));
     },[value]); 
 
 
