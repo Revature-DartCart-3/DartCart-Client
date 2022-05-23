@@ -26,6 +26,8 @@ function FinalTechChat (props) {
     const [message, setMessage] = useState("My products aren't displaying properly");
     const callback = props.callbackFunction;
     const userInfo = props.userInfo;
+    const [chatInput, setChatInput] = useState(
+        responseMessage : "")
 
     //WEBSOCKET FUNCTIONS
     var chatMessage = {
@@ -35,14 +37,12 @@ function FinalTechChat (props) {
         recipientId: 1,
         senderName: userInfo.username,
         recipientName: "admin",
-        content: props.ChatInput
+        content: props.chatInput
       };
 
     const onError = (error) => {
         //console.log('Error connecting to socket:' + error);
     }
-
-
 
     //Connect to a web Socket
     const connect =()=>{

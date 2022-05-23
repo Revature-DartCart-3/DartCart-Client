@@ -7,13 +7,15 @@ import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 
 
-const TempTwoModel = () => {
+const TempTwoModel = (chatInput, setChatInput) => {
 
     const [modal, setModal] = useState(false);
     const [messageList, setMessageList] = useState([{}]);
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
+
+
 
     // const dispatch = useDispatch();
     // const [chatname, setChatname] = useState("");
@@ -44,12 +46,8 @@ const TempTwoModel = () => {
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
 
-
-    const chatInputHandler = () => {
-        setChatInput({
-            ...chatInput,
-            [e.target.name] : [e.target.value]
-        })
+    const chatInputHandler = (e) => {
+        setChatInput(chatInput, e.target.value);
     }
 
 
