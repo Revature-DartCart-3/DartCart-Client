@@ -46,7 +46,7 @@ const FinalTwoWayChatModal = () => {
 
                     <Modal.Body>
 
-                        
+
                         {reply}
 
                     </Modal.Body>

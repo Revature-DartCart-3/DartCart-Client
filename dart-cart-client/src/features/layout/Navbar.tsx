@@ -63,6 +63,16 @@ const Nav = (props) => {
               </Link>
             </li>
             <li className="nav-item-mb-3 nav-item">
+              <Link to="/adminpage" className="text-reset nav-link">
+                Admin
+              </Link>
+            </li>
+            <li className="nav-item-mb-3 nav-item">
+              <Link to="/TechChatModal" className="text-reset nav-link">
+                Support
+              </Link>
+            </li>
+            <li className="nav-item-mb-3 nav-item">
               <Link
                 to="/"
                 className="text-reset nav-link"
