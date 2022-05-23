@@ -1,11 +1,13 @@
 .navbar-custom {
-    background-color: #a6a6a6;
-    color: black;
+    background-color: transparent;
+    background-image:linear-gradient(to right,  rgba(255,255, 255,1),rgba(0,0,0,1));
+    color: white;
 }
+ 
 
 .footer-info {
     padding: 1em;
-    color: var(--orange);
+    color: #198754;
 }
 
 .fa {
@@ -53,7 +55,7 @@
   }
 
 .navbar-custom .navbar-text {
-    color: black;
+    color: white;
 }
 
 .image-container{
@@ -63,12 +65,12 @@
 
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-    color: black;
+    color: greenyellow;
 }
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-    color: black;
+    color: greenyellow;
 }
 
 .textarea {
