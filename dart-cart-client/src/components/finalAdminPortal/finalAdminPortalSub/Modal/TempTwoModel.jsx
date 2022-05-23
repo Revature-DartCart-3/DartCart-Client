@@ -13,7 +13,6 @@ const TempTwoModel = () => {
     const [messageList, setMessageList] = useState([{}]);
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
-    const [chatInput, setChatInput] = useState("");
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
     // const dispatch = useDispatch();
