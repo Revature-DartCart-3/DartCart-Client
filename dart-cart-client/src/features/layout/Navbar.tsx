@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import useLocalStorage from "use-local-storage";
+
 import { logout } from "../../common/slices/authSlice";
 import { clearCart } from "../../common/slices/cartSlice";
 import { RootState } from "../../common/types";
+
+import Navbar from 'react-bootstrap/Navbar'
 
 const Nav = (props) => {
   const dispatch = useDispatch();
@@ -26,6 +28,9 @@ const Nav = (props) => {
   };
 
   return (
+   
+
+//
     <nav className="navbar-header" >
       <ul
         className="navbar-nav mr-auto link-container"
@@ -92,6 +97,7 @@ const Nav = (props) => {
           </>
         ) : (
           <>
+
             <li className="nav-item-mb-3 nav-item">
               <Link to="/" className="text-reset nav-link">
                 Home
@@ -106,12 +112,31 @@ const Nav = (props) => {
               <Link to="/register" className="text-reset nav-link">
                 Register
               </Link>
+             
             </li>
+    <li className="nav-item-mb-3 nav-item">
+    <div className="collapse" id="navbarToggleExternalContent">
+    <div className="bg-dark p-4">
+      <h4 className="text-white">Collapsed content</h4>
+      <span className="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav className="navbar navbar-dark bg-dark">
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+    </li>
           </>
+          
         )}
+ 
       </ul>
+   
     </nav>
-  );
+   
+);
 };
 
 export default Nav;
