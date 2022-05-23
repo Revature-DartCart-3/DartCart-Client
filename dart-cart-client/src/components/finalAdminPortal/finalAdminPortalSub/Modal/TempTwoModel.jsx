@@ -7,8 +7,6 @@ import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 
 
-
-
 const TempTwoModel = () => {
 
     const [modal, setModal] = useState(false);
@@ -88,7 +86,7 @@ const TempTwoModel = () => {
                         >
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
-<<<<<<< HEAD
+
                                 <h2 className="modal_header-title ">User : name | Techie : name  </h2>
                                 <button
                                     className="admin-techchat-close-button"
@@ -96,9 +94,8 @@ const TempTwoModel = () => {
                                 >
                                     x
                                 </button>
-=======
                                 <h2 className="modal_header-title ">User : {userInfo.username} | Techie : name  </h2>
->>>>>>> db24baf76504a734750e7e59114a6669bb96be09
+
                             </Modal.Header>
                             <Modal.Body className="modal_content">
                                 {messageList.map((message) => (
