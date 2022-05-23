@@ -24,22 +24,23 @@ import ListItem from "./features/list-item/ListItem";
 import ShopPage from "./features/shop-page/ShopPage";
 import SellerHomepage from "./features/seller-homepage/SellerHomepage";
 import Product from "./Models/Product";
-
 import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
-
 import WishList from "./features/wishlist/WishList";
-
+//import SupportApp from "./features/help-center/techSupport";
+import SupportApp from "./features/help-center/Components/SupporApp";
 
 function App() {
-
-  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
 
   const switchTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-  }
+  };
 
   useEffect(() => {
     document.title = "DartCart";
@@ -49,11 +50,11 @@ function App() {
 
   return (
     <div className="App" data-theme={theme}>
-      {theme === 'dark' ?
-        (<input onClick={switchTheme} type="checkbox" name="" checked />)
-        :
-        (<input onClick={switchTheme} type="checkbox" name="" />)
-      }
+      {theme === "dark" ? (
+        <input onClick={switchTheme} type="checkbox" name="" checked />
+      ) : (
+        <input onClick={switchTheme} type="checkbox" name="" />
+      )}
       <BrowserRouter>
         <Provider store={store}>
           <Header />
@@ -67,7 +68,10 @@ function App() {
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/register" element={<UserRegister />}></Route>
-            <Route path="/product-register" element={<ProductRegister />}></Route>
+            <Route
+              path="/product-register"
+              element={<ProductRegister />}
+            ></Route>
             <Route path="/shop-product-add" element={<AddInventory />}></Route>
             <Route path="/signup" element={<SellerRegister />}></Route>
             <Route path="/login" element={<Login />}></Route>
@@ -76,11 +80,12 @@ function App() {
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/display" element={<Display />}></Route>
             <Route path="/userprofile" element={<UserP />}></Route>
+           <Route path="/help" element={<SupportApp />}></Route> 
             <Route
               path="/shop-product/:shop_product_id"
               element={<ShopProductDisplay />}
             ></Route>
-            <Route path="/wishlist" element={<WishList/>}></Route>
+            <Route path="/wishlist" element={<WishList />}></Route>
             <Route
               path="/FeatureProduct/:product_id"
               element={<Product />}
