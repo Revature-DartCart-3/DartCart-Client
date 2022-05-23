@@ -183,3 +183,9 @@ visibility: hidden;
   margin-top: 1vh;
   margin-bottom: 1vh;
 }
+
+.addToCart {
+  width: 70%;
+  display: flex block;
+  justify-content: center;
+}
