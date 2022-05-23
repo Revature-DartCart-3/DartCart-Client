@@ -53,7 +53,7 @@ const TempTwoModel = () => {
                 >
 
                     <Modal
-                            className="modalContainer "
+                            className="modalContainer"
                             show={modal}
                             onHide={closeModal}
                             centered
@@ -61,7 +61,10 @@ const TempTwoModel = () => {
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
                                 <h2 className="modal_header-title ">User : name | Techie : name  </h2>
-                                <button>
+                                <button
+                                    className="admin-techchat-close-button"
+                                    onClick={closeModal}
+                                >
                                     x
                                 </button>
                             </Modal.Header>

@@ -79,6 +79,22 @@
     cursor: pointer;
 }
 
+.admin-techchat-close-button {
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.admin-techchat-close-button:hover {
+    color: slateblue;
+}
+
+
+/*background-color: #364348;*/
+/*font-weight: 600;*/
+/*&:hover {*/
+/*     color: rgba(54, 67, 72, 0.8);*/
+/* */
+
 .clickMe {
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
