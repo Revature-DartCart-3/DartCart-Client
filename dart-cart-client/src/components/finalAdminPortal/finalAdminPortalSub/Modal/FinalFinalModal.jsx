@@ -39,7 +39,7 @@ const FinalFinalModal = ({ show, close, title, children }) => {
           <main className="modal_content">{children}</main>
           <footer className="modal_footer">
 
-            <button className="submit ">Submit</button>
+            <button className="submit">Submit</button>
           </footer>
         </div>
       </div>

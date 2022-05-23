@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {Modal} from "react-bootstrap";
+import {Modal, Form, FormControl} from "react-bootstrap";
 import "./finaModalStyling.css";
 
 const TempTwoModel = () => {
 
     const [modal, setModal] = useState(true);
+    const [show,setShow] = useState("");
 
     const showModal = () => {
             setModal(true);
@@ -18,37 +19,54 @@ const TempTwoModel = () => {
     }
 
 
-
     return (
         <>
-            <section>
-                <button className="clickMe bubbly-button" onClick={showModal}>
-                    User Chat
-                </button>
-            </section>
+            <section className="fade-in-effect">
 
-            <h1 className="test">Text</h1>
 
-            <section className="">
-                <Modal
-                    className="modalContainer fade-in-effect"
-                    show={modal}
-                    onHide={closeModal}
-                    centered
+                <section className="admin-techchat-modal-section">
+                    <button className="clickMe bubbly-button" onClick={showModal}>
+                        User Chat
+                    </button>
+                </section>
+
+                <h1 className="test">Text</h1>
+
+                <section
+                    className={`modalContainer ${show ? "show" : ""} `}
+
+
+
                 >
-                    <Modal.Header>
-                        <h2 className="modal_header-title ">User : name | Techie : name  </h2>
-                    </Modal.Header>
-                    <Modal.Body>
-                        Enter the chat response
-                        {/*{reply}*/}
-                    </Modal.Body>
-                    <Modal.Footer>
-                        {/*submit the respone an add it the existing one*/}
-                        <button className="submit ">Reply</button>
-                    </Modal.Footer>
-                </Modal>
+
+                    <Modal
+                            className="modalContainer fade-in-effect"
+                            show={modal}
+                            onHide={closeModal}
+                            centered
+                        >
+                            <div className="admin-tech-modal">
+                            <Modal.Header className="modal_header">
+                                <h2 className="modal_header-title ">User : name | Techie : name  </h2>
+                            </Modal.Header>
+                            <Modal.Body className="modal_content">
+                                Enter the chat response
+                                {/*{reply}*/}
+                            </Modal.Body>
+                            <Modal.Footer className="modal_footer">
+                                <FormControl
+
+                                />
+                                {/*submit the respone an add it the existing one*/}
+                                <button className="admin-techchat-modal-button submit">Reply</button>
+                            </Modal.Footer>
+                            </div>
+                        </Modal>
+                </section>
+
             </section>
+
+
         </>
     );
 };
