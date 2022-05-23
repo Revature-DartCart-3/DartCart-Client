@@ -36,14 +36,16 @@ const TempTwoModel = () => {
                     onHide={closeModal}
                     centered
                 >
-                    <header className="modal_header">
+                    <Modal.Header>
                         <h2 className="modal_header-title ">title</h2>
 
-                    </header>
-                    <main className="modal_content">children</main>
-                    <footer className="modal_footer">
+                    </Modal.Header>
+                    <Modal.Body>
+                        children
+                    </Modal.Body>
+                    <Modal.Footer>
                         <button className="submit ">Submit</button>
-                    </footer>
+                    </Modal.Footer>
                 </Modal>
             </section>
         </>
