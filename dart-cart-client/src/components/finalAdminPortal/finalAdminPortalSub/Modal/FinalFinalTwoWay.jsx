@@ -1,12 +1,14 @@
 import { useState } from "react";
-import "./modal.scss";
+import "./_modal.scss";
 import Modal from "./FinalFinalModal";
 
-function AdminModal() {
+function FinalFinalTwoWay() {
   const [modal, setModal] = useState(false);
 
-  const Toggle = () => setModal(!modal);
- 
+  // const Toggle = () => setModal(!modal);
+  const Toggle = () => setModal(true);
+
+
   var animateButton = function(e) {
 
     e.preventDefault();
@@ -27,16 +29,18 @@ function AdminModal() {
 
   return (
     <div className="App">
-      <button className="clickMe bubbly-button" onClick={() => Toggle()}>
+      {/*<button className="clickMe bubbly-button" onClick={() => Toggle()}>*/}
+        <button className="clickMe bubbly-button" onClick="">
         Tech Support
       </button>
 
       <Modal show={modal} close={Toggle} title="Tech Support Chat">
         This is modal content for tech support
-        
+
       </Modal>
     </div>
+
   );
 }
 
-export default AdminModal;
+export default FinalFinalTwoWay;
