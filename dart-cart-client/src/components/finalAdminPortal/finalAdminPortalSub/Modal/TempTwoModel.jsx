@@ -39,7 +39,6 @@ const TempTwoModel = () => {
         <>
             <section className="fade-in-effect">
 
-
                 <section className="admin-techchat-modal-section">
                     <button className="clickMe bubbly-button" onClick={showModal}>
                         User Chat
@@ -50,13 +49,10 @@ const TempTwoModel = () => {
 
                 <section
                     className={`modalContainer ${show ? "show" : ""} `}
-
-
-
                 >
 
                     <Modal
-                            className="modalContainer fade-in-effect"
+                            className="modalContainer "
                             show={modal}
                             onHide={closeModal}
                             centered
@@ -64,6 +60,9 @@ const TempTwoModel = () => {
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
                                 <h2 className="modal_header-title ">User : name | Techie : name  </h2>
+                                <button>
+                                    x
+                                </button>
                             </Modal.Header>
                             <Modal.Body className="modal_content">
                                 {messageList.map((message) => (
@@ -75,6 +74,9 @@ const TempTwoModel = () => {
                             </Modal.Body>
                             <Modal.Footer className="modal_footer">
                                 <FormControl
+                                    type=""
+
+
 
                                 />
                                 {/*submit the respone an add it the existing one*/}
@@ -87,7 +89,6 @@ const TempTwoModel = () => {
                 </section>
 
             </section>
-
 
         </>
     );
