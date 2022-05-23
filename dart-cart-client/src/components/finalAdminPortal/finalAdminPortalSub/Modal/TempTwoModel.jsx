@@ -2,14 +2,15 @@ import React, {useState} from 'react';
 import {Modal} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./finaModalStyling.css";
+import FinalTechChat from '../../../FinalTechChat';
 
 
 
 
 const TempTwoModel = () => {
 
-    const [modal, setModal] = useState(true);
-
+    const [modal, setModal] = useState(false);
+    const [messageList, setMessageList] = useState([{}]);
     const showModal = () => {
             setModal(true);
             console.log(modal)
@@ -20,6 +21,18 @@ const TempTwoModel = () => {
         setModal(false);
         console.log("hitting closingModal")
     }
+
+    const callback = (newMessagesArray) => {
+        setMessageList((messageList) => messageList.concat(newMessagesArray));
+    }
+
+    // const RenderMessages = () => {
+    //     return(
+    //     messages.map((message) => {
+    //         <p>{message}</p>
+    //     })
+    //     )
+    // };
 
     return (
         <>
@@ -40,9 +53,14 @@ const TempTwoModel = () => {
                         <h2 className="modal_header-title ">title</h2>
 
                     </header>
-                    <main className="modal_content">children</main>
+                    <main className="modal_content">
+                        {messageList.map((message) => (
+                                <p>{message.content}</p>
+                            ))}
+                        <FinalTechChat messages={messageList} callbackFunction={callback}/>
+
+                    </main>
                     <footer className="modal_footer">
-                        <button className="submit ">Submit</button>
                     </footer>
                 </Modal>
             </section>

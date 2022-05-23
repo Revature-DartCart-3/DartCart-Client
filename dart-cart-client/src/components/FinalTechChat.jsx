@@ -19,43 +19,11 @@ The messages are saved in the messages state.
 function FinalTechChat (props) {
     const [isConnected, setIsConnected] = useState(false);
     const username = "jimmy";//Replace with code to retrieve user Id
-    const [messages, setMessages] = useState([]);
+    //const [messages, callback] = [props.messages, props.callback];
     const [userId, setUserId] = useState(1);
     const [sessionId, setSessionId] = useState(0);
     const [message, setMessage] = useState("My products aren't displaying properly");
-
-
-    //MODAL STATES
-    const [modal, setModal] = useState(false);
-    const [alias, setAlias] = useState('');
-    //ADD THE FORM HANDLERS / STATE INFORMATION / ECT...
-    const [comment, setComment] = useState('');
-    const [showModal, setShowModal] = useState(false);
-
-    //MODAL FUNCTIONS
-    const handleClose = () => {
-        setShowModal(false);
-        console.log(showModal);
-    }
-
-    const handleShow = () => {
-        setShowModal(true);
-        console.log(showModal);
-    }
-
-    const addComment = (event) => {
-        event.preventDefault();
-        axios.post('http://localhost:3001/commentssection', {
-            alias: alias,
-            comment: comment,
-        }).then(() => {
-            setAlias('');
-            setComment('');
-        });
-
-        alert("You concern is being passed to tech support: You are in the queue");
-
-    };
+    const callback = props.callbackFunction;
 
     //WEBSOCKET FUNCTIONS
     var chatMessage = {
@@ -78,13 +46,11 @@ function FinalTechChat (props) {
     const connect =()=>{
         let Sock = new SockJS('http://localhost:9005/ws');
         stompClient = over(Sock);
-        //console.log("**Stomp client assigned" + stompClient.stringify);
         stompClient.connect({}, onConnected, onError);
-        alert("You have been put in a queue. A representative will speak to you soon. Please hold");
     }
 
     const leave = () => {
-        setMessages((messages) => messages.concat({senderName: "Automated System" ,content: "You Have Left The Chat"}));
+        callback({senderName: "Automated System" ,content: "You Have Left The Chat"});
         disconnect();
     }
 
@@ -102,13 +68,14 @@ function FinalTechChat (props) {
         //Listen to users private message socket and store the subscription
         //Subscribe to endpoint  {destination, callback function, id}
         stompClient.subscribe('/user/' + userId + '/private', onPrivateMessage ,{ id: "privateMessaging"});
-        //subscription();
+
         //stompClient.subscribe('/chatroom/techies', onPrivateMessage); //Used for admins to retrieve list of awaiting clients
+
         //Send request for help to techies
-        console.log(chatMessage);
         stompClient.send("/app/help-request", {}, JSON.stringify(chatMessage));
         setIsConnected(true);
     }
+
 
     //Handle the recieving of a private message
     const onPrivateMessage = (payload) => {
@@ -123,10 +90,10 @@ function FinalTechChat (props) {
                 case "Disconnected":
                     disconnect();
                     message.content = "Tech has left the Chat";
-                    setMessages((messages) => messages.concat(message));
+                    props.callbackFunction(message);
+
                     return;
                 case "Created":
-                    console.log("****Room created with sessionId:" + message.sessionId + "****");
                     chatMessage.sessionId = message.sessionId;
                     break;
                 default:
@@ -135,7 +102,7 @@ function FinalTechChat (props) {
             
         }
         //Add message to messages
-        setMessages((messages) => messages.concat(message));
+        props.callbackFunction(message);
     }
 
     //Send message to other user
@@ -144,14 +111,18 @@ function FinalTechChat (props) {
         if (stompClient) {
 
           //Add message to messages
-          setMessages((messages) => messages.concat(chatMessage));
+          callback(message);
           //Send message via socket
           stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
         }
     }
 
+    //handle mounting
+    useEffect(() => {
+        connect();
+    },[])
 
-    //hanldle unmounting
+    //handle unmounting
     useEffect(() => () =>  {
         console.log("**Unmount**");
         disconnect();
@@ -159,88 +130,9 @@ function FinalTechChat (props) {
    
     return(
         <>
-
-
-
-
-        {isConnected ? <button value={"Hello"} onClick={leave}>disconnect</button> : <button onClick={connect}>Connect</button>}
+        {/* {messages}; */}
+        {/* {isConnected ? <button value={"Hello"} onClick={leave}>disconnect</button> : <button onClick={connect}>Connect</button>} */}
         <button value={"Hello"} onClick={sendMessage}>Send Message</button>
-
-        <p>Messages:</p>
-        {messages.map((message) => (
-            <li>{message.senderName}: {message.content}</li>
-        ))}
-
-
-        {/* --------- THIS IS THE ADDED CODE THAT IS TO BE CONNECTED MOMENTARILY-----------*/}
-
-
-            <button className="clickMe bubbly-button" onClick={handleShow}>
-                Tech Support
-            </button>
-
-
-            <Modal
-                className="modal"
-                show={showModal}
-                onHide={handleClose}
-                centered
-            >
-
-                <Modal.Header>
-                    <div className="modal_header">
-                        {/*<button className="modal-close" onClick={() => close()}>*/}
-                        {/*    Close*/}
-
-                        {/*</button>*/}
-                        <h2 className="modal_header-title ">Tech Support Chat</h2>
-                    </div>
-                </Modal.Header>
-                <Modal.Body>
-                    {/*<div className="modal_content">*/}
-                    {/*    {children}*/}
-                    {/*</div>*/}
-                    <Form.Label>
-                        Briefly describe your problems:
-                    </Form.Label>
-                    <Form.Control
-                        className=""
-                        type="text"
-                        name="comment"
-                        placeholder="What is your problem"
-                        required
-                        value={comment}
-                        onChange={(event) => {
-                            setComment(event.target.value);
-                        }}
-                    />
-                </Modal.Body>
-                <Modal.Footer>
-                        <button
-                            className="submit"
-                            type="submit"
-                            onClick={connect}
-                        >
-                            Submit
-                        </button>
-                </Modal.Footer>
-            </Modal>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </>
     )
 }
