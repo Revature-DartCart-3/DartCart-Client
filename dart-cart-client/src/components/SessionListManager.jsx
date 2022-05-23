@@ -23,21 +23,17 @@ function SessionListManager (props) {
 
 
 
-    const onError = (error) => {                                        //      For Stefan
+    const onError = (error) => {
         console.log('Error connecting to socket:' + error);
     }
 
     //Connect to a web Socket
-    const connect =()=>{                                                //      Container For Stefan
+    const connect =()=>{
         let Sock = new SockJS('http://localhost:9005/ws');
-        stompClient = over(Sock);                                       //      For Stefan
+        stompClient = over(Sock);
         //console.log("**Stomp client assigned" + stompClient.stringify);
-        stompClient.connect({}, onConnected, onError);                  //      For Stefan
+        stompClient.connect({}, onConnected, onError);
         
-    }
-
-    const leave = () => {
-        disconnect();
     }
 
     const disconnect = () =>{
@@ -68,6 +64,7 @@ function SessionListManager (props) {
             default:
                 console.log("Unhandled Mesage: " + sessionUpdate);
                 break;
+                
         }
     }
    
