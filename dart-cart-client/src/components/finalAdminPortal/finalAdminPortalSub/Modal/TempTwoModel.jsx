@@ -18,9 +18,11 @@ const TempTwoModel = () => {
 
     const closeModal = () => {
         setModal(false);
+        setMessageList([{}]);
         console.log("hitting closingModal")
     }
 
+    //Modify Message list using new message from tech chat socket
     const callback = (newMessagesArray) => {
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
@@ -67,7 +69,7 @@ const TempTwoModel = () => {
                                 {messageList.map((message) => (
                                     <p>{message.content}</p>
                                 ))}
-                                <FinalTechChat messages={messageList} callbackFunction={callback}/>
+                                
                                 Enter the chat response
                                 {/*{reply}*/}
                             </Modal.Body>
@@ -76,7 +78,9 @@ const TempTwoModel = () => {
 
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                <button className="admin-techchat-modal-button submit">Reply</button>
+                                <button className="admin-techchat-modal-button submit">
+                                    <FinalTechChat messages={messageList} callbackFunction={callback}/>
+                                </button>
                             </Modal.Footer>
                             </div>
                         </Modal>
