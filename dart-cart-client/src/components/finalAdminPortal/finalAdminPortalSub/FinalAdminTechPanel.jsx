@@ -13,21 +13,22 @@ const FinalAdminTechPanel = () => {
     const [deleteChat, setDeleteChat] = useState([]);
 
     useEffect(() => {
-
+        console.log("Rendering Component")
         getAllAvailableChats();
 
     }, [])
 
 
-    async function getAllAvailableChats() {
-        await axios.get("http://localhost:9005/help-request-list")
+    function getAllAvailableChats() {
+        axios.get("http://localhost:9005/help-request-list")
             .then( response => {
                 setSessionList(response.data);
+                console.log(response.data)
             });
     }
 
-    async function assignTechToChat() {
-        await axios.put("http://localhost:9005/assign-tech")
+    function assignTechToChat() {
+        axios.put("http://localhost:9005/assign-tech")
             .then((response) => {
                 setEnterChat(response.data);
             })
@@ -53,9 +54,9 @@ const FinalAdminTechPanel = () => {
                        <thead>
                         <tr>
                             <th><p>Enter</p></th>
-                            <th><p>User</p></th>
-                            <th><p>Session</p></th>
-                            <th><p>Tech</p></th>
+                            <th><p>Session ID</p></th>
+                            <th><p>User ID</p></th>
+                            <th><p>Username</p></th>
                             <th><p>Delete</p></th>
                         </tr>
                        </thead>
@@ -65,12 +66,13 @@ const FinalAdminTechPanel = () => {
                                 return (
                                     <tr key={list.sessionId}>
                                         {/*<-------- enter button response*/}
-                                        <td classname="admin-tech-panel-button">
+                                        <td className="admin-tech-panel-button">
                                             <button
-                                                onClick={assignTechToChat(list.sessionId)}
+                                                value={JSON.stringify(list)}
+                                                onClick={assignTechToChat}
                                                 type="submit"
                                             >
-                                                <AiOutlineEnter/>
+                                                {/* <AiOutlineEnter/> */}
                                             </button>
                                         </td>
                                         <td>{list.sessionId}</td>
@@ -78,7 +80,8 @@ const FinalAdminTechPanel = () => {
                                         <td>{list.client.username}</td>
                                         <td className="admin-tech-panel-button">
                                             <button
-                                                onClick={disconnectConversation(list.sessionId)}
+                                            value={JSON.stringify(list)}
+                                                onClick={disconnectConversation}
                                                 type="submit"
                                             >
                                                 <BsAlignEnd/>
