@@ -61,13 +61,13 @@ export function ShopProductCard({ Product }: IShopProductCard) {
         <div className=" card bg-black text-warning" style={{ height: "8rem", width: "18rem" }}>
 
           <button
-            className="btn stretched-link addToCart"
+            className="btn addToCart"
             value={Product?.id}
             onClick={(e) => handleAddtoCart(e)}>
             Add {Product?.name} to cart
           </button>
 
-          <button id="addToWishList" className="btn stretched-link  addToWishList" onClick={async () => {
+          <button id="addToWishList" className="btn addToWishList" onClick={async () => {
             setNotice(await addToWL(Product?.id));
             setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
           }
