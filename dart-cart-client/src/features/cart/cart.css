@@ -1,15 +1,117 @@
 .form-control:read-only {
-    background-color: var(--background);
-    font-size: 20px;
-    color: white;
-
+    background-color: var(--secondary);
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 600;
+    height: 4vh;
+    width: 100;
 }
 
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif
+}
+
+.card-buttons {
+    display: flex;
+    width: 100;
+    margin-top: .5vh;
+    justify-content: stretch;
+}
 .card {
     color: var(--background);
 }
 
 .button1 {
-    margin: 5px;
-    padding: 5px;
+    display: flex;
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+    margin-right: .2vw;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--primary);
+    
+}
+
+.button3 {
+    display: flex;
+    width:15%;
+    align-items: center;
+    justify-content: center;
+    margin-right: .2vw;
+    height: 5vh;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--primary);
+    
+}
+
+.button2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    height: 5vh;
+    margin-right: .2vw;
+    font-size: 20px;
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--primary);
+    
+}
+
+.button4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36%;
+    height: 5vh;
+    font-size: 20px;
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--primary);
+    
+}
+
+.cart-card-title {
+    font-weight: bold;
+}
+
+.cart-card {
+    width:70%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+    border-radius: 10px;
+    border: 2px solid var(--secondary);
+    padding: 1vh;
+}
+
+.cart-cardImg {
+    width: 100%;
+}
+
+.cart-card p {
+    font-size: large;
+}
+
+.cart-total {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.cart-checkout {
+    font-size: x-large;
+}
+
+.cart-card-text, .cart-card-total {
+    font-weight: 600;
 }

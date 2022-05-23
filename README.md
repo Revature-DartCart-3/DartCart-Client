@@ -77,11 +77,13 @@ Your browser will automaticall open for you, and you are all set.
   
 * Add Products
   * Once a shop is created, items can be added to the shop with a corresponding image, name and description.
-  * ADD IMAGE OF ADD PRODUCTS PAGE
+  ![AddProducts](./dart-cart-client/src/imgs/readme/add-products.png)
 
 * Add inventory
   * Once there are products in a shop, the amount of the items to sell and any discounts can be applied.
-  * ADD IMAGE OF INVENTORY PAGE
+  ![AddInventory](./dart-cart-client/src/imgs/readme/add-inventory.png)
+  
+  ![Footer](./dart-cart-client/src/imgs/readme/footer.png)
 
 * Cart
   * Once a user has decided which items to purchase they can proceed to their cart. Here the user has the options of increasing or lowering the quantity of the items they wish to purchase. To save this quantity the update button must be clicked. If a user wishes to remove an item from their cart they can click the delete button.
