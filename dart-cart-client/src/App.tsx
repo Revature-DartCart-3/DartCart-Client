@@ -84,7 +84,7 @@ function App() {
           <input onChange={switchTheme} type="checkbox" name="theme" checked={theme === 'dark'} />
         </div>
       </Provider>
-    </BrowserRouter>   
+    </BrowserRouter>
   );
 }
 

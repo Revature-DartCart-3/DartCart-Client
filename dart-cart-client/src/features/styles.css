@@ -3,24 +3,26 @@
   color: black;
 }
 
-
-
 .navbar-custom .navbar-text {
   color: black;
 }
+
 .image-container {
   text-align: left;
   margin: none;
 }
+
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
   color: black;
 }
+
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
   color: black;
 }
+
 .textarea {
   height: 200px;
 }

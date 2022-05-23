@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope');
+@import url('https://fonts.googleapis.com/css?family=Just+Another+Hand');
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+:root {
+  --primary: #57b6a4;
+  --primary-light: #95CFC4;
+  --secondary: #F6B07E;
+  --contrast: #EC8876;
+  --red: #d90429;
+  --darkred: #ba181b;
+  --burgandy: #9B2226;
+  --burgandy2: #660708;
+  --hotpink: #e91e63;
+  --pink: #da627d;
+  --bs-danger: #e56b6f;
+  --rose: #F55767;
+  --blush: #f3a4b5;
+  --medpink: #c1666b;
+  --peach: #dd9787;
+  --orange: #f85e00;
+  --burntorange: #bc3908;
+  --copper: #BC6C25;
+  --yellow2: #e59500;
+  --neonyellow: #FDC800;
+  --yellow: #f5cb5c;
+  --cream: #eae0d5;
+  --beige: #d6cfcb;
+  --brown: #5e503f;
+  --greenbeige: #b7b7a4;
+  --mint: #d8e2dc;
+  --lightolive: #a5a58d;
+  --green2: #a7c957;
+  --green: #adc178;
+  --neongreen: #a5be00;
+  --grass: #6a994e;
+  --darkgreen: #386641;
+  --olive: #606C38;
+  --darkgreen: #283618;
+  --darkteal: #335c67;
+  --darkteal2: #284b63;
+  --blue: #299EF3;
+  --blue2: #3EB8F4;
+  --turquoise: #00bcd4;
+  --paleblue: #669bbc;
+  --babyblue: #98c1d9;
+  --darkblue: #1F3A63;
+  --darkblue2: #172b4d;
+  --navy: #3d5a80;
+  --cornblue: #a1b5d8;
+  --bluegrey: #738290;
+  --brightblue: #5e72e4;
+  --greylilac: #8d99ae;
+  --indigo: #4a4e69;
+  --indigo2: #3d405b;
+  --darkindigo: #2b2d42;
+  --fuschia: #5f0f40;
+  --barney: #44224B;
+  --purple: #6a4c93;
+  --brightpurple: #8965e0;
+  --purple2: #6d597a;
+  --prune: #6d6875;
+  --grey2: #B0A7B2;
+  --grey3: #8898aa;
+  --palegrey: #C3BCC4;
+  --grey: #737373;
+  --lightgrey: #d9d9d9;
+  --light: #F9FAFD;
+  --light2: #ced4da;
+  --lighter: #e9ecef;
+  --darkgrey: #333533;
+  --dark: #1e2d2f;
+  --dark2: #212529;
+  --dark3: #212529;
+  --GrandstanderFont: 'Grandstander', cursive;
+  --PavificoFont: 'Pacifico', cursive;
+  --RanchoFont: 'Rancho', cursive;
+  --DancingFont: 'Dancing Script', cursive;
+  --AnnieTelescopeFont: 'Annie Use Your Telescope', cursive;
+  --JustAnptherHandFont: 'Just Another Hand', cursive;
+  --HiMelodyFont: 'Hi Melody', cursive;
+  --IndieFlowerFont: 'Indie Flower', cursive;
+  --PermanentMarkerFont: 'Permanent Marker', cursive;
+  --GloriaFont: 'Glorio Hollelujah', cursive;
+  --PatrickHandFont: 'Patrick Hand', cursive;
+}
+
+
+.selectedbutton {
+  width: 50%;
+  color: var(--primary);
+  text-align: center;
+  background: transparent !important;
+  border: 0;
+  outline: 0;
+  letter-spacing: 1.5px;
+}
+.unselectedbutton {
+  width: 50%;
+  background: var(--beige);
+  color: var(--dark3);
+  border: 0;
+  outline: 0;
+  text-align: center;
+  opacity: 20%;
+  letter-spacing: 1.5px;
+}
+.unselectedbutton:hover {
+  background: var(--primary-light);
+  color: white;
+}

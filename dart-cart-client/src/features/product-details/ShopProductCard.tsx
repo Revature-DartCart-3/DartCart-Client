@@ -26,7 +26,7 @@ function addToWishList(productId){
       return "Cannot add to wishlist";
     })
   }
-  
+
 async function addToWL(productId){
   const y = await addToWishList(productId);
   return React.createElement("span", {class : "wishListNotice  youCanSeeMe"}, y);
@@ -53,7 +53,7 @@ export function ShopProductCard({ Product }: IShopProductCard) {
       </Link>
       {JSON.stringify(authHeader()).length > 100 ? (
         <div className=" card bg-black text-warning" style={{ height: "4rem", width: "18rem" }}>
-          
+
           <button id="addToWishList" className="btn stretched-link  addToWishList" onClick={async () => {
             setNotice(await addToWL(Product?.id));
             setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
