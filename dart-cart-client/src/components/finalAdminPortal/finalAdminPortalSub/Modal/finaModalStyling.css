@@ -48,7 +48,13 @@
 
 .modal-content {
     background-color: transparent;
+    /*width: 600px;*/
+    /*height: 150px;*/
+    overflow: auto;
+    text-align: justify;
+    padding: 20px;
 }
+
 
 .modalContainer .show {
     visibility: visible;
