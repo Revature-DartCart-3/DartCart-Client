@@ -9,6 +9,7 @@ const TempTwoModel = () => {
     const [messageList, setMessageList] = useState([{}]);
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
+    const [chatInput, setChatInput] = useState("");
 
     const showModal = () => {
             setModal(true);
@@ -79,7 +80,7 @@ const TempTwoModel = () => {
                                 />
                                 {/*submit the respone an add it the existing one*/}
                                 <button className="admin-techchat-modal-button submit">
-                                    <FinalTechChat messages={messageList} callbackFunction={callback}/>
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput}/>
                                 </button>
                             </Modal.Footer>
                             </div>
