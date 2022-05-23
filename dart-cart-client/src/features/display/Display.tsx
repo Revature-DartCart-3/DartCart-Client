@@ -13,6 +13,7 @@ import Featured_Products from "../Featured_Products";
 import authHeader from '../authentication/AuthHeader';
 import FeaturedProduct from '../../Models/featured_product';
 import axios from 'axios';
+import { addToCart } from "../../common/slices/cartSlice";
 
 const MOCK_SERVER = process.env.REACT_APP_API_URL;
 
@@ -43,11 +44,17 @@ useEffect(fetchData, []);
     if (status === "idle") dispatch(fetchShopProducts("")); // places return value into REDUX global state
   }, []);
 
+  console.log(ReduxShopProducts)
+
+  function handleAddtoCart(e) {
+    dispatch(addToCart(e.target.value));
+  }
+
   return (
     <>
     <h1>Featured Products</h1>
       <div className="ProductCardContainer" >
-      
+
       {anyThing.map(elem => {
 
         return <div key={elem.id}><FeaturedProduct
@@ -55,7 +62,7 @@ useEffect(fetchData, []);
 
                 productName={elem.product.name} id={elem.product.id} discprice={elem.price}
                 imageUrl={elem.product.imageURL} /></div>
-               
+
         })}
       </div>
 
@@ -63,7 +70,12 @@ useEffect(fetchData, []);
         {status === "success" ? (
           (ReduxShopProducts.length &&
             ReduxShopProducts.map((Product, i) => {
-                return <div key={`sp${Product.id}`}><ShopProductCard Product={Product}></ShopProductCard></div>;
+                return <div><ShopProductCard Product={Product}></ShopProductCard><button
+                className="btn btn-primary addToCart"
+                value={ReduxShopProducts[i].id}
+                onClick={(e) => handleAddtoCart(e)}>
+                Add {ReduxShopProducts[i].name} to cart
+              </button></div>;
             })) || (
             <>
               <h1 style={{ color: "white" }}>No Items Found</h1>
