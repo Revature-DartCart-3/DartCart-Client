@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./modal.scss";
-import Modal from "./Modal";
+import "./Modal/modal.scss";
+import Modal from "./Modal/Modal";
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -26,12 +26,12 @@ function App() {
   }
 
   return (
-    <div className="">
+    <div className="App">
       <button className="clickMe bubbly-button" onClick={() => Toggle()}>
         Tech Support
       </button>
 
-      <Modal  show={modal} close={Toggle} title="Tech Support Chat">
+      <Modal show={modal} close={Toggle} title="Tech Support Chat">
         This is modal content for tech support
         
       </Modal>

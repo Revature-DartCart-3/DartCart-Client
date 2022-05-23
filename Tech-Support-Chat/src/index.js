@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import "./index.css";
-import App from "./TechChat/TechChat";
+import AdminPage from "./AdminModal";
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AdminPage />
   </React.StrictMode>,
   document.getElementById("root")
 );
