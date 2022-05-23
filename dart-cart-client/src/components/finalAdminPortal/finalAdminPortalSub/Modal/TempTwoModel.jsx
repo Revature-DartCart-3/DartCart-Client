@@ -16,6 +16,7 @@ const TempTwoModel = () => {
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
     const [chatInput, setChatInput] = useState("");
+    const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
     // const dispatch = useDispatch();
     // const [chatname, setChatname] = useState("");
@@ -32,6 +33,7 @@ const TempTwoModel = () => {
             setModal(true);
             console.log(modal)
         console.log("hitting showModal")
+        console.log("USER:" + userInfo);
     }
 
     const closeModal = () => {
@@ -93,6 +95,7 @@ const TempTwoModel = () => {
                                 >
                                     x
                                 </button>
+
                             </Modal.Header>
                             <Modal.Body className="modal_content">
                                 {messageList.map((message) => (
@@ -111,9 +114,9 @@ const TempTwoModel = () => {
                                     onChange={chatInputHandler}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                <button className="admin-techchat-modal-button submit">
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput}/>
-                                </button>
+                                {/* <button className="admin-techchat-modal-button submit"> */}
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput} userInfo={userInfo}/>
+                                {/* </button> */}
                             </Modal.Footer>
                             </div>
                         </Modal>

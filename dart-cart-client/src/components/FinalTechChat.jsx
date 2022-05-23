@@ -24,14 +24,15 @@ function FinalTechChat (props) {
     const [sessionId, setSessionId] = useState(0);
     const [message, setMessage] = useState("My products aren't displaying properly");
     const callback = props.callbackFunction;
+    const userInfo = props.userInfo;
 
     //WEBSOCKET FUNCTIONS
     var chatMessage = {
         sessionId: sessionId,
         type: "Message",
-        senderId: userId,
+        senderId: userInfo.id,
         recipientId: 1,
-        senderName: "jimmy",
+        senderName: userInfo.username,
         recipientName: "admin",
         content: props.ChatInput
       };
@@ -44,6 +45,7 @@ function FinalTechChat (props) {
 
     //Connect to a web Socket
     const connect =()=>{
+        console.log(userInfo)
         let Sock = new SockJS('http://localhost:9005/ws');
         stompClient = over(Sock);
         stompClient.connect({}, onConnected, onError);
