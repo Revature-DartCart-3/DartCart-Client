@@ -1,6 +1,6 @@
 import { useState } from "react";
-///import "./modal.scss";
-import Modal from "./Modal";
+import "./modal.scss";
+import Modal from "./FinalFinalModal";
 
 function AdminModal() {
   const [modal, setModal] = useState(false);

@@ -67,7 +67,7 @@ export default function AdminPage() {
             </button>
           </div>
         </div>
-     {/* <AdminModal/> */}
+  
         <canvas className="my-4 w-100" id="myChart" width={900} height={380} />
         <h2>Section title</h2>
         <div className="table-responsive">
