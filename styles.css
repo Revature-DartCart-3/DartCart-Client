@@ -1,0 +1,78 @@
+.navbar-custom {
+    background-color: transparent;
+    background-image:linear-gradient(to right,  rgba(255,255, 255,1),rgba(0,0,0,1));
+    color: white;
+}
+ 
+
+.footer-info {
+    padding: 1em;
+    color: #198754;
+}
+
+.fa {
+   padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+  .fa-pinterest {
+    background: #cb2027;
+    color: white;
+  }
+  
+  .fa-snapchat-ghost {
+    background: #fffc00;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+  .fa-linkedin {
+    background: #007bb5;
+    color: white;
+  }
+
+.navbar-custom .navbar-text {
+    color: white;
+}
+
+.image-container{
+  text-align: left;
+  margin: none;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: greenyellow;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: greenyellow;
+}
+
+.textarea {
+  height:200px;
+}
