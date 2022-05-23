@@ -3,27 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-html {
-    overflow: hidden;
+
+.modalContainer .modal_header-title,
+.modalContainer .modal-header,
+.modalContainer .modal-content,
+.admin-techchat-modal-button {
+    color: white;
+    text-shadow: black 2px 3px 1px;
 }
-body {
+
+.admin-techchat-modal-section {
     font-family: "Poppins", sans-serif;
     background-size: cover;
     background-attachment: fixed;
+    overflow: hidden;
 }
-button {
-    border: none;
-    width: auto;
-    height: auto;
-    outline: none;
-    cursor: pointer;
-}
-.clickMe {
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 700;
-}
+
 .modalContainer {
     position: fixed;
     top: 0;
@@ -33,93 +28,85 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-image: url("purple.jpg");
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
+    height: auto;
+    background-color: transparent;
 }
-.modalContainer .modal {
-    background-color: rgba(255, 255, 255, 0.35);
+
+.admin-tech-modal {
     width: calc(15rem + 15vw);
     height: auto;
     padding: 2rem;
     border-radius: 20px;
+    background-color: transparent;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.4);
-    transform: translateY(-600px);
-    transition: all 0.4s ease;
 }
-.modalContainer .modal_header {
-    position: relative;
-    border-bottom: 4px solid #000;
-}
-.modalContainer .modal_header-title {
-    text-align: center;
-}
-.modalContainer .modal_header .close {
-    border-radius: 8px;
-    color: #fff;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: transparent;
-}
-.modalContainer .modal_header .close img {
-    width: 1rem;
-    height: auto;
-    transition: all 0.2s ease;
-}
-.modalContainer .modal_header .close:hover {
-    background-color: rgba(54, 67, 72, 0.8);
-    border-radius: 8px;
-}
-.modalContainer .modal_content {
-    border-bottom: 4px solid #000;
-    padding: 12rem 0;
-}
-.modalContainer .modal_footer {
-    padding: 2rem 0;
-    padding-bottom: 0;
-}
-.modalContainer .modal_footer .bar {
-    width: auto;
-    height: auto;
-}
-.modalContainer .modal_footer button {
-    float: right;
-    padding: 0.5rem;
-    border-radius: 8px;
-}
-.modalContainer .modal_footer .submit {
-    margin-right: 1rem;
+
+.modal-content {
     background-color: transparent;
-    color: #fff;
 }
-.modalContainer .modal_footer .submit:hover {
-    background-color: rgba(54, 67, 72, 0.8);
-}
-.modalContainer .modal_footer .modal-close {
-    background-color: #364348;
-    font-weight: 600;
-}
-.modalContainer .modal_footer .modal-close:hover {
-    color: rgba(54, 67, 72, 0.8);
-}
-.modalContainer.show {
+
+.modalContainer .show {
     visibility: visible;
     opacity: 1;
 }
-.modalContainer.show .modal {
-    transform: translateY(0);
+.modalContainer .show .admin-tech-modal {
+    visibility: visible;
+    opacity: 1;
 }
-input {
+
+.admin-techchat-modal-input {
     line-height: 1.5;
     width: 100%;
     font-size: 1.5rem;
     background: transparent;
-    color: white;
+    color: red;
     outline: none;
     border: none;
     padding: 0 10px;
+    text-shadow: black 2px 3px 1px;
 }
- 
+
+.admin-techchat-modal-button{
+    border: none;
+    width: auto;
+    height: auto;
+    outline: none;
+    cursor: pointer;
+}
+
+.clickMe {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/*keystroke animations*/
+
+.fade-in-effect {
+    animation: fade-in-animation .6s;
+}
+
+@keyframes fade-in-animation {
+    0%{
+        opacity: 0;
+    }
+    25% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .75;
+    }
+    /*75%{*/
+    /*    opacity: .75;*/
+    /*}*/
+    100%{
+        opacity: 1;
+    }
+
+}
