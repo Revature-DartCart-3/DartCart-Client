@@ -7,15 +7,12 @@ import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 
 
-
-
 const TempTwoModel = () => {
 
     const [modal, setModal] = useState(false);
     const [messageList, setMessageList] = useState([{}]);
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
-    const [chatInput, setChatInput] = useState("");
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
     // const dispatch = useDispatch();
@@ -88,6 +85,7 @@ const TempTwoModel = () => {
                         >
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
+
                                 <h2 className="modal_header-title ">User : name | Techie : name  </h2>
                                 <button
                                     className="admin-techchat-close-button"
@@ -95,6 +93,7 @@ const TempTwoModel = () => {
                                 >
                                     x
                                 </button>
+                                <h2 className="modal_header-title ">User : {userInfo.username} | Techie : name  </h2>
 
                             </Modal.Header>
                             <Modal.Body className="modal_content">
