@@ -1,15 +1,16 @@
 import ReactDom from "react-dom";
-///import "./modal.scss";
+///import "./_modal.scss";
 import Axios from 'axios';
 import { useState } from 'react';
+import axios from "axios";
 
-const Modal = ({ show, close, title, children }) => {
+const FinalFinalModal = ({ show, close, title, children }) => {
   const [alias, setAlias] = useState('');
   const [comment, setComment] = useState('');
 
   const addComment = (event) => {
     event.preventDefault();
-    Axios.post('http://localhost:3001/commentssection', {
+    axios.post('http://localhost:3001/commentssection', {
       alias: alias,
       comment: comment,
     }).then(() => {
@@ -37,16 +38,7 @@ const Modal = ({ show, close, title, children }) => {
           </header>
           <main className="modal_content">{children}</main>
           <footer className="modal_footer">
-          <input
-              className="form-control bar"
-              type="text"
-              name="comment"
-              required
-              value={comment}
-              onChange={(event) => {
-                setComment(event.target.value);
-              }}
-            />
+
             <button className="submit ">Submit</button>
           </footer>
         </div>
@@ -57,4 +49,4 @@ const Modal = ({ show, close, title, children }) => {
   );
 };
 
-export default Modal;
+export default FinalFinalModal;

@@ -35,6 +35,7 @@ import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/
 import AdminComments from "./features/TechChatModal/AdminComments";
 import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalTechChat from "./components/FinalTechChat";
+import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
 
 
 function App() {

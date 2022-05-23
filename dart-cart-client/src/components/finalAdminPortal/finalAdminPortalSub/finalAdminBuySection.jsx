@@ -7,7 +7,7 @@ const FinalAdminBuySection = () => {
 
             <h1> Admin Buy</h1>
 
-            <AdminPage/>
+            {/*<AdminPage/>*/}
 
         </>
     );
