@@ -3,9 +3,6 @@ import {Modal} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./finaModalStyling.css";
 
-
-
-
 const TempTwoModel = () => {
 
     const [modal, setModal] = useState(true);
@@ -21,14 +18,15 @@ const TempTwoModel = () => {
         console.log("hitting closingModal")
     }
 
+
+
     return (
         <>
             <section>
                 <button className="clickMe bubbly-button" onClick={showModal}>
-                    ****************
+                    User Chat
                 </button>
             </section>
-
 
             <section>
                 <Modal
@@ -37,14 +35,15 @@ const TempTwoModel = () => {
                     centered
                 >
                     <Modal.Header>
-                        <h2 className="modal_header-title ">title</h2>
-
+                        <h2 className="modal_header-title ">User : name | Techie : name  </h2>
                     </Modal.Header>
                     <Modal.Body>
-                        children
+                        Enter the chat response
+                        {/*{reply}*/}
                     </Modal.Body>
                     <Modal.Footer>
-                        <button className="submit ">Submit</button>
+                        {/*submit the respone an add it the existing one*/}
+                        <button className="submit ">Reply</button>
                     </Modal.Footer>
                 </Modal>
             </section>
