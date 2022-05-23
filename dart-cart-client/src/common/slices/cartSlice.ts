@@ -4,6 +4,7 @@ import axios from 'axios'
 import { CartItem, CheckoutProps, User } from '../types'
 import authHeader from "../../features/authentication/AuthHeader";
 import { RootState } from '../store';
+import { act } from 'react-dom/test-utils';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -64,7 +65,8 @@ export const addInvoice = createAsyncThunk(
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: cartAdapater.getInitialState({
-        status: "idle"
+        status: "idle",
+        total: 0
     }),
     reducers: {
         updateCartItem(state, action) {
@@ -76,6 +78,9 @@ export const cartSlice = createSlice({
         },
         clearCart(state) {
             cartAdapater.removeMany(state, state.ids)
+        },
+        updateTotal(state, action) {
+            state.total = (action.payload);
         }
     },
     extraReducers: (builder) => {
@@ -99,7 +104,7 @@ export const cartSlice = createSlice({
     }
 });
 
-export const { clearCart, updateCartItem } = cartSlice.actions;
+export const { clearCart, updateCartItem, updateTotal } = cartSlice.actions;
 export default cartSlice.reducer;
 
 export const { selectAll: selectAllCartItems, selectById: selectCartItemById } = cartAdapater.getSelectors((state: RootState) => state.cart)
@@ -107,4 +112,9 @@ export const { selectAll: selectAllCartItems, selectById: selectCartItemById } =
 export const selectStatus = createSelector(
     (state: RootState) => state.cart,
     (cart) => cart.status
+);
+
+export const selectTotal = createSelector (
+    (state: RootState) => state.cart,
+    (cart) => cart.total
 );

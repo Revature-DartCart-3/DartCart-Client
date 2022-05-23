@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,  } from 'react';
+import { selectTotal } from '../../common/slices/cartSlice';
+import { useSelector } from "react-redux";
 
 function PayInstallments() {
     const [value, setValue] = useState(1)
-    const totalPrice = 3000;
+    const totalPrice =  useSelector(selectTotal);
     const [instalPrice, setInstalPrice] =useState(3000);
     const handleChange = (event) => {
         setValue(event.target.value);
         console.log(event.target.value)
+        
       };
     useEffect(() =>{
+        console.log(totalPrice)
      setInstalPrice(totalPrice/value);
     },[value]); 
+
 
       
 

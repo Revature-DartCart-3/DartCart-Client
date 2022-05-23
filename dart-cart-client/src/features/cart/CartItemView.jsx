@@ -68,6 +68,12 @@ const CartItemView = ({ id }) => {
         if(item) dispatch(updateCart(item))
     }
 
+    const total = (item?.shopProduct.price * item?.quantity);
+
+
+
+
+
 
     useEffect(() => {
         
@@ -84,6 +90,7 @@ const CartItemView = ({ id }) => {
                         <h4 className="card-title">{item?.shopProduct.product.name}</h4>
                         <p className="card-text">{item?.shopProduct.product.description}</p>
                         <p className="card-text">${item?.shopProduct.price}</p>
+                        <p className="">Total: ${ total }</p>
                         <input className="form-control" type="number" value={item?.quantity} onChange={e => handleItemUpdate(e.target.value)} min={1} readOnly/>
                         <button className="button1" value={item?.quantity} onClick={e => handleQuantityAdd(e.target.value)}> + </button>
                         <button className="button1" value={item?.quantity} onClick={e => handleQuantitySubtract(e.target.value)}> - </button>

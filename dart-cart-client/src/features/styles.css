@@ -1,12 +1,6 @@
-body {
-  width: 100%;
-  background-color: #72A4C2;
-  margin: 30px;
-  padding:30px;
-  box-sizing: border-box;
-  font-family: 'spartan', sans-serif;
 
-}
+
+
 #product1{
   text-align: center;
 }
@@ -69,7 +63,7 @@ body {
 
 .footer-info {
     padding: 1em;
-    color: #198754;
+    color: var(--orange);
 }
 
 .fa {

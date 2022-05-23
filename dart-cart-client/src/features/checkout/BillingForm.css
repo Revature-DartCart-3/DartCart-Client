@@ -42,7 +42,7 @@
     height: 60px;
     padding-left: 20px;
     vertical-align: middle;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .form-control:focus {

@@ -1,12 +1,4 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-        "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: var(--text-primary);
-    background-color: var(--background);
-}
+
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -48,4 +40,12 @@ code {
 }
 .error_rp_email_reset {
     margin: 100px 0px;
+}
+
+a.text-reset{
+    text-decoration: none;
+}
+
+.center{
+    text-align: center;
 }
