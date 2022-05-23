@@ -80,22 +80,23 @@ const CartItemView = ({ id }) => {
     }, [])
     
     return  (
-        <div className="card">
+        <div className="cart-card">
             <div className="row no-gutters">
                 <div className="col-3">
-                    <img className="cardImg" src={item?.shopProduct.product.imageURL}/>
+                    <img className="cart-cardImg" src={item?.shopProduct.product.imageURL}/>
                 </div>
                 <div className="col-9">
                     <div className="card-block px-2" style={{ textAlign: 'left' }}>
-                        <h4 className="card-title">{item?.shopProduct.product.name}</h4>
-                        <p className="card-text">{item?.shopProduct.product.description}</p>
-                        <p className="card-text">${item?.shopProduct.price}</p>
-                        <p className="">Total: ${ total }</p>
+                        <h4 className="cart-card-title">{item?.shopProduct.product.name}</h4>
+                        <p className="cart-card-text">Cost: ${item?.shopProduct.price}</p>
+                        <p className="cart-card-total">Item Total: ${ total }</p>
                         <input className="form-control" type="number" value={item?.quantity} onChange={e => handleItemUpdate(e.target.value)} min={1} readOnly/>
+                        <div className="card-buttons">
                         <button className="button1" value={item?.quantity} onClick={e => handleQuantityAdd(e.target.value)}> + </button>
-                        <button className="button1" value={item?.quantity} onClick={e => handleQuantitySubtract(e.target.value)}> - </button>
-                        <button className="button1" value={item?.quantity} onClick={e => handleDelete(e.target.value)}> Delete </button>
-                        <button onClick={saveQuantity}>Update</button>
+                        <button className="button3" value={item?.quantity} onClick={e => handleQuantitySubtract(e.target.value)}> - </button>
+                        <button className="button2" value={item?.quantity} onClick={e => handleDelete(e.target.value)}> Delete </button>
+                        <button className="button4" onClick={saveQuantity}>Update</button>
+                        </div>
                     </div>
                 </div>
             </div>

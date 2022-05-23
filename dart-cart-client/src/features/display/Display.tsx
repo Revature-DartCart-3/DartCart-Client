@@ -49,7 +49,7 @@ useEffect(fetchData, []);
       <div className="ProductCardContainer" >
       
       {anyThing.map(elem => {
-            return <div className='card-group'><FeaturedProduct
+            return <div><FeaturedProduct
                 key={elem.id} price={elem.price} discount={elem.discount}
                 productName={elem.product.name} id={elem.product.id} discprice={elem.price}
                 imageUrl={elem.product.imageURL} /></div>

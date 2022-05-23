@@ -39,8 +39,8 @@ const Cart = () => {
                     return <CartItemView key={item.id} {...item} />
                 })
             }
-            <p>Cart Total: ${ totalTotal }</p>
-            <Link to="/checkout">Checkout</Link>
+            <p className="cart-total">Cart Total: ${ totalTotal }</p>
+            <Link to="/checkout" className="cart-checkout">Checkout</Link>
         </>
     )
 }
