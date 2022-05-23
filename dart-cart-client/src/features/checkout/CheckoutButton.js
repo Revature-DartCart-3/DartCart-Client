@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../common/types";
 
-import { addInvoice, selectAllCartItems, selectStatus } from "../../common/slices/cartSlice";
+import { selectAllCartItems, updateCart, updateCartItem } from "../../common/slices/cartSlice";
 import { Modal } from "react-bootstrap";
-import { selectUser } from "../../common/slices/authSlice";
 import { useNavigate } from "react-router-dom";
-import { selectShipping } from "../../common/slices/shippingSlice";
 import "./CheckoutButton.css";
+
+/* TODO: set up checkout
+import { RootState } from "../../common/types";
+import { selectUser } from "../../common/slices/authSlice";
+import { selectShipping } from "../../common/slices/shippingSlice";
+import { addInvoice, selectStatus } from "../../common/slices/cartSlice";
+*/
 
 export function CheckoutButton() {
     const dispatch = useDispatch();
@@ -15,11 +19,13 @@ export function CheckoutButton() {
     const [show, setShow] = useState(false);
     const [success, setSuccess] = useState(true);
 
+    /* TODO: set up checkout
     const currentUser = useSelector(selectUser);
+    */
     const currentCart = useSelector(selectAllCartItems);
 
+    /* TODO: set up checkout
     const status = useSelector(selectStatus);
-
     const { id, streetAddress, city, state, zip } = useSelector((state: RootState) => selectShipping(state, 1)) || {   
         id: 1,
         streetAddress: "",
@@ -27,20 +33,31 @@ export function CheckoutButton() {
         state: "",
         zip: "" 
     };
+    */
 
     const handleShow = () => setShow(true);
     const handleClose = () => {
         setShow(false);
+        /* TODO: set up checkout
         if(status === "fulfilled"){
             nav("/");
         }else{
             nav("/cart");
         }
+        */
+
+       //WARNING: cart page crashes app without page refresh
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
+
+        nav('/', { replace: true });
     }
 
 
     async function checkout() {
 
+        /* TODO: set up checkout
         if(currentUser && currentCart){
             let shippingAddress = streetAddress + ", " + city + " " + state + ", " + zip;
 
@@ -53,11 +70,36 @@ export function CheckoutButton() {
                 handleShow();
             }
         }
+        */
+
+        //clears cart
+        for (let item of currentCart) {
+            dispatch(updateCartItem({
+                id: item.id,
+                changes: {
+                    quantity: 0
+                }
+            }))
+
+            dispatch(updateCart({
+                id: item.id,
+                changes: {
+                    quantity: 0
+                }
+            }))
+        }
+
+        setSuccess(true);
+        handleShow();
     }
 
     return(
         <>
-            <button className="button orange-button" onClick={checkout}>
+            {/* TODO: fix bug when button is clicked -- warning listed below
+                The entity passed to the `selectId` implementation returned undefined. 
+                You should probably provide your own `selectId` implementation.
+            */}
+            <button className="mb-3 button orange-button" onClick={checkout}>
                 Checkout
             </button>
 

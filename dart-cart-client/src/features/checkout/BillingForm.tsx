@@ -2,13 +2,15 @@ import {useState} from 'react';
 import {Form, FloatingLabel} from 'react-bootstrap';
 import "./BillingForm.css";
 
-export function Billing({back, next}) {
+export function Billing({back, next, post}) {
 
+    // card payment info
     const [name, setName] = useState("");
     const [cardNumber, setCardNumber] = useState("");
     const [expDate, setExpDate] = useState("");
     const [cvc, setCvc] = useState("");
 
+    //TODO: save/dispatch billing
     function handleSubmit(e){
         e.preventDefault();
         const billingInfo = {
@@ -17,15 +19,18 @@ export function Billing({back, next}) {
             expDate: expDate,
             cvc: cvc
         };
-        console.log(billingInfo);
+        post(billingInfo);
         next();
     }
+
     return (
         <>
             <Form onSubmit={handleSubmit}>
                 <div className="form-heading blue">
                     <h3>Payment Details</h3>
                 </div>
+
+                {/* Name */}
                 <Form.Group className="mb-3 form-group" >
                     <FloatingLabel
                         controlId="fullname"
@@ -36,6 +41,7 @@ export function Billing({back, next}) {
                     </FloatingLabel>
                 </Form.Group>
 
+                {/* Card Number */}
                 <Form.Group className="mb-3 form-group" >
                     <FloatingLabel
                         controlId="cardnumber"
@@ -46,6 +52,7 @@ export function Billing({back, next}) {
                     </FloatingLabel>
                 </Form.Group>
 
+                {/* Expiration Date */}
                 <Form.Group className="mb-3 form-group" >
                     <FloatingLabel
                         controlId="expdate"
@@ -56,6 +63,7 @@ export function Billing({back, next}) {
                     </FloatingLabel>
                 </Form.Group>
 
+                {/* Security Code */}
                 <Form.Group className="mb-3 form-group">
                     <FloatingLabel
                         controlId="cvc"

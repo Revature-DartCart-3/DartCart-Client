@@ -1,12 +1,12 @@
 .form-control:read-only {
-    background-color: black;
+    background-color: var(--background);
     font-size: 20px;
     color: white;
 
 }
 
 .card {
-    color: black;
+    color: var(--background);
 }
 
 .button1 {

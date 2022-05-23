@@ -3,7 +3,7 @@ import { selectTotal } from '../../common/slices/cartSlice';
 import { useSelector } from "react-redux";
 import { Form } from 'react-bootstrap';
 
-function PayInstallments({next, back}) {
+function PayInstallments({next, back, post}) {
 
     const [value, setValue] = useState(1); //installment selection
     const totalPrice =  useSelector(selectTotal); //cart total
@@ -11,7 +11,7 @@ function PayInstallments({next, back}) {
 
     //calculate installment price based on selection
     useEffect(() =>{
-        setInstalPrice(totalPrice/value);
+        setInstalPrice((totalPrice/value).toFixed(2));
     },[value]); 
 
     // Update installment selection
@@ -19,14 +19,14 @@ function PayInstallments({next, back}) {
         setValue(event.target.value);
     };
  
-    //TODO: store payment plan
+    //TODO: save/dispatch payment plan
     function handleSubmit(e){
         e.preventDefault();
         const paymentPlan= {
             installments: value,
             price: instalPrice
         };
-        console.log(paymentPlan);
+        post(paymentPlan);
         next();
     }
 
