@@ -46,32 +46,29 @@ const ShopProductDisplay = () => {
   return (
     <>
       <div className="productInfoContainer">
-        <div className="row">
+        {/* Product image */}
+        <div className="col productIMGcontainer">
+          <img className="productImage" src={ReduxShopProducts?.imageURL} alt={`${ReduxShopProducts?.name}`}></img>
+          <button className="review-link stacked" onClick={()=>setShowModal(true)}>Leave a Product Review</button>
+        </div> 
 
-          {/* Product image */}
-          <div className="col productIMGcontainer">
-            <img className="productImage" src={ReduxShopProducts?.imageURL} alt={`${ReduxShopProducts?.name}`}></img>
-            <button className="review-link stacked" onClick={()=>setShowModal(true)}>Leave a Product Review</button>
-          </div> 
+        {/* Product Info */}
+        <div className="col productDesc">
 
-          {/* Product Info */}
-          <div className="col productDesc">
-
-            <h1>{ReduxShopProducts?.name}</h1>
-            <p>{ReduxShopProducts?.description}</p>
-            <p><b>Average Rating: </b>
-              {/* Star rating */}
-              {avgReview >= 1 && 
-              Array.from(Array(Math.floor(avgReview)).keys()).map(c => {
-                return (
-                  <AiFillStar key={`avg${c}`} style={{ color: 'orange' }} />
-                )
-              })} 
-              {reviewCount > 0?
-              <><b>{avgReview.toFixed(1)}</b> ({reviewCount} {reviewCount === 1 ? " review": "reviews"}) </>
-              : "No reviews" }
-            </p>
-          </div>
+          <h1>{ReduxShopProducts?.name}</h1>
+          <p>{ReduxShopProducts?.description}</p>
+          <p><b>Average Rating: </b>
+            {/* Star rating */}
+            {avgReview >= 1 && 
+            Array.from(Array(Math.floor(avgReview)).keys()).map(c => {
+              return (
+                <AiFillStar key={`avg${c}`} style={{ color: 'orange' }} />
+              )
+            })} 
+            {reviewCount > 0?
+            <><b>{avgReview.toFixed(1)}</b> ({reviewCount} {reviewCount === 1 ? " review": "reviews"}) </>
+            : "No reviews" }
+          </p>
         </div>
       </div>
 

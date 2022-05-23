@@ -1,5 +1,5 @@
-import { Alert, Modal, Button, Form, Row, Col } from "react-bootstrap";
-import { saveUser, homeRedirect } from "../../common/slices/userRegisterSlice";
+import { Alert, Modal, Form, Row, Col } from "react-bootstrap";
+import { saveUser } from "../../common/slices/userRegisterSlice";
 import { User } from "../../common/types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -85,15 +85,19 @@ export function UserRegister() {
 
     await dispatch(saveUser(user))
       .unwrap()
-      .then((originalPromiseResult) => {
+      .then((_res) => {
         setShowModal(true);
         dispatch(
           loginUser({ username: user.username, password: user.password })
         );
       })
-      .catch((rejectedValueOrSerializedError) => {
-        setError("That username is unavailable.");
-        clearInputs();
+      .catch((err) => {
+        if(err.response.status === 500){
+          setError("Unable to register. Please check your connection and try again.");
+        } else {
+          setError("That username is unavailable.");
+          clearInputs();
+        }
       });
   };
 
@@ -104,7 +108,6 @@ export function UserRegister() {
   // Redirect upon modal close
   function handleClose() {
     setShowModal(false);
-    dispatch(homeRedirect(null));
     nav("/");
   }
 
