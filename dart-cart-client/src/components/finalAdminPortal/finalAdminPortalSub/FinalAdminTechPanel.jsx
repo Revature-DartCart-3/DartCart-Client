@@ -9,8 +9,13 @@ import {BsAlignEnd} from "react-icons/bs";
 const FinalAdminTechPanel = () => {
 
     const [sessionList, setSessionList] = useState([]);
-    const [enterChat, setEnterChat] = useState([]);
-    const [deleteChat, setDeleteChat] = useState([]);
+    const [enterChat, setEnterChat] = useState({
+        sessionId : "",
+        clientId : ""
+    });
+    const [deleteChat, setDeleteChat] = useState({
+        sessionId : ""
+    });
 
     useEffect(() => {
 
@@ -18,24 +23,23 @@ const FinalAdminTechPanel = () => {
 
     }, [])
 
-
-    async function getAllAvailableChats() {
-        await axios.get("http://localhost:9005/help-request-list")
+    function getAllAvailableChats() {
+        axios.get("http://localhost:9005/help-request-list")
             .then( response => {
                 setSessionList(response.data);
             });
     }
 
-    async function assignTechToChat() {
-        await axios.put("http://localhost:9005/assign-tech")
+    function assignTechToChat() {
+       axios.put("http://localhost:9005/assign-tech/")
             .then((response) => {
                 setEnterChat(response.data);
             })
             alert("A tech representative has been assigned.");
     }
 
-    async function disconnectConversation(sessionId){
-        await axios.delete("http://localhost:9005/disconnect")
+    function disconnectConversation(){
+        axios.delete("http://localhost:9005/disconnect")
             .then((response) => {
                 setDeleteChat(response.data);
             })
@@ -67,7 +71,8 @@ const FinalAdminTechPanel = () => {
                                         {/*<-------- enter button response*/}
                                         <td classname="admin-tech-panel-button">
                                             <button
-                                                onClick={assignTechToChat(list.sessionId)}
+                                                value={JSON.stringify(list)}
+                                                onClick={assignTechToChat}
                                                 type="submit"
                                             >
                                                 <AiOutlineEnter/>
@@ -78,7 +83,8 @@ const FinalAdminTechPanel = () => {
                                         <td>{list.client.username}</td>
                                         <td className="admin-tech-panel-button">
                                             <button
-                                                onClick={disconnectConversation(list.sessionId)}
+                                                value={JSON.stringify(list)}
+                                                onClick={disconnectConversation}
                                                 type="submit"
                                             >
                                                 <BsAlignEnd/>
@@ -88,16 +94,10 @@ const FinalAdminTechPanel = () => {
                                 )
                             })
                         }
-
                         </tbody>
                     </Table>
-
-
                 </Container>
             </section>
-
-
-
         </>
     );
 };
