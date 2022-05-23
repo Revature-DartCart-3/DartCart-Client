@@ -18,6 +18,9 @@
     margin-top: .5vh;
     justify-content: stretch;
 }
+.card {
+    color: var(--background);
+}
 
 .button1 {
     display: flex;

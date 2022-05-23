@@ -4,20 +4,20 @@
 ---------------------------------------------------------------------------*/
 
 /* Outer form structure */
-form, .shop-form {
-    width: 50%;
+form, .shop-form, .order-summary {
+    width: 45%;
     margin: 20px auto;
     border: 1px solid var(--secondary);
     border-radius: 5px;
     padding:0;
 }
 @media (max-width: 500px){
-    form, .shop-form {
+    form, .shop-form, .order-summary {
         width:95%;
     }
 }
 @media (min-width:500px) and (max-width: 800px) {
-    form, .shop-form {
+    form, .shop-form, .order-summary {
         width: 75%;
     }
 }
@@ -31,7 +31,7 @@ form, .shop-form {
 }
 
 /* Heading */
-.shop-form-heading{
+.shop-form-heading, .order-summary-heading{
     background-color: var(--orange);
     color:white;
     font-size: x-large;

@@ -8,12 +8,12 @@ export const shippingSlice = createSlice({
     initialState: shippingAdapter.getInitialState(),
     reducers: {
         updateShipping: shippingAdapter.updateOne,
-        addShipping: shippingAdapter.addOne
+        addShipping: shippingAdapter.addOne,
+        clearShipping: shippingAdapter.removeAll,
     },
 })
 
-export const { addShipping } = shippingSlice.actions;
-export const { updateShipping } = shippingSlice.actions;
+export const { addShipping, updateShipping, clearShipping } = shippingSlice.actions;
 export default shippingSlice.reducer;
 
 export const { selectById: selectShipping} = shippingAdapter.getSelectors((state: RootState) => state.shipping)
