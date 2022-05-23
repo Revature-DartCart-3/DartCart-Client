@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../common/types";
 
 import { addInvoice, selectAllCartItems, selectStatus } from "../../common/slices/cartSlice";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { selectUser } from "../../common/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { selectShipping } from "../../common/slices/shippingSlice";
@@ -40,6 +40,7 @@ export function CheckoutButton() {
 
 
     async function checkout() {
+
         if(currentUser && currentCart){
             let shippingAddress = streetAddress + ", " + city + " " + state + ", " + zip;
 
@@ -56,19 +57,21 @@ export function CheckoutButton() {
 
     return(
         <>
-            <div className="col-12">
-                <div className="btn btn-primary mb-3" onClick={checkout}>
-                    <span className="ps-3">Checkout</span> <span className="fas fa-arrow-right"></span> 
-                </div>
-            </div>
+            <button className="button orange-button" onClick={checkout}>
+                Checkout
+            </button>
 
             <Modal show={show} >
                 <Modal.Header>
-                    {success ? <Modal.Title>Order Confirmed</Modal.Title> : <Modal.Title>Order Failed</Modal.Title>}
+                    {success ? 
+                        <Modal.Title>Order Confirmed</Modal.Title> 
+                        : <Modal.Title>Order Failed</Modal.Title>}
                 </Modal.Header>
-                {success ? <Modal.Body>Your items have been successfully purchased!</Modal.Body> : <Modal.Body>Something went wrong</Modal.Body>}
+                    {success ? 
+                        <Modal.Body>Your items have been successfully purchased!</Modal.Body> 
+                        : <Modal.Body>Something went wrong</Modal.Body>}
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleClose}> Confirm </Button>
+                    <button className="button blue-button" onClick={handleClose}> Confirm </button>
                 </Modal.Footer>
             </Modal>
         </>

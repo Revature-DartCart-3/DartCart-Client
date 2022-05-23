@@ -45,8 +45,8 @@ export function CompetingSellers({ Seller }: SellerProduct) {
                 <p>{competitors.shop.seller.name}<br/>
                 {competitors.location}</p>
               </div>
-              <div>
-                <h4 className="center">
+              <div className="center">
+                <h4>
                 {competitors.discount > 0 ? 
                 (<>
                   <s>${competitors.price}</s>  ${(competitors.price) - (competitors.discount)} 

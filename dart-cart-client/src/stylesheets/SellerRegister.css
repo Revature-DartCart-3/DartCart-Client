@@ -5,7 +5,7 @@
 
 /* Outer form structure */
 form, .shop-form {
-    width: 50%;
+    width: 45%;
     margin: 20px auto;
     border: 1px solid var(--secondary);
     border-radius: 5px;
