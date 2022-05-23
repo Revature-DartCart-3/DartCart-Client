@@ -7,7 +7,7 @@ import authHeader from "../../features/authentication/AuthHeader";
 const API_URL = process.env.REACT_APP_API_URL;
 
 // createEntityAdapter gives us several premade reducer functions for manipulating state
-const productRegisterAdapter = createEntityAdapter<Product>();
+// const productRegisterAdapter = createEntityAdapter<Product>();
 
 // Create slice that will manage the state of some type of object
 const productRegisterSlice = createSlice({
@@ -40,7 +40,7 @@ export default productRegisterSlice.reducer;
 
 // Async thunks
 export const saveProduct = createAsyncThunk("productRegister/createProduct", async (product : Product) => {
-    return await axios.post(API_URL + "products", {
+    const response = await axios.post(API_URL + "products", {
         id: product.id,
         name: product.name,
         description: product.description,
@@ -48,4 +48,5 @@ export const saveProduct = createAsyncThunk("productRegister/createProduct", asy
     },
     { headers: authHeader() } 
     );
+    return response.status;
 });

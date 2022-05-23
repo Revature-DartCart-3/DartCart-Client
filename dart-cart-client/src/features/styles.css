@@ -5,7 +5,7 @@
 
 .footer-info {
     padding: 1em;
-    color: #198754;
+    color: var(--orange);
 }
 
 .fa {
