@@ -1,7 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Modal, Form, FormControl} from "react-bootstrap";
 import "./finaModalStyling.css";
 import FinalTechChat from '../../../FinalTechChat';
+import {createSlice} from "@reduxjs/toolkit";
+import {RootState} from "../../../../common/types";
+import { useDispatch, useSelector } from "react-redux";
+
+
+
 
 const TempTwoModel = () => {
 
@@ -11,6 +17,17 @@ const TempTwoModel = () => {
     const [show,setShow] = useState("");
     const [chatInput, setChatInput] = useState("");
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
+
+    // const dispatch = useDispatch();
+    // const [chatname, setChatname] = useState("");
+    // const user = useSelector((state: RootState) => state.authentication.user) || "";
+    //
+    // useEffect(() => {
+    //     if(user) {
+    //         const u = JSON.parse(user);
+    //         setChatname(u.username);
+    //     }
+    // }, [])
 
     const showModal = () => {
             setModal(true);
@@ -30,6 +47,15 @@ const TempTwoModel = () => {
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
 
+
+    const chatInputHandler = () => {
+        setChatInput({
+            ...chatInput,
+            [e.target.name] : [e.target.value]
+        })
+    }
+
+
     // const RenderMessages = () => {
     //     return(
     //     messages.map((message) => {
@@ -42,7 +68,6 @@ const TempTwoModel = () => {
         <>
             <section className="fade-in-effect">
 
-
                 <section className="admin-techchat-modal-section">
                     <button className="clickMe bubbly-button" onClick={showModal}>
                         User Chat
@@ -53,20 +78,24 @@ const TempTwoModel = () => {
 
                 <section
                     className={`modalContainer ${show ? "show" : ""} `}
-
-
-
                 >
 
                     <Modal
-                            className="modalContainer fade-in-effect"
+                            className="modalContainer"
                             show={modal}
                             onHide={closeModal}
                             centered
                         >
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
-                                <h2 className="modal_header-title ">User : {userInfo.username} | Techie : name  </h2>
+                                <h2 className="modal_header-title ">User : name | Techie : name  </h2>
+                                <button
+                                    className="admin-techchat-close-button"
+                                    onClick={closeModal}
+                                >
+                                    x
+                                </button>
+
                             </Modal.Header>
                             <Modal.Body className="modal_content">
                                 {messageList.map((message) => (
@@ -78,7 +107,11 @@ const TempTwoModel = () => {
                             </Modal.Body>
                             <Modal.Footer className="modal_footer">
                                 <FormControl
-
+                                    type="text"
+                                    name="responseMessage"
+                                    value={chatInput.responseMessage}
+                                    placeholder="Enter message here"
+                                    onChange={chatInputHandler}
                                 />
                                 {/*submit the respone an add it the existing one*/}
                                 {/* <button className="admin-techchat-modal-button submit"> */}
@@ -90,7 +123,6 @@ const TempTwoModel = () => {
                 </section>
 
             </section>
-
 
         </>
     );
