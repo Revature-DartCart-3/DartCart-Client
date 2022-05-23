@@ -1,7 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Modal, Form, FormControl} from "react-bootstrap";
 import "./finaModalStyling.css";
 import FinalTechChat from '../../../FinalTechChat';
+import {createSlice} from "@reduxjs/toolkit";
+import {RootState} from "../../../../common/types";
+import { useDispatch, useSelector } from "react-redux";
+
+
+
 
 const TempTwoModel = () => {
 
@@ -10,6 +16,17 @@ const TempTwoModel = () => {
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
     const [chatInput, setChatInput] = useState("");
+
+    // const dispatch = useDispatch();
+    // const [chatname, setChatname] = useState("");
+    // const user = useSelector((state: RootState) => state.authentication.user) || "";
+    //
+    // useEffect(() => {
+    //     if(user) {
+    //         const u = JSON.parse(user);
+    //         setChatname(u.username);
+    //     }
+    // }, [])
 
     const showModal = () => {
             setModal(true);
@@ -27,6 +44,15 @@ const TempTwoModel = () => {
     const callback = (newMessagesArray) => {
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
+
+
+    const chatInputHandler = () => {
+        setChatInput({
+            ...chatInput,
+            [e.target.name] : [e.target.value]
+        })
+    }
+
 
     // const RenderMessages = () => {
     //     return(
@@ -78,10 +104,11 @@ const TempTwoModel = () => {
                             </Modal.Body>
                             <Modal.Footer className="modal_footer">
                                 <FormControl
-                                    type=""
-
-
-
+                                    type="text"
+                                    name="responseMessage"
+                                    value={chatInput.responseMessage}
+                                    placeholder="Enter message here"
+                                    onChange={chatInputHandler}
                                 />
                                 {/*submit the respone an add it the existing one*/}
                                 <button className="admin-techchat-modal-button submit">
