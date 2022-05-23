@@ -33,7 +33,7 @@ function FinalTechChat (props) {
         recipientId: 1,
         senderName: "jimmy",
         recipientName: "admin",
-        content: message
+        content: props.ChatInput
       };
 
     const onError = (error) => {
