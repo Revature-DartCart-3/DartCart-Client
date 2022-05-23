@@ -1,9 +1,9 @@
-import { Alert, Modal, Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import { updateUser, homeRedirect } from "../../common/slices/userProfileSlice";
-//import Chats from "Chats";
+///import AdminModal from "./Modal/AdminModal";
 
 export default function AdminPage() {
-
+  
    
     return (
     <div className="container p-0">
@@ -67,6 +67,7 @@ export default function AdminPage() {
             </button>
           </div>
         </div>
+  
         <canvas className="my-4 w-100" id="myChart" width={900} height={380} />
         <h2>Section title</h2>
         <div className="table-responsive">

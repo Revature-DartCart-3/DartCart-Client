@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import ReactDOM from "react-dom";
 import { Login } from "./features/authentication/Login";
 import { ResetPassword } from "./features/authentication/ResetPassword";
 import Home from "./features/Home";
@@ -31,6 +31,7 @@ import WishList from "./features/wishlist/WishList";
 // import TechChat from "./components/TechChat";
 import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
+import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/FinalFinalTwoWay";
 import AdminComments from "./features/TechChatModal/AdminComments";
 import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalTechChat from "./components/FinalTechChat";
@@ -76,6 +77,7 @@ function App() {
             <Route path="/techchatmodal" element={<FinalTechChat />} />
             {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
             <Route path="/adminpage" element={<FinalAdmin/>}></Route>
+            <Route path="/adminmodal" element={<AdminModal/>}></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>

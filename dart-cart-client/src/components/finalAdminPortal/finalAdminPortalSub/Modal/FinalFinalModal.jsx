@@ -1,5 +1,5 @@
 import ReactDom from "react-dom";
-import "./modal.scss";
+///import "./modal.scss";
 import Axios from 'axios';
 import { useState } from 'react';
 
@@ -24,10 +24,10 @@ const Modal = ({ show, close, title, children }) => {
         className={`modalContainer ${show ? "show" : ""} `}
         onClick={() => close()}
       >
-        <div className="modal" onClick={(e) => e.stopPropagation()}>
+           <div className="modal" onClick={(e) => e.stopPropagation()}>
           <header className="modal_header">
           <button className="modal-close" onClick={() => close()}>
-             Close
+            
          
             </button>
             <h2 className="modal_header-title ">{title}</h2>
@@ -38,7 +38,7 @@ const Modal = ({ show, close, title, children }) => {
           <main className="modal_content">{children}</main>
           <footer className="modal_footer">
           <input
-              className=""
+              className="form-control bar"
               type="text"
               name="comment"
               required

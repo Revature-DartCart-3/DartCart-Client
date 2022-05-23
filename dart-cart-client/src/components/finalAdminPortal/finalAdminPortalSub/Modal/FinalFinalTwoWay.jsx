@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./modal.scss";
-import Modal from "./Modal";
+import Modal from "./FinalFinalModal";
 
-function App() {
+function AdminModal() {
   const [modal, setModal] = useState(false);
 
   const Toggle = () => setModal(!modal);
@@ -26,12 +26,12 @@ function App() {
   }
 
   return (
-    <div className="">
+    <div className="App">
       <button className="clickMe bubbly-button" onClick={() => Toggle()}>
         Tech Support
       </button>
 
-      <Modal  show={modal} close={Toggle} title="Tech Support Chat">
+      <Modal show={modal} close={Toggle} title="Tech Support Chat">
         This is modal content for tech support
         
       </Modal>
@@ -39,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default AdminModal;

@@ -9,15 +9,19 @@ import {BsAlignEnd} from "react-icons/bs";
 const FinalAdminTechPanel = () => {
 
     const [sessionList, setSessionList] = useState([]);
-    const [enterChat, setEnterChat] = useState([]);
-    const [deleteChat, setDeleteChat] = useState([]);
+    const [enterChat, setEnterChat] = useState({
+        sessionId : "",
+        clientId : ""
+    });
+    const [deleteChat, setDeleteChat] = useState({
+        sessionId : ""
+    });
 
     useEffect(() => {
         console.log("Rendering Component")
         getAllAvailableChats();
 
     }, [])
-
 
     function getAllAvailableChats() {
         axios.get("http://localhost:9005/help-request-list")
@@ -35,8 +39,8 @@ const FinalAdminTechPanel = () => {
             alert("A tech representative has been assigned.");
     }
 
-    async function disconnectConversation(sessionId){
-        await axios.delete("http://localhost:9005/disconnect")
+    function disconnectConversation(){
+        axios.delete("http://localhost:9005/disconnect")
             .then((response) => {
                 setDeleteChat(response.data);
             })
@@ -91,16 +95,10 @@ const FinalAdminTechPanel = () => {
                                 )
                             })
                         }
-
                         </tbody>
                     </Table>
-
-
                 </Container>
             </section>
-
-
-
         </>
     );
 };
