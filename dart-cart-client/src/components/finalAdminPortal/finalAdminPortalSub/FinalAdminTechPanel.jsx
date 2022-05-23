@@ -3,6 +3,8 @@ import {Container} from "react-bootstrap";
 import {Table} from "react-bootstrap";
 import axios from "axios";
 import SessionListManager from "../../SessionListManager";
+import {AiOutlineEnter} from "react-icons/ai";
+import {BsAlignEnd} from "react-icons/bs";
 
 const FinalAdminTechPanel = () => {
 
@@ -10,7 +12,7 @@ const FinalAdminTechPanel = () => {
     const [enterChat, setEnterChat] = useState([]);
     const [deleteChat, setDeleteChat] = useState([]);
 
-    useEffect(({sessionList, setSessionList}) => {
+    useEffect(() => {
 
         getAllAvailableChats();
 
@@ -18,12 +20,26 @@ const FinalAdminTechPanel = () => {
 
 
     async function getAllAvailableChats() {
-        await axios.get("/help-request-list")
+        await axios.get("http://localhost:9005/help-request-list")
             .then( response => {
                 setSessionList(response.data);
             });
     }
 
+    async function assignTechToChat() {
+        await axios.put("http://localhost:9005/assign-tech")
+            .then((response) => {
+                setEnterChat(response.data);
+            })
+            alert("A tech representative has been assigned.");
+    }
+
+    async function disconnectConversation(sessionId){
+        await axios.delete("http://localhost:9005/disconnect")
+            .then((response) => {
+                setDeleteChat(response.data);
+            })
+    }
 
     return (
         <>
@@ -36,24 +52,38 @@ const FinalAdminTechPanel = () => {
                     <Table>
                        <thead>
                         <tr>
-                            <th>Enter</th>
-                            <th>User</th>
-                            <th>Session</th>
-                            <th>Tech</th>
-                            <th>Delete</th>
+                            <th><p>Enter</p></th>
+                            <th><p>User</p></th>
+                            <th><p>Session</p></th>
+                            <th><p>Tech</p></th>
+                            <th><p>Delete</p></th>
                         </tr>
                        </thead>
                         <tbody>
                         {sessionList &&
                             sessionList.map((list, index) => {
                                 return (
-
                                     <tr key={list.sessionId}>
                                         {/*<-------- enter button response*/}
-                                        <td>Enter</td>
+                                        <td classname="admin-tech-panel-button">
+                                            <button
+                                                onClick={assignTechToChat(list.sessionId)}
+                                                type="submit"
+                                            >
+                                                <AiOutlineEnter/>
+                                            </button>
+                                        </td>
                                         <td>{list.sessionId}</td>
                                         <td>{list.client.id}</td>
                                         <td>{list.client.username}</td>
+                                        <td className="admin-tech-panel-button">
+                                            <button
+                                                onClick={disconnectConversation(list.sessionId)}
+                                                type="submit"
+                                            >
+                                                <BsAlignEnd/>
+                                            </button>
+                                        </td>
                                     </tr>
                                 )
                             })
