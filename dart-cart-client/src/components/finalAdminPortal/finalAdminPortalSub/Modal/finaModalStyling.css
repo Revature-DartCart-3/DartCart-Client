@@ -18,6 +18,10 @@ button {
     outline: none;
     cursor: pointer;
 }
+
+
+
+
 .clickMe {
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
@@ -33,10 +37,12 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-image: url("purple.jpg");
+    /*background-color: rgba(0, 0, 0, 0.35);*/
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
+    /*background-color: #7E6EB0;*/
 }
 .modalContainer .modal {
     background-color: rgba(255, 255, 255, 0.35);
@@ -48,6 +54,7 @@ button {
     box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.4);
     transform: translateY(-600px);
     transition: all 0.4s ease;
+
 }
 .modalContainer .modal_header {
     position: relative;
@@ -105,7 +112,7 @@ button {
 .modalContainer .modal_footer .modal-close:hover {
     color: rgba(54, 67, 72, 0.8);
 }
-.modalContainer.show {
+.modalContainer .show {
     visibility: visible;
     opacity: 1;
 }
@@ -122,4 +129,31 @@ input {
     border: none;
     padding: 0 10px;
 }
- 
+
+/*keystroke animations*/
+
+.fade-in-effect {
+    animation: fade-in-animation .4s;
+}
+
+@keyframes fade-in-animation {
+    0%{
+        opacity: 0;
+    }
+    25% {
+        opacity: .25;
+    }
+    50% {
+        opacity: .75;
+    }
+    75%{
+        opacity: .75;
+    }
+    100%{
+        opacity: 1;
+    }
+
+
+
+
+}

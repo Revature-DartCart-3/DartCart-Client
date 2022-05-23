@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Modal} from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "./finaModalStyling.css";
 
 const TempTwoModel = () => {
@@ -28,8 +27,11 @@ const TempTwoModel = () => {
                 </button>
             </section>
 
-            <section>
+            <h1 className="test">Text</h1>
+
+            <section className="">
                 <Modal
+                    className="modalContainer fade-in-effect"
                     show={modal}
                     onHide={closeModal}
                     centered
