@@ -97,7 +97,7 @@ Your browser will automaticall open for you, and you are all set.
 
 * Logout
   * When the user leaves the app, be sure to close the connection to their account by clicking the Logout button.
-  ![CreateShop](./dart-cart-client/src/imgs/readme/logout.png)
+  ![CreateShop](./dart-cart-client/src/imgs/readme/logout3.png)
   
 
 ## Contributors of first iteration (DartCart 1)
