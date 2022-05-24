@@ -173,8 +173,8 @@ export function UserProfile() {
     // nav("/");
   }
 
-  return (
-    <>
+  return (<>
+    <Container>
       <Paper style={{ flexDirection: "row", justifyContent: "flex-end" }}>
         <div className="pfp">
           <img src={imageURL} height={150} alt="Profile Picture" />
@@ -185,199 +185,78 @@ export function UserProfile() {
           </form>
         </div>
       </Paper>
-      <Form>
-        <div className="shop-form-heading">
-          <h2>Update Your Profile</h2>
-        </div>
-        <Container>
-          {error ? <Alert variant="danger">{error}</Alert> : null}
-          <Form.Group className="mb-4">
-            <Form.Control
-              type="text"
-              placeholder="AboutMe"
-              size="lg"
-              value={aboutMe}
-              onChange={e => setAboutMe(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-4">
+    </Container>
+    <Form>
+      <div className="shop-form-heading">
+        <h2>Update Your Profile</h2>
+      </div>
+      <Container>
+        {error ? <Alert variant="danger">{error}</Alert> : null}
+        <Form.Group className="mb-4">
+          <Form.Control
+            type="text"
+            placeholder="AboutMe"
+            size="lg"
+            value={aboutMe}
+            onChange={e => setAboutMe(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group className="mb-4">
+          <Form.Control 
+            type="email"
+            placeholder="Email Address"
+            size="lg"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </Form.Group>
+        <Row className="mb-4">
+          <Form.Group as={Col}>
             <Form.Control 
-              type="email"
-              placeholder="Email Address"
-              size="lg"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Row className="mb-4">
-            <Form.Group as={Col}>
-              <Form.Control 
-                type="text"
-                placeholder="First Name"
-                size="lg"
-                value={firstName}
-                onChange={e => setFirstName(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Control 
-                type="text"
-                placeholder="Last Name"
-                size="lg"
-                value={lastName}
-                onChange={e => setLastName(e.target.value)}
-              />
-            </Form.Group>
-          </Row>
-          <Form.Group className="mb-4">
-            <Form.Control
               type="text"
-              placeholder="Home Address"
+              placeholder="First Name"
               size="lg"
-              value={location}
-              onChange={e => setLocation(e.target.value)}
+              value={firstName}
+              onChange={e => setFirstName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className="mb-4">
-            <Form.Control
-              type="phone"
-              placeholder="Phone Number"
+          <Form.Group as={Col}>
+            <Form.Control 
+              type="text"
+              placeholder="Last Name"
               size="lg"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
+              value={lastName}
+              onChange={e => setLastName(e.target.value)}
             />
           </Form.Group>
-          <button
-            className="mb-4 submit-button"
-            onClick={updateUserProfile}
-          >
-            Update
-          </button>
-        </Container>
-      </Form>
-      <section className="vh-200">
-        <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-lg-10 col-sm-12">
-              <div
-                className="card shadow-2-strong"
-                style={{ borderRadius: "1rem" }}
-              >
-                <div className="card-header card text-center bg-success text-white">
-                  <h3 className="mb-0">Update your profile</h3>
-                  <img></img>
-                </div>
-                <div className="card-body p-5 text-center">
-                  {error ? <Alert variant="danger">{error}</Alert> : null}
-
-                  <div className="row align-items-center">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="AboutMe"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={aboutMe}
-                        onChange={(e) => {
-                          setAboutMe(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row align-items-center">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="First Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={firstName}
-                        onChange={(e) => {
-                          setFirstName(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="Last Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={lastName}
-                        onChange={(e) => {
-                          setLastName(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="Home Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={location}
-                        onChange={(e) => {
-                          setLocation(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input
-                        type="phone"
-                        placeholder="Phone Number"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={phone}
-                        onChange={(e) => {
-                          setPhone(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    className="btn btn-success btn-lg btn-block"
-                    onClick={updateUserProfile}
-                  >
-                    Update Profile
-                  </button>
-
-                  <Modal show={showModal}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Update Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Your profile was updated!</Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={handleClose}>Close</Button>
-                    </Modal.Footer>
-                  </Modal>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+        </Row>
+        <Form.Group className="mb-4">
+          <Form.Control
+            type="text"
+            placeholder="Home Address"
+            size="lg"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group className="mb-4">
+          <Form.Control
+            type="phone"
+            placeholder="Phone Number"
+            size="lg"
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
+          />
+        </Form.Group>
+        <button
+          className="mb-4 submit-button"
+          onClick={updateUserProfile}
+        >
+          Update
+        </button>
+      </Container>
+    </Form>
+  </>);
 }
 
 export default UserProfile;
