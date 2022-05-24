@@ -26,3 +26,7 @@
 .nav-link{
     color: var(--text-primary) !important
 }
+
+a.nav-link:hover{
+    color:var(--orange) !important;
+}

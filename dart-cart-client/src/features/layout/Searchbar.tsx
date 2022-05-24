@@ -30,7 +30,7 @@ const Searchbar = () => {
 
   return (
     <>
-      <div className="navbar-brand">
+      <div className="navbar-brand ms-auto" style={{ width: "40%" }}>
         <div className="form-inline d-flex my-2 my-lg-0">
 
           <div className="searchForm">
