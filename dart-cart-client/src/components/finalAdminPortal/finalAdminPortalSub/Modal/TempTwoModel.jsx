@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Modal, Form, FormControl} from "react-bootstrap";
+import {Modal, Form, FormControl, Row} from "react-bootstrap";
 import "./finaModalStyling.css";
+import "../chatModalAnimations/chatAnimation.css"
 import FinalTechChat from '../../../FinalTechChat';
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../../../common/types";
@@ -18,6 +19,7 @@ const TempTwoModel = (props) => {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const user = useSelector((state) => state.authentication.user) || "";
+    const [chatColor, setChatColor] = useState("");
 
 
     useEffect(() => {
@@ -46,7 +48,7 @@ const TempTwoModel = (props) => {
         }
     }, [user]);
 
-    // const userModalIdentifcation = name.id;
+    const userModalIdentifcation = name.id;
 
     const showModal = () => {
         setOpen(true);
@@ -123,6 +125,7 @@ const TempTwoModel = (props) => {
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
 
+
                             <h2 className="modal_header-title ">User : {name} | Techie : name  </h2>
                                 <button
                                     className="admin-techchat-close-button"
@@ -134,20 +137,34 @@ const TempTwoModel = (props) => {
 
                             </Modal.Header>
                             <Modal.Body className="modal_content">
-                                {messageList.map((message) => (
-                                    <p>{message.content}</p>
-                                ))}
+
+
+                                <div className="admin-chat-message-container">
+                                    <Row>
+                                        {
+                                            messageList.map((message) => (
+
+                                                userInfo.id ? <p className="sender"> {message.content}</p> : <p className="receiver">{message.content}</p>
+                                            ))}
+                                    </Row>
+
+
+                                </div>
+
+
 
                                 {/*{reply}*/}
                             </Modal.Body>
                             <Modal.Footer className="modal_footer">
                                 <FormControl
+                                    className= "admin-input-chat"
                                     type="text"
                                     name="responseMessage"
                                     value={chatInput}
                                     placeholder="Enter message here"
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
+
                                 {/*submit the respone an add it the existing one*/}
                                     <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={props.session} open={open}/>
 
