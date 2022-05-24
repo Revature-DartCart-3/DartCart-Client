@@ -9,11 +9,10 @@ import axios from "axios";
 import {Form, Modal} from "react-bootstrap";
 import FinalAdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/FinalAdminTechPanel";
 
-var stompClient =null;
+var stompClient = null;
 
 /* 
 The messages are saved in the messages state.
-
 */
 
 function FinalTechChat (props) {
@@ -40,11 +39,11 @@ function FinalTechChat (props) {
         content: props.chatInput
       };
 
+    console.log("Chat Queue Session Id" + sessionId)
+
     const onError = (error) => {
         //console.log('Error connecting to socket:' + error);
     }
-
-
 
     //Connect to a web Socket
     const connect =()=>{

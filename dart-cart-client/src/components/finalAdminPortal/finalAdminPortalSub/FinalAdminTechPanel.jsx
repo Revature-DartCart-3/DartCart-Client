@@ -46,6 +46,8 @@ const FinalAdminTechPanel = () => {
             })
     }
 
+    console.log()
+
     return (
         <>
             <SessionListManager sessionList={sessionList} callback={setSessionList} />
@@ -54,7 +56,7 @@ const FinalAdminTechPanel = () => {
 
             <section>
                 <Container>
-                    <Table>
+                    <Table striped bordered hover className="admin-table">
                        <thead>
                         <tr>
                             <th><p>Enter</p></th>
@@ -70,8 +72,9 @@ const FinalAdminTechPanel = () => {
                                 return (
                                     <tr key={list.sessionId}>
                                         {/*<-------- enter button response*/}
-                                        <td className="admin-tech-panel-button">
+                                        <td className="admin-tech-panel-button-group">
                                             <button
+                                                className=""
                                                 value={JSON.stringify(list)}
                                                 name="session"
                                                 onClick={assignTechToChat}
@@ -84,13 +87,14 @@ const FinalAdminTechPanel = () => {
                                         <td>{list.sessionId}</td>
                                         <td>{list.client.id}</td>
                                         <td>{list.client.username}</td>
-                                        <td className="admin-tech-panel-button">
+                                        <td className="admin-tech-panel-button-group">
                                             <button
+                                                className="admin-tech-panel-button"
                                             value={JSON.stringify(list)}
                                                 onClick={disconnectConversation}
                                                 type="submit"
                                             >
-                                                <BsAlignEnd/>
+                                                <BsAlignEnd className="admin-icon-color"/>
                                             </button>
                                         </td>
                                     </tr>

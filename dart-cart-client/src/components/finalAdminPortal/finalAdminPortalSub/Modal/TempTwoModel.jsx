@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Modal, Form, FormControl} from "react-bootstrap";
 import "./finaModalStyling.css";
 import FinalTechChat from '../../../FinalTechChat';
@@ -18,6 +18,8 @@ const TempTwoModel = (props) => {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const user = useSelector((state) => state.authentication.user) || "";
+
+
     useEffect(() => {
         if (user) {
             const u = JSON.parse(user);
@@ -43,6 +45,8 @@ const TempTwoModel = (props) => {
             console.log("%%%% User info =" + JSON.stringify(userInfo) + "%%%%")
         }
     }, [user]);
+
+    // const userModalIdentifcation = name.id;
 
     const showModal = () => {
         setOpen(true);
@@ -70,17 +74,42 @@ const TempTwoModel = (props) => {
         setChatInput();
     }
 
-    return (
+    // function ChatModalRoom() {
+    //     const dummy = useRef();
+    //     const messagesRef = name.collection('messages');
+    //     const query = messagesRef.chatInput;
+    //
+    //     // const [messages] = useCollectionData(query, {userinfo: 'id'});
+    //
+    //     const [chatModalAnimation, setChatModalAnimation] = useState('');
+    //
+    //     const sendMessage = async (e) => {
+    //         e.preventDefault();
+    //
+    //         // const { uid, photoURL } = auth.currentUser;
+    //
+    //         await messagesRef.add({
+    //             text: chatModalAnimation
+    //             // createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    //             // uid,
+    //             // photoURL
+    //         })
+    //
+    //         setChatModalAnimation('');
+    //         dummy.current.scrollIntoView({behavior: 'smooth'});
+    //     }
+    // }
+
+
+        return (
         <>
             <section className="fade-in-effect">
 
                 <section className="admin-techchat-modal-section">
-                    <button className="clickMe bubbly-button" onClick={showModal}>
+                    <button className="admin-tech-panel-button" onClick={showModal}>
                         Enter Chat
                     </button>
                 </section>
-
-                {/* <h1 className="test">Text</h1> */}
 
                 <section
                     className={`modalContainer ${show ? "show" : ""} `}
@@ -108,9 +137,6 @@ const TempTwoModel = (props) => {
                                 {messageList.map((message) => (
                                     <p>{message.content}</p>
                                 ))}
-
-
-
 
                                 {/*{reply}*/}
                             </Modal.Body>
