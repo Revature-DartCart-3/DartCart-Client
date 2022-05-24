@@ -13,7 +13,7 @@ const TempTwoModel = () => {
     const [messageList, setMessageList] = useState([{}]);
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
-    const [chatInput, setChatInput] = useState([]);
+    const [chatInput, setChatInput] = useState("")
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
     const [name, setName] = useState("");
@@ -43,16 +43,7 @@ const TempTwoModel = () => {
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
 
-    const chatInputHandler = (e) => {
-        setChatInput({
-            ...chatInput,
-            [e.target.name] : [e.target.value]
-        })
-    }
-
     console.log(chatInput);
-
-
 
     return (
         <>
@@ -103,12 +94,12 @@ const TempTwoModel = () => {
                                 <FormControl
                                     type="text"
                                     name="responseMessage"
-                                    value={chatInput.responseMessage}
+                                    value={chatInput}
                                     placeholder="Enter message here"
-                                    onChange={chatInputHandler}
+                                    onChange={e => {setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput} userInfo={userInfo}/>
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} setChatInput={setChatInput} chatInput={chatInput} userInfo={userInfo}/>
 
                             </Modal.Footer>
                             </div>
