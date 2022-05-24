@@ -46,6 +46,8 @@ const FinalAdminTechPanel = () => {
             })
     }
 
+    console.log()
+
     return (
         <>
             <SessionListManager sessionList={sessionList} callback={setSessionList} />

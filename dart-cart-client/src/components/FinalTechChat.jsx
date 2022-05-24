@@ -9,11 +9,10 @@ import axios from "axios";
 import {Form, Modal} from "react-bootstrap";
 import FinalAdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/FinalAdminTechPanel";
 
-var stompClient =null;
+var stompClient = null;
 
 /* 
 The messages are saved in the messages state.
-
 */
 
 function FinalTechChat (props) {
@@ -22,6 +21,7 @@ function FinalTechChat (props) {
     //const [messages, callback] = [props.messages, props.callback];
     const [userId, setUserId] = useState(1);
     const [sessionId, setSessionId] = useState(0);
+    // const [sessionId, setSessionId] = useState(prevSession => prevSession (props.sessionId));
     const [message, setMessage] = useState("My products aren't displaying properly");
     const [recipientName, setRecipientName] = useState("");
     const [recipientId, setRecipientId] = useState();
@@ -40,11 +40,11 @@ function FinalTechChat (props) {
         content: props.chatInput
       };
 
+    console.log("Chat Queue Session Id" + sessionId)
+
     const onError = (error) => {
         //console.log('Error connecting to socket:' + error);
     }
-
-
 
     //Connect to a web Socket
     const connect =()=>{

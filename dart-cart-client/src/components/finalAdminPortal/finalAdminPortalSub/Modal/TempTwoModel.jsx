@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Modal, Form, FormControl} from "react-bootstrap";
 import "./finaModalStyling.css";
 import FinalTechChat from '../../../FinalTechChat';
@@ -18,12 +18,16 @@ const TempTwoModel = (props) => {
 
     const [name, setName] = useState("");
     const user = useSelector((state) => state.authentication.user) || "";
+
+
     useEffect(() => {
         if (user) {
             const u = JSON.parse(user);
             setName(u.username);
         }
     }, [user]);
+
+    // const userModalIdentifcation = name.id;
 
     const showModal = () => {
             setModal(true);
@@ -48,7 +52,34 @@ const TempTwoModel = (props) => {
         setChatInput([]);
     }
 
-    return (
+    // function ChatModalRoom() {
+    //     const dummy = useRef();
+    //     const messagesRef = name.collection('messages');
+    //     const query = messagesRef.chatInput;
+    //
+    //     // const [messages] = useCollectionData(query, {userinfo: 'id'});
+    //
+    //     const [chatModalAnimation, setChatModalAnimation] = useState('');
+    //
+    //     const sendMessage = async (e) => {
+    //         e.preventDefault();
+    //
+    //         // const { uid, photoURL } = auth.currentUser;
+    //
+    //         await messagesRef.add({
+    //             text: chatModalAnimation
+    //             // createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    //             // uid,
+    //             // photoURL
+    //         })
+    //
+    //         setChatModalAnimation('');
+    //         dummy.current.scrollIntoView({behavior: 'smooth'});
+    //     }
+    // }
+
+
+        return (
         <>
             <section className="fade-in-effect">
 
