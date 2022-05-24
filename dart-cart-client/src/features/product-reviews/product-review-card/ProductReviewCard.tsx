@@ -1,4 +1,3 @@
-import React from 'react'
 import { AiFillStar } from 'react-icons/ai';
 function ProductReviewCard({ 
     profilePic = "/man.jpg",
@@ -7,7 +6,7 @@ function ProductReviewCard({
     rating = 0, 
     comment = `` }) {
     return (
-        <div style={{ textAlign: 'left' }}>
+        <div className='review-card'>
             <span >
                 <img className="profile" src={
                    ( (profilePic!=='') ? profilePic : "/man.jpg")

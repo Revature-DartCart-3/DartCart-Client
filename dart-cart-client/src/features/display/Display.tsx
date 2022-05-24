@@ -13,7 +13,6 @@ import Featured_Products from "../Featured_Products";
 import authHeader from '../authentication/AuthHeader';
 import FeaturedProduct from '../../Models/featured_product';
 import axios from 'axios';
-import { addToCart } from "../../common/slices/cartSlice";
 
 const MOCK_SERVER = process.env.REACT_APP_API_URL;
 
@@ -64,15 +63,15 @@ useEffect(fetchData, []);
         {status === "success" ? (
           (ReduxShopProducts.length &&
             ReduxShopProducts.map((Product, i) => {
-                return <div><ShopProductCard Product={Product}></ShopProductCard></div>;
+                return <div key={`sp${Product.id}`}><ShopProductCard Product={Product}></ShopProductCard></div>;
             })) || (
             <>
-              <h1 style={{ color: "white" }}>No Items Found</h1>
+              <h1 style={{ color: "orange" }}>No Items Found</h1>
             </>
           )
         ) : (
           <div
-            className="text-light fs-1 p-5 text-uppercase"
+            className="text-light fs-1 p-3 text-uppercase"
             style={{ textAlign: "center" }}
           >
             Fetching Products...

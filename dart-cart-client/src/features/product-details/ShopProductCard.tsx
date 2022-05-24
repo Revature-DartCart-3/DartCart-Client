@@ -28,7 +28,7 @@ function addToWishList(productId){
       return "Cannot add to wishlist";
     })
   }
-  
+
 async function addToWL(productId){
   const y = await addToWishList(productId);
   return React.createElement("span", {class : "wishListNotice  youCanSeeMe"}, y);

@@ -124,7 +124,8 @@ visibility: hidden;
   margin:auto;
 }
 .productImageContainer{
-  float:right;
+  display: flex;
+  flex-direction: column;
 }
 .productImage{
   width: 100%;
@@ -134,12 +135,13 @@ visibility: hidden;
 .productDesc{
   color: var(--text-primary);
   text-align: left;
+  padding:10px;
 }
 
 .review-link{
   background-color: transparent;
   text-decoration: none;
-  color: var(--blue);
+  color: #31a4ec;
   border:none;
   padding-top: 5px;
   margin:auto;
@@ -152,6 +154,11 @@ visibility: hidden;
   color: var(--text-color);
   width:90%;
   margin:20px auto;
+  text-align: left;
+}
+.review-card{
+  width:80%;
+  margin:2% auto;
 }
 
 .button{
@@ -165,12 +172,16 @@ visibility: hidden;
 .blue-button{
   background-color: var(--blue);
 }
-.blue-button:hover, .orange-button:hover{
+.blue-button:hover, .orange-button:hover, .grey-button:hover{
   background-color: var(--yellow);
 }
 
 .orange-button{
   background-color: var(--orange);
+}
+
+.grey-button{
+  background-color: var(--lightgrey);
 }
 
 .stacked{

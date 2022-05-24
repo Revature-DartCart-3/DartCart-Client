@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "./NavLinks";
 import About from "./About";
 import SocialMedia from "./SocialMedia";
 import UsefulLinks from "./UsefulLinks";
@@ -8,7 +8,7 @@ export default function Footer() {
   // divs dealing with managing columns were not abstracted away so this area can focus on applying styles correctly
 
   return (
-    <footer className="text-center text-lg-start" id="footerFix">
+    <footer className="site-footer text-center text-lg-start" id="footerFix">
       <section className="footer-info" id="footerFix">
         <div className="container text-center text-md-start mt-5" id="footerFix">
           <div className="row mt-3" id="footerFix">
@@ -32,8 +32,8 @@ export default function Footer() {
           </div>
         </div>
       </section>
-
-      <div className="text-center p-4">
+      <hr></hr>
+      <div className="copyright-text text-muted text-center p-4">
         © 2022 Dart Cart
       </div>
     </footer>

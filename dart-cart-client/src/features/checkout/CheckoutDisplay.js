@@ -1,16 +1,27 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Billing } from "./BillingForm";
 import { Shipping } from "./ShippingForm";
 import "./CheckoutDisplay.css"
-import { CheckoutButton } from "./CheckoutButton";
 import { useDispatch } from "react-redux";
 import { addShipping } from "../../common/slices/shippingSlice";
 
 import PayInstallments from "./PayInstallments";
+import OrderSummary from "./OrderSummary";
 
 function Checkout() {
     const dispatch = useDispatch();
 
+    //track checkout progress
+    const [shippingCompleted, setShippingCompleted] = useState(false);
+    const [paymentPlanCompleted, setPaymentPlanCompleted] = useState(false);
+    const [billingCompleted, setBillingCompleted] = useState(false);
+
+    //gather order information
+    const [shippingInfo, setShippingInfo] = useState({});
+    const [paymentPlan, setPaymentPlan] = useState({});
+    const [billingInfo, setBillingInfo] = useState({});
+
+    //not sure what this does
     useEffect(() => {
         const shippingObject= {   
             id: 1,
@@ -25,22 +36,36 @@ function Checkout() {
     return (
         <>
             <h1>Checkout</h1>
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm">
-                        <Shipping></Shipping>
-                        <Billing></Billing>
-                    </div>
-                    <div className="col-sm">
-                    <PayInstallments/>
-                    </div>
-                    <div className="col align-self-end">
-                        {/* <DisplayInvoice></DisplayInvoice> */}
+
+            {!shippingCompleted ? 
+                // Step 1: Shipping Info
+                <Shipping 
+                    next={()=>setShippingCompleted(true)} 
+                    post={setShippingInfo}/>
+            :
+                (!paymentPlanCompleted ?
+                    //Step 2: Payment Plan
+                    <PayInstallments 
+                        back={()=>setShippingCompleted(false)} 
+                        next={()=>setPaymentPlanCompleted(true)}
+                        post={setPaymentPlan}/>
+                :
+                    (!billingCompleted?
+                        // Step 3: Payment Info
+                        <Billing 
+                            back={()=>setPaymentPlanCompleted(false)} 
+                            next={()=>setBillingCompleted(true)}
+                            post={setBillingInfo}/>
                         
-                        <CheckoutButton></CheckoutButton>
-                    </div>
-                </div>
-            </div>
+                    : 
+                        //Step 4: Final order summary 
+                        <OrderSummary 
+                            shipping={shippingInfo} 
+                            paymentPlan={paymentPlan} 
+                            billing={billingInfo}/>
+                    )
+                )     
+            }
         </>
     )
 }

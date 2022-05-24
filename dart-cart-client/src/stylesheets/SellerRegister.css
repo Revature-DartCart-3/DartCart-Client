@@ -4,20 +4,20 @@
 ---------------------------------------------------------------------------*/
 
 /* Outer form structure */
-form, .shop-form {
-    width: 50%;
+form, .shop-form, .order-summary {
+    width: 45%;
     margin: 20px auto;
     border: 1px solid var(--secondary);
     border-radius: 5px;
     padding:0;
 }
 @media (max-width: 500px){
-    form, .shop-form {
+    form, .shop-form, .order-summary {
         width:95%;
     }
 }
 @media (min-width:500px) and (max-width: 800px) {
-    form, .shop-form {
+    form, .shop-form, .order-summary {
         width: 75%;
     }
 }
@@ -31,7 +31,7 @@ form, .shop-form {
 }
 
 /* Heading */
-.shop-form-heading{
+.shop-form-heading, .order-summary-heading{
     background-color: var(--orange);
     color:white;
     font-size: x-large;
@@ -54,7 +54,7 @@ form, .shop-form {
     height: 60px;
     padding-left: 20px;
     vertical-align: middle;
-    /* text-align: center; */
+    text-align: center;
 }
 
 .form-control:focus {
@@ -91,7 +91,7 @@ input[type=file]{
     background-color: var(--background);
     color: var(--text-secondary);
     border-color: var(--secondary);
-    /* text-align: center; */
+    text-align: center;
 }
 
 .form-select:focus {
@@ -101,7 +101,7 @@ input[type=file]{
 }
 
 /* Form Buttons */
-.submit-button, .modal-button {
+.submit-button {
     padding: 10px 20px;
     color: white;
     background-color: var(--orange);
@@ -110,7 +110,7 @@ input[type=file]{
     margin: 20px;
 }
 
-.submit-button:hover, .modal-button:hover {
+.submit-button:hover {
     background-color: var(--yellow);
     color: white;
 }
@@ -126,9 +126,4 @@ input[type=file]{
 
 .upload-button:hover {
     background-color: lightgray;
-}
-
-.modal-button{
-    margin:10px 5px;
-    float:right;
 }

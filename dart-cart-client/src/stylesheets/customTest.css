@@ -2,8 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope');
+@import url('https://fonts.googleapis.com/css?family=Just+Another+Hand');
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
-:root{
+:root {
   --primary: #57b6a4;
   --primary-light: #95CFC4;
   --secondary: #F6B07E;
@@ -12,7 +19,7 @@
   --darkred: #ba181b;
   --burgandy: #9B2226;
   --burgandy2: #660708;
-  --hotpink:#e91e63;
+  --hotpink: #e91e63;
   --pink: #da627d;
   --bs-danger: #e56b6f;
   --rose: #F55767;
@@ -42,7 +49,7 @@
   --darkteal2: #284b63;
   --blue: #299EF3;
   --blue2: #3EB8F4;
-  --turquoise:#00bcd4;
+  --turquoise: #00bcd4;
   --paleblue: #669bbc;
   --babyblue: #98c1d9;
   --darkblue: #1F3A63;
@@ -73,14 +80,40 @@
   --dark: #1e2d2f;
   --dark2: #212529;
   --dark3: #212529;
-  --primary-orange: #f26925;
-  --primary-white: #ffff;
-  --primary-darkgrey: #474c55;
-  --secondary-blue: #72a4c2;
-  --secondary-yellow: #fcb414;
-  --secondary-lightgrey: #b9b9ba;
-  --basicfont: 'Grandstander', cursive;
-  --retrofont: 'Pacifico', cursive;
-  --ranchofont: 'Rancho', cursive;
-  --dancingfont: 'Dancing Script', cursive;
+  --GrandstanderFont: 'Grandstander', cursive;
+  --PavificoFont: 'Pacifico', cursive;
+  --RanchoFont: 'Rancho', cursive;
+  --DancingFont: 'Dancing Script', cursive;
+  --AnnieTelescopeFont: 'Annie Use Your Telescope', cursive;
+  --JustAnptherHandFont: 'Just Another Hand', cursive;
+  --HiMelodyFont: 'Hi Melody', cursive;
+  --IndieFlowerFont: 'Indie Flower', cursive;
+  --PermanentMarkerFont: 'Permanent Marker', cursive;
+  --GloriaFont: 'Glorio Hollelujah', cursive;
+  --PatrickHandFont: 'Patrick Hand', cursive;
+}
+
+
+.selectedbutton {
+  width: 50%;
+  color: var(--primary);
+  text-align: center;
+  background: transparent !important;
+  border: 0;
+  outline: 0;
+  letter-spacing: 1.5px;
+}
+.unselectedbutton {
+  width: 50%;
+  background: var(--beige);
+  color: var(--dark3);
+  border: 0;
+  outline: 0;
+  text-align: center;
+  opacity: 20%;
+  letter-spacing: 1.5px;
+}
+.unselectedbutton:hover {
+  background: var(--primary-light);
+  color: white;
 }

@@ -59,9 +59,6 @@ function ProductReview(props) {
         setCols(layoutCols.split(":"))
         setFeatureTypesArry(feature_types.split(":"))
     }
-
-    console.log(featureTypesArry)
-
     return (<>
         {props.showLayoutControls && <Form >
             <fieldset >
