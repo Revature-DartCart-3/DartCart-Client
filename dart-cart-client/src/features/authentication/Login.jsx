@@ -19,7 +19,7 @@ function ShowEmailSentModal(props) {
     }
     return(
         <Modal show={showThis} onHide={handleClose}>
-            <Modal.Header closeButton style={{ backgroundColor:"#198754", color:"#fff"}}>
+            <Modal.Header closeButton style={{ backgroundColor:"var(--orange)", color:"#fff"}}>
                 <Modal.Title >Reset Password</Modal.Title>
             </Modal.Header>
             
