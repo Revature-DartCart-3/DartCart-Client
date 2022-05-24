@@ -16,16 +16,14 @@ const TempTwoModel = () => {
     const [chatInput, setChatInput] = useState([]);
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
-    // const dispatch = useDispatch();
-    // const [chatname, setChatname] = useState("");
-    // const user = useSelector((state: RootState) => state.authentication.user) || "";
-    //
-    // useEffect(() => {
-    //     if(user) {
-    //         const u = JSON.parse(user);
-    //         setChatname(u.username);
-    //     }
-    // }, [])
+    const [name, setName] = useState("");
+    const user = useSelector((state) => state.authentication.user) || "";
+    useEffect(() => {
+        if (user) {
+            const u = JSON.parse(user);
+            setName(u.username);
+        }
+    }, [user]);
 
     const showModal = () => {
             setModal(true);
@@ -45,7 +43,6 @@ const TempTwoModel = () => {
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
 
-
     const chatInputHandler = (e) => {
         setChatInput({
             ...chatInput,
@@ -53,14 +50,9 @@ const TempTwoModel = () => {
         })
     }
 
+    console.log(chatInput);
 
-    // const RenderMessages = () => {
-    //     return(
-    //     messages.map((message) => {
-    //         <p>{message}</p>
-    //     })
-    //     )
-    // };
+
 
     return (
         <>
@@ -87,7 +79,7 @@ const TempTwoModel = () => {
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
 
-                            <h2 className="modal_header-title ">User : {userInfo.username} | Techie : name  </h2>
+                            <h2 className="modal_header-title ">User : {name} | Techie : name  </h2>
                                 <button
                                     className="admin-techchat-close-button"
                                     onClick={closeModal}
@@ -101,8 +93,10 @@ const TempTwoModel = () => {
                                 {messageList.map((message) => (
                                     <p>{message.content}</p>
                                 ))}
-                                
-                                Enter the chat response
+
+
+
+
                                 {/*{reply}*/}
                             </Modal.Body>
                             <Modal.Footer className="modal_footer">
@@ -114,9 +108,8 @@ const TempTwoModel = () => {
                                     onChange={chatInputHandler}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                {/* <button className="admin-techchat-modal-button submit"> */}
                                     <FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput} userInfo={userInfo}/>
-                                {/* </button> */}
+
                             </Modal.Footer>
                             </div>
                         </Modal>

@@ -113,6 +113,7 @@ function FinalTechChat (props) {
         props.callbackFunction(message);
     }
 
+
     //Send message to other user
     const sendMessage=()=>{
         //Generate message
