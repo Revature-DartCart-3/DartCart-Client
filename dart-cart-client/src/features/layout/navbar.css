@@ -1,0 +1,28 @@
+.logo {
+    width: 30px;
+    margin-left:20px;
+}
+
+.logo-title{
+    text-decoration: none;
+    text-align: left;
+    font-size: xx-large;
+    color: var(--bs-black) !important
+}
+
+.bg-navbar{
+    background-color: var(--darker);
+    color:var(--bs-white);
+}
+
+.header{
+    width:95%;
+}
+
+.middle{
+    align-items: center;
+}
+
+.nav-link{
+    color: var(--text-primary) !important
+}

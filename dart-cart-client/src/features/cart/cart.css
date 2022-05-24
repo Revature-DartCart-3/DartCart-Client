@@ -1,4 +1,4 @@
-.form-control:read-only {
+.cart-card .form-control:read-only {
     background-color: var(--secondary);
     color: var(--primary);
     font-size: 18px;
@@ -114,4 +114,8 @@
 
 .cart-card-text, .cart-card-total {
     font-weight: 600;
+}
+
+.cart{
+    padding: 2%;
 }

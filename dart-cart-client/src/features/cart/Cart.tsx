@@ -27,13 +27,12 @@ const Cart = () => {
         },
         0,
     );
-        totalTotal = parseFloat(totalTotal.toFixed(2));
-        dispatch(updateTotal(totalTotal));
+    totalTotal = parseFloat(totalTotal.toFixed(2));
+    dispatch(updateTotal(totalTotal));
         
-    
-
     return (
-        <>
+        <div className="cart">
+            <h3>Cart</h3>
             {
                 items.map(item => {
                     return <CartItemView key={item.id} {...item} />
@@ -41,7 +40,7 @@ const Cart = () => {
             }
             <p className="cart-total">Cart Total: ${ totalTotal }</p>
             <Link to="/checkout" className="cart-checkout">Checkout</Link>
-        </>
+        </div>
     )
 }
 

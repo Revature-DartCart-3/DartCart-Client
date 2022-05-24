@@ -141,7 +141,7 @@ visibility: hidden;
 .review-link{
   background-color: transparent;
   text-decoration: none;
-  color: var(--blue);
+  color: #31a4ec;
   border:none;
   padding-top: 5px;
   margin:auto;
@@ -154,6 +154,11 @@ visibility: hidden;
   color: var(--text-color);
   width:90%;
   margin:20px auto;
+  text-align: left;
+}
+.review-card{
+  width:80%;
+  margin:2% auto;
 }
 
 .button{

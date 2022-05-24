@@ -100,7 +100,7 @@ export function AddInventory() {
     <>
       <Form>
         <div className="shop-form-heading">
-          <h2>Add Product to Shop Inventory</h2>
+          <h2>Add Product Inventory</h2>
         </div>
         {error && <Alert variant="danger">{error}</Alert>}
 
