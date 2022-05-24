@@ -5,6 +5,7 @@ import FinalTechChat from '../../../FinalTechChat';
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
+import '../chatModalAnimations/chatAnimation.css';
 
 
 const TempTwoModel = (props) => {
@@ -133,12 +134,14 @@ const TempTwoModel = (props) => {
                                 
 
                             </Modal.Header>
+
                             <Modal.Body className="modal_content">
                                 {messageList.map((message) => (
-                                    <p>{message.content}</p>
+
+                                     <p className="message">{message.content}</p>
+
                                 ))}
 
-                                {/*{reply}*/}
                             </Modal.Body>
                             <Modal.Footer className="modal_footer">
                                 <FormControl
