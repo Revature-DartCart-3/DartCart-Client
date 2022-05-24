@@ -52,8 +52,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-Your browser will automaticall open for you, and you are all set.
-![](./dart-cart-client/src/imgs/readme/D.png)
+Your browser will automatically open for you, and you are all set.
+![](./dart-cart-client/src/imgs/readme/home3.png)
 
 ## Usage
 
@@ -61,7 +61,7 @@ Your browser will automaticall open for you, and you are all set.
 
 * Homepage
   * This is DartCart's landing page. On this page you can view featured products and choose between light and darkmode with the switch at the top.
-  ![Homepage](./dart-cart-client/src/imgs/readme/homepage.png)
+  ![Homepage](./dart-cart-client/src/imgs/readme/products3.png)
 
 * Register
   * Register a new user by clicking the Register button and fill out the new account registration form.
@@ -89,7 +89,7 @@ Your browser will automaticall open for you, and you are all set.
 
 * Checkout
   * After a user has decided on what to purchase they can then proceed to checkout. Relevant information such as shipping address and a credit card must be entered along with the desired payment plan.
-  * ADD IMAGE OF CHECKOUT
+  ![AddInventory](./dart-cart-client/src/imgs/readme/checkout3.png)
 
 * Tech Support Chat
   * If at any time a user has problems with the site there is a tech support chat to reach an employee for help.
