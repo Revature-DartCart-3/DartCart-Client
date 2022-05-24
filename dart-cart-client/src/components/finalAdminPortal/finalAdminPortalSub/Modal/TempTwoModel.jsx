@@ -14,26 +14,26 @@ const TempTwoModel = () => {
     //const [modal, setModal] = useState(true);
     const [show,setShow] = useState("");
     const [chatInput, setChatInput] = useState([]);
-    const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
+    // const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
 
 
-    const dispatch = useDispatch();
-    const [chatname, setChatname] = useState("");
-    const user = useSelector(chatname.authentication.user) || "";
+    const [name, setName] = useState("");
+    const user =
+        useSelector((state) => state.authentication.user) || "";
 
     useEffect(() => {
-        if(user) {
+        if (user) {
             const u = JSON.parse(user);
-            setChatname(u.username);
+            setName(u.firstName);
         }
-    }, [])
+    }, [user]);
 
     const showModal = () => {
             setModal(true);
             console.log(modal)
         console.log("hitting showModal")
-        console.log("USER:" + userInfo);
+        // console.log("USER:" + userInfo);
     }
 
     const closeModal = () => {
@@ -77,7 +77,7 @@ const TempTwoModel = () => {
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
 
-                            <h2 className="modal_header-title ">User : {userInfo.username} | Techie : name  </h2>
+                            <h2 className="modal_header-title ">User : {name.username} | Techie : name  </h2>
                                 <button
                                     className="admin-techchat-close-button"
                                     onClick={closeModal}
@@ -105,7 +105,8 @@ const TempTwoModel = () => {
                                 />
                                 {/*submit the respone an add it the existing one*/}
                                 {/* <button className="admin-techchat-modal-button submit"> */}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput} userInfo={userInfo}/>
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput}/>
+                                {/*<FinalTechChat messages={messageList} callbackFunction={callback} input={chatInput} userInfo={userInfo}/>*/}
                                 {/* </button> */}
                             </Modal.Footer>
                             </div>
