@@ -20,8 +20,7 @@ function FinalTechChat (props) {
     const username = "jimmy";//Replace with code to retrieve user Id
     //const [messages, callback] = [props.messages, props.callback];
     const [userId, setUserId] = useState(1);
-    const [sessionId, setSessionId] = useState(0);
-    // const [sessionId, setSessionId] = useState(prevSession => prevSession (props.sessionId));
+    const [sessionId, setSessionId] = useState();
     const [message, setMessage] = useState("My products aren't displaying properly");
     const [recipientName, setRecipientName] = useState("");
     const [recipientId, setRecipientId] = useState();
@@ -59,7 +58,20 @@ function FinalTechChat (props) {
     }
 
     const disconnect = () =>{
-        console.log("*****Leaving Chat*****"+ chatMessage);
+            var chatMessage = {
+        sessionId: sessionId,
+        type: "Message",
+        senderId: userInfo.id,
+        recipientId: recipientId,
+        senderName: userInfo.username,
+        recipientName: recipientName,
+        content: props.chatInput
+      };
+        console.log(sessionId);
+        console.log("*****Leaving Chat*****"+ JSON.stringify(chatMessage));
+        //let disconnectMessage = chatMessage;
+        //disconnectMessage.content ="Disconnected";
+        //stompClient.send("/app/disconnect", {}, JSON.stringify(disconnectMessage));
         stompClient.send("/app/disconnect", {}, JSON.stringify(chatMessage));
         stompClient.unsubscribe("privateMessaging");
         setIsConnected(false);
@@ -69,7 +81,7 @@ function FinalTechChat (props) {
     const onConnected = () =>{
         //Listen to users private message socket and store the subscription
         //{Subscribe to endpoint  {destination, callback function, id}}
-        stompClient.subscribe('/user/' + userId + '/private', onPrivateMessage ,{ id: "privateMessaging"});
+        stompClient.subscribe('/user/' + userInfo.id + '/private', onPrivateMessage ,{ id: "privateMessaging"});
 
         //stompClient.subscribe('/chatroom/techies', onPrivateMessage); //Used for admins to retrieve list of awaiting clients
 
@@ -86,7 +98,7 @@ function FinalTechChat (props) {
         
         //Check if message is from automated system
         if(message.senderId == 0) {
-            setSessionId(message.sessionId);
+            //setSessionId(message.sessionId);
             console.log("Automated system sent message. " + message.type);
             switch (message.type) {
                 case "Disconnected":
@@ -96,7 +108,8 @@ function FinalTechChat (props) {
 
                     return;
                 case "Created":
-                    setSessionId(message.sessionId);
+                    console.log(message.sessionId);
+                    //setSessionId(message.sessionId);
                     break;
                 case "Join":
                     //Get session information from session response
@@ -128,6 +141,8 @@ function FinalTechChat (props) {
 
     //handle mounting
     useEffect(() => {
+        //Determine whether to run connect or disconnect
+        if(props.open){
         //Check if they are a tech
         const adminNames = ["admin","techie"];
         isTech = adminNames.includes(userInfo.accountType) ? true : false;
@@ -135,16 +150,24 @@ function FinalTechChat (props) {
              setSessionId(props.session.sessionId);
              setRecipientId(props.session.client.id);
              setRecipientName(props.session.client.username);
+             console.log(props.session.sessionId);
          }
-        //console.log("Found user to be" + userInfo.type + "are they allowed?" + isTech)
+         //setSessionId(props.session.sessionId);
+        console.log("Found user to be" + userInfo.accountType + "are they allowed?" + isTech)
+        console.log(sessionId);
         connect();
-    },[])
+        }
+        else {
+            console.log("**Unmount**");
+            disconnect();
+        }
+    },[props.open])
 
-    //handle unmounting
-    useEffect(() => () =>  {
-        console.log("**Unmount**");
-        disconnect();
-    }, [])
+    // //handle unmounting
+    // useEffect(() => () =>  {
+    //     console.log("**Unmount**");
+    //     disconnect();
+    // }, [])
    
     return(
         <>
