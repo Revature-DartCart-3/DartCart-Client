@@ -40,7 +40,8 @@
 }
 
 .cardImg {
-    width: 350%;
+    width: 100%;
+    length: 200%;
 }
 /* footer icons */
 .fa {
@@ -99,8 +100,8 @@ input[type="checkbox"]{
 
   /* cards -- sets card background to match color theme */
 .card {
-background: #63ff78;
-box-shadow: 0 0 5px #13b3ff, 0 0 15px #13b3ff;
+background: #0d9d9f;
+box-shadow: 0 0 5px #f26925, 0 0 15px #f26925;
 }
 .card-body {
     color: var(--text-primary);
@@ -117,5 +118,5 @@ box-shadow: 0 0 5px #13b3ff, 0 0 15px #13b3ff;
 
 .profile {
     height:48px;
-    width:48px;
+    width:100px;
 }

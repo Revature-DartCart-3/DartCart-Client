@@ -64,12 +64,12 @@ useEffect(fetchData, []);
                 return <div key={`sp${Product.id}`}><ShopProductCard Product={Product}></ShopProductCard></div>;
             })) || (
             <>
-              <h1 style={{ color: "white" }}>No Items Found</h1>
+              <h1 style={{ color: "orange" }}>No Items Found</h1>
             </>
           )
         ) : (
           <div
-            className="text-light fs-1 p-5 text-uppercase"
+            className="text-light fs-1 p-3 text-uppercase"
             style={{ textAlign: "center" }}
           >
             Fetching Products...
