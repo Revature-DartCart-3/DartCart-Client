@@ -1,52 +1,45 @@
-/*.th-td-spacing {*/
-/*    padding-top: 5px;*/
-/*}*/
 
-/*!*Final Tech Queue Panel*!*/
 
-/*.admin-table {*/
-/*    border: purple 1px solid;*/
-/*    box-shadow: 0 0 1rem 0 black;*/
-/*    margin: auto;*/
 
-/*}*/
 
-/*!*Final Admin Tech Button*!*/
+/*Final Tech Queue Panel*/
 
-/*.admin-tech-panel-button-group {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
+.admin-table {
+    border: purple 1px solid;
+    box-shadow: 0 0 1rem 0 black;
 
-/*.admin-tech-panel-button {*/
-/*    background-color: rebeccapurple;*/
-/*    border-radius: 4px;*/
-/*    padding: 6px;*/
-/*    transition: .3s ease-in-out;*/
-/*    cursor: pointer;*/
-/*    color: white;*/
-/*    margin-top: 5px;*/
-/*    margin-bottom: 5px;*/
-/*    margin-left: 5px;*/
-/*    margin-right: 5px;*/
-/*    box-shadow: 0 0 5px 0 blue;*/
-/*}*/
+}
 
-/*.admin-tech-panel-button:hover {*/
-/*    !*border: white 1px inset;*!*/
-/*    !*box-shadow: 0 0 1rem 0 blue;*!*/
-/*    background-color: slateblue;*/
-/*    color: white;*/
-/*    box-shadow: 0 0 5px 0 rebeccapurple;*/
-/*}*/
 
-/*.admin-icon-color {*/
-/*    color: white;*/
-/*}*/
+/*Final Admin Tech Button*/
 
-/*!* Final Two Way Chat Modal*!*/
+.admin-tech-panel-button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/*.chatUsername {*/
-/*    text-align: center;*/
-/*}*/
+.admin-tech-panel-button {
+    background-color: rebeccapurple;
+    border-radius: 4px;
+    padding: 6px;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    color: white;
+}
+
+.admin-tech-panel-button:hover {
+    border: white 2px inset;
+    box-shadow: 0 0 1rem 0 blue;
+
+}
+
+.admin-icon-color {
+    color: white;
+}
+
+/* Final Two Way Chat Modal*/
+
+.chatUsername {
+    text-align: center;
+}

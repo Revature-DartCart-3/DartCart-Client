@@ -56,7 +56,6 @@ const FinalAdminTechPanel = () => {
 
             <section>
                 <Container>
-
                     <Table striped bordered hover className="admin-table">
                        <thead>
                         <tr>
@@ -75,6 +74,7 @@ const FinalAdminTechPanel = () => {
                                         {/*<-------- enter button response*/}
                                         <td className="admin-tech-panel-button-group">
                                             <button
+                                                className=""
                                                 value={JSON.stringify(list)}
                                                 name="session"
                                                 onClick={assignTechToChat}

@@ -46,7 +46,7 @@ function FinalTechChat (props) {
     }
 
     //Connect to a web Socket
-    const connect = () =>{
+    const connect =()=>{
         let Sock = new SockJS('http://localhost:9005/ws');
         stompClient = over(Sock);
         stompClient.connect({}, onConnected, onError);
@@ -57,16 +57,16 @@ function FinalTechChat (props) {
         disconnect();
     }
 
-    const disconnect = () => {
+    const disconnect = () =>{
             var chatMessage = {
-                sessionId: sessionId,
-                type: "Message",
-                senderId: userInfo.id,
-                recipientId: recipientId,
-                senderName: userInfo.username,
-                recipientName: recipientName,
-                content: props.chatInput
-              };
+        sessionId: sessionId,
+        type: "Message",
+        senderId: userInfo.id,
+        recipientId: recipientId,
+        senderName: userInfo.username,
+        recipientName: recipientName,
+        content: props.chatInput
+      };
         console.log(sessionId);
         console.log("*****Leaving Chat*****"+ JSON.stringify(chatMessage));
         //let disconnectMessage = chatMessage;
@@ -81,7 +81,7 @@ function FinalTechChat (props) {
     const onConnected = () =>{
         //Listen to users private message socket and store the subscription
         //{Subscribe to endpoint  {destination, callback function, id}}
-        stompClient.subscribe('/user/' + userInfo.id + '/private', onPrivateMessage , { id: "privateMessaging"} );
+        stompClient.subscribe('/user/' + userInfo.id + '/private', onPrivateMessage ,{ id: "privateMessaging"});
 
         //stompClient.subscribe('/chatroom/techies', onPrivateMessage); //Used for admins to retrieve list of awaiting clients
 
