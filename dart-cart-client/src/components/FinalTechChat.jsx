@@ -35,7 +35,7 @@ function FinalTechChat (props) {
         recipientId: 1,
         senderName: userInfo.username,
         recipientName: "admin",
-        content: props.ChatInput
+        content: props.chatInput
       };
 
     const onError = (error) => {
@@ -123,6 +123,7 @@ function FinalTechChat (props) {
           callback(message);
           //Send message via socket
           stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
+          props.clearChatInput();
         }
     }
 

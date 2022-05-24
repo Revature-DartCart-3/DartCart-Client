@@ -43,7 +43,10 @@ const TempTwoModel = () => {
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
 
-    console.log(chatInput);
+    //Clear the input box
+    const clearChatInput = () => {
+        setChatInput("");
+    }
 
     return (
         <>
@@ -96,10 +99,10 @@ const TempTwoModel = () => {
                                     name="responseMessage"
                                     value={chatInput}
                                     placeholder="Enter message here"
-                                    onChange={e => {setChatInput(e.target.value)}}
+                                    onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} setChatInput={setChatInput} chatInput={chatInput} userInfo={userInfo}/>
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo}/>
 
                             </Modal.Footer>
                             </div>
