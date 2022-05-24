@@ -4,7 +4,6 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 import {over} from 'stompjs';
 import SockJS from 'sockjs-client';
-
 import { withStyles } from "@mui/material";
 import axios from "axios";
 import {Form, Modal} from "react-bootstrap";
@@ -26,7 +25,8 @@ function FinalTechChat (props) {
     const [message, setMessage] = useState("My products aren't displaying properly");
     const callback = props.callbackFunction;
     const userInfo = props.userInfo;
-
+    let isTech;
+    
     //WEBSOCKET FUNCTIONS
     var chatMessage = {
         sessionId: sessionId,
@@ -69,13 +69,13 @@ function FinalTechChat (props) {
         console.log('Connected to Socket');
 
         //Listen to users private message socket and store the subscription
-        //Subscribe to endpoint  {destination, callback function, id}
+        //{Subscribe to endpoint  {destination, callback function, id}}
         stompClient.subscribe('/user/' + userId + '/private', onPrivateMessage ,{ id: "privateMessaging"});
 
         //stompClient.subscribe('/chatroom/techies', onPrivateMessage); //Used for admins to retrieve list of awaiting clients
 
-        //Send request for help to techies
-        stompClient.send("/app/help-request", {}, JSON.stringify(chatMessage));
+        //Send request for help to techies if not a techie yourself
+        if(!isTech) stompClient.send("/app/help-request", {}, JSON.stringify(chatMessage));
         setIsConnected(true);
     }
 
@@ -99,6 +99,11 @@ function FinalTechChat (props) {
                 case "Created":
                     chatMessage.sessionId = message.sessionId;
                     break;
+                case "Join":
+                    //Get session information from session response
+                    let sessionResponse = JSON.parse(message.content);
+                    chatMessage.recipientId = sessionResponse.techId;
+                    chatMessage.recipientName = sessionResponse.techName;
                 default:
                     break;
             }
@@ -123,6 +128,10 @@ function FinalTechChat (props) {
 
     //handle mounting
     useEffect(() => {
+        //Check if they are a tech
+        const adminNames = ["admin","techie"];
+        isTech = adminNames.includes(userInfo.accountType) ? true : false;
+        //console.log("Found user to be" + userInfo.type + "are they allowed?" + isTech)
         connect();
     },[])
 
