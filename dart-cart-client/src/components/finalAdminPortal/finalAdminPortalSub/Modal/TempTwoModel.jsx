@@ -27,15 +27,15 @@ const TempTwoModel = (props) => {
 
     const showModal = () => {
             setModal(true);
-            console.log(modal)
-        console.log("hitting showModal")
-        console.log("USER:" + userInfo);
+            //console.log("$$$$$$$$$$$$$$$$$PROPS OF MODAL"+ JSON.stringify(props))
+        // console.log("hitting showModal")
+        // console.log("USER:" + userInfo);
     }
 
     const closeModal = () => {
         setModal(false);
         setMessageList([{}]);
-        console.log("hitting closingModal")
+        //console.log("hitting closingModal")
     }
 
     //Modify Message list using new message from tech chat socket
@@ -45,7 +45,7 @@ const TempTwoModel = (props) => {
 
     //Clear the input box
     const clearChatInput = () => {
-        setChatInput("");
+        setChatInput([]);
     }
 
     return (
@@ -54,11 +54,11 @@ const TempTwoModel = (props) => {
 
                 <section className="admin-techchat-modal-section">
                     <button className="clickMe bubbly-button" onClick={showModal}>
-                        User Chat
+                        Enter Chat
                     </button>
                 </section>
 
-                <h1 className="test">Text</h1>
+                {/* <h1 className="test">Text</h1> */}
 
                 <section
                     className={`modalContainer ${show ? "show" : ""} `}
@@ -101,7 +101,7 @@ const TempTwoModel = (props) => {
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} client={props.client}/>
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={props.session}/>
 
                             </Modal.Footer>
                             </div>

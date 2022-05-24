@@ -23,6 +23,8 @@ function FinalTechChat (props) {
     const [userId, setUserId] = useState(1);
     const [sessionId, setSessionId] = useState(0);
     const [message, setMessage] = useState("My products aren't displaying properly");
+    const [recipientName, setRecipientName] = useState("");
+    const [recipientId, setRecipientId] = useState();
     const callback = props.callbackFunction;
     const userInfo = props.userInfo;
     let isTech;
@@ -32,9 +34,9 @@ function FinalTechChat (props) {
         sessionId: sessionId,
         type: "Message",
         senderId: userInfo.id,
-        recipientId: 1,
+        recipientId: recipientId,
         senderName: userInfo.username,
-        recipientName: "admin",
+        recipientName: recipientName,
         content: props.chatInput
       };
 
@@ -46,7 +48,6 @@ function FinalTechChat (props) {
 
     //Connect to a web Socket
     const connect =()=>{
-        console.log(userInfo)
         let Sock = new SockJS('http://localhost:9005/ws');
         stompClient = over(Sock);
         stompClient.connect({}, onConnected, onError);
@@ -66,8 +67,6 @@ function FinalTechChat (props) {
 
     //Runs after client connects to socket, and subscribes to the dedicated chat for the user
     const onConnected = () =>{
-        console.log('Connected to Socket');
-
         //Listen to users private message socket and store the subscription
         //{Subscribe to endpoint  {destination, callback function, id}}
         stompClient.subscribe('/user/' + userId + '/private', onPrivateMessage ,{ id: "privateMessaging"});
@@ -82,7 +81,7 @@ function FinalTechChat (props) {
 
     //Handle the recieving of a private message
     const onPrivateMessage = (payload) => {
-        console.log("Recieved private Message:" + payload.body);
+        //console.log("Recieved private Message:" + payload.body);
         let message = JSON.parse(payload.body);
         
         //Check if message is from automated system
@@ -97,13 +96,13 @@ function FinalTechChat (props) {
 
                     return;
                 case "Created":
-                    chatMessage.sessionId = message.sessionId;
+                    setSessionId(message.sessionId);
                     break;
                 case "Join":
                     //Get session information from session response
                     let sessionResponse = JSON.parse(message.content);
-                    chatMessage.recipientId = sessionResponse.techId;
-                    chatMessage.recipientName = sessionResponse.techName;
+                    setRecipientId(sessionResponse.techId);
+                    setRecipientName(sessionResponse.techName);
                 default:
                     break;
             }
@@ -120,7 +119,7 @@ function FinalTechChat (props) {
         if (stompClient) {
 
           //Add message to messages
-          callback(message);
+          callback(chatMessage);
           //Send message via socket
           stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
           props.clearChatInput();
@@ -132,9 +131,10 @@ function FinalTechChat (props) {
         //Check if they are a tech
         const adminNames = ["admin","techie"];
         isTech = adminNames.includes(userInfo.accountType) ? true : false;
-         if(props.client) {
-             chatMessage.recipientId = props.client.userId;
-             chatMessage.recipientName = props.client.username;
+         if(props.session) {
+             setSessionId(props.session.sessionId);
+             setRecipientId(props.session.client.id);
+             setRecipientName(props.session.client.username);
          }
         //console.log("Found user to be" + userInfo.type + "are they allowed?" + isTech)
         connect();
