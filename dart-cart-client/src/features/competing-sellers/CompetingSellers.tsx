@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {ShopProduct} from "../../common/models";
 import { addToCart } from "../../common/slices/cartSlice";
@@ -10,6 +10,8 @@ import "./competingSellers.css";
 import WishlistButton from "../wishlist/WishlistButton";
 import authHeader from "../authentication/AuthHeader";
 import { MdAddShoppingCart} from 'react-icons/md';
+import { Overlay, Tooltip } from "react-bootstrap";
+import { AiOutlineCheck } from 'react-icons/ai';
 
 interface SellerProduct {
   Seller: number;
@@ -17,6 +19,9 @@ interface SellerProduct {
 
 export function CompetingSellers({ Seller }: SellerProduct) {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
+
   
   const ReduxCompetitorProducts: ShopProduct[] = useSelector(
     selectCompetitorProducts
@@ -30,6 +35,8 @@ export function CompetingSellers({ Seller }: SellerProduct) {
 
   function handleAddtoCart(e) {
     dispatch(addToCart(e.target.value));
+    
+
   }
 
   return (
@@ -58,13 +65,27 @@ export function CompetingSellers({ Seller }: SellerProduct) {
                   (<span>Limited Stock: Only {competitors.quantity} Available</span>) : (<span>In Stock</span>)}
               </div>
               <div className="center-align">
+                <>
                 <button
+                  ref={target}
                   className="button orange-button stacked"
                   value={competitors.shop_product_id}
-                  onClick={(e) => handleAddtoCart(e)}
+                  onClick={(e) => {
+                    setShow(!show);
+                    setTimeout(() => { setShow(false) }, 2000);
+                    handleAddtoCart(e);
+                  }
+                  }
                 >
                   <MdAddShoppingCart/> Add to Cart
                 </button>
+                <Overlay
+                  target={target.current}
+                  show={show}
+                  placement="right">
+                  <Tooltip id={`tooltip${competitors.shop_product_id}`}><AiOutlineCheck/></Tooltip>
+                </Overlay>
+                </>
                 {JSON.stringify(authHeader()).length > 100 && (
                   <WishlistButton product={competitors.product} />
                 )}
