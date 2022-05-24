@@ -25,7 +25,6 @@ const FinalAdminTechPanel = () => {
     useEffect(() => {
         console.log("Rendering Component")
         getAllAvailableChats();
-
     }, [])
 
     function getAllAvailableChats() {
@@ -79,7 +78,7 @@ const FinalAdminTechPanel = () => {
                     <Table striped bordered hover className="admin-table">
                        <thead>
                         <tr>
-                            <th><p>Enter</p></th>
+                            <th ><p>Enter</p></th>
                             <th><p>Session ID</p></th>
                             <th><p>User ID</p></th>
                             <th><p>Username</p></th>
