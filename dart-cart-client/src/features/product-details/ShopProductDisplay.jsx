@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { selectShopProductById, fetchShopProducts } from "../../common/slices/shopProductSlice";
 import { selectProductReviews, fetchProductReviews } from "../../common/slices/productReviewSlice";
 import { CompetingSellers } from "../competing-sellers/CompetingSellers";
-import { ProductReview } from "../../common/types";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../common/hooks";
 import ProductReviewDetail from "../product-reviews/ProductReviewDetail";
@@ -13,19 +12,16 @@ import { AiFillStar } from 'react-icons/ai';
 
 const ShopProductDisplay = () => {
 
-  const [averageRating, setAverageRating] = useState("");
-
   const { shop_product_id } = useParams();
-
   const id = parseInt(shop_product_id);
 
-  const [showModal, setShowModal] = useState(false);
-
+  const dispatch = useAppDispatch();
   const ReduxShopProducts = useSelector((state) => selectShopProductById(state, id));
   const ReduxProductReviews = useSelector(selectProductReviews);
 
-  const dispatch = useAppDispatch();
-
+  const [averageRating, setAverageRating] = useState("");
+  const [reviewCount, setReviewCount] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductReviews(""));
@@ -36,48 +32,24 @@ const ShopProductDisplay = () => {
     dispatch(fetchProductReviews(""));
   }
 
-
   let ratingsArray = [];
-=======
-  let reviewCount:number = 0;
-  let reviewTotal:number = 0;
-
-  for(let review of ReduxProductReviews){
-    if (review.product.id == shop_product_id){
-      reviewCount++;
-      reviewTotal += review.rating;
-    }
-  }
-  const avgReview = reviewCount>0 ? reviewTotal / reviewCount : 0;
 
   useEffect(() => {
-
-      for (let i = 0; i < ReduxProductReviews.length; i++) {
-        if (id == ReduxProductReviews[i].product.id) {
-          ratingsArray.push(ReduxProductReviews[i].rating)
-        }
+    for(let productReview of ReduxProductReviews) {
+      if(id === productReview.product.id) {
+        setReviewCount(reviewCount + 1);
+        ratingsArray.push(productReview.rating);
       }
+    }
 
-      console.log(ratingsArray)
+    let ratingsTotal = [];
+    if(ratingsArray.length > 0) {
+      ratingsTotal = ratingsArray.reduce((acc, curr) => parseInt(curr) + parseInt(acc));
+    }
 
-      let reviewTotal = [];
-
-      if (ratingsArray.length == 0){
-
-      }
-      else {
-        reviewTotal = ratingsArray.reduce((acc, curr) => parseInt(curr) + parseInt(acc));
-      }
-
-      console.log(reviewTotal);
-
-      let averageRatingVar;
-
-      averageRatingVar = (reviewTotal/ratingsArray.length).toFixed(2);
-
-      setAverageRating(averageRatingVar)
-
-  }, []);
+    let averageRatingVar = (ratingsTotal/ratingsArray.length).toFixed(1);
+    setAverageRating(averageRatingVar);
+  }, [ReduxProductReviews]);
 
   const noProductReviews = (
     <div className="average-rating">
@@ -101,16 +73,18 @@ const ShopProductDisplay = () => {
 
             <h1>{ReduxShopProducts?.name}</h1>
             <p>{ReduxShopProducts?.description}</p>
-            <p><b>Average Rating: </b>
+            <p><b>Average Rating: </b></p>
+            <p>
               {/* Star rating */}
-              {avgReview >= 1 &&
-              Array.from(Array(Math.floor(avgReview)).keys()).map(c => {
-                return (
-                  <AiFillStar key={`avg${c}`} style={{ color: 'orange' }} />
-                )
-              })}
-              {reviewCount > 0?
-              <><b>{avgReview.toFixed(1)}</b> ({reviewCount} {reviewCount === 1 ? " review": "reviews"}) </>
+              {averageRating >= 1 &&
+                Array.from(Array(Math.floor(averageRating)).keys()).map(c => {
+                  return (
+                    <AiFillStar key={`avg${c}`} style={{ color: 'orange' }} />
+                  )
+                })
+              }
+              {!!reviewCount?
+              <><b>{averageRating}</b> ({reviewCount} {reviewCount === 1 ? " review": "reviews"}) </>
               : "No reviews" }
             </p>
           </div>
@@ -130,33 +104,24 @@ const ShopProductDisplay = () => {
         <ProductReviewDetail product_id={shop_product_id} callback={updateProductReviews} showModal={showModal} setShowModal={setShowModal} />
       </div>
       <div className="reviews">
-        {ReduxProductReviews.map((ProductReview) => {
-          if (ProductReview.product.id==shop_product_id){
+        {!!averageRating ?
+          <div className="average-rating">
+            Average Rating: {averageRating}
+          </div>
+        : noProductReviews}
+        {ReduxProductReviews.map((productReview) => {
+          if (productReview.product.id==shop_product_id){
             return <ProductReviewCard
-              key={ProductReview.id}
-              profilePic = {ProductReview.user.imageURL}
-              title = {ProductReview.title}
-              fullName = {ProductReview.user.username}
-              comment = {ProductReview.comment}
-              rating = {ProductReview.rating}
+              key={productReview.id}
+              profilePic = {productReview.user.imageURL}
+              title = {productReview.title}
+              fullName = {productReview.user.username}
+              comment = {productReview.comment}
+              rating = {productReview.rating}
             />
           }
         })}
       </div>
-      {ratingsArray.length > 0 ?
-      <div className="average-rating">Average Item Rating: {averageRating} Stars</div>
-      : noProductReviews}
-      <table className="table">
-        {ReduxProductReviews.map((ProductReview) => { if (ProductReview.product.id==shop_product_id)
-                          return <ProductReviewCard
-                          profilePic = {ProductReview.user.imageURL}
-                          title = {ProductReview.title}
-                          fullName = {ProductReview.user.lastName}
-                          comment = {ProductReview.comment}
-                          rating = {ProductReview.rating}
-                            />
-                        })}
-      </table>
     </>
   );
 
