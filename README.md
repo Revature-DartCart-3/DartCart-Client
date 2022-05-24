@@ -65,29 +65,27 @@ Your browser will automaticall open for you, and you are all set.
 
 * Register
   * Register a new user by clicking the Register button and fill out the new account registration form.
-  ![Register](./dart-cart-client/src/imgs/readme/register.png)
+  ![Register](./dart-cart-client/src/imgs/readme/register3.png)
 
 * Login
   * Once a user is registered, they are automaticly logged in to the app. On subsequent visits the user must login before they can use the app.
-  ![Login](./dart-cart-client/src/imgs/readme/login.png)
+  ![Login](./dart-cart-client/src/imgs/readme/login3.png)
 
 * Create a Shop
   * If the user is wanting to sell products on DartCart, a shop can be made by clicking the Create a Shop button and filling out the registration form.
-  ![CreateShop](./dart-cart-client/src/imgs/readme/createshop.png)
+  ![CreateShop](./dart-cart-client/src/imgs/readme/createshop3.png)
   
 * Add Products
   * Once a shop is created, items can be added to the shop with a corresponding image, name and description.
-  ![AddProducts](./dart-cart-client/src/imgs/readme/add-products.png)
+  ![AddProducts](./dart-cart-client/src/imgs/readme/createproduct3.png)
 
 * Add inventory
   * Once there are products in a shop, the amount of the items to sell and any discounts can be applied.
-  ![AddInventory](./dart-cart-client/src/imgs/readme/add-inventory.png)
-  
-  ![Footer](./dart-cart-client/src/imgs/readme/footer.png)
+  ![AddInventory](./dart-cart-client/src/imgs/readme/createinventory3.png)
 
 * Cart
   * Once a user has decided which items to purchase they can proceed to their cart. Here the user has the options of increasing or lowering the quantity of the items they wish to purchase. To save this quantity the update button must be clicked. If a user wishes to remove an item from their cart they can click the delete button.
-  * ADD IMAGE OF CART
+  ![AddInventory](./dart-cart-client/src/imgs/readme/cart3.png)
 
 * Checkout
   * After a user has decided on what to purchase they can then proceed to checkout. Relevant information such as shipping address and a credit card must be entered along with the desired payment plan.
