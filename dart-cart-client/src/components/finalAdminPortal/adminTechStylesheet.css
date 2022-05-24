@@ -2,14 +2,35 @@
 
 
 
+/*Final Tech Queue Panel*/
+
 
 
 /*Final Admin Tech Button*/
 
-.admin-tech-panel-button {
+.admin-tech-panel-button-group {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.admin-tech-panel-button {
+    background-color: rebeccapurple;
+    border-radius: 4px;
+    padding: 6px;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    color: white;
+}
+
+.admin-tech-panel-button:hover {
+    border: white 2px inset;
+    box-shadow: 0 0 1rem 0 blue;
+
+}
+
+.admin-icon-color {
+    color: white;
 }
 
 /* Final Two Way Chat Modal*/

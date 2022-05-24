@@ -53,7 +53,7 @@ const TempTwoModel = (props) => {
             <section className="fade-in-effect">
 
                 <section className="admin-techchat-modal-section">
-                    <button className="clickMe bubbly-button" onClick={showModal}>
+                    <button className="admin-tech-panel-button" onClick={showModal}>
                         Enter Chat
                     </button>
                 </section>
@@ -86,9 +86,6 @@ const TempTwoModel = (props) => {
                                 {messageList.map((message) => (
                                     <p>{message.content}</p>
                                 ))}
-
-
-
 
                                 {/*{reply}*/}
                             </Modal.Body>
