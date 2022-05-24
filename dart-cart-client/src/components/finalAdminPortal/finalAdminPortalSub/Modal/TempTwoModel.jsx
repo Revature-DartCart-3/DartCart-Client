@@ -28,15 +28,15 @@ const TempTwoModel = (props) => {
             setUserInfo({id: 3, username: "hunter",
             aboutMe: null,
             accountType: "admin",
-            email: "hunterrisse@gmail.com",
+            email: "randomemailaddress@gmail.com",
             firstName: "Hunter",
             id: 3,
             imageURL: "",
             imgUrl: "https://th.bing.com/th/id/OIP.5a60XnoExzGIQ_7p31pL9AHaEc?pid=ImgDet&rs=1",
             lastName: "Risse",
-            location: "174 SW Twig Ave",
+            location: "123 Electric Avenue",
             password: "$2a$10$bSF9LiKPGJnY3roWLdr7h.RGdLFqNo7WeQddbzs0L3cqW7lQLbEPu",
-            phone: "772-240-9376",
+            phone: "012-345-6789",
             registrationDate: 1653353118633,
             username: "hunter"
             })
