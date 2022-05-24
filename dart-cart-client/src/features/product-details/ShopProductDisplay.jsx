@@ -36,9 +36,9 @@ const ShopProductDisplay = () => {
 
   console.log(ReduxProductReviews);
 
+  let ratingsArray = [];
 
   useEffect(() => {
-      let ratingsArray = [];
 
       for (let i = 0; i < ReduxProductReviews.length; i++) {
         if (id == ReduxProductReviews[i].product.id) {
@@ -90,7 +90,7 @@ const ShopProductDisplay = () => {
       <div>
         <ProductReviewDetail product_id={shop_product_id} callback={updateProductReviews} />
       </div>
-      {ReduxProductReviews.length > 0 ?
+      {ratingsArray.length > 0 ?
       <div className="average-rating">Average Item Rating: {averageRating} Stars</div>
       : noProductReviews}
       <table className="table">
