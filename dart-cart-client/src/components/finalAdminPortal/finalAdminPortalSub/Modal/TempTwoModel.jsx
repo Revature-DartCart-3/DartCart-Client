@@ -15,7 +15,7 @@ const TempTwoModel = (props) => {
     const [show,setShow] = useState("");
     const [chatInput, setChatInput] = useState("")
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
-
+    const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const user = useSelector((state) => state.authentication.user) || "";
     useEffect(() => {
@@ -23,16 +23,38 @@ const TempTwoModel = (props) => {
             const u = JSON.parse(user);
             setName(u.username);
         }
+
+        if(props.session) {
+            setUserInfo({id: 3, username: "hunter",
+            aboutMe: null,
+            accountType: "admin",
+            email: "hunterrisse@gmail.com",
+            firstName: "Hunter",
+            id: 3,
+            imageURL: "",
+            imgUrl: "https://th.bing.com/th/id/OIP.5a60XnoExzGIQ_7p31pL9AHaEc?pid=ImgDet&rs=1",
+            lastName: "Risse",
+            location: "174 SW Twig Ave",
+            password: "$2a$10$bSF9LiKPGJnY3roWLdr7h.RGdLFqNo7WeQddbzs0L3cqW7lQLbEPu",
+            phone: "772-240-9376",
+            registrationDate: 1653353118633,
+            username: "hunter"
+            })
+            console.log("%%%% User info =" + JSON.stringify(userInfo) + "%%%%")
+        }
     }, [user]);
 
     const showModal = () => {
-            setModal(true);
+        setOpen(true);
+        setModal(true);
+            
             //console.log("$$$$$$$$$$$$$$$$$PROPS OF MODAL"+ JSON.stringify(props))
         // console.log("hitting showModal")
         // console.log("USER:" + userInfo);
     }
 
     const closeModal = () => {
+        setOpen(false);
         setModal(false);
         setMessageList([{}]);
         //console.log("hitting closingModal")
@@ -45,7 +67,7 @@ const TempTwoModel = (props) => {
 
     //Clear the input box
     const clearChatInput = () => {
-        setChatInput([]);
+        setChatInput();
     }
 
     return (
@@ -101,7 +123,7 @@ const TempTwoModel = (props) => {
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={props.session}/>
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={props.session} open={open}/>
 
                             </Modal.Footer>
                             </div>
