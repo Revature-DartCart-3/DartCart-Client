@@ -88,8 +88,8 @@ export function ShopProductCard({ Product: product }: IShopProductCard) {
             show={show}
             placement="right">
             <Tooltip id={`tooltip${product?.id}`}><AiOutlineCheck/></Tooltip>
-            </Overlay>
-            </>
+          </Overlay>
+
           <button id="addToWishList" className="button yellow-button addToWishList" onClick={async () => {
             setNotice(await addToWL(product?.id));
             setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
