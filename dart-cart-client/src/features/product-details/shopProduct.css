@@ -162,9 +162,10 @@ visibility: hidden;
 }
 
 .button{
+  margin-top: 5px;
   padding: 10px 20px;
   color: white;
-  background-color: var(--blue);
+  background-color: var(--orange);
   border: none;
   border-radius: 5px;
 }
@@ -187,4 +188,14 @@ visibility: hidden;
 .stacked{
   display: block;
   margin:5px auto;
+}
+
+.average-rating {
+  font-size: 2.5vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.addToCart {
+  display: block;
 }

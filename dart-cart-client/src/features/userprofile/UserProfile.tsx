@@ -1,18 +1,16 @@
-import { Alert, Modal, Button } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { updateUser, homeRedirect } from "../../common/slices/userProfileSlice";
 import { User } from "../../common/types";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../common/hooks";
-import { loginUser } from "../../common/slices/authSlice";
 import authHeader from "../../features/authentication/AuthHeader";
 import axios from "axios";
 import { storage } from "./firebase";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
 import { Paper } from "@mui/material";
 
-export function UserP() {
-  const currentDate = Date.now();
+export function UserProfile() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,10 +18,9 @@ export function UserP() {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [initialUser, setInitialUser] = useState({});
+  const [_initialUser, setInitialUser] = useState({});
   const [imageURL, setImageURL] = useState("");
   const [aboutMe, setAboutMe] = useState("");
-  //     const API_URL = "http://localhost:9005/";
   const API_URL = process.env.REACT_APP_API_URL;
 
   async function fetchUser() {
@@ -31,7 +28,6 @@ export function UserP() {
       headers: authHeader(),
     });
     const fetchedUser = await response.data;
-    console.log(fetchedUser);
     setInitialUser(fetchedUser);
     setFirstName(fetchedUser.firstName);
     setLastName(fetchedUser.lastName);
@@ -144,10 +140,10 @@ export function UserP() {
 
     await dispatch(updateUser(user))
       .unwrap()
-      .then((originalPromiseResult) => {
+      .then((_originalPromiseResult) => {
         setShowModal(true);
       })
-      .catch((rejectedValueOrSerializedError) => {
+      .catch((_rejectedValueOrSerializedError) => {
         setError("That username is unavailable.");
         clearInputs();
       });
@@ -177,8 +173,8 @@ export function UserP() {
     // nav("/");
   }
 
-  return (
-    <>
+  return (<>
+    <Container>
       <Paper style={{ flexDirection: "row", justifyContent: "flex-end" }}>
         <div className="pfp">
           <img src={imageURL} height={150} alt="Profile Picture" />
@@ -189,129 +185,78 @@ export function UserP() {
           </form>
         </div>
       </Paper>
-      <section className="vh-200">
-        <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-lg-10 col-sm-12">
-              <div
-                className="card shadow-2-strong"
-                style={{ borderRadius: "1rem" }}
-              >
-                <div className="card-header card text-center bg-success text-white">
-                  <h3 className="mb-0">Update your profile</h3>
-                  <img></img>
-                </div>
-                <div className="card-body p-5 text-center">
-                  {error ? <Alert variant="danger">{error}</Alert> : null}
-
-                  <div className="row align-items-center">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="AboutMe"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={aboutMe}
-                        onChange={(e) => {
-                          setAboutMe(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row align-items-center">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="First Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={firstName}
-                        onChange={(e) => {
-                          setFirstName(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="Last Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={lastName}
-                        onChange={(e) => {
-                          setLastName(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="Home Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={location}
-                        onChange={(e) => {
-                          setLocation(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input
-                        type="phone"
-                        placeholder="Phone Number"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={phone}
-                        onChange={(e) => {
-                          setPhone(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    className="btn btn-success btn-lg btn-block"
-                    onClick={updateUserProfile}
-                  >
-                    Update Profile
-                  </button>
-
-                  <Modal show={showModal}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Update Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Your profile was updated!</Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={handleClose}>Close</Button>
-                    </Modal.Footer>
-                  </Modal>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+    </Container>
+    <Form>
+      <div className="shop-form-heading">
+        <h2>Update Your Profile</h2>
+      </div>
+      <Container>
+        {error ? <Alert variant="danger">{error}</Alert> : null}
+        <Form.Group className="mb-4">
+          <Form.Control
+            type="text"
+            placeholder="AboutMe"
+            size="lg"
+            value={aboutMe}
+            onChange={e => setAboutMe(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group className="mb-4">
+          <Form.Control 
+            type="email"
+            placeholder="Email Address"
+            size="lg"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </Form.Group>
+        <Row className="mb-4">
+          <Form.Group as={Col}>
+            <Form.Control 
+              type="text"
+              placeholder="First Name"
+              size="lg"
+              value={firstName}
+              onChange={e => setFirstName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Control 
+              type="text"
+              placeholder="Last Name"
+              size="lg"
+              value={lastName}
+              onChange={e => setLastName(e.target.value)}
+            />
+          </Form.Group>
+        </Row>
+        <Form.Group className="mb-4">
+          <Form.Control
+            type="text"
+            placeholder="Home Address"
+            size="lg"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group className="mb-4">
+          <Form.Control
+            type="phone"
+            placeholder="Phone Number"
+            size="lg"
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
+          />
+        </Form.Group>
+        <button
+          className="mb-4 submit-button"
+          onClick={updateUserProfile}
+        >
+          Update
+        </button>
+      </Container>
+    </Form>
+  </>);
 }
 
-export default UserP;
+export default UserProfile;
