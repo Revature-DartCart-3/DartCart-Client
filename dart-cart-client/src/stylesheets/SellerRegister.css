@@ -54,7 +54,7 @@ form, .shop-form, .order-summary {
     height: 60px;
     padding-left: 20px;
     vertical-align: middle;
-    /* text-align: center; */
+    text-align: center;
 }
 
 .form-control:focus {
@@ -91,7 +91,7 @@ input[type=file]{
     background-color: var(--background);
     color: var(--text-secondary);
     border-color: var(--secondary);
-    /* text-align: center; */
+    text-align: center;
 }
 
 .form-select:focus {
@@ -101,7 +101,7 @@ input[type=file]{
 }
 
 /* Form Buttons */
-.submit-button, .modal-button {
+.submit-button {
     padding: 10px 20px;
     color: white;
     background-color: var(--orange);
@@ -110,7 +110,7 @@ input[type=file]{
     margin: 20px;
 }
 
-.submit-button:hover, .modal-button:hover {
+.submit-button:hover {
     background-color: var(--yellow);
     color: white;
 }
@@ -126,9 +126,4 @@ input[type=file]{
 
 .upload-button:hover {
     background-color: lightgray;
-}
-
-.modal-button{
-    margin:10px 5px;
-    float:right;
 }

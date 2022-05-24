@@ -13,11 +13,7 @@
 .cardImg {
     width: 100%;
 }
-/* footer icons */
-.fa {
-    color: var(--orange);
-}
-
+/**/
 /* color theme toggle */
 input[type="checkbox"] {
     position: relative;
