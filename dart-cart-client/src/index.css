@@ -16,7 +16,7 @@ code {
 
 :root {
     --background: white;
-    --secondary:rgb(221, 221, 221);
+    --secondary:rgb(158, 158, 158);
     --contrast: #474C55;
     --darker:rgb(202, 202, 202);
     --text-primary: black;
@@ -29,6 +29,7 @@ code {
     --darkgrey: #474C55;
     --blue: #72A4C2;
     --yellow: #FCB414;
+    --secondary-yellow: #ffd375;
     --lightgrey: #B9B9BA;
     --socialicon-bg: #b9b9ba;
     --dancingScriptFont: 'Dancing Script', cursive;
@@ -49,6 +50,7 @@ code {
     --darkgrey: #474C55;
     --blue: #72A4C2;
     --yellow: #FCB414;
+    --secondary-yellow: #ffd375;
     --lightgrey: #B9B9BA;
     --socialicon-bg: #33353d;
 }

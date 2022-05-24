@@ -41,7 +41,7 @@ useEffect(() => {
 }, []);
 
   return (<>
-    <h1>Featured Products</h1>
+    <h1 className="display-heading">Featured Products</h1>
     <div className="ProductCardContainer" >
       {featuredProducts.map(product => {
         return <div key={product.id}><ShopProductCard Product={product.product}/></div>
@@ -53,7 +53,7 @@ useEffect(() => {
       {status === "success" ? (
         (ReduxShopProducts.length &&
           ReduxShopProducts.map((product) => {
-              return <div key={product.id}><ShopProductCard Product={product}></ShopProductCard></div>;
+            return <ShopProductCard key={product.id} Product={product}/>;
           })) || (
           <>
             <h1 style={{ color: "white" }}>No Items Found</h1>

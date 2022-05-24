@@ -123,7 +123,7 @@ export function Shipping({next, post}) {
                     </FloatingLabel>
                 </Form.Group>
                 <Form.Group className="mb-3 form-group">
-                    <button type="submit" className="button orange-button">Next</button>
+                    <button type="submit" className="button yellow-button">Next</button>
                 </Form.Group>
             </Form>
         </>

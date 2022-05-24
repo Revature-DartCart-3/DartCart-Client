@@ -32,7 +32,7 @@ function PayInstallments({next, back, post}) {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <div className="form-heading blue">
+            <div className="form-heading yellow">
                 <h3>Payment Plan</h3>
             </div>
 
@@ -70,7 +70,7 @@ function PayInstallments({next, back, post}) {
             {/* navigation buttons */}
             <Form.Group className="mb-3 form-group">
                 <button type="button" className="button grey-button" onClick={() => back()}>Back</button>
-                <button type="submit" className="button blue-button">Next</button>
+                <button type="submit" className="button yellow-button">Next</button>
             </Form.Group>
         </Form>
     )

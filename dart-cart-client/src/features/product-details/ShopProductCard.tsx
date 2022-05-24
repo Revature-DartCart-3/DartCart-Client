@@ -44,31 +44,34 @@ export function ShopProductCard({ Product: product }: IShopProductCard) {
 
   const [notice, setNotice] = useState(React.createElement("span", {class : "wishListNotice"}, "hey"))
   return (
-    <div style={{ height: "28rem" }}>
-      <div className=" card bg-black text-warning" style={{ height: "20rem", width: "18rem" }}>
+    <div id="shop-card" style={{ height: "28rem" }}>
+      <div className="card" style={{ height: "28rem", width: "18rem" }}>
         <Link to={`/shop-product/${product?.id}` || ""} style={{ textDecoration: 'none' }}>
           <img
             className="testIMG"
             src={product?.imageURL}
-            alt="Card image cap"
+            alt={product?.name}
           ></img>
           <div className="card-body">
-            <h1>{product?.name || ""}</h1>
-            <p className="card-text">{`${product?.description || ""}`}</p>
+            <h3>{product?.name || ""}</h3>
+            <p className="card-text">
+              {product?.description.length > 55?
+                product?.description.substring(0,50).concat("...")
+            :
+              product?.description
+            }</p>
 
           </div>
         </Link>
-
-      </div>
-      {JSON.stringify(authHeader()).length > 100 ? (
-        <div className=" card bg-black text-warning" style={{ height: "8rem", width: "18rem" }}>
+        {JSON.stringify(authHeader()).length > 100 && (
+        <div className="card-footer">
           <button
-            className="button addToCart"
+            className="button orange-button addToCart"
             value={product?.id}
             onClick={(e) => handleAddtoCart(e)}>
             Add To Cart
           </button>
-          <button id="addToWishList" className="button addToWishList" onClick={async () => {
+          <button id="addToWishList" className="button yellow-button addToWishList" onClick={async () => {
             setNotice(await addToWL(product?.id));
             setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
           }}>
@@ -76,12 +79,9 @@ export function ShopProductCard({ Product: product }: IShopProductCard) {
             <div>{notice}</div>
           </button>
         </div>
-      ) : (
-        <Link to={`/shop-product/${product?.id}` || ""} style={{ textDecoration: 'none' }}>
-          <div className=" card bg-black text-warning" style={{ height: "4rem", width: "18rem" }}>
-          </div>
-        </Link>
-      )}
+        )}
+      </div>
+      
     </div>
   );
 }
