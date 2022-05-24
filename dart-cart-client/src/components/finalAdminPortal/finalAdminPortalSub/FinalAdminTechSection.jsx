@@ -11,10 +11,6 @@ const FinalAdminTechSection = () => {
         <>
 
             <h1> Admin Tech Support</h1>
-            {/*TARGET WHY THIS ISNT'T WORKING*/}
-            {/*<FinalTwoWayChatModal/>*/}
-            {/*<FinalAdminTechPanel/>*/}
-
             <TempTwoModel/>
 
         </>
