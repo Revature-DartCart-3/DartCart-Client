@@ -29,6 +29,11 @@ function FinalTechChat (props) {
     const [chatInput, setChatInput] = useState({
         responseMessage : ""})
 
+
+
+
+
+
     //WEBSOCKET FUNCTIONS
     var chatMessage = {
         sessionId: sessionId,
