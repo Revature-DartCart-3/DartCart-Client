@@ -97,7 +97,7 @@ function FinalTechChat (props) {
         let message = JSON.parse(payload.body);
         
         //Check if message is from automated system
-        if(message.senderId == 0) {
+        if(message.type != "Message") {
             //setSessionId(message.sessionId);
             console.log("Automated system sent message. " + message.type);
             switch (message.type) {
@@ -113,9 +113,12 @@ function FinalTechChat (props) {
                     break;
                 case "Join":
                     //Get session information from session response
-                    let sessionResponse = JSON.parse(message.content);
-                    setRecipientId(sessionResponse.techId);
-                    setRecipientName(sessionResponse.techName);
+                    console.log(message)
+                    setRecipientId(message.senderId);
+                    setRecipientName(message.senderName);
+                    message.content = "Tech " + message.senderName + " Has joined the chat";
+                    props.callbackFunction(message);
+                    return;
                 default:
                     break;
             }
@@ -147,9 +150,11 @@ function FinalTechChat (props) {
         const adminNames = ["admin","techie"];
         isTech = adminNames.includes(userInfo.accountType) ? true : false;
          if(props.session) {
+             console.log("**************************************************************************************");            
+             console.log(props.session);
              setSessionId(props.session.sessionId);
-             setRecipientId(props.session.client.id);
-             setRecipientName(props.session.client.username);
+             setRecipientId(props.session.clientId);
+             setRecipientName(props.session.clientName);
              console.log(props.session.sessionId);
          }
          //setSessionId(props.session.sessionId);

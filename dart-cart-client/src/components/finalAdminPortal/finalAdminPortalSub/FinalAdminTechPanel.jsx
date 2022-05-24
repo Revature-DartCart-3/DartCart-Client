@@ -6,6 +6,8 @@ import SessionListManager from "../../SessionListManager";
 import {AiOutlineEnter} from "react-icons/ai";
 import {BsAlignEnd} from "react-icons/bs";
 import TempTwoModel from "./Modal/TempTwoModel"
+import { useNavigate} from "react-router-dom";
+
 const FinalAdminTechPanel = () => {
 
     const [sessionList, setSessionList] = useState([]);
@@ -17,6 +19,8 @@ const FinalAdminTechPanel = () => {
     const [deleteChat, setDeleteChat] = useState({
         sessionId : ""
     });
+    const navigate = useNavigate();
+    const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
 
     useEffect(() => {
         console.log("Rendering Component")
@@ -33,11 +37,24 @@ const FinalAdminTechPanel = () => {
     }
 
     function assignTechToChat(e) {
-        axios.put("http://localhost:9005/assign-tech",JSON.parse(e.target.value))
+        let session = JSON.parse(e.target.value);
+        let sessionResponse = {
+            sessionId: session.sessionId,
+            techId: 3,//userInfo.id ,
+            techName: "hunter",//userInfo.username,
+
+            clientId: session.client.id,
+            clientName: session.client.username
+            
+        }
+        console.log(JSON.stringify(sessionResponse));
+
+        axios.put("http://localhost:9005/assign-tech",sessionResponse)
             .then((response) => {
                 setEnterChat(response.data);
                 // setActiveSession(response.data.sessionId);
                 // console.log(response.data.sessionId);
+                navigate("/techchatmodal", {state: response.data});
             })
             alert("A tech representative has been assigned.");
     }
@@ -84,7 +101,7 @@ const FinalAdminTechPanel = () => {
                                                 type="submit"
                                             >
                                                 enterChat
-                                                <TempTwoModel session={list} />
+                                                {/* <TempTwoModel session={list} /> */}
                                                 {/* {activeSession == list.sessionId && <TempTwoModel session={list} />} */}
                                                 {/* <AiOutlineEnter/> */}
                                             </button>

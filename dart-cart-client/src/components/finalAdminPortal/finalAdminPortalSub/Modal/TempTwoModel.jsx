@@ -6,7 +6,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 
-
+import { useLocation } from "react-router-dom";
 const TempTwoModel = (props) => {
 
     const [modal, setModal] = useState(false);
@@ -17,16 +17,24 @@ const TempTwoModel = (props) => {
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
+    const [session, setSession] = useState();
+
+
+
     const user = useSelector((state) => state.authentication.user) || "";
-
-
+    const location = useLocation();
     useEffect(() => {
+        console.log(JSON.stringify(location.state))
+        setSession(location.state);
+        console.log(JSON.stringify(session));
+        //console.log(JSON.stringify(session));
         if (user) {
             const u = JSON.parse(user);
             setName(u.username);
 
         }
-        if(props.session) {
+        if(location.state) {
+            console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
             setUserInfo({id: 3, username: "hunter",
             aboutMe: null,
             accountType: "admin",
@@ -67,6 +75,7 @@ const TempTwoModel = (props) => {
 
     //Modify Message list using new message from tech chat socket
     const callback = (newMessagesArray) => {
+        console.log("^^^ new message " + JSON.stringify(newMessagesArray) + "^^^")
         setMessageList((messageList) => messageList.concat(newMessagesArray));
     }
 
@@ -150,7 +159,7 @@ const TempTwoModel = (props) => {
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={props.session} open={open}/>
+                                <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={session} open={open}/>
 
                             </Modal.Footer>
                             </div>
