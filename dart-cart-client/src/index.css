@@ -15,6 +15,8 @@ code {
 :root {
     --background: white;
     --secondary:rgb(221, 221, 221);
+    --contrast: #474C55;
+    --darker:rgb(202, 202, 202);
     --text-primary: black;
     --text-secondary: ;
     --accent: #72A4C2;
@@ -30,6 +32,8 @@ code {
   [data-theme='dark'] {
     --background: #2b2e34;
     --secondary: #474C55 ;
+    --contrast: #B9B9BA;
+    --darker:#1e2024;
     --text-primary: white;
     --text-secondary: #B9B9BA;
     --accent: #72A4C2;
@@ -52,6 +56,7 @@ code {
 
 a.text-reset{
     text-decoration: none;
+    color:var(--orange) !important
 }
 
 .center{

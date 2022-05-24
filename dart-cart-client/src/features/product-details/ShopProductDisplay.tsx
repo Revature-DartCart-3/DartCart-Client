@@ -85,6 +85,7 @@ const ShopProductDisplay = () => {
         <ProductReviewDetail product_id={shop_product_id} callback={updateProductReviews} showModal={showModal} setShowModal={setShowModal} />
       </div>
       <div className="reviews">
+        <h5>Product Reviews</h5>
         {ReduxProductReviews.map((ProductReview) => { 
           if (ProductReview.product.id==shop_product_id){
             return <ProductReviewCard 

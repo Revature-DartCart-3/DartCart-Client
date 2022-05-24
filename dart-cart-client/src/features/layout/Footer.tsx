@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "./NavLinks";
 import About from "./About";
 import SocialMedia from "./SocialMedia";
 import UsefulLinks from "./UsefulLinks";

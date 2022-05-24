@@ -25,7 +25,7 @@ const Searchbar = () => {
   };
 
   return (
-    <div className="navbar-brand" style={{ width: " 60%", marginLeft: "20px" }}>
+    <div className="navbar-brand ms-auto" style={{width:"40%"}}>
       <div className="form-inline my-2 my-lg-0">
         <button
           onClick={(e) => handleSearch(e)}
