@@ -26,8 +26,8 @@ const TempTwoModel = () => {
     }, [user]);
 
     const showModal = () => {
-            setModal(true);
-            console.log(modal)
+        setModal(true);
+        console.log(modal)
         console.log("hitting showModal")
         console.log("USER:" + userInfo);
     }
@@ -64,22 +64,22 @@ const TempTwoModel = () => {
                     className={`modalContainer ${show ? "show" : ""} `}
                 >
                     <Modal
-                            className="modalContainer"
-                            show={modal}
-                            onHide={closeModal}
-                            centered
-                        >
-                            <div className="admin-tech-modal">
+                        className="modalContainer"
+                        show={modal}
+                        onHide={closeModal}
+                        centered
+                    >
+                        <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
 
-                            <h2 className="modal_header-title ">User : {name} | Techie : name  </h2>
+                                <h2 className="modal_header-title ">User : {name} | Techie : name  </h2>
                                 <button
                                     className="admin-techchat-close-button"
                                     onClick={closeModal}
                                 >
                                     x
                                 </button>
-                                
+
 
                             </Modal.Header>
                             <Modal.Body className="modal_content">
@@ -101,11 +101,11 @@ const TempTwoModel = () => {
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo}/>
+                                <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo}/>
 
                             </Modal.Footer>
-                            </div>
-                        </Modal>
+                        </div>
+                    </Modal>
                 </section>
 
             </section>

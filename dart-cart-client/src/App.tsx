@@ -36,6 +36,9 @@ import AdminComments from "./features/TechChatModal/AdminComments";
 import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalTechChat from "./components/FinalTechChat";
 import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
+import FinalAdminTechSection from "./components/finalAdminPortal/finalAdminPortalSub/FinalAdminTechSection";
+import FinalAdminTechPanel from "./components/finalAdminPortal/finalAdminPortalSub/FinalAdminTechPanel";
+import TempTwoModel from "./components/finalAdminPortal/finalAdminPortalSub/Modal/TempTwoModel";
 
 
 function App() {
@@ -73,9 +76,9 @@ function App() {
 
             </Route>
             {/*THIS THE DEV TEST SECTION FOR CHAT FEATURES*/}
-            <Route path="/techchat" element={<FinalTechChat />} />
+            <Route path="/techchat" element={<FinalAdmin />} />
             {/*OFFICAL CLIENT INTERFCEE FOR THE CLIENT*/}
-            <Route path="/techchatmodal" element={<FinalTechChat />} />
+            <Route path="/techchatmodal" element={<TempTwoModel/>} />
             {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
             <Route path="/adminpage" element={<FinalAdmin/>}></Route>
             <Route path="/adminmodal" element={<AdminModal/>}></Route>
