@@ -162,9 +162,10 @@ visibility: hidden;
 }
 
 .button{
+  margin-top: 5px;
   padding: 10px 20px;
   color: white;
-  background-color: var(--blue);
+  background-color: var(--orange);
   border: none;
   border-radius: 5px;
 }
@@ -196,7 +197,5 @@ visibility: hidden;
 }
 
 .addToCart {
-  width: 70%;
-  display: flex block;
-  justify-content: center;
+  display: block;
 }

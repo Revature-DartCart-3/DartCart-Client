@@ -5,7 +5,7 @@ import authHeader from "../../features/authentication/AuthHeader";
 import axios from "axios";
 import React, { useState } from "react";
 import { addToCart } from "../../common/slices/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 interface IShopProductCard {
@@ -19,7 +19,7 @@ function addToWishList(productId){
       productId: productId
     },
       { headers: authHeader() }
-    ).then(response => {
+    ).then(_response => {
         return "Item added to wishlist!"
     }).catch((error)=>{
       if(error.response!.status === 409){
@@ -34,7 +34,7 @@ async function addToWL(productId){
   return React.createElement("span", {class : "wishListNotice  youCanSeeMe"}, y);
 }
 
-export function ShopProductCard({ Product }: IShopProductCard) {
+export function ShopProductCard({ Product: product }: IShopProductCard) {
 
   const dispatch = useDispatch();
 
@@ -45,40 +45,39 @@ export function ShopProductCard({ Product }: IShopProductCard) {
   const [notice, setNotice] = useState(React.createElement("span", {class : "wishListNotice"}, "hey"))
   return (
     <div style={{ height: "28rem" }}>
-      <Link to={`/shop-product/${Product?.id}` || ""} style={{ textDecoration: 'none' }}>
-        <div className=" card bg-black text-warning" style={{ height: "20rem", width: "18rem" }}>
+      <div className=" card bg-black text-warning" style={{ height: "20rem", width: "18rem" }}>
+        <Link to={`/shop-product/${product?.id}` || ""} style={{ textDecoration: 'none' }}>
           <img
             className="testIMG"
-            src={Product?.imageURL}
+            src={product?.imageURL}
             alt="Card image cap"
           ></img>
           <div className="card-body">
-            <h1>{Product?.name || ""}</h1>
-
-            <p className="card-text">{`${Product?.description || ""}`}</p>
+            <h1>{product?.name || ""}</h1>
+            <p className="card-text">{`${product?.description || ""}`}</p>
 
           </div>
-        </div>
-      </Link>
+        </Link>
+
+      </div>
       {JSON.stringify(authHeader()).length > 100 ? (
         <div className=" card bg-black text-warning" style={{ height: "8rem", width: "18rem" }}>
-
           <button
-            className="btn addToCart"
-            value={Product?.id}
+            className="button addToCart"
+            value={product?.id}
             onClick={(e) => handleAddtoCart(e)}>
-            Add {Product?.name} to cart
+            Add To Cart
           </button>
-
-          <button id="addToWishList" className="btn addToWishList" onClick={async () => {
-            setNotice(await addToWL(Product?.id));
+          <button id="addToWishList" className="button addToWishList" onClick={async () => {
+            setNotice(await addToWL(product?.id));
             setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
-          }
-          }>Add To Wishlist
-          <div>{notice}</div>
+          }}>
+            Add To Wishlist
+            <div>{notice}</div>
           </button>
-        </div>) : (
-        <Link to={`/shop-product/${Product?.id}` || ""} style={{ textDecoration: 'none' }}>
+        </div>
+      ) : (
+        <Link to={`/shop-product/${product?.id}` || ""} style={{ textDecoration: 'none' }}>
           <div className=" card bg-black text-warning" style={{ height: "4rem", width: "18rem" }}>
           </div>
         </Link>
