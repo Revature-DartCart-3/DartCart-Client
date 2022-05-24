@@ -37,6 +37,8 @@ const ShopProductDisplay = () => {
   }
 
 
+  let ratingsArray = [];
+=======
   let reviewCount:number = 0;
   let reviewTotal:number = 0;
 
@@ -49,7 +51,6 @@ const ShopProductDisplay = () => {
   const avgReview = reviewCount>0 ? reviewTotal / reviewCount : 0;
 
   useEffect(() => {
-      let ratingsArray = [];
 
       for (let i = 0; i < ReduxProductReviews.length; i++) {
         if (id == ReduxProductReviews[i].product.id) {
@@ -142,7 +143,7 @@ const ShopProductDisplay = () => {
           }
         })}
       </div>
-      {ReduxProductReviews.length > 0 ?
+      {ratingsArray.length > 0 ?
       <div className="average-rating">Average Item Rating: {averageRating} Stars</div>
       : noProductReviews}
       <table className="table">
