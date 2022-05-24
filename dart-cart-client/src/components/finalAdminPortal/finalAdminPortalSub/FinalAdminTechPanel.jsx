@@ -31,8 +31,8 @@ const FinalAdminTechPanel = () => {
             });
     }
 
-    function assignTechToChat() {
-        axios.put("http://localhost:9005/assign-tech")
+    function assignTechToChat(e) {
+        axios.put("http://localhost:9005/assign-tech",JSON.parse(e.target.value))
             .then((response) => {
                 setEnterChat(response.data);
             })
@@ -73,9 +73,11 @@ const FinalAdminTechPanel = () => {
                                         <td className="admin-tech-panel-button">
                                             <button
                                                 value={JSON.stringify(list)}
+                                                name="session"
                                                 onClick={assignTechToChat}
                                                 type="submit"
                                             >
+                                                hello
                                                 {/* <AiOutlineEnter/> */}
                                             </button>
                                         </td>

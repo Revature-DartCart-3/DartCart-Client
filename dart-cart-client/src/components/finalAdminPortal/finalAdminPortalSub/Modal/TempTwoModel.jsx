@@ -7,7 +7,7 @@ import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 
 
-const TempTwoModel = () => {
+const TempTwoModel = (props) => {
 
     const [modal, setModal] = useState(false);
     const [messageList, setMessageList] = useState([{}]);
@@ -101,7 +101,7 @@ const TempTwoModel = () => {
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo}/>
+                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} client={props.client}/>
 
                             </Modal.Footer>
                             </div>
