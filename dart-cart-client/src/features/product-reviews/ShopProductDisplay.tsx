@@ -118,7 +118,7 @@ const ShopProductDisplay = () => {
         </Col>
         <Col lg={5}>
 
-        <ProductReviewCard />
+        {/* <ProductReviewCard /> */}
         </Col>
         <Col lg={3}>
 
@@ -161,7 +161,7 @@ const ShopProductDisplay = () => {
                 </Col>)
               })}
 
-              <ProductReviewDetail />
+              {/* <ProductReviewDetail /> */}
             </Row>
           </Container>
         </Col>
@@ -303,7 +303,7 @@ const ShopProductDisplay = () => {
                 </table>
               </Col>
               <Col lg={8}>
-                <ProductReviewDetail />
+                {/* <ProductReviewDetail /> */}
                 <br />
                 <Container>
                   <Row>

@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Login } from "./features/authentication/Login";
 import { ResetPassword } from "./features/authentication/ResetPassword";
-import Home from "./features/Home";
 import UserRegister from "./features/user-register/UserRegister";
 import ProductRegister from "./features/product-register/ProductRegister";
 import AddInventory from "./features/shop-product-add/AddInventory";
@@ -29,7 +27,7 @@ import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
 
 import WishList from "./features/wishlist/WishList";
-
+import AdminPage from "./features/admin/AdminPage";
 
 function App() {
 
@@ -41,28 +39,17 @@ function App() {
     setTheme(newTheme);
   }
 
-  useEffect(() => {
-    document.title = "DartCart";
-
-    //
-  });
-
   return (
-    <div className="App" data-theme={theme}>
-      {theme === 'dark' ?
-        (<input onClick={switchTheme} type="checkbox" name="" checked />)
-        :
-        (<input onClick={switchTheme} type="checkbox" name="" />)
-      }
-      <BrowserRouter>
-        <Provider store={store}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <div className="App" data-theme={theme}>
           <Header />
           <Routes>
             <Route path="/" element={<Display />}></Route>
             <Route
               path="/sellers/:seller_homepage"
               element={<SellerHomepage />}
-            ></Route>
+              ></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -76,25 +63,27 @@ function App() {
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/display" element={<Display />}></Route>
             <Route path="/userprofile" element={<UserP />}></Route>
+            <Route path="/admin" element={<AdminPage />} />
             <Route
               path="/shop-product/:shop_product_id"
               element={<ShopProductDisplay />}
-            ></Route>
+              ></Route>
             <Route path="/wishlist" element={<WishList/>}></Route>
             <Route
               path="/FeatureProduct/:product_id"
               element={<Product />}
-            ></Route>
+              ></Route>
             <Route
               path="/product-review/:product_id"
               element={<ProductReviewLayout />}
-            ></Route>
+              ></Route>
             <Route path="/*" element={<Error404Page />}></Route>
           </Routes>
           <Footer />
-        </Provider>
-      </BrowserRouter>
-    </div>
+          <input onChange={switchTheme} type="checkbox" name="theme" checked={theme === 'dark'} />
+        </div>
+      </Provider>
+    </BrowserRouter>   
   );
 }
 

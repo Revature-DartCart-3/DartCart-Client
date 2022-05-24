@@ -50,41 +50,22 @@
 }
 
 .sellerInfo {
-  height: 150px;
-  margin: 2%;
-  padding: .5%;
-  display: grid;
-  grid-template-columns: 3% 30% 4% 30% 5% 25% 3%;
-  grid-template-rows: 5% 45% 45% 5%;
+  display:flex;
+  flex-wrap: wrap;
+  width:80%;
+  margin: 2% auto;
+  justify-content: space-around;
+  align-content: center;
+  padding: 20px;
   color: var(--text-primary);
-  background-color: #777;
-  border-style: solid;
-  border-width: .5rem;
-  border-color: #333;
-  grid-template-areas:
-  ". . . . . . ."
-  ". shopNameAndPrice shopNameAndPrice shopNameAndPrice . addToCart ."
-  ". shopLocation . shopQuant . addToCart ."
-  ". . . . . . ."
+  border-top: 1px solid var(--secondary);
+  border-bottom: 1px solid var(--secondary);
 }
-
-.shopNameAndPrice{
-  grid-area: shopNameAndPrice;
-}
-
-.shopLocation{
-  grid-area: shopLocation;
-}
-
-.addToCart{
-  grid-area: addToCart;
-}
-
-.shopQuant{
-  grid-area: shopQuant;
+.sellerInfo > div{
+  padding: 0 10px;
 }
 
 s {
-  text-decoration-thickness:5px;
-  text-decoration-color: #ff0000aa;
+  text-decoration-thickness: 5px;
+  text-decoration-color: var(--orange);
 }
