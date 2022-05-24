@@ -132,6 +132,10 @@ function FinalTechChat (props) {
         //Check if they are a tech
         const adminNames = ["admin","techie"];
         isTech = adminNames.includes(userInfo.accountType) ? true : false;
+         if(props.client) {
+             chatMessage.recipientId = props.client.userId;
+             chatMessage.recipientName = props.client.username;
+         }
         //console.log("Found user to be" + userInfo.type + "are they allowed?" + isTech)
         connect();
     },[])
