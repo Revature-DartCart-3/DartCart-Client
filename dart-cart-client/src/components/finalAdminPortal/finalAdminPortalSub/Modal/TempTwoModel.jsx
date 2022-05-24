@@ -12,7 +12,7 @@ const TempTwoModel = (props) => {
     const [modal, setModal] = useState(false);
     const [messageList, setMessageList] = useState([{}]);
     //const [modal, setModal] = useState(true);
-    const [show,setShow] = useState("");
+    const [show,setShow] = useState(false);
     const [chatInput, setChatInput] = useState("")
     const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem("user")));
     const [open, setOpen] = useState(false);
@@ -24,8 +24,8 @@ const TempTwoModel = (props) => {
         if (user) {
             const u = JSON.parse(user);
             setName(u.username);
-        }
 
+        }
         if(props.session) {
             setUserInfo({id: 3, username: "hunter",
             aboutMe: null,
@@ -44,6 +44,7 @@ const TempTwoModel = (props) => {
             })
             console.log("%%%% User info =" + JSON.stringify(userInfo) + "%%%%")
         }
+       
     }, [user]);
 
     // const userModalIdentifcation = name.id;
@@ -149,7 +150,7 @@ const TempTwoModel = (props) => {
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                    <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={props.session} open={open}/>
+                                <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={props.session} open={open}/>
 
                             </Modal.Footer>
                             </div>

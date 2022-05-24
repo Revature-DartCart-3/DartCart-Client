@@ -9,6 +9,7 @@ import TempTwoModel from "./Modal/TempTwoModel"
 const FinalAdminTechPanel = () => {
 
     const [sessionList, setSessionList] = useState([]);
+    const [activeSession, setActiveSession] = useState();
     const [enterChat, setEnterChat] = useState({
         sessionId : "",
         clientId : ""
@@ -27,7 +28,7 @@ const FinalAdminTechPanel = () => {
         axios.get("http://localhost:9005/help-request-list")
             .then( response => {
                 setSessionList(response.data);
-                console.log(response.data)
+                //console.log(response.data)
             });
     }
 
@@ -35,6 +36,8 @@ const FinalAdminTechPanel = () => {
         axios.put("http://localhost:9005/assign-tech",JSON.parse(e.target.value))
             .then((response) => {
                 setEnterChat(response.data);
+                // setActiveSession(response.data.sessionId);
+                // console.log(response.data.sessionId);
             })
             alert("A tech representative has been assigned.");
     }
@@ -80,7 +83,9 @@ const FinalAdminTechPanel = () => {
                                                 onClick={assignTechToChat}
                                                 type="submit"
                                             >
+                                                enterChat
                                                 <TempTwoModel session={list} />
+                                                {/* {activeSession == list.sessionId && <TempTwoModel session={list} />} */}
                                                 {/* <AiOutlineEnter/> */}
                                             </button>
                                         </td>
