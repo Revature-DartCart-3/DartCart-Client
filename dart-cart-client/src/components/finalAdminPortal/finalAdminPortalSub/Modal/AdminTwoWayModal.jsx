@@ -58,7 +58,6 @@ const TempTwoModel = () => {
                     </button>
                 </section>
 
-                <h1 className="test">Text</h1>
 
                 <section
                     className={`modalContainer ${show ? "show" : ""} `}

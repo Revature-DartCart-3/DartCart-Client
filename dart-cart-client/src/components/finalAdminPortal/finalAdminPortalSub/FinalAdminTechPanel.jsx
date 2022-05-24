@@ -54,7 +54,7 @@ const FinalAdminTechPanel = () => {
 
             <section>
                 <Container>
-                    <Table striped bordered hover>
+                    <Table striped bordered hover className="admin-table">
                        <thead>
                         <tr>
                             <th><p>Enter</p></th>
