@@ -3,9 +3,11 @@ import { Product } from "../../common/models";
 import { Link } from "react-router-dom";
 import authHeader from "../../features/authentication/AuthHeader";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { addToCart } from "../../common/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { Overlay, Tooltip } from "react-bootstrap";
+import { AiOutlineCheck } from 'react-icons/ai';
 
 
 interface IShopProductCard {
@@ -37,6 +39,8 @@ async function addToWL(productId){
 export function ShopProductCard({ Product: product }: IShopProductCard) {
 
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
 
   function handleAddtoCart(e) {
     dispatch(addToCart(e.target.value));
@@ -62,12 +66,26 @@ export function ShopProductCard({ Product: product }: IShopProductCard) {
       </div>
       {JSON.stringify(authHeader()).length > 100 ? (
         <div className=" card bg-black text-warning" style={{ height: "8rem", width: "18rem" }}>
+          <>
           <button
+          ref={target}
             className="button addToCart"
             value={product?.id}
-            onClick={(e) => handleAddtoCart(e)}>
+            onClick={(e) => {
+            setShow(!show);
+            setTimeout(() => { setShow(false) }, 2000);
+            handleAddtoCart(e)
+            }
+          }>
             Add To Cart
           </button>
+          <Overlay
+            target={target.current}
+            show={show}
+            placement="right">
+            <Tooltip id={`tooltip${product?.id}`}><AiOutlineCheck/></Tooltip>
+            </Overlay>
+            </>
           <button id="addToWishList" className="button addToWishList" onClick={async () => {
             setNotice(await addToWL(product?.id));
             setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
