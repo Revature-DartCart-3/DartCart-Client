@@ -102,6 +102,7 @@ export function ProductRegister() {
     setDescription("");
     setImageURL("");
     document.querySelector("form")?.reset();
+    setProgress(0);
   }
 
   // closes modal but allows user to register another product

@@ -181,6 +181,14 @@ visibility: hidden;
   background-color: var(--orange);
 }
 
+.yellow-button{
+  background-color: var(--yellow);
+}
+
+.yellow-button:hover{
+  background-color: var(--orange);
+}
+
 .grey-button{
   background-color: var(--lightgrey);
 }
@@ -198,4 +206,21 @@ visibility: hidden;
 
 .addToCart {
   display: block;
+}
+
+.product-card{
+  width:100%;
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--background);
+  background-color: var(--background);
+}
+
+.card-footer{
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--secondary);
+  background-color: transparent;
+  justify-content: center;
 }
