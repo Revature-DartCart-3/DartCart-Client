@@ -58,7 +58,7 @@ const NavLinks = (props) => {
                 <NavDropdown.Item as={Link} to="/" onClick={handleLogout}>Logout</NavDropdown.Item>
             </NavDropdown>
 
-            <Nav.Link as={Link} to="/cart">
+            <Nav.Link as={Link} to="/cart" className="cart-icon">
               <FiShoppingCart/>
             </Nav.Link>
           </>

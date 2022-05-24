@@ -47,7 +47,7 @@ const Searchbar = () => {
               }} />
             </FloatingLabel>
           </div>
-          <Button variant="success" onClick={(e) => handleSearch(e)} id="search-btn" className="searchBtn" value="Search" style={{ float: "right" }} >
+          <Button variant="success" onClick={(e) => handleSearch(e)} id="search-btn" className="searchBtn" value="Search" >
             <FcSearch size={30} />
           </Button>
         </div>
