@@ -12,6 +12,7 @@
 }
 .cardImg {
     width: 100%;
+    length: 200%;
 }
 /**/
 /* color theme toggle */
@@ -71,8 +72,10 @@ input:checked[type="checkbox"]:after {
 
   /* cards -- sets card background to match color theme */
 .card {
-    color: var(--text-primary);
-    background-color: var(--background);
+    /* color: var(--text-primary);
+    background-color: var(--background); */
+    background: #0d9d9f;
+    box-shadow: 0 0 5px #f26925, 0 0 15px #f26925;
 }
 
 .card-header {
