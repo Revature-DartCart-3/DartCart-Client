@@ -62,7 +62,11 @@ export function CompetingSellers({ Seller }: SellerProduct) {
                 : <>${competitors.price}</>}
                 </h4>
                 <br/>{competitors.quantity < 10 ?
-                  (<span>Limited Stock: Only {competitors.quantity} Available</span>) : (<span>In Stock</span>)}
+                  (competitors.quantity == 0?
+                    <span>Currently out of stock</span>
+                    : <span>Limited Stock: Only {competitors.quantity} Available</span>
+                    )
+                  : (<span>In Stock</span>)}
               </div>
               <div className="center-align">
                 <>

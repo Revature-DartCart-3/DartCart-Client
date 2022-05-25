@@ -34,8 +34,12 @@ a.nav-link:hover{
 a.cart-icon{
     background-color: var(--orange);
     border-radius: 5px;
+    padding: 5px 10px !important;
 }
 a.cart-icon:hover{
     color:var(--orange) !important;
     background-color: var(--secondary);
+}
+.navbar-toggler{
+    background-color: var(--orange);
 }
