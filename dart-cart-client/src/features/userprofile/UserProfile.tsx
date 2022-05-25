@@ -1,14 +1,12 @@
-import { Alert, Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
-import { updateUser, homeRedirect } from "../../common/slices/userProfileSlice";
+import { Alert, Col, Container, Form, Row } from "react-bootstrap";
+import { updateUser } from "../../common/slices/userProfileSlice";
 import { User } from "../../common/types";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../common/hooks";
 import authHeader from "../../features/authentication/AuthHeader";
 import axios from "axios";
 import { storage } from "./firebase";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
-import { Paper } from "@mui/material";
 
 export function UserProfile() {
   const [email, setEmail] = useState("");
@@ -17,7 +15,6 @@ export function UserProfile() {
   const [location, setLocation] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
-  const [showModal, setShowModal] = useState(false);
   const [_initialUser, setInitialUser] = useState({});
   const [imageURL, setImageURL] = useState("");
   const [aboutMe, setAboutMe] = useState("");
@@ -44,14 +41,13 @@ export function UserProfile() {
 
   //firebase
   const [progress, setProgress] = useState(0);
-  const [Url, setUrl] = useState("");
 
+  //stores file upload to firebase and updates profile url
   const handleFireBaseUpload = (e) => {
-    e.preventDefault();
-    const image = e.target[0].files[0];
-    console.log("uploading pic");
-    console.log(image);
-    uploadImage(image);
+    if(e.target[0].files?.length > 0) {
+      const image = e.target[0].files[0];
+      uploadImage(image);
+    }
   };
 
   const uploadImage = (image) => {
@@ -81,10 +77,7 @@ export function UserProfile() {
     );
   };
 
-  //firebase
-
   const dispatch = useAppDispatch();
-  const nav = useNavigate();
 
   const user: User = {
     id: 0,
@@ -125,7 +118,12 @@ export function UserProfile() {
     }
   };
 
-  const updateUserProfile = async () => {
+  //gathers information from form and sends updated info to database
+  const updateUserProfile = async (e) => {
+    e.preventDefault();
+
+    handleFireBaseUpload(e);
+
     user.aboutMe = aboutMe;
     user.imageURL = imageURL;
     user.firstName = firstName;
@@ -133,6 +131,7 @@ export function UserProfile() {
     user.location = location;
     user.email = email;
     user.phone = phone;
+    user.imageURL = imageURL;
 
     if (!validateInput()) {
       return;
@@ -140,9 +139,6 @@ export function UserProfile() {
 
     await dispatch(updateUser(user))
       .unwrap()
-      .then((_originalPromiseResult) => {
-        setShowModal(true);
-      })
       .catch((_rejectedValueOrSerializedError) => {
         setError("That username is unavailable.");
         clearInputs();
@@ -152,7 +148,6 @@ export function UserProfile() {
 
   const setProfileImage = async () => {
     setImageURL(imageURL); //asigns new ims url
-
     user.imageURL = imageURL;
   };
 
@@ -164,54 +159,51 @@ export function UserProfile() {
     setLocation("");
     setImageURL("");
     setAboutMe("");
-  }
-
-  // Redirect upon modal close
-  function handleClose() {
-    setShowModal(false);
-    dispatch(homeRedirect(null));
-    // nav("/");
+    setProgress(0);
   }
 
   return (<>
-    <Container>
-      <Paper style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-        <div className="pfp">
-          <img src={imageURL} height={150} alt="Profile Picture" />
-          <form onSubmit={handleFireBaseUpload}>
-            <input type="file" />
-            <button onClick={setProfileImage}>Upload</button>
-            <h4>{progress}%</h4>
-          </form>
-        </div>
-      </Paper>
-    </Container>
-    <Form>
+    <Form onSubmit={updateUserProfile}>
+
+      {/* Heading */}
       <div className="shop-form-heading">
         <h2>Update Your Profile</h2>
       </div>
+
       <Container>
         {error ? <Alert variant="danger">{error}</Alert> : null}
+
+        {/* Profile Picture */}
         <Form.Group className="mb-4">
-          <Form.Control
-            type="text"
-            placeholder="AboutMe"
-            size="lg"
-            value={aboutMe}
-            onChange={e => setAboutMe(e.target.value)}
-          />
+          <Form.Label as="h6">
+            Profile Picture
+          </Form.Label>
+          {imageURL&&<img src={imageURL} className="form-img" alt="Profile Picture" />}
+          <Row id="file-upload-container">
+            <Col sm="8">
+              <Form.Control
+                type="file"
+              />
+            </Col>
+            <Col sm="auto">
+              <button
+                type="button"
+                className="upload-button"
+                onClick={setProfileImage}
+              >
+                Upload
+              </button>
+              <span>{progress}%</span>
+            </Col>
+          </Row>
         </Form.Group>
-        <Form.Group className="mb-4">
-          <Form.Control 
-            type="email"
-            placeholder="Email Address"
-            size="lg"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </Form.Group>
+
+        {/* Name */}
         <Row className="mb-4">
           <Form.Group as={Col}>
+            <Form.Label as="h6">
+              First Name
+            </Form.Label>
             <Form.Control 
               type="text"
               placeholder="First Name"
@@ -221,6 +213,9 @@ export function UserProfile() {
             />
           </Form.Group>
           <Form.Group as={Col}>
+            <Form.Label as="h6">
+              Last Name
+            </Form.Label>
             <Form.Control 
               type="text"
               placeholder="Last Name"
@@ -230,7 +225,26 @@ export function UserProfile() {
             />
           </Form.Group>
         </Row>
+
+        {/* Email */}
         <Form.Group className="mb-4">
+          <Form.Label as="h6">
+            Email
+          </Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Email Address"
+            size="lg"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </Form.Group>
+
+        {/* Address */}
+        <Form.Group className="mb-4">
+          <Form.Label as="h6">
+            Address
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="Home Address"
@@ -239,7 +253,12 @@ export function UserProfile() {
             onChange={e => setLocation(e.target.value)}
           />
         </Form.Group>
+
+        {/* Phone */}
         <Form.Group className="mb-4">
+          <Form.Label as="h6">
+            Phone Number
+          </Form.Label>
           <Form.Control
             type="phone"
             placeholder="Phone Number"
@@ -248,9 +267,25 @@ export function UserProfile() {
             onChange={e => setPhone(e.target.value)}
           />
         </Form.Group>
+
+        {/* About Me */}
+        <Form.Group>
+          <Form.Label as="h6">
+            About Me
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="About Me"
+            size="lg"
+            value={aboutMe}
+            onChange={e => setAboutMe(e.target.value)}
+          />
+        </Form.Group>
+
+        {/* Submit Button */}
         <button
+          type="submit"
           className="mb-4 submit-button"
-          onClick={updateUserProfile}
         >
           Update
         </button>
