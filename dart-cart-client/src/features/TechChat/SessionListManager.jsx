@@ -51,14 +51,15 @@ function SessionListManager (props) {
     //Handle session queue changing
     const onSessionUpdate = (payload) => {
         let sessionUpdate = JSON.parse(payload.body);
-        
+        let newSession = {sessionId: sessionUpdate.sessionId, client: {id: sessionUpdate.senderId, username: sessionUpdate.senderName}}
+        console.log(newSession);
         switch (sessionUpdate.type) {
-            case "REMOVESESSION":
+            case "RemoveSession":
                 let sessions = [...sessionList]
-                setSessionList(sessionList.filter((session) => session.sessionId != sessionUpdate.sessionId));
+                //setSessionList(sessionList.filter((session) => session.sessionId != sessionUpdate.sessionId));
                 break;
-            case "NEWCLIENT":
-                setSessionList((sessionList) => [...sessionList, sessionUpdate.content]);
+            case "NewClient":
+                setSessionList((sessionList) => [...sessionList, newSession]);
                 break;
             default:
                 console.log("Unhandled Mesage: " + sessionUpdate);
