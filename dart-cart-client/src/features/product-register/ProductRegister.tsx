@@ -126,7 +126,7 @@ export function ProductRegister() {
         {error && <Alert variant="danger">{error}</Alert>}
 
         {/* Image upload */}
-        {imageURL && <img src={imageURL} height={150} alt="Product" />}
+        {imageURL && <img src={imageURL} className="form-img" alt="Product" />}
         <Form id="imageform" onSubmit={handleFireBaseUpload}>
           <Form.Group className="mb-3 form-group">
             <Form.Label as="h4">

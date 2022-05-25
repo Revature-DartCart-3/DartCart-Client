@@ -48,13 +48,15 @@
     margin-left: auto;
     margin-right: auto;
     color: var(--text-primary);
+    width:100%;
 }
 
 .productImg {
     max-width: 150px;
     max-height: 150px;
     width: 100%;
-    margin: auto;
+    margin:10px;
+    align-self: center;
 }
 
 .wishListHeader {
@@ -89,6 +91,11 @@
     padding: 8px;
     border-radius: 50%;
     opacity: 50%;
+}
+.addCart{
+    background-color: transparent;
+    border:none;
+    color:var(--text-primary);
 }
 
 .viewProductBtn {

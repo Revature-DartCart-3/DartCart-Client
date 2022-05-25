@@ -3,7 +3,7 @@ import { Product } from "../../common/models";
 import { Link } from "react-router-dom";
 import authHeader from "../../features/authentication/AuthHeader";
 import axios from "axios";
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { addToCart } from "../../common/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { Overlay, Tooltip } from "react-bootstrap";
@@ -31,72 +31,102 @@ function addToWishList(productId){
     })
   }
 
-async function addToWL(productId){
-  const y = await addToWishList(productId);
-  return React.createElement("span", {class : "wishListNotice  youCanSeeMe"}, y);
-}
-
 export function ShopProductCard({ Product: product }: IShopProductCard) {
 
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
-  const target = useRef(null);
+  const [showCart, setShowCart] = useState(false);
+  const [showWishlist, setShowWishlist] = useState(false);
+  const cart_target = useRef(null);
+  const wishlist_target = useRef(null)
 
   function handleAddtoCart(e) {
     dispatch(addToCart(e.target.value));
   }
 
-  const [notice, setNotice] = useState(React.createElement("span", {class : "wishListNotice"}, "hey"))
   return (
-    <div id="shop-card" style={{ height: "28rem" }}>
+
+    // Product cards listed on homepage
+    <div id="shop-card">
       <div className="card" style={{ height: "28rem", width: "18rem" }}>
+
+        {/* Entirety of product card will link to product page */}
         <Link to={`/shop-product/${product?.id}` || ""} style={{ textDecoration: 'none' }}>
           <img
             className="testIMG"
             src={product?.imageURL}
             alt={product?.name}
-          ></img>
-          <div className="card-body">
-            <h3>{product?.name || ""}</h3>
-            <p className="card-text">
-              {product?.description.length > 55?
-                product?.description.substring(0,50).concat("...")
-            :
-              product?.description
-            }</p>
+          />
 
+          {/* Displays product name up to 30 characters (2 lines) */}
+          <div className="card-body">
+            <h3>
+              {product?.name.length > 30 ?
+                product?.name.substring(0, 27).concat("...")
+              :
+                product?.name
+              }
+            </h3>
+
+            {/* Fills remaining space with  product description */}
+            <p className="card-text">
+              {product?.description.length > 125?
+                (product?.name.length > 15 ?
+                  (product?.description.substring(0,97).concat("..."))
+                :
+                  (product?.description.substring(0, 125).concat("...")))
+              :
+                product?.description
+              }
+            </p>
           </div>
         </Link>
         
+        {/* Displays cart and wishlist buttons when user is logged in */}
         {JSON.stringify(authHeader()).length > 100 && (
         <div className="card-footer">
+
+          {/* Cart Button */}
           <button
-            ref={target}
-            className="button orange-button addToCart"
+            ref={cart_target}
+            className="button orange-outline"
             value={product?.id}
             onClick={(e) => {
-            setShow(!show);
-            setTimeout(() => { setShow(false) }, 2000);
+            setShowCart(!showCart);
+            setTimeout(() => { setShowCart(false) }, 2000);
             handleAddtoCart(e)
             }
           }>
-            Add To Cart
+            Cart +
           </button>
 
+          {/* Tootlip for successful addition to cart */}
           <Overlay
-            target={target.current}
-            show={show}
+            target={cart_target.current}
+            show={showCart}
             placement="right">
             <Tooltip id={`tooltip${product?.id}`}><AiOutlineCheck/></Tooltip>
           </Overlay>
 
-          <button id="addToWishList" className="button yellow-button addToWishList" onClick={async () => {
-            setNotice(await addToWL(product?.id));
-            setTimeout(() =>{setNotice(React.createElement("span", {class : "wishListNotice"}, "hey"))}, 5000);
-          }}>
-            Add To Wishlist
-            <div>{notice}</div>
+          {/* Wishlist Button */}
+          <button id="addToWishList" 
+            ref={wishlist_target}
+            className="button grey-outline" 
+            onClick={() => {
+              setShowWishlist(!showWishlist);
+              setTimeout(() => { setShowWishlist(false) }, 2000);
+              addToWishList(product?.id);}
+            }
+          >
+            Wishlist +
           </button>
+
+          {/* Tooltip for successful addition to wishlist */}
+          <Overlay
+            target={wishlist_target.current}
+            show={showWishlist}
+            placement="right">
+            <Tooltip id={`wltooltip${product?.id}`}><AiOutlineCheck /></Tooltip>
+          </Overlay>
         </div>
         )}
       </div>

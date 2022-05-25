@@ -7,11 +7,8 @@ import {
   fetchShopProducts,
   getStatus,
   selectShopProducts,
-  clearSlice,
 } from "../../common/slices/shopProductSlice";
-import Featured_Products from "../Featured_Products";
 import authHeader from '../authentication/AuthHeader';
-import FeaturedProduct from '../../Models/featured_product';
 import axios from 'axios';
 
 const MOCK_SERVER = process.env.REACT_APP_API_URL;
@@ -53,7 +50,7 @@ useEffect(() => {
       {status === "success" ? (
         (ReduxShopProducts.length &&
           ReduxShopProducts.map((product) => {
-            return <ShopProductCard key={product.id} Product={product}/>;
+            return <div key={product.id}><ShopProductCard Product={product}/></div>;
           })) || (
           <>
             <h1 style={{ color: "white" }}>No Items Found</h1>
