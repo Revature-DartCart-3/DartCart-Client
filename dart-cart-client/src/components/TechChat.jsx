@@ -7,7 +7,7 @@ import SockJS from 'sockjs-client';
 import { withStyles } from "@mui/material";
 import axios from "axios";
 import {Form, Modal} from "react-bootstrap";
-import FinalAdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/FinalAdminTechPanel";
+import AdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/AdminTechPanel";
 
 var stompClient = null;
 
@@ -15,7 +15,7 @@ var stompClient = null;
 The messages are saved in the messages state.
 */
 
-function FinalTechChat (props) {
+function TechChat (props) {
     const [isConnected, setIsConnected] = useState(false);
     const username = "jimmy";//Replace with code to retrieve user Id
     //const [messages, callback] = [props.messages, props.callback];
@@ -182,4 +182,4 @@ function FinalTechChat (props) {
         </>
     )
 }
-export default FinalTechChat;
+export default TechChat;

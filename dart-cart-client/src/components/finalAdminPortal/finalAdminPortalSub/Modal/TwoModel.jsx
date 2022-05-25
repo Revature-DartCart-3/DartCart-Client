@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Modal, Form, FormControl} from "react-bootstrap";
 import "./finaModalStyling.css";
-import FinalTechChat from '../../../FinalTechChat';
+import TechChat from '../../../TechChat';
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import './_modal.scss';
 
 
 import { useLocation } from "react-router-dom";
-const TempTwoModel = (props) => {
+const TwoModel = (props) => {
 
     const [modal, setModal] = useState(false);
     const [messageList, setMessageList] = useState([{}]);
@@ -166,7 +166,7 @@ const TempTwoModel = (props) => {
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}
-                                <FinalTechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={session} open={open}/>
+                                <TechChat messages={messageList} callbackFunction={callback} clearChatInput={clearChatInput} chatInput={chatInput} userInfo={userInfo} session={session} open={open}/>
 
                             </Modal.Footer>
                             </div>
@@ -179,4 +179,4 @@ const TempTwoModel = (props) => {
     );
 };
 
-export default TempTwoModel;
+export default TwoModel;

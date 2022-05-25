@@ -5,10 +5,10 @@ import axios from "axios";
 import SessionListManager from "../../SessionListManager";
 import {AiOutlineEnter} from "react-icons/ai";
 import {BsAlignEnd} from "react-icons/bs";
-import TempTwoModel from "./Modal/TempTwoModel"
+//import TwoModel from "./Modal/TwoModel"
 import { useNavigate} from "react-router-dom";
 
-const FinalAdminTechPanel = () => {
+const AdminTechPanel = () => {
 
     const [sessionList, setSessionList] = useState([]);
     const [activeSession, setActiveSession] = useState();
@@ -134,4 +134,4 @@ const FinalAdminTechPanel = () => {
     );
 };
 
-export default FinalAdminTechPanel;
+export default AdminTechPanel;

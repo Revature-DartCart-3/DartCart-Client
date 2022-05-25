@@ -30,15 +30,15 @@ import useLocalStorage from "use-local-storage";
 import WishList from "./features/wishlist/WishList";
 // import TechChat from "./components/TechChat";
 // import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
-import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
+import Admin from "./components/finalAdminPortal/Admin";
 // import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/FinalFinalTwoWay";
 // import AdminComments from "./features/TechChatModal/AdminComments";
 // import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
-import FinalTechChat from "./components/FinalTechChat";
+import TechChat from "./components/TechChat";
 import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
-import FinalAdminTechSection from "./components/finalAdminPortal/finalAdminPortalSub/FinalAdminTechSection";
-import FinalAdminTechPanel from "./components/finalAdminPortal/finalAdminPortalSub/FinalAdminTechPanel";
-import TempTwoModel from "./components/finalAdminPortal/finalAdminPortalSub/Modal/TempTwoModel";
+import AdminTechSection from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechSection";
+import AdminTechPanel from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechPanel";
+import TwoModel from "./components/finalAdminPortal/finalAdminPortalSub/Modal/TwoModel";
 
 
 function App() {
@@ -76,11 +76,11 @@ function App() {
 
             </Route>
             {/*THIS THE DEV TEST SECTION FOR CHAT FEATURES*/}
-            <Route path="/techchat" element={<FinalAdmin />} />
+            <Route path="/techchat" element={<Admin />} />
             {/*OFFICAL CLIENT INTERFCEE FOR THE CLIENT*/}
-            <Route path="/techchatmodal" element={<TempTwoModel/>} />
+            <Route path="/techchatmodal" element={<TwoModel/>} />
             {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
-            <Route path="/adminpage" element={<FinalAdmin/>}></Route>
+            <Route path="/adminpage" element={<Admin/>}></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
