@@ -1,13 +1,9 @@
 import { render } from "@testing-library/react";
 import React, {useEffect, useState} from  'react';
-import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 import {over} from 'stompjs';
 import SockJS from 'sockjs-client';
 import { withStyles } from "@mui/material";
-import axios from "axios";
-import {Form, Modal} from "react-bootstrap";
-import AdminTechPanel from "../../components/finalAdminPortal/finalAdminPortalSub/AdminTechPanel";
 
 var stompClient = null;
 
@@ -167,17 +163,9 @@ function TechChat (props) {
             disconnect();
         }
     },[props.open])
-
-    // //handle unmounting
-    // useEffect(() => () =>  {
-    //     console.log("**Unmount**");
-    //     disconnect();
-    // }, [])
    
     return(
         <>
-        {/* {messages}; */}
-        {/* {isConnected ? <button value={"Hello"} onClick={leave}>disconnect</button> : <button onClick={connect}>Connect</button>} */}
         <button value={"Hello"} onClick={sendMessage}>Send Message</button>
         </>
     )

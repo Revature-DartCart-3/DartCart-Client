@@ -32,14 +32,12 @@ const TwoModel = (props) => {
         console.log(JSON.stringify(location.state))
         setSession(location.state);
         console.log(JSON.stringify(session));
-        //console.log(JSON.stringify(session));
         if (user) {
             const u = JSON.parse(user);
             setName(u.username);
 
         }
         if(location.state) {
-            console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
             setUserInfo({id: 3, username: "hunter",
             aboutMe: null,
             accountType: "admin",
@@ -138,7 +136,7 @@ const TwoModel = (props) => {
                             <div className="admin-tech-modal">
                             <Modal.Header className="modal_header">
 
-                            <h2 className="modal_header-title ">User : {name} | Techie : name  </h2>
+                            <h2 className="modal_header-title ">User : {name}</h2>
                                 <button
                                     className="admin-techchat-close-button"
                                     onClick={closeModal}
