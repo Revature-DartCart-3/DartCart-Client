@@ -1,0 +1,111 @@
+#footerFix {
+    color: var(--orange);
+}
+
+/**//* LAYOUT STYLINGS *//**/
+/* FOOTER */
+footer{
+  position: relative;
+  bottom: 0;
+  width:100%;
+  height: auto;
+  letter-spacing: 2px;
+}
+.site-footer{
+  background-color: transparent !important;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 45px 0 20px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 24px;
+  /* color: #737373; */
+}
+.footer-info {
+    padding: 1em;
+    color: var(--orange);
+}
+.footer-brandname{
+  letter-spacing: 2px;
+  font-family: var(--dancingScriptFont);
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+.copyright-text {
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--text-primary);
+}
+.footer-icons .social-icons{
+  text-align: left;
+}
+.footer-icons .social-icons a{
+  width: 40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color: var(--socialicon-bg);
+  list-style: none;
+}
+.social-icons{
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.social-icons li{
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.social-icons a{
+  background-color: var(--socialicon-bg);
+  color:var(--secondary);
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a.facebook:hover {
+  background-color: #3B5998;
+}
+.social-icons a.linkedin:hover{
+  background-color: #0077b5;
+}
+.social-icons a.pinterest:hover{
+  background-color: #f0002a;
+}
+.social-icons a.twitter:hover {
+  background-color: #55acee;
+}
+.social-icons a.github:hover {
+  background-color: #ffcc00;
+}
+/* Fa-opencart icon in footer */
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  color: var(--orange);
+}
+.fa:hover {
+  opacity: 0.5;
+}
+/**//**/
+.locationIcon {
+  color: var(--text-primary);
+}
+/* END LAYOUT STYLINGS */
+/**/

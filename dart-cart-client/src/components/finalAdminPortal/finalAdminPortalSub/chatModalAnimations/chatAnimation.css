@@ -1,0 +1,13 @@
+
+.message {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+/*.sent {*/
+/*    background-color: orange;*/
+/*}*/
+
+/*.received {*/
+/*    background: lightskyblue;*/
+/*}*/

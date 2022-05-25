@@ -1,29 +1,23 @@
-import { Alert, Modal, Button } from "react-bootstrap";
-import { updateUser, homeRedirect } from "../../common/slices/userProfileSlice";
+import { Alert, Col, Container, Form, Row } from "react-bootstrap";
+import { updateUser } from "../../common/slices/userProfileSlice";
 import { User } from "../../common/types";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../common/hooks";
-import { loginUser } from "../../common/slices/authSlice";
 import authHeader from "../../features/authentication/AuthHeader";
 import axios from "axios";
 import { storage } from "./firebase";
 import { getDownloadURL, uploadBytesResumable, ref } from "firebase/storage";
-import { Paper } from "@mui/material";
 
-export function UserP() {
-  const currentDate = Date.now();
+export function UserProfile() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [initialUser, setInitialUser] = useState({});
+  const [_initialUser, setInitialUser] = useState({});
   const [imageURL, setImageURL] = useState("");
   const [aboutMe, setAboutMe] = useState("");
-  //     const API_URL = "http://localhost:9005/";
   const API_URL = process.env.REACT_APP_API_URL;
 
   async function fetchUser() {
@@ -31,7 +25,6 @@ export function UserP() {
       headers: authHeader(),
     });
     const fetchedUser = await response.data;
-    console.log(fetchedUser);
     setInitialUser(fetchedUser);
     setFirstName(fetchedUser.firstName);
     setLastName(fetchedUser.lastName);
@@ -48,14 +41,13 @@ export function UserP() {
 
   //firebase
   const [progress, setProgress] = useState(0);
-  const [Url, setUrl] = useState("");
 
+  //stores file upload to firebase and updates profile url
   const handleFireBaseUpload = (e) => {
-    e.preventDefault();
-    const image = e.target[0].files[0];
-    console.log("uploading pic");
-    console.log(image);
-    uploadImage(image);
+    if(e.target[0].files?.length > 0) {
+      const image = e.target[0].files[0];
+      uploadImage(image);
+    }
   };
 
   const uploadImage = (image) => {
@@ -85,10 +77,7 @@ export function UserP() {
     );
   };
 
-  //firebase
-
   const dispatch = useAppDispatch();
-  const nav = useNavigate();
 
   const user: User = {
     id: 0,
@@ -129,7 +118,12 @@ export function UserP() {
     }
   };
 
-  const updateUserProfile = async () => {
+  //gathers information from form and sends updated info to database
+  const updateUserProfile = async (e) => {
+    e.preventDefault();
+
+    handleFireBaseUpload(e);
+
     user.aboutMe = aboutMe;
     user.imageURL = imageURL;
     user.firstName = firstName;
@@ -137,6 +131,7 @@ export function UserP() {
     user.location = location;
     user.email = email;
     user.phone = phone;
+    user.imageURL = imageURL;
 
     if (!validateInput()) {
       return;
@@ -144,10 +139,7 @@ export function UserP() {
 
     await dispatch(updateUser(user))
       .unwrap()
-      .then((originalPromiseResult) => {
-        setShowModal(true);
-      })
-      .catch((rejectedValueOrSerializedError) => {
+      .catch((_rejectedValueOrSerializedError) => {
         setError("That username is unavailable.");
         clearInputs();
       });
@@ -156,7 +148,6 @@ export function UserP() {
 
   const setProfileImage = async () => {
     setImageURL(imageURL); //asigns new ims url
-
     user.imageURL = imageURL;
   };
 
@@ -168,150 +159,139 @@ export function UserP() {
     setLocation("");
     setImageURL("");
     setAboutMe("");
+    setProgress(0);
   }
 
-  // Redirect upon modal close
-  function handleClose() {
-    setShowModal(false);
-    dispatch(homeRedirect(null));
-    // nav("/");
-  }
+  return (<>
+    <Form onSubmit={updateUserProfile}>
 
-  return (
-    <>
-      <Paper style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-        <div className="pfp">
-          <img src={imageURL} height={150} alt="Profile Picture" />
-          <form onSubmit={handleFireBaseUpload}>
-            <input type="file" />
-            <button onClick={setProfileImage}>Upload</button>
-            <h4>{progress}%</h4>
-          </form>
-        </div>
-      </Paper>
-      <section className="vh-200">
-        <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-lg-10 col-sm-12">
-              <div
-                className="card shadow-2-strong"
-                style={{ borderRadius: "1rem" }}
+      {/* Heading */}
+      <div className="shop-form-heading">
+        <h2>Update Your Profile</h2>
+      </div>
+
+      <Container>
+        {error ? <Alert variant="danger">{error}</Alert> : null}
+
+        {/* Profile Picture */}
+        <Form.Group className="mb-4">
+          <Form.Label as="h6">
+            Profile Picture
+          </Form.Label>
+          {imageURL&&<img src={imageURL} className="form-img" alt="Profile Picture" />}
+          <Row id="file-upload-container">
+            <Col sm="8">
+              <Form.Control
+                type="file"
+              />
+            </Col>
+            <Col sm="auto">
+              <button
+                type="button"
+                className="upload-button"
+                onClick={setProfileImage}
               >
-                <div className="card-header card text-center bg-success text-white">
-                  <h3 className="mb-0">Update your profile</h3>
-                  <img></img>
-                </div>
-                <div className="card-body p-5 text-center">
-                  {error ? <Alert variant="danger">{error}</Alert> : null}
+                Upload
+              </button>
+              <span>{progress}%</span>
+            </Col>
+          </Row>
+        </Form.Group>
 
-                  <div className="row align-items-center">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="AboutMe"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={aboutMe}
-                        onChange={(e) => {
-                          setAboutMe(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
+        {/* Name */}
+        <Row className="mb-4">
+          <Form.Group as={Col}>
+            <Form.Label as="h6">
+              First Name
+            </Form.Label>
+            <Form.Control 
+              type="text"
+              placeholder="First Name"
+              size="lg"
+              value={firstName}
+              onChange={e => setFirstName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group as={Col}>
+            <Form.Label as="h6">
+              Last Name
+            </Form.Label>
+            <Form.Control 
+              type="text"
+              placeholder="Last Name"
+              size="lg"
+              value={lastName}
+              onChange={e => setLastName(e.target.value)}
+            />
+          </Form.Group>
+        </Row>
 
-                  <div className="row align-items-center">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
+        {/* Email */}
+        <Form.Group className="mb-4">
+          <Form.Label as="h6">
+            Email
+          </Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Email Address"
+            size="lg"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </Form.Group>
 
-                  <div className="row">
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="First Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={firstName}
-                        onChange={(e) => {
-                          setFirstName(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="Last Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={lastName}
-                        onChange={(e) => {
-                          setLastName(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
+        {/* Address */}
+        <Form.Group className="mb-4">
+          <Form.Label as="h6">
+            Address
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Home Address"
+            size="lg"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+          />
+        </Form.Group>
 
-                  <div className="row">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="Home Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={location}
-                        onChange={(e) => {
-                          setLocation(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input
-                        type="phone"
-                        placeholder="Phone Number"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={phone}
-                        onChange={(e) => {
-                          setPhone(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
+        {/* Phone */}
+        <Form.Group className="mb-4">
+          <Form.Label as="h6">
+            Phone Number
+          </Form.Label>
+          <Form.Control
+            type="phone"
+            placeholder="Phone Number"
+            size="lg"
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
+          />
+        </Form.Group>
 
-                  <button
-                    className="btn btn-success btn-lg btn-block"
-                    onClick={updateUserProfile}
-                  >
-                    Update Profile
-                  </button>
+        {/* About Me */}
+        <Form.Group>
+          <Form.Label as="h6">
+            About Me
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="About Me"
+            size="lg"
+            value={aboutMe}
+            onChange={e => setAboutMe(e.target.value)}
+          />
+        </Form.Group>
 
-                  <Modal show={showModal}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Update Profile</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Your profile was updated!</Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={handleClose}>Close</Button>
-                    </Modal.Footer>
-                  </Modal>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="mb-4 submit-button"
+        >
+          Update
+        </button>
+      </Container>
+    </Form>
+  </>);
 }
 
-export default UserP;
+export default UserProfile;

@@ -1,0 +1,40 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+// @import '../node_modules/bootstrap/scss/bootstrap';
+@import "../node_modules/bootstrap/scss/functions";
+
+//MORE COLORS
+$red: #ba181b;
+$primary-orange: #f26925;
+$primary-white: #ffff;
+$primary-darkgrey: #474c55;
+$secondary-blue: #72a4c2;
+$secondary-yellow: #fcb414;
+$secondary-lightgrey: #b9b9ba;
+$bs-body-bg: #2b2e34;
+
+
+$COLORS: (
+  "red": $red,
+  "primary-white": $primary-white,
+  "primary-darkgrey": $primary-darkgrey,
+  "secondary-blue": $secondary-blue,
+  "secondary-yellow": $secondary-yellow,
+  "secondary-lightgrey": $secondary-lightgrey,
+  "bs-body-bg": $bs-body-bg,
+) !default;
+
+//THEME DEFAULT COLOR OVERRIDE
+$theme-colors: (
+  "primary": $primary-orange,
+  "secondary": $secondary-blue,
+  "success": $primary-orange,
+  "info": $secondary-blue,
+  "warning": $secondary-yellow,
+  "danger": $red,
+  "light": $primary-white,
+  "dark": $primary-darkgrey,
+) !default;
+
+
+
+

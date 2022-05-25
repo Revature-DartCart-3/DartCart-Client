@@ -1,14 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Product, ShopProduct, Shop, Seller} from "../../common/models";
+import {ShopProduct} from "../../common/models";
 import { addToCart } from "../../common/slices/cartSlice";
 import {
   fetchCompetitorProducts,
-  selectCompetitorProductById,
   selectCompetitorProducts,
 } from "../../common/slices/competitorsSlice";
-import Logo from "../layout/Logo";
 import "./competingSellers.css";
+import WishlistButton from "../wishlist/WishlistButton";
+import authHeader from "../authentication/AuthHeader";
+import { MdAddShoppingCart} from 'react-icons/md';
+import { Overlay, Tooltip } from "react-bootstrap";
+import { AiOutlineCheck } from 'react-icons/ai';
 
 interface SellerProduct {
   Seller: number;
@@ -16,17 +19,24 @@ interface SellerProduct {
 
 export function CompetingSellers({ Seller }: SellerProduct) {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
 
+  
   const ReduxCompetitorProducts: ShopProduct[] = useSelector(
     selectCompetitorProducts
   );
 
   useEffect(() => {
-    dispatch(fetchCompetitorProducts(Seller)); // places return value into REDUX global state
-  }, []);
+    if(Seller){
+      dispatch(fetchCompetitorProducts(Seller)); // places return value into REDUX global state
+    }
+  }, [Seller]);
 
   function handleAddtoCart(e) {
     dispatch(addToCart(e.target.value));
+    
+
   }
 
   return (
@@ -34,29 +44,59 @@ export function CompetingSellers({ Seller }: SellerProduct) {
       {(ReduxCompetitorProducts &&
         ReduxCompetitorProducts.map((competitors) => {
           return (
-            <div className="sellerInfo">
-                <div className="shopNameAndPrice">
-                  {competitors.discount > 0 ? 
-                  (<span>Seller: {competitors.shop.seller.name} - <s>${competitors.price}</s>  ${(competitors.price) - (competitors.discount)} <br />Discount: {Math.floor((competitors.discount)/(competitors.price)*100)}%</span>): 
-                  (<span>Seller: {competitors.shop.seller.name} - ${competitors.price}</span>)}
-                </div>
-                <div className="shopLocation">
-                  <span>Seller Location: {competitors.location}</span>
-                </div>
-                <div className="shopQuant">
-                  <span>Quantity In Stock: {competitors.quantity}</span>
-                </div>
-              <button
-                className="btn btn-primary addToCart"
-                value={competitors.shop_product_id}
-                onClick={(e) => handleAddtoCart(e)}
-              >
-                Add to cart
-              </button>
+            <div key={`${competitors.shop_product_id}`} className="sellerInfo">
+
+              {/* Seller Info */}
+              <div>
+                <h6><b>Sold by:</b></h6>
+                <p>{competitors.shop.seller.name}<br/>
+                {competitors.location}</p>
+              </div>
+              <div className="center">
+                <h4>
+                {competitors.discount > 0 ? 
+                (<>
+                  <s>${competitors.price}</s>  ${(competitors.price) - (competitors.discount)} 
+                  <small> ({Math.floor((competitors.discount) / (competitors.price) * 100)}% off)</small>
+                </>)
+                : <>${competitors.price}</>}
+                </h4>
+                <br/>{competitors.quantity < 10 ?
+                  (competitors.quantity == 0?
+                    <span>Currently out of stock</span>
+                    : <span>Limited Stock: Only {competitors.quantity} Available</span>
+                    )
+                  : (<span>In Stock</span>)}
+              </div>
+              <div className="center-align">
+                <>
+                <button
+                  ref={target}
+                  className="button orange-button stacked"
+                  value={competitors.shop_product_id}
+                  onClick={(e) => {
+                    setShow(!show);
+                    setTimeout(() => { setShow(false) }, 2000);
+                    handleAddtoCart(e);
+                  }
+                  }
+                >
+                  <MdAddShoppingCart/> Add to Cart
+                </button>
+                <Overlay
+                  target={target.current}
+                  show={show}
+                  placement="right">
+                  <Tooltip id={`tooltip${competitors.shop_product_id}`}><AiOutlineCheck/></Tooltip>
+                </Overlay>
+                </>
+                {JSON.stringify(authHeader()).length > 100 && (
+                  <WishlistButton product={competitors.product} />
+                )}
+              </div>
             </div>
           );
-        })) ||
-        ""}
+        }))}
     </>
   );
 }

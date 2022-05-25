@@ -1,1 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+.form-heading{
+    font-size: x-large;
+    padding: 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.yellow{
+    background-color: var(--yellow);
+    color: white;
+}
+
+.blue{
+    background-color: var(--blue);
+    color: white;
+}

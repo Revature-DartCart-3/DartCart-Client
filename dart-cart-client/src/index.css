@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -14,26 +16,58 @@ code {
 
 :root {
     --background: white;
+    --secondary:rgb(158, 158, 158);
+    --contrast: #474C55;
+    --darker:rgb(202, 202, 202);
     --text-primary: black;
-    --text-secondary: royalblue;
-    --accent: purple;
+    --text-secondary: #474C55;
+    --accent: #72A4C2;
     --bs-black: black;
     --bs-white: white !important;
     --bs-body-bg: white !important;
-  }
-  [data-theme='dark'] {
-    --background: black;
+    --orange: #F26925;
+    --darkgrey: #474C55;
+    --blue: #72A4C2;
+    --yellow: #FCB414;
+    --secondary-yellow: #ffd375;
+    --lightgrey: #B9B9BA;
+    --socialicon-bg: #b9b9ba;
+    --dancingScriptFont: 'Dancing Script', cursive;
+}
+
+[data-theme='dark'] {
+    --background: #2b2e34;
+    --secondary: #474C55 ;
+    --contrast: #B9B9BA;
+    --darker:#1e2024;
     --text-primary: white;
-    --text-secondary: grey;
-    --accent: darkred;
+    --text-secondary: #B9B9BA;
+    --accent: #72A4C2;
     --bs-black: white;
-    --bs-white: black !important;
-    --bs-body-bg: black !important;
-  }
+    --bs-white: #2b2e34 !important;
+    --bs-body-bg: #2b2e34 !important;
+    --orange: #F26925;
+    --darkgrey: #474C55;
+    --blue: #72A4C2;
+    --yellow: #FCB414;
+    --secondary-yellow: #ffd375;
+    --lightgrey: #B9B9BA;
+    --socialicon-bg: #33353d;
+}
 
 .error_rp_email {
-    color:red;
+    color: red;
 }
+
 .error_rp_email_reset {
     margin: 100px 0px;
+}
+
+a.text-reset{
+    text-decoration: none;
+    color:var(--orange) !important
+}
+
+.center{
+    text-align: center;
 }

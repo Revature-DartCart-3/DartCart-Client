@@ -1,76 +1,69 @@
-.navbar-custom {
-    background-color: #a6a6a6;
-    color: black;
+#product1{
+  text-align: left;
+}
+#product1 .pro-container{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+  flex-wrap: wrap;
+  border: 15px solid #169c2a;
+
+
+}
+#product1 .pro{
+  width: 18%;
+  min-width: 250px;
+  padding: 10px 12px;
+  border: 15px solid #169c2a;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
+  margin: 15px 0;
+  transition: 0.2s ease;
+  position: relative;
+}
+#product1 .pro:hover{
+  box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+
+}
+
+#product1 .pro img{
+  width: 100%;
+  border-radius: 100px;
+}
+#product1 .pro .des{
+  text-align: start;
+  padding: 10px 10px;
+}
+#product1 .pro .des span{
+  color: #088178;
+  font-size: 12px;
+}
+#product1 .pro .des h5{
+  padding-top: 7px;
+  color: #1a1a1a;
+  font-size: 14px;
+}
+#product1 .pro .cart{
+  width:40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50px;
+  background-color:lightcyan;
+  font-weight: 500;
+  color:chocolate;
 }
 
 .footer-info {
-    padding: 1em;
-    color: #198754;
+  padding: 1em;
+  color: var(--orange);
 }
 
-.fa {
-   padding: 20px;
-    font-size: 30px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-  }
-  
-  .fa:hover {
-      opacity: 0.7;
-  }
-  
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  }
-  
-  .fa-twitter {
-    background: #55ACEE;
-    color: white;
-  }
-
-  .fa-instagram {
-    background: #125688;
-    color: white;
-  }
-
-  .fa-pinterest {
-    background: #cb2027;
-    color: white;
-  }
-  
-  .fa-snapchat-ghost {
-    background: #fffc00;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  }
-
-  .fa-linkedin {
-    background: #007bb5;
-    color: white;
-  }
-
-.navbar-custom .navbar-text {
-    color: black;
-}
-
-.image-container{
+.image-container {
   text-align: left;
   margin: none;
 }
 
-/* change the link color */
-.navbar-custom .navbar-nav .nav-link {
-    color: black;
-}
-/* change the color of active or hovered links */
-.navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
-    color: black;
-}
-
 .textarea {
-  height:200px;
+  height: 200px;
 }

@@ -1,0 +1,143 @@
+
+/* -------------------------------------------------------------------------
+        Form Styling
+---------------------------------------------------------------------------*/
+
+/* Outer form structure */
+form, .shop-form, .order-summary {
+    width: 45%;
+    margin: 20px auto;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    padding:0;
+}
+@media (max-width: 500px){
+    form, .shop-form, .order-summary {
+        width:95%;
+    }
+}
+@media (min-width:500px) and (max-width: 800px) {
+    form, .shop-form, .order-summary {
+        width: 75%;
+    }
+}
+.shop-form form{
+    width:100%;
+    border:none;
+}
+.modal-form{
+    width:100%;
+    padding:10px;
+}
+
+/* Heading */
+.shop-form-heading, .order-summary-heading{
+    background-color: var(--orange);
+    color:white;
+    font-size: x-large;
+    padding:10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Form body */
+.form-group{
+    width:95%;
+    margin:auto;
+}
+
+.form-control {
+    color: var(--text-secondary);
+    background-color: var(--background);
+    border: 2px solid var(--secondary);
+    height: 60px;
+    padding-left: 20px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.form-control:focus {
+    color: var(--text-primary);
+    background-color: var(--background);
+    border: 2px solid var(--orange);
+    box-shadow: none
+}
+
+input[type=file]::file-selector-button{
+    padding: 5px 10px;
+    color: var(--orange);
+    background-color: var(--background);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    margin:4px;
+}
+
+input[type=file]{
+    color:var(--text-primary);
+}
+
+#file-upload-container{
+    width:100%;
+    padding:0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-evenly;
+    vertical-align: middle;
+}
+
+.form-select{
+    background-color: var(--background);
+    color: var(--text-secondary);
+    border-color: var(--secondary);
+    text-align: left;
+}
+
+.form-select:focus {
+    background-color: var(--background);
+    border: 2px solid var(--orange);
+    box-shadow: none
+}
+
+/* Form Buttons */
+.submit-button{
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.modal-button{
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 5px;
+}
+
+.submit-button:hover, .modal-button:hover {
+    background-color: var(--yellow);
+    color: white;
+}
+
+.upload-button {
+    padding: 5px 10px;
+    color: var(--orange);
+    background-color: var(--background);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.upload-button:hover {
+    background-color: lightgray;
+}
+
+/* Images */
+.form-img{
+    height:150px;
+    margin-bottom:10px;
+}

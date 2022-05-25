@@ -1,5 +1,5 @@
-import { Alert, Modal, Button } from "react-bootstrap";
-import { saveUser, homeRedirect } from "../../common/slices/userRegisterSlice";
+import { Alert, Modal, Form, Row, Col } from "react-bootstrap";
+import { saveUser } from "../../common/slices/userRegisterSlice";
 import { User } from "../../common/types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,7 @@ export function UserRegister() {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
+  // const [accountType, setAccountType] = useState("");
 
   const dispatch = useAppDispatch();
   const nav = useNavigate();
@@ -27,6 +28,7 @@ export function UserRegister() {
   const user: User = {
     id: 0,
     username: "",
+    // accountType : "",
     password: "",
     firstName: "",
     lastName: "",
@@ -77,6 +79,7 @@ export function UserRegister() {
     user.lastName = lastName;
     user.location = location;
     user.phone = phone;
+    // user.accountType = accountType;
     user.registrationDate = currentDate;
 
     if (!validateInput()) {
@@ -85,15 +88,19 @@ export function UserRegister() {
 
     await dispatch(saveUser(user))
       .unwrap()
-      .then((originalPromiseResult) => {
+      .then((_res) => {
         setShowModal(true);
         dispatch(
           loginUser({ username: user.username, password: user.password })
         );
       })
-      .catch((rejectedValueOrSerializedError) => {
-        setError("That username is unavailable.");
-        clearInputs();
+      .catch((err) => {
+        if(err.response.status === 500){
+          setError("Unable to register. Please check your connection and try again.");
+        } else {
+          setError("That username is unavailable.");
+          clearInputs();
+        }
       });
   };
 
@@ -104,161 +111,170 @@ export function UserRegister() {
   // Redirect upon modal close
   function handleClose() {
     setShowModal(false);
-    dispatch(homeRedirect(null));
     nav("/");
   }
 
   return (
     <>
-      <section className="vh-200">
-        <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-lg-10 col-sm-12">
-              <div
-                className="card shadow-2-strong"
-                style={{ borderRadius: "1rem" }}
-              >
-                <div className="card-header card text-center bg-success text-white">
-                  <h3 className="mb-0">Create Your Account</h3>
-                </div>
-                <div
-                  className="card-body p-5 text-center"
-                >
-                  {error ? <Alert variant="danger">{error}</Alert> : null}
-
-                  <div className="row align-items-center">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="Username"
-                        id="typeEmailX-2"
-                        className="form-control form-control-lg"
-                        value={username}
-                        onChange={(e) => {
-                          setUsername(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={password}
-                        onChange={(e) => {
-                          setPassword(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="password"
-                        placeholder="Retype Password"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={rePassword}
-                        onChange={(e) => {
-                          setRePassword(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="First Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={firstName}
-                        onChange={(e) => {
-                          setFirstName(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4 col-6">
-                      <input
-                        type="text"
-                        placeholder="Last Name"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={lastName}
-                        onChange={(e) => {
-                          setLastName(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        placeholder="Home Address"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={location}
-                        onChange={(e) => {
-                          setLocation(e.target.value);
-                        }}
-                      />
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input
-                        type="phone"
-                        placeholder="Phone Number"
-                        id="typePasswordX-2"
-                        className="form-control form-control-lg"
-                        value={phone}
-                        onChange={(e) => {
-                          setPhone(e.target.value);
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    id="protect_btn"
-                    className="btn btn-success btn-lg btn-block"
-                    onClick={createUser}
-                  >
-                    Register
-                  </button>
-
-                  <Modal show={showModal}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Registration</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      Account created. Welcome to DartCart!
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={handleClose}>Close</Button>
-                    </Modal.Footer>
-                  </Modal>
-                </div>
-              </div>
-            </div>
-          </div>
+      <Form>
+        {/* Heading */}
+        <div className="shop-form-heading">
+          <h2>Create Your Account</h2>
         </div>
-      </section>
+        {error && <Alert variant="danger">{error}</Alert>}
+
+        {/* Name */}
+        <Form.Group className="mb-3 form-group">
+          <Form.Label as="h4">
+            Name
+          </Form.Label>
+          <Row>
+            <Col sm="6">
+              <Form.Control
+                type="text"
+                placeholder="Enter first name"
+                id="first"
+                size="lg"
+                value={firstName}
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                }} />
+            </Col>
+            <Col sm="6">
+              <Form.Control
+                type="text"
+                placeholder="Enter last name"
+                id="last"
+                size="lg"
+                value={lastName}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                }} />
+            </Col>
+          </Row>     
+        </Form.Group>
+
+        {/* Username */}
+        <Form.Group className="mb-3 form-group">
+          <Form.Label as="h4">
+            Username
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter username"
+            id="username"
+            size="lg"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }} />
+        </Form.Group>
+
+        {/* Password */}
+        <Form.Group className="mb-3 form-group">
+          <Form.Label as="h4">
+            Password
+          </Form.Label>
+          <Row>
+            <Col sm="6">
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                id="password"
+                size="lg"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }} />
+            </Col>
+            {/* Re-type password check */}
+            <Col sm="6">
+              <Form.Control
+                type="password"
+                placeholder="Re-enter password"
+                id="repassword"
+                size="lg"
+                value={rePassword}
+                onChange={(e) => {
+                  setRePassword(e.target.value);
+                }} />
+            </Col>
+          </Row>
+        </Form.Group>
+
+        {/* Email */}
+        <Form.Group className="mb-3 form-group">
+          <Form.Label as="h4">
+            Email
+          </Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            id="email"
+            size="lg"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }} />
+        </Form.Group>
+
+        {/* Address */}
+        <Form.Group className="mb-3 form-group">
+          <Form.Label as="h4">
+            Address
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter home address"
+            id="address"
+            size="lg"
+            value={location}
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }} />
+        </Form.Group>
+
+        {/* Phone */}
+        <Form.Group className="mb-3 form-group">
+          <Form.Label as="h4">
+            Phone Number
+          </Form.Label>
+          <Form.Control
+            type="phone"
+            placeholder="Enter phone number"
+            id="phone"
+            size="lg"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+            }} />
+        </Form.Group>
+
+        {/* Submit Button */}
+        <button
+          type="button"
+          className="submit-button"
+          onClick={createUser}
+        >
+          Register
+        </button>
+      </Form>
+
+      {/* Success Modal */}
+      <Modal 
+        show={showModal}
+        onHide={handleClose}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Registration</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Account succcessfully created. Welcome to DartCart!
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="modal-button" onClick={handleClose}>Get Started</button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

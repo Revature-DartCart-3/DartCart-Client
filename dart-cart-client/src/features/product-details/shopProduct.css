@@ -62,8 +62,7 @@
 }
 
 .addToWishList{
-  display: block;
-  width: 70%;
+  display: inline;
 }
 
 .wishListNotice {
@@ -73,7 +72,7 @@
 }
 
 .addToWishList .wishListNotice {
-  visibility: hidden;
+visibility: hidden;
   font-size: 2vh;
   width: 240px;
   background-color: #555;
@@ -88,7 +87,6 @@
   margin-left: -120px;
   opacity: 0;
   transition: opacity 0.3s;
-  
 }
 
 .addToWishList .wishListNotice::after {
@@ -109,70 +107,166 @@
 }
 
 .productInfoContainer {
-  height: 250px;
-  margin: 2%;
-  padding: .5%;
-  display: grid;
-  grid-template-columns: 3% 25% 4% 65% 3%;
-  grid-template-rows: 5% 45% 45% 5%;
+  margin: 2% auto;
   color: var(--text-primary);
   background-color: var(--background);
-  border-style: solid;
-  border-width: .5rem;
-  border-color: #5f5f5f;
-  grid-template-areas:
-  ". . . . ."
-  ". productIMG . productName ."
-  ". productIMG . productDesc ."
-  ". . . . ."
+  width:90%;
+  border: 2px solid var(--secondary);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .sellersContainer {
-  margin: 2%;
-  padding: .5%;
-  display: grid;
-  grid-template-columns: 3% 94% 3%;
-  row-gap: 20px;
   color: var(--text-primary);
   background-color: var(--background);
-  border-style: solid;
-  border-width: .5rem;
-  border-color: #5f5f5f;
-  grid-template-areas:
-  ". sellerColumn ."
-}
-
-.sellerColumn{
-  grid-area: sellerColumn;
-}
-
-
-.productIMGcontainer{
-  grid-area: productIMG;
+  text-align: left;
+  width:90%;
+  margin:auto;
 }
 
 .productImage{
-  height: 100%;
   width: 100%;
-}
-
-.productName{
-  grid-area: productName;
-  margin-top: auto;
-  margin-bottom: auto;
-  color: var(--text-primary);
-  background-color: var(--background);
+  max-width: 300px;
 }
 
 .productDesc{
-  grid-area: productDesc;
-  margin-top: auto;
-  margin-bottom: auto;
   color: var(--text-primary);
-  background-color: var(--background);
+  text-align: left;
+  padding:10px;
 }
 
-.table {
-  background-color: var(--background);
+.card-footer {
+  display: flex;
+  /* flex-direction: column; */
+  border-top: 1px solid var(--secondary);
+  background-color: transparent;
+  justify-content: center;
+}
+
+.card-footer button{
+  margin:5px;
+  width:50%;
+  font-size:smaller;
+}
+
+.tooltip-inner {
+  background-color: rgb(97, 188, 97);
+}
+
+.tooltip .tooltip-arrow::before {
+  border-right-color: rgb(97, 188, 97);
+}
+
+/* Reviews on product page */
+.review-link{
+  background-color: transparent;
+  text-decoration: none;
+  color: #31a4ec;
+  border:none;
+  padding-top: 5px;
+  margin:auto;
+}
+
+.review-link:hover{
+  color: var(--yellow);
+}
+
+.reviews {
   color: var(--text-color);
-  margin: 50px;
+  width:90%;
+  margin:20px auto;
+  text-align: left;
+}
+.review-card{
+  width:80%;
+  margin:2% auto;
+}
+
+.average-rating {
+  font-size: 2.5vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+/* Buttons */
+.button{
+  margin-top: 5px;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.blue-button{
+  background-color: var(--blue);
+}
+.blue-button:hover{
+  background-color: var(--yellow);
+}
+
+.orange-button{
+  background-color: var(--orange);
+  color:white;
+}
+.orange-button:hover{
+  background-color: var(--yellow);
+}
+
+.yellow-button{
+  background-color: var(--yellow);
+}
+.yellow-button:hover{
+  background-color: var(--orange);
+}
+
+.grey-button{
+  background-color: var(--lightgrey);
+}
+.grey-button:hover {
+  background-color: var(--yellow);
+}
+
+/* Outline buttons */
+.blue-outline {
+  border-color: var(--blue);
+  background-color: transparent;
+  color:var(--text-primary);
+}
+
+.blue-outline:hover {
+  background-color: var(--blue);
+}
+
+.orange-outline {
+  border-color: var(--orange);
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.orange-outline:hover {
+  background-color: var(--orange);
+}
+
+.yellow-outline {
+  border-color: var(--yellow);
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.yellow-outline:hover {
+  background-color: var(--yellow);
+}
+
+.grey-outline {
+  border-color: var(--lightgrey);
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.grey-outline:hover {
+  background-color: var(--lightgrey);
+}
+
+.stacked{
+  display: block;
+  margin:5px auto;
 }

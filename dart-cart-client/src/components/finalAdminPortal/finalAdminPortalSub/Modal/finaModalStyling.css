@@ -1,0 +1,131 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.modalContainer .modal_header-title,
+.modalContainer .modal-header,
+.modalContainer .modal-content,
+.admin-techchat-modal-button {
+    color: var(--text-primary);
+    background-color: var(--background);
+    text-shadow: rgb(0, 0, 0, 0.2) 2px 3px 1px;
+}
+
+.admin-techchat-modal-section {
+    font-family: "Poppins", sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+    margin-top: 2%;
+}
+
+.modalContainer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url("purple.jpg"); */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    height: auto;
+    background-color: transparent;
+}
+
+.admin-tech-modal {
+    width: calc(15rem + 15vw);
+    height: auto;
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.4);
+}
+
+/* .modal-content {
+    background-color: transparent;
+    text-align: center;
+} */
+
+.modalContainer .show {
+    visibility: visible;
+    opacity: 1;
+}
+.modalContainer .show .admin-tech-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.admin-techchat-modal-input {
+    line-height: 1.5;
+    width: 100%;
+    font-size: 1.5rem;
+    background: transparent;
+    color: red;
+    outline: none;
+    border: none;
+    padding: 0 10px;
+    text-shadow: black 2px 3px 1px;
+}
+
+.admin-techchat-modal-button{
+    border: none;
+    width: auto;
+    height: auto;
+    outline: none;
+    cursor: pointer;
+}
+
+.admin-techchat-close-button {
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.admin-techchat-close-button:hover {
+    color: #F26925;
+}
+
+
+/*background-color: #364348;*/
+/*font-weight: 600;*/
+/*&:hover {*/
+/*     color: rgba(54, 67, 72, 0.8);*/
+/* */
+
+.clickMe {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/*keystroke animations*/
+
+.fade-in-effect {
+    animation: fade-in-animation .6s;
+}
+
+@keyframes fade-in-animation {
+    0%{
+        opacity: 0;
+    }
+    25% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .75;
+    }
+    /*75%{*/
+    /*    opacity: .75;*/
+    /*}*/
+    100%{
+        opacity: 1;
+    }
+
+}

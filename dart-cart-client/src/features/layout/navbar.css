@@ -1,0 +1,45 @@
+.logo {
+    width: 30px;
+    margin-left:20px;
+}
+
+.logo-title{
+    text-decoration: none;
+    text-align: left;
+    font-size: xx-large;
+    color: var(--bs-black) !important
+}
+
+.bg-navbar{
+    background-color: var(--darker);
+    color:var(--bs-white);
+}
+
+.header{
+    width:95%;
+}
+
+.middle{
+    align-items: center;
+}
+
+.nav-link{
+    color: var(--text-primary) !important
+}
+
+a.nav-link:hover{
+    color:var(--orange) !important;
+}
+
+a.cart-icon{
+    background-color: var(--orange);
+    border-radius: 5px;
+    padding: 5px 10px !important;
+}
+a.cart-icon:hover{
+    color:var(--orange) !important;
+    background-color: var(--secondary);
+}
+.navbar-toggler{
+    background-color: var(--orange);
+}

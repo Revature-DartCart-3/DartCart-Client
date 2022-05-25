@@ -53,7 +53,8 @@ export const updateUser = createAsyncThunk("userUpdateProfile/updateUser", async
             phone: user.phone,
             location: user.location,
             imageURL: user.imageURL,
-            aboutMe: user.aboutMe
+            aboutMe: user.aboutMe,
+            // accountType : user.accountType
         
             
         },

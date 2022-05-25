@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./wishList.css";
+import "./wishListStyle.css";
 import {
   fetchWishList,
   selectAllWishListItems,
@@ -20,14 +20,17 @@ const WishList = () => {
 
   return (
     <>
-      <h2 className="wishListHeader">Your Wish List</h2>
-      {
-        WishListItems.map((WishListItem) => {
-          return <WishListItemView key={WishListItem.wishListId} {...WishListItem} />;
-        })
-      }
+      <h2 className="wishListHeader">Your Wish List:</h2>
+      <hr></hr>
+      <div >
+          {
+            WishListItems.map((WishListItem) => {
+              return <WishListItemView key={WishListItem.wishListId} {...WishListItem} />
+            })
+          }
+      </div>
     </>
   );
-};
+}
 
 export default WishList;

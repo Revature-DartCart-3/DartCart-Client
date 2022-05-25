@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import ReactDOM from "react-dom";
 import { Login } from "./features/authentication/Login";
 import { ResetPassword } from "./features/authentication/ResetPassword";
-import Home from "./features/Home";
 import UserRegister from "./features/user-register/UserRegister";
 import ProductRegister from "./features/product-register/ProductRegister";
+import AdminPage from "./features/admin-page/AdminPage";
 import AddInventory from "./features/shop-product-add/AddInventory";
 import Display from "./features/display/Display";
 import PreviousOrders from "./features/previous-orders/previous-orders";
@@ -18,17 +17,32 @@ import store from "./common/store";
 import Header from "./features/layout/Header";
 import Footer from "./features/layout/Footer";
 import Cart from "./features/cart/Cart";
+import "./mainstyle.css";
 import "./App.css";
 import Checkout from "./features/checkout/CheckoutDisplay";
 import ListItem from "./features/list-item/ListItem";
 import ShopPage from "./features/shop-page/ShopPage";
 import SellerHomepage from "./features/seller-homepage/SellerHomepage";
 import Product from "./Models/Product";
+<<<<<<< HEAD
 import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
 import WishList from "./features/wishlist/WishList";
 //import SupportApp from "./features/help-center/techSupport";
 import SupportApp from "./features/help-center/Components/SupporApp";
+=======
+
+import UserProfile from "./features/userprofile/UserProfile";
+import useLocalStorage from "use-local-storage";
+import WishList from "./features/wishlist/WishList";
+import Admin from "./components/finalAdminPortal/Admin";
+import TechChat from "./features/TechChat/TechChat";
+import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
+import AdminTechSection from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechSection";
+import AdminTechPanel from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechPanel";
+import TwoModel from "./components/finalAdminPortal/finalAdminPortalSub/Modal/TwoModel";
+
+>>>>>>> main
 
 function App() {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -42,13 +56,8 @@ function App() {
     setTheme(newTheme);
   };
 
-  useEffect(() => {
-    document.title = "DartCart";
-
-    //
-  });
-
   return (
+<<<<<<< HEAD
     <div className="App" data-theme={theme}>
       {theme === "dark" ? (
         <input onClick={switchTheme} type="checkbox" name="" checked />
@@ -57,13 +66,25 @@ function App() {
       )}
       <BrowserRouter>
         <Provider store={store}>
+=======
+    <BrowserRouter>
+      <Provider store={store}>
+        <div className="App" data-theme={theme}>
+>>>>>>> main
           <Header />
           <Routes>
             <Route path="/" element={<Display />}></Route>
             <Route
               path="/sellers/:seller_homepage"
               element={<SellerHomepage />}
-            ></Route>
+            >
+            </Route>
+            {/*THIS THE DEV TEST SECTION FOR CHAT FEATURES*/}
+            <Route path="/techchat" element={<Admin />} />
+            {/*OFFICAL CLIENT INTERFCEE FOR THE CLIENT*/}
+            <Route path="/techchatmodal" element={<TwoModel/>} />
+            {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
+            <Route path="/adminpage" element={<Admin/>}></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
@@ -79,6 +100,7 @@ function App() {
             <Route path="/orders" element={<PreviousOrders />}></Route>
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/display" element={<Display />}></Route>
+<<<<<<< HEAD
             <Route path="/userprofile" element={<UserP />}></Route>
            <Route path="/help" element={<SupportApp />}></Route> 
             <Route
@@ -86,20 +108,30 @@ function App() {
               element={<ShopProductDisplay />}
             ></Route>
             <Route path="/wishlist" element={<WishList />}></Route>
+=======
+            <Route path="/userprofile" element={<UserProfile />}></Route>
+            <Route path="/admin" element={<AdminPage />} />
+            <Route
+              path="/shop-product/:shop_product_id"
+              element={<ShopProductDisplay />}
+              ></Route>
+            <Route path="/wishlist" element={<WishList/>}></Route>
+>>>>>>> main
             <Route
               path="/FeatureProduct/:product_id"
               element={<Product />}
-            ></Route>
+              ></Route>
             <Route
               path="/product-review/:product_id"
               element={<ProductReviewLayout />}
-            ></Route>
+              ></Route>
             <Route path="/*" element={<Error404Page />}></Route>
           </Routes>
           <Footer />
-        </Provider>
-      </BrowserRouter>
-    </div>
+          <input onChange={switchTheme} type="checkbox" name="theme" checked={theme === 'dark'} />
+        </div>
+      </Provider>
+    </BrowserRouter>
   );
 }
 
