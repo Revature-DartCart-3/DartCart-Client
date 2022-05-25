@@ -58,10 +58,12 @@ const FinalAdminTechPanel = () => {
             alert("A tech representative has been assigned.");
     }
 
-    function disconnectConversation(){
-        axios.delete("http://localhost:9005/disconnect")
+    function disconnectConversation(e){
+        let sessionToDelete = JSON.parse(e.target.value);
+        axios.delete(`http://localhost:9005/delete?session=${sessionToDelete.sessionId}` )
             .then((response) => {
                 setDeleteChat(response.data);
+                setSessionList(sessionList.filter((session) => session.sessionId != sessionToDelete.sessionId));
             })
     }
 
@@ -108,13 +110,15 @@ const FinalAdminTechPanel = () => {
                                         <td>{list.sessionId}</td>
                                         <td>{list.client.id}</td>
                                         <td>{list.client.username}</td>
-                                        <td className="admin-tech-panel-button-group">
+                                        <td className="admin-tech-panel-button-group admin-icon-color">
                                             <button
                                                 className="admin-tech-panel-button"
-                                            value={JSON.stringify(list)}
+                                            value={[JSON.stringify(list)]}
                                                 onClick={disconnectConversation}
                                                 type="submit"
                                             >
+
+                                                Delete
                                                 <BsAlignEnd className="admin-icon-color"/>
                                             </button>
                                         </td>
