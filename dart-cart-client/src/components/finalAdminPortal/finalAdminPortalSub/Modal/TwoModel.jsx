@@ -56,7 +56,7 @@ const TwoModel = (props) => {
             })
             console.log("%%%% User info =" + JSON.stringify(userInfo) + "%%%%")
         }
-       
+
     }, [user]);
 
     // const userModalIdentifcation = name.id;
@@ -64,7 +64,7 @@ const TwoModel = (props) => {
     const showModal = () => {
         setOpen(true);
         setModal(true);
-            
+
             //console.log("$$$$$$$$$$$$$$$$$PROPS OF MODAL"+ JSON.stringify(props))
         // console.log("hitting showModal")
         // console.log("USER:" + userInfo);
@@ -144,7 +144,7 @@ const TwoModel = (props) => {
                                 >
                                     x
                                 </button>
-                                
+
 
                             </Modal.Header>
 

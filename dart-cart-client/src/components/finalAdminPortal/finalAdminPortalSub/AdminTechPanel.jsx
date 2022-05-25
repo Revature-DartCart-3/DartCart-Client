@@ -5,7 +5,6 @@ import axios from "axios";
 import SessionListManager from "../../../features/TechChat/SessionListManager";
 import {AiOutlineEnter} from "react-icons/ai";
 import {BsAlignEnd} from "react-icons/bs";
-//import TwoModel from "./Modal/TwoModel"
 import { useNavigate} from "react-router-dom";
 
 const AdminTechPanel = () => {
@@ -31,7 +30,6 @@ const AdminTechPanel = () => {
         axios.get("http://localhost:9005/help-request-list")
             .then( response => {
                 setSessionList(response.data);
-                //console.log(response.data)
             });
     }
 
@@ -102,7 +100,6 @@ const AdminTechPanel = () => {
                                                 type="submit"
                                             >
                                                 enterChat
-                                                {/* <TempTwoModel session={list} /> */}
                                                 {/* {activeSession == list.sessionId && <TempTwoModel session={list} />} */}
                                                 {/* <AiOutlineEnter/> */}
                                             </button>
