@@ -29,11 +29,11 @@ import UserP from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
 import WishList from "./features/wishlist/WishList";
 // import TechChat from "./components/TechChat";
-import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
+// import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
 import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/FinalFinalTwoWay";
 import AdminComments from "./features/TechChatModal/AdminComments";
-import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
+// import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalTechChat from "./components/FinalTechChat";
 import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
 import FinalAdminTechSection from "./components/finalAdminPortal/finalAdminPortalSub/FinalAdminTechSection";

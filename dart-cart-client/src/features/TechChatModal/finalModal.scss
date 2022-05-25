@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@
     background-color: rgba(255, 255, 255, 0.35);
     width: calc(15rem + 15vw);
     height: auto;
-    
+
 
     backdrop-filter: blur(10px);
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.4);
@@ -28,12 +28,12 @@
     transition: all 0.4s ease;
 
     &_header {
-    
+
       background-color: #181717;
       height: 10vh;
       min-height: 50px;
       color: white;
-     
+
       width: 100%;
       max-width: 728px;
       top: 0;
@@ -53,7 +53,7 @@
         top: -1;
         left: -1;
         background-color: #ff0081;
-        
+
         &:hover {
             background-color: rgba(148, 18, 146, 0.8);
         }
@@ -61,7 +61,7 @@
     }
 
     &_content {
-     
+
       padding: 4rem 0;
       display: flex;
       flex-direction: column;
@@ -75,18 +75,18 @@
     &_footer {
       padding: 4rem 1rem;
       background-color: rgb(58, 58, 58);
-     
 
-      
+
+
       button {
         float: right;
         margin-bottom: 15px;
         margin-right: 10px;
-        
+
       }
 
       .submit {
-      
+
           background-color: #ff0081; /* Green */
           border: none;
           color: white;
@@ -95,7 +95,7 @@
           display: inline-block;
           cursor: pointer;
           font-size: 1.25rem;
-        
+
 
         &:hover {
           background-color: rgba(148, 18, 146, 0.8);
@@ -121,7 +121,7 @@
     transform: translateY(0);
     font-size: 1.5rem;
     align-content: center;
-    
+
   }
 }
 .message {
@@ -185,7 +185,7 @@ button {
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 700;
-  
+
 }
 
 .bubbly-button{
@@ -205,11 +205,11 @@ button {
   position: relative;
   transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
   box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-  
+
   &:focus {
     outline: 0;
   }
-  
+
   &:before, &:after{
     position: absolute;
     content: '';
@@ -221,14 +221,14 @@ button {
     transition: all ease-in-out 0.5s;
     background-repeat: no-repeat;
   }
-  
+
   &:before{
     display: none;
     top: -75%;
-    background-image:  
+    background-image:
       radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle,  transparent 20%, $button-bg 20%, transparent 30%),
-    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%),
@@ -238,12 +238,12 @@ button {
   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
   //background-position: 0% 80%, -5% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 85% 30%;
   }
-  
+
   &:after{
     display: none;
     bottom: -75%;
-    background-image:  
-    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    background-image:
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%),
     radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
     radial-gradient(circle, $button-bg 20%, transparent 20%),
@@ -253,13 +253,13 @@ button {
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
   //background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
   }
- 
+
   &:active{
     transform: scale(0.9);
     background-color: darken($button-bg, 5%);
     box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
   }
-  
+
   &.animate{
     &:before{
       display: block;
