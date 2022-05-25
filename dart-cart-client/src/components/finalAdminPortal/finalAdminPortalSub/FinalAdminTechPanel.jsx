@@ -93,13 +93,13 @@ const FinalAdminTechPanel = () => {
                                         {/*<-------- enter button response*/}
                                         <td className="admin-tech-panel-button-group">
                                             <button
-                                                className=""
+                                                className="admin-tech-panel-button"
                                                 value={JSON.stringify(list)}
                                                 name="session"
                                                 onClick={assignTechToChat}
                                                 type="submit"
                                             >
-                                                enterChat
+                                                Enter Chat
                                                 {/* <TempTwoModel session={list} /> */}
                                                 {/* {activeSession == list.sessionId && <TempTwoModel session={list} />} */}
                                                 {/* <AiOutlineEnter/> */}

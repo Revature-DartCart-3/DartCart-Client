@@ -82,7 +82,7 @@ const TempTwoModel = (props) => {
 
     //Clear the input box
     const clearChatInput = () => {
-        setChatInput();
+        setChatInput("");
     }
 
     // function ChatModalRoom() {
@@ -132,15 +132,15 @@ const TempTwoModel = (props) => {
                             centered
                         >
                             <div className="admin-tech-modal">
-                            <Modal.Header className="modal_header">
+                            <Modal.Header className="modal_header" closeButton={closeModal}>
 
-                            <h2 className="modal_header-title ">User : {name} | Techie : name  </h2>
-                                <button
+                            <h2 className="modal_header-title ">User : {name}  </h2>
+                                {/* <button
                                     className="admin-techchat-close-button"
                                     onClick={closeModal}
                                 >
                                     x
-                                </button>
+                                </button> */}
                                 
 
                             </Modal.Header>
@@ -159,6 +159,7 @@ const TempTwoModel = (props) => {
                                     name="responseMessage"
                                     value={chatInput}
                                     placeholder="Enter message here"
+                                    autoComplete='false'
                                     onChange={(e) =>{ setChatInput(e.target.value)}}
                                 />
                                 {/*submit the respone an add it the existing one*/}

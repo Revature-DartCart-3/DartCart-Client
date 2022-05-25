@@ -37,13 +37,14 @@
 }
 
 .admin-tech-modal {
-    width: calc(15rem + 15vw);
+    /* width: calc(15rem + 15vw); */
     height: auto;
     padding: 2rem;
     border-radius: 20px;
     background-color: transparent;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.4);
+    
 }
 
 .modal-content {
@@ -78,6 +79,7 @@
     height: auto;
     outline: none;
     cursor: pointer;
+    background-color: blueviolet;
 }
 
 .admin-techchat-close-button {
@@ -126,4 +128,9 @@
         opacity: 1;
     }
 
+}
+
+.admin-button-center{
+    margin: auto;
+    margin-top: 10px;
 }

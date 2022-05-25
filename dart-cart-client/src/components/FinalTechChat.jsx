@@ -178,7 +178,7 @@ function FinalTechChat (props) {
         <>
         {/* {messages}; */}
         {/* {isConnected ? <button value={"Hello"} onClick={leave}>disconnect</button> : <button onClick={connect}>Connect</button>} */}
-        <button value={"Hello"} onClick={sendMessage}>Send Message</button>
+        <button className="admin-button-center admin-techchat-modal-button" value={"Hello"} onClick={sendMessage}>Send Message</button>
         </>
     )
 }

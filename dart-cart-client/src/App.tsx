@@ -31,7 +31,7 @@ import WishList from "./features/wishlist/WishList";
 // import TechChat from "./components/TechChat";
 import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
-import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/FinalFinalTwoWay";
+//import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/FinalFinalTwoWay";
 import AdminComments from "./features/TechChatModal/AdminComments";
 import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalTechChat from "./components/FinalTechChat";
@@ -40,6 +40,7 @@ import FinalAdminTechSection from "./components/finalAdminPortal/finalAdminPorta
 import FinalAdminTechPanel from "./components/finalAdminPortal/finalAdminPortalSub/FinalAdminTechPanel";
 import TempTwoModel from "./components/finalAdminPortal/finalAdminPortalSub/Modal/TempTwoModel";
 
+//const { state } = useLocation();
 
 function App() {
 
@@ -81,7 +82,7 @@ function App() {
             <Route path="/techchatmodal" element={<TempTwoModel/>} />
             {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
             <Route path="/adminpage" element={<FinalAdmin/>}></Route>
-            <Route path="/adminmodal" element={<AdminModal/>}></Route>
+            {/* <Route path="/adminmodal" element={<AdminModal/>}></Route> */}
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
