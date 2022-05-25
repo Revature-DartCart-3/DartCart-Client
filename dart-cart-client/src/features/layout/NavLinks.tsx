@@ -61,6 +61,16 @@ const NavLinks = (props) => {
             <Nav.Link as={Link} to="/cart" className="cart-icon">
               <FiShoppingCart/>
             </Nav.Link>
+            <li className="nav-item-mb-3 nav-item">
+              <Link to="/adminpage" className="text-reset nav-link">
+                Admin
+              </Link>
+            </li>
+            <li className="nav-item-mb-3 nav-item">
+              <Link to="/TechChatModal" className="text-reset nav-link">
+                Support
+              </Link>
+            </li>
           </>
           :
           <>
