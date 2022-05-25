@@ -205,6 +205,7 @@ visibility: hidden;
 
 .orange-button{
   background-color: var(--orange);
+  color:white;
 }
 .orange-button:hover{
   background-color: var(--yellow);
