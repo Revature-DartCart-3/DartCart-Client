@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import ReactDOM from "react-dom";
 import { Login } from "./features/authentication/Login";
 import { ResetPassword } from "./features/authentication/ResetPassword";
 import UserRegister from "./features/user-register/UserRegister";
 import ProductRegister from "./features/product-register/ProductRegister";
+import AdminPage from "./features/admin-page/AdminPage";
 import AddInventory from "./features/shop-product-add/AddInventory";
 import Display from "./features/display/Display";
 import PreviousOrders from "./features/previous-orders/previous-orders";
@@ -26,9 +27,14 @@ import Product from "./Models/Product";
 
 import UserProfile from "./features/userprofile/UserProfile";
 import useLocalStorage from "use-local-storage";
-
 import WishList from "./features/wishlist/WishList";
-import AdminPage from "./features/admin/AdminPage";
+import Admin from "./components/finalAdminPortal/Admin";
+import TechChat from "./features/TechChat/TechChat";
+import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
+import AdminTechSection from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechSection";
+import AdminTechPanel from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechPanel";
+import TwoModel from "./components/finalAdminPortal/finalAdminPortalSub/Modal/TwoModel";
+
 
 function App() {
 
@@ -50,7 +56,14 @@ function App() {
             <Route
               path="/sellers/:seller_homepage"
               element={<SellerHomepage />}
-              ></Route>
+            >
+            </Route>
+            {/*THIS THE DEV TEST SECTION FOR CHAT FEATURES*/}
+            <Route path="/techchat" element={<Admin />} />
+            {/*OFFICAL CLIENT INTERFCEE FOR THE CLIENT*/}
+            <Route path="/techchatmodal" element={<TwoModel/>} />
+            {/*ADMIN ACCESS TO THE ADMIN FEATURE*/}
+            <Route path="/adminpage" element={<Admin/>}></Route>
             <Route path="/shops/:shop_id" element={<ShopPage />}></Route>
             <Route path="/shops/:shop_id/list" element={<ListItem />}></Route>
             <Route path="/cart" element={<Cart />}></Route>

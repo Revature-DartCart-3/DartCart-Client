@@ -1,0 +1,55 @@
+
+/*Final Tech Queue Panel*/
+
+.admin-table {
+    border: purple 1px solid;
+    box-shadow: 0 0 1rem 0 black;
+    margin: auto;
+}
+
+/*Final Admin Tech Button*/
+
+.admin-tech-panel-button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-tech-panel-button {
+    background-color: rebeccapurple;
+    border-radius: 4px;
+    padding: 6px;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 0 1rem 0 lightskyblue;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.admin-table-data-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin-tech-panel-button:hover {
+    color: rebeccapurple;
+    background-color: lightskyblue;
+}
+
+.admin-icon-color {
+    color: white;
+}
+
+.admin-icon-color:hover {
+    color: rebeccapurple;
+}
+
+/* Final Two Way Chat Modal*/
+
+.chatUsername {
+    text-align: center;
+}

@@ -20,6 +20,7 @@ export function UserRegister() {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
+  // const [accountType, setAccountType] = useState("");
 
   const dispatch = useAppDispatch();
   const nav = useNavigate();
@@ -27,6 +28,7 @@ export function UserRegister() {
   const user: User = {
     id: 0,
     username: "",
+    // accountType : "",
     password: "",
     firstName: "",
     lastName: "",
@@ -77,6 +79,7 @@ export function UserRegister() {
     user.lastName = lastName;
     user.location = location;
     user.phone = phone;
+    // user.accountType = accountType;
     user.registrationDate = currentDate;
 
     if (!validateInput()) {

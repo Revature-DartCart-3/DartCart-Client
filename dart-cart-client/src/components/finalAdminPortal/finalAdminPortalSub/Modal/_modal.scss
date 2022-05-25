@@ -1,0 +1,171 @@
+
+
+$fuschia: #ff0081;
+$button-bg: $fuschia;
+$button-text-color: #fff;
+$baby-blue: #f8faff;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  // background-image: url(./purple.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+button {
+  border: none;
+  width: auto;
+  height: auto;
+  outline: none;
+  cursor: pointer;
+}
+
+
+
+// .App {
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+
+//   align-items: center;
+// }
+
+.clickMe {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  
+}
+.modalContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba($color: #000000, $alpha: 0.35);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+
+  .modal {
+    background-color: rgba(255, 255, 255, 0.35);
+    width: calc(15rem + 15vw);
+    height: auto;
+    padding: 2rem;
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.4);
+
+    transform: translateY(-600px);
+    transition: all 0.4s ease;
+
+    &_header {
+      position: relative;
+      border-bottom: 4px solid #000000;
+
+      &-title {
+        text-align: center;
+      }
+
+      .close {
+        border-radius: 8px;
+        color: #fff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: transparent;
+
+        img {
+          width: 1rem;
+          height: auto;
+          transition: all 0.2s ease;
+        }
+
+        &:hover {
+          background-color: rgba(54, 67, 72, 0.8);
+          border-radius: 8px;
+        }
+      }
+    }
+
+    &_content {
+      border-bottom: 4px solid #000000;
+      padding: 12rem 0;
+    }
+
+    &_footer {
+      padding: 2rem 0;
+      padding-bottom: 0;
+     
+      .bar {
+        width: auto;
+        height: auto;
+      }
+
+      button {
+        float: right;
+        padding: 0.5rem;
+        border-radius: 8px;
+      }
+
+      .submit {
+        margin-right: 1rem;
+        background-color: transparent;
+        color: #fff;
+
+        &:hover {
+          background-color: rgba(54, 67, 72, 0.8);
+        }
+      }
+
+      .modal-close {
+        
+         background-color: #364348;
+        font-weight: 600;
+        &:hover {
+          color: rgba(54, 67, 72, 0.8);
+        }
+      }
+    }
+  }
+}
+
+
+.modalContainer.show {
+  visibility: visible;
+  opacity: 1;
+
+  .modal {
+    transform: translateY(0);
+  }
+}
+input {
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1.5rem;
+  background: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
