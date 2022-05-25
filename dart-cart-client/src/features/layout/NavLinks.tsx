@@ -58,19 +58,14 @@ const NavLinks = (props) => {
                 <NavDropdown.Item as={Link} to="/" onClick={handleLogout}>Logout</NavDropdown.Item>
             </NavDropdown>
 
+            <NavDropdown title="Chat" id="chat-dropdown">
+              <NavDropdown.Item as={Link} to="/adminpage">Admin</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/TechChatModal">Support</NavDropdown.Item>
+            </NavDropdown>
+
             <Nav.Link as={Link} to="/cart" className="cart-icon">
               <FiShoppingCart/>
             </Nav.Link>
-            <li className="nav-item-mb-3 nav-item">
-              <Link to="/adminpage" className="text-reset nav-link">
-                Admin
-              </Link>
-            </li>
-            <li className="nav-item-mb-3 nav-item">
-              <Link to="/TechChatModal" className="text-reset nav-link">
-                Support
-              </Link>
-            </li>
           </>
           :
           <>

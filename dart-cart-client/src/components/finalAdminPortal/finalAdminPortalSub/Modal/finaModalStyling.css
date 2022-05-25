@@ -8,8 +8,9 @@
 .modalContainer .modal-header,
 .modalContainer .modal-content,
 .admin-techchat-modal-button {
-    color: white;
-    text-shadow: black 2px 3px 1px;
+    color: var(--text-primary);
+    background-color: var(--background);
+    text-shadow: rgb(0, 0, 0, 0.2) 2px 3px 1px;
 }
 
 .admin-techchat-modal-section {
@@ -17,6 +18,7 @@
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
+    margin-top: 2%;
 }
 
 .modalContainer {
@@ -28,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("purple.jpg");
+    /* background-image: url("purple.jpg"); */
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
@@ -46,10 +48,10 @@
     box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.4);
 }
 
-.modal-content {
+/* .modal-content {
     background-color: transparent;
     text-align: center;
-}
+} */
 
 .modalContainer .show {
     visibility: visible;
@@ -86,7 +88,7 @@
 }
 
 .admin-techchat-close-button:hover {
-    color: slateblue;
+    color: #F26925;
 }
 
 
