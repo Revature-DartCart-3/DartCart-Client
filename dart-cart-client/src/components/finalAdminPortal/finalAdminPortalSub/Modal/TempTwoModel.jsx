@@ -6,6 +6,10 @@ import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 import '../chatModalAnimations/chatAnimation.css';
+import './../../adminTechStylesheet.css';
+import './_modal.scss';
+
+
 
 import { useLocation } from "react-router-dom";
 const TempTwoModel = (props) => {
