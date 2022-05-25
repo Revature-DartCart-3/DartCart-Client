@@ -85,15 +85,15 @@ Your browser will automatically open for you, and you are all set.
 
 * Cart
   * Once a user has decided which items to purchase they can proceed to their cart. Here the user has the options of increasing or lowering the quantity of the items they wish to purchase. To save this quantity the update button must be clicked. If a user wishes to remove an item from their cart they can click the delete button.
-  ![AddInventory](./dart-cart-client/src/imgs/readme/cart3.png)
+  ![Cart](./dart-cart-client/src/imgs/readme/cart3.png)
 
 * Checkout
   * After a user has decided on what to purchase they can then proceed to checkout. Relevant information such as shipping address and a credit card must be entered along with the desired payment plan.
-  ![AddInventory](./dart-cart-client/src/imgs/readme/checkout3.png)
+  ![Checkout](./dart-cart-client/src/imgs/readme/checkout3.png)
 
 * Tech Support Chat
   * If at any time a user has problems with the site there is a tech support chat to reach an employee for help.
-  * ADD IMAGE OF TECH SUPPORT CHAT
+  ![TechChat](./dart-cart-client/src/imgs/readme/techchat3.png)
 
 * Logout
   * When the user leaves the app, be sure to close the connection to their account by clicking the Logout button.
