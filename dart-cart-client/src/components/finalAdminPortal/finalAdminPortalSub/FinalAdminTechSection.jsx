@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminComments from "../../../features/TechChatModal/AdminComments";
+// import AdminComments from "../../../features/TechChatModal/AdminComments";
 import FinalAdminTechPanel from "./FinalAdminTechPanel";
 import FinalTwoWayChatModal from "./FinalTwoWayChatModal";
 import FinalFinalTwoWay from "./Modal/FinalFinalTwoWay";

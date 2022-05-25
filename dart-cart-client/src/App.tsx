@@ -32,7 +32,7 @@ import WishList from "./features/wishlist/WishList";
 // import TechChatModal from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalAdmin from "./components/finalAdminPortal/FinalAdmin";
 import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/FinalFinalTwoWay";
-import AdminComments from "./features/TechChatModal/AdminComments";
+// import AdminComments from "./features/TechChatModal/AdminComments";
 // import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
 import FinalTechChat from "./components/FinalTechChat";
 import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
@@ -95,7 +95,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/display" element={<Display />}></Route>
             <Route path="/userprofile" element={<UserP />}></Route>
-            <Route path="/stuff" element={<AdminComments />} />
+            {/*<Route path="/stuff" element={<AdminComments />} />*/}
             <Route
               path="/shop-product/:shop_product_id"
               element={<ShopProductDisplay />}
