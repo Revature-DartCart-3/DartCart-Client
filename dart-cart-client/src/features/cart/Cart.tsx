@@ -18,8 +18,9 @@ const Cart = () => {
     let totalTotal = items.reduce(
         (cartTotal, cartItems) => {
             const price  = cartItems.shopProduct.price;
+            const discount = cartItems.shopProduct.discount;
             const totalQuantity = cartItems.quantity;
-            const itemTotal = price * totalQuantity;
+            const itemTotal = (price - discount) * totalQuantity;
 
             cartTotal += itemTotal;
 

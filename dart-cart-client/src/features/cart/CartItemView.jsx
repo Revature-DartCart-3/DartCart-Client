@@ -68,7 +68,7 @@ const CartItemView = ({ id }) => {
         if(item) dispatch(updateCart(item))
     }
 
-    const total = (item?.shopProduct.price * item?.quantity);
+    const total = ((item?.shopProduct.price-item?.shopProduct.discount) * item?.quantity);
 
 
 
@@ -88,7 +88,8 @@ const CartItemView = ({ id }) => {
                 <div className="col-9">
                     <div className="card-block px-2" style={{ textAlign: 'left' }}>
                         <h4 className="cart-card-title">{item?.shopProduct.product.name}</h4>
-                        <p className="cart-card-text">Cost: ${item?.shopProduct.price}</p>
+                        <p className="cart-card-text">Seller: {item?.shopProduct.shop.seller.name}</p>
+                        <p className="cart-card-text">Cost: ${item?.shopProduct.price-item?.shopProduct.discount}</p>
                         <p className="cart-card-total">Item Total: ${ total }</p>
                         <input className="form-control" type="number" value={item?.quantity} onChange={e => handleItemUpdate(e.target.value)} min={1} readOnly/>
                         <div className="card-buttons">
