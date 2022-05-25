@@ -39,21 +39,20 @@ const TwoModel = (props) => {
 
         }
         if(location.state) {
-            console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-            setUserInfo({id: 3, username: "hunter",
-            aboutMe: null,
-            accountType: "admin",
-            email: "randomemailaddress@gmail.com",
-            firstName: "Hunter",
-            id: 3,
-            imageURL: "",
-            imgUrl: "https://th.bing.com/th/id/OIP.5a60XnoExzGIQ_7p31pL9AHaEc?pid=ImgDet&rs=1",
-            lastName: "Risse",
-            location: "123 Electric Avenue",
-            password: "$2a$10$bSF9LiKPGJnY3roWLdr7h.RGdLFqNo7WeQddbzs0L3cqW7lQLbEPu",
-            phone: "012-345-6789",
-            registrationDate: 1653353118633,
-            username: "hunter"
+            setUserInfo({
+                id: 3,
+                username: "hunter",
+                aboutMe: null,
+                accountType: "admin",
+                email: "randomemailaddress@gmail.com",
+                firstName: "Hunter",
+                imageURL: "",
+                imgUrl: "https://th.bing.com/th/id/OIP.5a60XnoExzGIQ_7p31pL9AHaEc?pid=ImgDet&rs=1",
+                lastName: "Risse",
+                location: "123 Electric Avenue",
+                password: "$2a$10$bSF9LiKPGJnY3roWLdr7h.RGdLFqNo7WeQddbzs0L3cqW7lQLbEPu",
+                phone: "012-345-6789",
+                registrationDate: 1653353118633,
             })
             console.log("%%%% User info =" + JSON.stringify(userInfo) + "%%%%")
         }
