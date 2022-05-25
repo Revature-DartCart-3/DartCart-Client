@@ -93,7 +93,7 @@ Your browser will automatically open for you, and you are all set.
 
 * Tech Support Chat
   * If at any time a user has problems with the site there is a tech support chat to reach an employee for help.
-  ![TechChat](./dart-cart-client/src/imgs/readme/techchat3.png)
+  ![TechChat](./dart-cart-client/src/imgs/readme/
 
 * Logout
   * When the user leaves the app, be sure to close the connection to their account by clicking the Logout button.
