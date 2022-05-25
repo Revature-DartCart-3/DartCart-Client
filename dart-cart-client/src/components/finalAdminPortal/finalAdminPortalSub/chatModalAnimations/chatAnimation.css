@@ -1,13 +1,13 @@
 
-/*.message {*/
-/*    display: flex;*/
-/*    text-align: center;*/
-/*    justify-content: center;*/
+.message {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+/*.sent {*/
+/*    background-color: orange;*/
 /*}*/
-/*!*.sent {*!*/
-/*!*    background-color: orange;*!*/
-/*!*}*!*/
 
-/*!*.received {*!*/
-/*!*    background: lightskyblue;*!*/
-/*!*}*!*/
+/*.received {*/
+/*    background: lightskyblue;*/
+/*}*/

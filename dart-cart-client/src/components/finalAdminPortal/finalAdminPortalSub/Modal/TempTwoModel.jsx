@@ -6,7 +6,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 import '../chatModalAnimations/chatAnimation.css';
-import '../../adminTechStylesheet.css';
 
 import { useLocation } from "react-router-dom";
 const TempTwoModel = (props) => {
@@ -54,7 +53,7 @@ const TempTwoModel = (props) => {
             })
             console.log("%%%% User info =" + JSON.stringify(userInfo) + "%%%%")
         }
-
+       
     }, [user]);
 
     // const userModalIdentifcation = name.id;
@@ -62,7 +61,7 @@ const TempTwoModel = (props) => {
     const showModal = () => {
         setOpen(true);
         setModal(true);
-
+            
             //console.log("$$$$$$$$$$$$$$$$$PROPS OF MODAL"+ JSON.stringify(props))
         // console.log("hitting showModal")
         // console.log("USER:" + userInfo);
@@ -85,6 +84,33 @@ const TempTwoModel = (props) => {
     const clearChatInput = () => {
         setChatInput();
     }
+
+    // function ChatModalRoom() {
+    //     const dummy = useRef();
+    //     const messagesRef = name.collection('messages');
+    //     const query = messagesRef.chatInput;
+    //
+    //     // const [messages] = useCollectionData(query, {userinfo: 'id'});
+    //
+    //     const [chatModalAnimation, setChatModalAnimation] = useState('');
+    //
+    //     const sendMessage = async (e) => {
+    //         e.preventDefault();
+    //
+    //         // const { uid, photoURL } = auth.currentUser;
+    //
+    //         await messagesRef.add({
+    //             text: chatModalAnimation
+    //             // createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    //             // uid,
+    //             // photoURL
+    //         })
+    //
+    //         setChatModalAnimation('');
+    //         dummy.current.scrollIntoView({behavior: 'smooth'});
+    //     }
+    // }
+
 
         return (
         <>
@@ -115,7 +141,7 @@ const TempTwoModel = (props) => {
                                 >
                                     x
                                 </button>
-
+                                
 
                             </Modal.Header>
 

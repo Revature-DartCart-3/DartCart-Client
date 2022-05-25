@@ -44,7 +44,7 @@ const FinalAdminTechPanel = () => {
 
             clientId: session.client.id,
             clientName: session.client.username
-
+            
         }
         console.log(JSON.stringify(sessionResponse));
 
