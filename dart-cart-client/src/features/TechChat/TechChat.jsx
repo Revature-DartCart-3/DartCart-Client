@@ -7,7 +7,7 @@ import SockJS from 'sockjs-client';
 import { withStyles } from "@mui/material";
 import axios from "axios";
 import {Form, Modal} from "react-bootstrap";
-import AdminTechPanel from "./finalAdminPortal/finalAdminPortalSub/AdminTechPanel";
+import AdminTechPanel from "../../components/finalAdminPortal/finalAdminPortalSub/AdminTechPanel";
 
 var stompClient = null;
 

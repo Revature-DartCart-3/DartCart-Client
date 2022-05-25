@@ -34,7 +34,7 @@ import Admin from "./components/finalAdminPortal/Admin";
 // import AdminModal from "./components/finalAdminPortal/finalAdminPortalSub/Modal/FinalFinalTwoWay";
 // import AdminComments from "./features/TechChatModal/AdminComments";
 // import FinalTechChatModalGroup from "./features/TechChatModal/FinalTechChatModalGroup";
-import TechChat from "./components/TechChat";
+import TechChat from "./features/TechChat/TechChat";
 import './components/finalAdminPortal/finalAdminPortalSub/Modal/finaModalStyling.css'
 import AdminTechSection from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechSection";
 import AdminTechPanel from "./components/finalAdminPortal/finalAdminPortalSub/AdminTechPanel";

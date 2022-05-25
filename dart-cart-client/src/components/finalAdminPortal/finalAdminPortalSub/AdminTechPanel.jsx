@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Container} from "react-bootstrap";
 import {Table} from "react-bootstrap";
 import axios from "axios";
-import SessionListManager from "../../SessionListManager";
+import SessionListManager from "../../../features/TechChat/SessionListManager";
 import {AiOutlineEnter} from "react-icons/ai";
 import {BsAlignEnd} from "react-icons/bs";
 //import TwoModel from "./Modal/TwoModel"
