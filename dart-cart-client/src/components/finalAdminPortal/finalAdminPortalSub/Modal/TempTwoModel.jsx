@@ -7,6 +7,7 @@ import {RootState} from "../../../../common/types";
 import { useDispatch, useSelector } from "react-redux";
 import '../chatModalAnimations/chatAnimation.css';
 import './../../adminTechStylesheet.css';
+import './_modal.scss';
 
 
 
